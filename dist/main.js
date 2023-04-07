@@ -1,31 +1,49 @@
 import { program } from 'commander';
 import { parseCSV } from 'csv-load-sync';
 import { promises as fs, default as fssync } from 'fs';
-import request from "superagent";
+import request from 'superagent';
+import { URL, parse } from 'url';
 async function main() {
     program
         .name('vyzn-import-cli')
-        .version('1.0.0')
-        .description('Prepare a model for upload into the vyzn platform.')
-        .requiredOption('-i, --input <file>', 'path to the file to import (.csv)');
+        .description('Imports data into the vyzn platform.')
+        .version('1.0.0');
+    program
+        .command('import-products')
+        .description('import products from a CSV file')
+        .requiredOption('-i, --input <file>', 'path to the file to import (.csv)')
+        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .option('-v, --verbose', 'More detailed console output')
+        .action((o) => {
+        importProducts(o.input, o.url, o.auth, o.verbose);
+    });
+    program.command('delete-products')
+        .description('delete products of a given category')
+        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .requiredOption('-c, --category <id>', 'The id of the category')
+        .option('-v, --verbose', 'More detailed console output')
+        .action((o) => {
+        deleteProducts(o.url, o.auth, o.category, o.verbose);
+    });
     program.parse();
-    const input = program.getOptionValue('input');
-    if (await fileExists(input) == false) {
-        console.error(`Error: Could not find input file at ${input}.`);
-        process.exit(1);
-    }
+}
+async function importProducts(input, url, auth, verbose) {
+    await assertFile(input);
+    await assertUrl(url);
+    await assertFile(auth);
     const csv = await readCsv(input);
-    const auth = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFpOTdLTWl1a2w4VzNRc09IblVzcyJ9.eyJ2eXpuX3JvbGVzIjpbIkNPTVBBTllfSUNDQ09OIiwiUk9MRV9BRE1JTiIsIlJPTEVfQURNSU5fTE9DQUwiLCJST0xFX0NSRUFUT1IiLCJST0xFX1JFQUQiLCJST0xFX1JFQURXUklURSJdLCJ2eXpuX2VtYWlsIjoiYS5oZW5rZUB2eXpuLnRlY2giLCJpc3MiOiJodHRwczovL3Z5em4tcHJvZC5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTQyMzYzNzY4ODc0MzMzNzM2MzgiLCJhdWQiOlsiaHR0cHM6Ly9kYnMtZ2F0ZXdheS1zZXJ2aWNlLXByb2QuYXp1cmV3ZWJzaXRlcy5uZXQiLCJodHRwczovL3Z5em4tcHJvZC5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgwNjAyNTQ1LCJleHAiOjE2ODA2ODg5NDUsImF6cCI6Ik5SbkwxdHJBbDFPMUpqSUpuZDB3TWo2eEV6Sm9ObVRmIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.aUpgWgRMOPkVBeJeOoR43FG47V1Z-L4UCTEfBtWSOwpYeSalkJAf61fGzCnKbhiAiotYss0MnmkAiO5gr2wMOhULRWkmPOTcl3T35MCw63jkB4tSU27YhUUZastNgor0I1aA9GY6avxty2r0QmMRbejdKqgUjBtP43xGLoYr2gW4OJJcPAaQu2WvRnoajFytyiLobjsMbV-tN8kK6Nic80vvwB3efu77phT8jvZ-Ifkul0T5fqod1J05B6aResF0W-LN7RN1_Lbe8SJRYzjGaprO56_ODWIZ2BTqZSBH7l7vx_LxO7dz7EdCX2qc5x6G-ydHxZD5mQfHMcC-OE0yHQ';
+    const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
     for (const row of csv) {
-        console.info(row.Name);
-        const newProduct = await request.post('https://dbs-gateway-service-prod.azurewebsites.net/products')
+        const newProduct = await request.post(new URL('/products', url).href)
             .send({
             "name": row.Name,
             "productKey": row.ProductKey,
             "category": "115ca9b4-941f-4442-abae-ab626e415e44",
             "type": row.Type
         })
-            .set('Authorization', auth)
+            .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
             .set('Accept-Encoding', 'gzip, deflate, br')
@@ -44,15 +62,15 @@ async function main() {
                 if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
                     value = parseFloat(value);
                 }
-                console.info(typeof value);
                 attributes.push({
                     id: id,
                     value: value
                 });
             }
         }
-        console.info(JSON.stringify(attributes));
-        const updatedProduct = await request.put('https://dbs-gateway-service-prod.azurewebsites.net/products/' + id)
+        if (verbose)
+            console.debug(JSON.stringify(attributes));
+        const updatedProduct = await request.put(new URL('/products/' + id, url).href)
             .send({
             "name": row.Name,
             "productKey": row.ProductKey,
@@ -63,13 +81,51 @@ async function main() {
             "hatchingPattern": null,
             "attributes": attributes
         })
-            .set('Authorization', auth)
+            .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
-        //break;
+    }
+}
+async function deleteProducts(url, auth, category, verbose) {
+    await assertUrl(url);
+    await assertFile(auth);
+    const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+    const productsInCategory = await request.get(new URL(`/categories/${category}/products`, url).href)
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json');
+    const numProducts = productsInCategory.body.length;
+    let idx = 0;
+    for (const product of productsInCategory.body) {
+        if (verbose) {
+            console.debug(`Deleting ${idx + 1}/${numProducts}: ${product.id} ${product.name}`);
+        }
+        await request.del(new URL(`/products/${product.id}`, url).href)
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Content-Type', 'application/json');
+        idx++;
+    }
+}
+async function assertUrl(url) {
+    if (!stringIsAValidUrl(url, ['http', 'https'])) {
+        console.error(`Error: Invalid url '${url}'.`);
+        process.exit(1);
+    }
+}
+async function assertFile(file) {
+    if (await fileExists(file) == false) {
+        console.error(`Error: Could not find file at '${file}'.`);
+        process.exit(1);
     }
 }
 async function fileExists(path) {
@@ -82,5 +138,19 @@ async function readCsv(path) {
     const raw = await fs.readFile(path, { encoding: 'utf8', flag: 'r' });
     return parseCSV(raw);
 }
+const stringIsAValidUrl = (s, protocols) => {
+    try {
+        new URL(s);
+        const parsed = parse(s);
+        return protocols
+            ? parsed.protocol
+                ? protocols.map(x => `${x.toLowerCase()}:`).includes(parsed.protocol)
+                : false
+            : true;
+    }
+    catch (err) {
+        return false;
+    }
+};
 main();
 //# sourceMappingURL=main.js.map

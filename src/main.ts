@@ -8,32 +8,38 @@ import { URL, parse } from 'url'
 async function main() {
   program
   .name('vyzn-import-cli')
+  .description('Imports data into the vyzn platform.')
   .version('1.0.0')
-  .description('Import product data into the vyzn platform.')
+
+  program
+  .command('import-products')
+  .description('import products from a CSV file')
   .requiredOption('-i, --input <file>', 'path to the file to import (.csv)')
   .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
   .requiredOption('-a, --auth <file>', 'The file containing the auth token')
-  .requiredOption('-v, --verbose', 'More detailed console output')
+  .option('-v, --verbose', 'More detailed console output')
+  .action((o) => {
+    importProducts(o.input, o.url, o.auth, o.verbose)
+  })
+  
+  program.command('delete-products')
+  .description('delete products of a given category')
+  .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+  .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+  .requiredOption('-c, --category <id>', 'The id of the category')
+  .option('-v, --verbose', 'More detailed console output')
+  .action((o) => {
+    deleteProducts(o.url, o.auth, o.category, o.verbose)
+  })
+  
   program.parse()
+}
 
-  const input = program.getOptionValue('input')
-  const auth = program.getOptionValue('auth')
-  const url = program.getOptionValue('url')
-  const verbose = program.getOptionValue('verbose')
-
+async function importProducts(input: string, url: string, auth: string, verbose: boolean) {
   // Validate commandline arguments
-  if (await fileExists(input) == false) {
-    console.error(`Error: Could not find input file at ${input}.`)
-    process.exit(1)
-  }
-  if (!stringIsAValidUrl(url, ['http', 'https'])) {
-    console.error(`Error: Invalid url '${url}'.`)
-    process.exit(1)
-  }
-  if (await fileExists(auth) == false) {
-    console.error(`Error: Could not find auth file at ${auth}.`)
-    process.exit(1)
-  }
+  await assertFile(input)
+  await assertUrl(url)
+  await assertFile(auth)
 
   // Read files
   const csv = await readCsv(input)
@@ -99,6 +105,55 @@ async function main() {
                                     .set('Accept-Encoding', 'gzip, deflate, br')
                                     .set('Accept-Language','en-US,en;q=0.5')
                                     .set('Content-Type', 'application/json')
+  }
+}
+
+async function deleteProducts(url: string, auth: string, category: string, verbose: string) {
+   // Validate commandline arguments
+  await assertUrl(url)
+  await assertFile(auth)
+
+  // Read files
+  const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+
+  const productsInCategory = await request.get(new URL(`/categories/${category}/products`, url).href)
+                                          .set('Authorization', authToken)
+                                          .set('Content-Type', 'application/json')
+                                          .set('Accept', 'application/, json')
+                                          .set('Accept-Encoding', 'gzip, deflate, br')
+                                          .set('Accept-Language','en-US,en;q=0.5')
+                                          .set('Content-Type', 'application/json')
+
+  const numProducts = productsInCategory.body.length
+  let idx = 0
+  for(const product of productsInCategory.body) {
+    if(verbose) {
+      console.debug(`Deleting ${idx+1}/${numProducts}: ${product.id} ${product.name}`)
+    }
+
+    await request.del(new URL(`/products/${product.id}`, url).href)
+                  .set('Authorization', authToken)
+                  .set('Content-Type', 'application/json')
+                  .set('Accept', 'application/, json')
+                  .set('Accept-Encoding', 'gzip, deflate, br')
+                  .set('Accept-Language','en-US,en;q=0.5')
+                  .set('Content-Type', 'application/json')
+
+    idx++
+  }
+}
+
+async function assertUrl(url: string) {
+  if (!stringIsAValidUrl(url, ['http', 'https'])) {
+    console.error(`Error: Invalid url '${url}'.`)
+    process.exit(1)
+  }
+}
+
+async function assertFile(file: string) {
+  if (await fileExists(file) == false) {
+    console.error(`Error: Could not find file at '${file}'.`)
+    process.exit(1)
   }
 }
 

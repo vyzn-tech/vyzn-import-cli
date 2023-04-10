@@ -61,7 +61,7 @@ Options:
 $ node dist/main.js delete-products --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44 --verbose
 
 # Import products
-$ node dist/main.js import-products --input data/kbob.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ node dist/main.js import-products --input data/kbob.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
 
 ```
 

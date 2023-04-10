@@ -17,9 +17,10 @@ async function main() {
   .requiredOption('-i, --input <file>', 'path to the file to import (.csv)')
   .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
   .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+  .requiredOption('-c, --category <id>', 'The id of the category into which to import')
   .option('-v, --verbose', 'More detailed console output')
   .action((o) => {
-    importProducts(o.input, o.url, o.auth, o.verbose)
+    importProducts(o.input, o.url, o.auth, o.category, o.verbose)
   })
   
   program.command('delete-products')
@@ -31,11 +32,21 @@ async function main() {
   .action((o) => {
     deleteProducts(o.url, o.auth, o.category, o.verbose)
   })
+
+  program.command('import-from-materialsdb')
+  .description('imports data from materialsdb.org source')
+  .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+  .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+  .requiredOption('-c, --category <id>', 'The id of the category')
+  .option('-v, --verbose', 'More detailed console output')
+  .action((o) => {
+    deleteProducts(o.url, o.auth, o.category, o.verbose)
+  })
   
   program.parse()
 }
 
-async function importProducts(input: string, url: string, auth: string, verbose: boolean) {
+async function importProducts(input: string, url: string, auth: string, category: string, verbose: boolean) {
   // Validate commandline arguments
   await assertFile(input)
   await assertUrl(url)
@@ -51,7 +62,7 @@ async function importProducts(input: string, url: string, auth: string, verbose:
                                     .send({
                                       "name": row.Name,
                                       "productKey": row.ProductKey,
-                                      "category": "115ca9b4-941f-4442-abae-ab626e415e44",
+                                      "category": category,
                                       "type": row.Type
                                     })
                                     .set('Authorization', authToken)
@@ -92,7 +103,7 @@ async function importProducts(input: string, url: string, auth: string, verbose:
                                     .send({
                                       "name": row.Name,
                                       "productKey": row.ProductKey,
-                                      "category": "115ca9b4-941f-4442-abae-ab626e415e44",
+                                      "category": category,
                                       "type": row.Type,
                                       "status": "approved",
                                       "description": null,

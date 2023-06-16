@@ -4,6 +4,7 @@ import { parseCSV } from 'csv-load-sync'
 import { promises as fs, default as fssync } from 'fs'
 import request from 'superagent'
 import { URL, parse } from 'url'
+import { importMaterialsDb } from './import-materialsdb.js'
 
 async function main() {
   program
@@ -33,14 +34,14 @@ async function main() {
     deleteProducts(o.url, o.auth, o.category, o.verbose)
   })
 
-  program.command('import-from-materialsdb')
+  program.command('import-materialsdb')
   .description('imports data from materialsdb.org source')
   .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
   .requiredOption('-a, --auth <file>', 'The file containing the auth token')
   .requiredOption('-c, --category <id>', 'The id of the category')
   .option('-v, --verbose', 'More detailed console output')
   .action((o) => {
-    deleteProducts(o.url, o.auth, o.category, o.verbose)
+    importMaterialsDb(o.url, o.auth, o.category, o.verbose)
   })
   
   program.parse()
@@ -56,25 +57,102 @@ async function importProducts(input: string, url: string, auth: string, category
   const csv = await readCsv(input)
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
+  // Get current catalogue
+  const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
+                                          .set('Authorization', authToken)
+                                          .set('Content-Type', 'application/json')
+                                          .set('Accept', 'application/, json')
+                                          .set('Accept-Encoding', 'gzip, deflate, br')
+                                          .set('Accept-Language','en-US,en;q=0.5')
+                                          .set('Content-Type', 'application/json')
+  const selectedCatalogueId = selectedCatalogue.body.id
+
   // Process CSV line by line
   for(const row of csv) {
-    const newProduct = await request.post(new URL('/products', url).href)
-                                    .send({
-                                      "name": row.Name,
-                                      "productKey": row.ProductKey,
-                                      "category": category,
-                                      "type": row.Type
-                                    })
-                                    .set('Authorization', authToken)
-                                    .set('Content-Type', 'application/json')
-                                    .set('Accept', 'application/, json')
-                                    .set('Accept-Encoding', 'gzip, deflate, br')
-                                    .set('Accept-Language','en-US,en;q=0.5')
-                                    .set('Content-Type', 'application/json')
 
-    const id = newProduct.body.id
+    // FIXME
+    //row.Name = row.Name.replace('(KBOB2022)','')
+    //row.Name = row.Name.slice(row.Name.indexOf(" ") + 1)
+    //ro7w.ProductKey = row.Name
+
+    // Get existing product
+    let product = null
+    try {
+      let existingProdId = null
+      let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${row.ProductKey}&limit=10`, url).href)
+                                      .set('Authorization', authToken)
+                                      .set('Content-Type', 'application/json')
+                                      .set('Accept', 'application/, json')
+                                      .set('Accept-Encoding', 'gzip, deflate, br')
+                                      .set('Accept-Language','en-US,en;q=0.5')
+                                      .set('Content-Type', 'application/json')
+
+      if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
+        existingProdId = existingProds.body[0].id
+      } /*else {
+        // Also try legacy key
+        // Remove leading "0" to convert ID's like "KBOB2016-01.001" to "KBOB2016-1.001"
+        const parts = row.ProductKey.split('-');
+        const versionPart = parts[1].split('.');
+        const newVersionPart = parseInt(versionPart[0], 10).toString();
+        let legacyProductKey = `${parts[0]}-${newVersionPart}.${versionPart[1]}`;
+        legacyProductKey = legacyProductKey.replace('KBOB2022', 'KBOB')
+        existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${legacyProductKey}&limit=10`, url).href)
+                                        .set('Authorization', authToken)
+                                        .set('Content-Type', 'application/json')
+                                        .set('Accept', 'application/, json')
+                                        .set('Accept-Encoding', 'gzip, deflate, br')
+                                        .set('Accept-Language','en-US,en;q=0.5')
+                                        .set('Content-Type', 'application/json')
+
+        if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
+          existingProdId = existingProds.body[0].id
+          console.log(`${legacyProductKey} Found by transforming key from ${row.ProductKey} to ${legacyProductKey}`)
+        }
+      }*/
+
+      if(existingProdId) {
+        const existingProd = await request.get(new URL('/products/' + existingProdId, url).href)
+                                            .set('Authorization', authToken)
+                                            .set('Content-Type', 'application/json')
+                                            .set('Accept', 'application/, json')
+                                            .set('Accept-Encoding', 'gzip, deflate, br')
+                                            .set('Accept-Language','en-US,en;q=0.5')
+                                            .set('Content-Type', 'application/json')
+        if(existingProd && existingProd.body) {
+          product = existingProd.body
+          console.log(`${row.ProductKey} Updating existing product`)
+        }
+      }
+
+    } catch (error) { /* console.log(error) */ }
+
+    let newType = row.Type
+    if(newType == "MATERIAL_LIST")
+      newType = "REFERENCE_MATERIAL"
+
+    // Create new product
+    if(!product) {
+      const newProd = await request.post(new URL('/products', url).href)
+                              .send({
+                                "name": row.Name,
+                                "productKey": row.ProductKey,
+                                "category": category,
+                                "type": newType
+                              })
+                              .set('Authorization', authToken)
+                              .set('Content-Type', 'application/json')
+                              .set('Accept', 'application/, json')
+                              .set('Accept-Encoding', 'gzip, deflate, br')
+                              .set('Accept-Language','en-US,en;q=0.5')
+                              .set('Content-Type', 'application/json')
+      product = newProd.body
+      console.log(`${row.ProductKey} Creating new product`)
+    }
+
+    const id = product.id
     const attributeIds = {};
-    for(const attr of newProduct.body.attributes) {
+    for(const attr of product.attributes) {
       attributeIds[attr.name] = attr.id
     }
 
@@ -104,7 +182,7 @@ async function importProducts(input: string, url: string, auth: string, category
                                       "name": row.Name,
                                       "productKey": row.ProductKey,
                                       "category": category,
-                                      "type": row.Type,
+                                      "type": newType,
                                       "status": "approved",
                                       "description": null,
                                       "hatchingPattern": null,
@@ -116,6 +194,7 @@ async function importProducts(input: string, url: string, auth: string, category
                                     .set('Accept-Encoding', 'gzip, deflate, br')
                                     .set('Accept-Language','en-US,en;q=0.5')
                                     .set('Content-Type', 'application/json')
+  
   }
 }
 
@@ -127,30 +206,63 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
   // Read files
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
-  const productsInCategory = await request.get(new URL(`/categories/${category}/products`, url).href)
+
+  // Get current catalogue
+  const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
                                           .set('Authorization', authToken)
                                           .set('Content-Type', 'application/json')
                                           .set('Accept', 'application/, json')
                                           .set('Accept-Encoding', 'gzip, deflate, br')
                                           .set('Accept-Language','en-US,en;q=0.5')
                                           .set('Content-Type', 'application/json')
+  
+  const cat = findSubcategoryById(selectedCatalogue.body.content, category)
+  const childCategoriesRecursive = getAllCategoriesRecursive(cat)
 
-  const numProducts = productsInCategory.body.length
-  let idx = 0
-  for(const product of productsInCategory.body) {
-    if(verbose) {
-      console.debug(`Deleting ${idx+1}/${numProducts}: ${product.id} ${product.name}`)
+  for(const categoryToDelete of childCategoriesRecursive) {
+    if(verbose) console.log(`Deleting category '${categoryToDelete.name}'`)
+
+    const productsInCategory = await request.get(new URL(`/categories/${categoryToDelete.id}/products`, url).href)
+                                            .set('Authorization', authToken)
+                                            .set('Content-Type', 'application/json')
+                                            .set('Accept', 'application/, json')
+                                            .set('Accept-Encoding', 'gzip, deflate, br')
+                                            .set('Accept-Language','en-US,en;q=0.5')
+                                            .set('Content-Type', 'application/json')
+
+    const numProducts = productsInCategory.body.length
+    let idx = 0
+    for(const product of productsInCategory.body) {
+      if(verbose) {
+        console.debug(`\tDeleting ${idx+1}/${numProducts}: ${product.id} ${product.name}`)
+      }
+
+      try {
+          await request.del(new URL(`/products/${product.id}`, url).href)
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/, json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language','en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json')
+      } catch (e) {
+        console.error(console.error(e, e.stack))
+      }
+
+      idx++
     }
 
-    await request.del(new URL(`/products/${product.id}`, url).href)
-                  .set('Authorization', authToken)
-                  .set('Content-Type', 'application/json')
-                  .set('Accept', 'application/, json')
-                  .set('Accept-Encoding', 'gzip, deflate, br')
-                  .set('Accept-Language','en-US,en;q=0.5')
-                  .set('Content-Type', 'application/json')
-
-    idx++
+    try {
+      await request.del(new URL(`/categories/${categoryToDelete.id}`, url).href)
+                .set('Authorization', authToken)
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/, json')
+                .set('Accept-Encoding', 'gzip, deflate, br')
+                .set('Accept-Language','en-US,en;q=0.5')
+                .set('Content-Type', 'application/json')
+    } catch (e) {
+      console.error(console.error(e, e.stack))
+    }    
   }
 }
 
@@ -195,6 +307,27 @@ const stringIsAValidUrl = (s, protocols) => {
       return false;
   }
 };
+
+function findSubcategoryById(data, id) {
+  if (data.id === id) {
+      return data;
+  }
+  for (let i = 0; i < (data.subcategories ?? []).length; i++) {
+      let found = findSubcategoryById(data.subcategories[i], id);
+      if (found) {
+          return found;
+      }
+  }
+  return null;
+}
+
+function getAllCategoriesRecursive(cat, resultList = []) {
+  for(let i = 0; i < (cat.subcategories ?? []).length; i++) {
+    getAllCategoriesRecursive(cat.subcategories[i], resultList);
+  }
+  resultList.push(cat);
+  return resultList
+}
 
 
 main()

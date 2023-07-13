@@ -11,15 +11,18 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.15.11",
+    "@types/xml2js": "^0.4.11",
     "typescript": "^5.0.3"
   },
   "dependencies": {
     "@types/superagent": "^4.1.16",
     "commander": "^10.0.0",
     "csv-load-sync": "^2.3.1",
+    "fast-xml-parser": "^4.2.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
-    "superagent": "^8.0.9"
+    "superagent": "^8.0.9",
+    "xml2js": "^0.5.0"
   },
   "type": "module"
 }

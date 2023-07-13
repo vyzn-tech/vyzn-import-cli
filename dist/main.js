@@ -17,8 +17,9 @@ async function main() {
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
         .requiredOption('-c, --category <id>', 'The id of the category into which to import')
         .option('-v, --verbose', 'More detailed console output')
+        .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importProducts(o.input, o.url, o.auth, o.category, o.verbose);
+        importProducts(o.input, o.url, o.auth, o.category, o.verbose, o.diff);
     });
     program.command('delete-products')
         .description('delete products of a given category')
@@ -40,7 +41,7 @@ async function main() {
     });
     program.parse();
 }
-async function importProducts(input, url, auth, category, verbose) {
+async function importProducts(input, url, auth, category, verbose, diff) {
     await assertFile(input);
     await assertUrl(url);
     await assertFile(auth);
@@ -58,7 +59,7 @@ async function importProducts(input, url, auth, category, verbose) {
         let product = null;
         try {
             let existingProdId = null;
-            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${row.ProductKey}&limit=10`, url).href)
+            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${row.ProductKey}&limit=10`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -82,7 +83,37 @@ async function importProducts(input, url, auth, category, verbose) {
                 }
             }
         }
-        catch (error) { }
+        catch (error) {
+            console.log(error);
+        }
+        if (diff) {
+            if (product) {
+                for (const attributeName of Object.keys(row)) {
+                    if (attributeName.startsWith("vyzn.") || attributeName.startsWith("KBOB")) {
+                        let found = false;
+                        for (const existingAttribute of product.attributes) {
+                            if (existingAttribute.name == attributeName) {
+                                found = true;
+                                let newValue = row[attributeName];
+                                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
+                                    newValue = parseFloat(newValue);
+                                }
+                                if (existingAttribute.value != newValue) {
+                                    console.log(`${row.ProductKey} attribute '${attributeName}' value mismatch (existing: ${existingAttribute.value}, new: ${row[attributeName]})`);
+                                }
+                                break;
+                            }
+                        }
+                        if (!found)
+                            console.log(`${row.ProductKey} attribute '${attributeName}' missing`);
+                    }
+                }
+            }
+            else {
+                console.log(`${row.ProductKey} does not exist yet`);
+            }
+            continue;
+        }
         let newType = row.Type;
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
@@ -112,6 +143,10 @@ async function importProducts(input, url, auth, category, verbose) {
         for (const attributeName of Object.keys(row)) {
             if (attributeName.startsWith("vyzn.") || attributeName.startsWith("KBOB")) {
                 const id = attributeIds[attributeName];
+                if (!id) {
+                    console.log(`${row.ProductKey} Could not find attribute ${attributeName}`);
+                    continue;
+                }
                 let value = row[attributeName];
                 if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
                     value = parseFloat(value);

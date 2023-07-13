@@ -148,7 +148,7 @@ export async function importMaterialsDb(url, auth, category, verbose) {
                     const prefixes = ["KBOB2022", "KBOB2016"];
                     for (const prefix of prefixes) {
                         const lcaProductName = `${prefix}-${kbobLookup[lcaCode]}`;
-                        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${lcaProductName}&limit=10`, url).href)
+                        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${lcaProductName}&limit=10`, url).href)
                             .set('Authorization', authToken)
                             .set('Content-Type', 'application/json')
                             .set('Accept', 'application/, json')
@@ -227,10 +227,11 @@ export async function importMaterialsDb(url, auth, category, verbose) {
                     .set('Accept-Encoding', 'gzip, deflate, br')
                     .set('Accept-Language', 'en-US,en;q=0.5')
                     .set('Content-Type', 'application/json');
-                const materialListLink = await request.post(new URL(`/products/${id}/reference-material-links`, url).href)
+                const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
                     .send({
-                    "referenceMaterial": lcaProductId,
-                    "attributeGroup": lcaAttributeGroupId
+                    "materialId": id,
+                    "referenceMaterialId": lcaProductId,
+                    "attributeGroupId": lcaAttributeGroupId
                 })
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')

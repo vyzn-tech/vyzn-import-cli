@@ -173,7 +173,7 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                     const prefixes = ["KBOB2022", "KBOB2016"]
                     for(const prefix of prefixes) {
                         const lcaProductName = `${prefix}-${kbobLookup[lcaCode]}` // fixme
-                        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${lcaProductName}&limit=10`, url).href)
+                        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${lcaProductName}&limit=10`, url).href)
                                                 .set('Authorization', authToken)
                                                 .set('Content-Type', 'application/json')
                                                 .set('Accept', 'application/, json')
@@ -257,10 +257,11 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                                                 .set('Accept-Language','en-US,en;q=0.5')
                                                 .set('Content-Type', 'application/json')
 
-                const materialListLink = await request.post(new URL(`/products/${id}/reference-material-links`, url).href)
+                const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
                                                 .send({
-                                                    "referenceMaterial": lcaProductId,
-                                                    "attributeGroup": lcaAttributeGroupId
+                                                    "materialId": id,
+                                                    "referenceMaterialId": lcaProductId,
+                                                    "attributeGroupId": lcaAttributeGroupId
                                                 })
                                                 .set('Authorization', authToken)
                                                 .set('Content-Type', 'application/json')

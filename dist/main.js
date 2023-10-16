@@ -41,7 +41,7 @@ async function main() {
     });
     program.parse();
 }
-async function importProducts(input, url, auth, category, verbose, diff) {
+async function importProducts(input, url, auth, category, verbose, diff) { 
     await assertFile(input);
     await assertUrl(url);
     await assertFile(auth);
@@ -49,26 +49,28 @@ async function importProducts(input, url, auth, category, verbose, diff) {
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
     const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
         .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json');
     const selectedCatalogueId = selectedCatalogue.body.id;
+    console.log(selectedCatalogueId)
     for (const row of csv) {
         let product = null;
+        let existingProdId = null;
+        let existingProds = null;
         try {
-            let existingProdId = null;
-            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${row.ProductKey}&limit=10`, url).href)
+            existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}`, url).href)
                 .set('Authorization', authToken)
-                .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json');
+
             if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
                 existingProdId = existingProds.body[0].id;
             }
+
             if (existingProdId) {
                 const existingProd = await request.get(new URL('/products/' + existingProdId, url).href)
                     .set('Authorization', authToken)
@@ -79,7 +81,8 @@ async function importProducts(input, url, auth, category, verbose, diff) {
                     .set('Content-Type', 'application/json');
                 if (existingProd && existingProd.body) {
                     product = existingProd.body;
-                    console.log(`${row.ProductKey} Updating existing product`);
+                    console.log(`${row.ProductKey} Updating existing product`)
+                    console.log(existingProdId);
                 }
             }
         }
@@ -126,7 +129,6 @@ async function importProducts(input, url, auth, category, verbose, diff) {
                 "type": newType
             })
                 .set('Authorization', authToken)
-                .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
@@ -171,13 +173,13 @@ async function importProducts(input, url, auth, category, verbose, diff) {
             "attributes": attributes
         })
             .set('Authorization', authToken)
-            .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
     }
 }
+
 async function deleteProducts(url, auth, category, verbose) {
     await assertUrl(url);
     await assertFile(auth);

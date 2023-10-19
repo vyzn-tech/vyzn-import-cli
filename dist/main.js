@@ -59,14 +59,14 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         let product = null;
         try {
             let existingProdId = null;
-            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${row.ProductKey}&limit=10`, url).href)
+            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}&limit=10`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json');
-            if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
+            if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == row.ProductKey) {
                 existingProdId = existingProds.body[0].id;
             }
             if (existingProdId) {

@@ -74,7 +74,7 @@ async function importProducts(input: string, url: string, auth: string, category
     let product = null
     try {
       let existingProdId = null
-      let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${row.ProductKey}&limit=10`, url).href)
+      let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}&limit=10`, url).href)
                                       .set('Authorization', authToken)
                                       .set('Content-Type', 'application/json')
                                       .set('Accept', 'application/, json')
@@ -82,13 +82,13 @@ async function importProducts(input: string, url: string, auth: string, category
                                       .set('Accept-Language','en-US,en;q=0.5')
                                       .set('Content-Type', 'application/json')
 
-      if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
+      if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == row.ProductKey) {
         existingProdId = existingProds.body[0].id
       } /*else {
         // Also try legacy key
         // Remove leading "0" to convert ID's like "KBOB2016-01.001" to "KBOB2016-1.001"
         const parts = row.ProductKey.split('-');
-        const versionPart = parts[1].split('.');
+        const versionPart = parts[1].split('.');⁄
         const newVersionPart = parseInt(versionPart[0], 10).toString();
         let legacyProductKey = `${parts[0]}-${newVersionPart}.${versionPart[1]}`;
         legacyProductKey = legacyProductKey.replace('KBOB2022', 'KBOB')

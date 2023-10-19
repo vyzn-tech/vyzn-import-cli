@@ -4,12 +4,29 @@ Import product data into the vyzn platform.
 
 ## Installation
 
+### Linux / MacOS
+
+```
+npm install
+sudo npm i -g tsc
+npx tsc
+node dist/main.js --help
+```
+
+### Windows
+
 ```
 npm install
 npm i -g tsc
 npx tsc
 node dist/main.js --help
 ```
+
+## Authentication
+
+1. Open a browser and navigate to https://prod.vyzn.tech and log-in at the target tenant
+2. Use the developer console of your browser to identify the authentication token (typically under Network > Headers > Authorization)
+3. Save the authentication token to ./data/auth.txt
 
 ## Usage
 

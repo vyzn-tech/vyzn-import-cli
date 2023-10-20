@@ -84,6 +84,10 @@ $ npx tsc && node dist/main.js import-products --input data/kbob_2022.csv --url 
 # Import materials from materialsdb.org
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt
 
+# Import components
+$ npx tsc && node dist/main.js import-catalog --input data/SP_catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+
+
 ```
 
 ## Contributing

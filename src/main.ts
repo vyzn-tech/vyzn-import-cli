@@ -432,286 +432,9 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  //await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  //await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
   await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
-
-  return
-
-  // Process all components
-  /*
-  for(const [key, value] of Object.entries(componentsObj.products)) {
-    let componentToImport : any = value
-    if(componentToImport.type != "COMPONENT") continue
-
-    // Get existing component
-    let product = null
-    try {
-      let existingProdId = null
-      let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=COMPONENT&query=${componentToImport.name}&limit=10`, url).href)
-                                      .set('Authorization', authToken)
-                                      .set('Content-Type', 'application/json')
-                                      .set('Accept', 'application/, json')
-                                      .set('Accept-Encoding', 'gzip, deflate, br')
-                                      .set('Accept-Language','en-US,en;q=0.5')
-                                      .set('Content-Type', 'application/json')
-
-      if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == componentToImport.ProductKey) {
-        existingProdId = existingProds.body[0].id
-      }
-
-      if(existingProdId) {
-        const existingProd = await request.get(new URL('/products/' + existingProdId, url).href)
-                                            .set('Authorization', authToken)
-                                            .set('Content-Type', 'application/json')
-                                            .set('Accept', 'application/, json')
-                                            .set('Accept-Encoding', 'gzip, deflate, br')
-                                            .set('Accept-Language','en-US,en;q=0.5')
-                                            .set('Content-Type', 'application/json')
-        if(existingProd && existingProd.body) {
-          product = existingProd.body
-          console.log(`${componentToImport.ProductKey} Updating existing component`)
-        }
-      }
-
-    } catch (error) { console.log(error) }
-
-    // Create new component
-    if(!product) {
-      const newProd = await request.post(new URL('/products', url).href)
-                              .send({
-                                "name": componentToImport.name,
-                                "productKey": componentToImport.name,
-                                "category": category,
-                                "type": componentToImport.type
-                              })
-                              .set('Authorization', authToken)
-                              .set('Content-Type', 'application/json')
-                              .set('Accept', 'application/, json')
-                              .set('Accept-Encoding', 'gzip, deflate, br')
-                              .set('Accept-Language','en-US,en;q=0.5')
-                              .set('Content-Type', 'application/json')
-      product = newProd.body
-      console.log(`${componentToImport.name} Creating new component`)
-    }
-
-    const id = product.id
-    const attributeIds = {};
-    for(const attr of product.attributes) {
-      attributeIds[attr.name] = attr.id
-    }
-
-    const attributes = []
-    for(const attributeName of Object.keys(componentToImport)) {
-      if(attributeName.startsWith("vyzn.") || attributeName.startsWith("KBOB")) {
-        const id = attributeIds[attributeName]
-        if(!id) {
-          console.log(`${componentToImport.ProductKey} Could not find attribute ${attributeName}`)
-          continue
-        }
-
-        let value = componentToImport[attributeName]
-        
-        // fixme, read attribute definitions first and then convert to target type
-        if(attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
-          value = parseFloat(value)
-        }
-
-        attributes.push({
-          id: id,
-          value: value
-        })
-      }
-    }
-
-    if(verbose)
-      console.debug(JSON.stringify(attributes))
-      
-    const updatedProduct = await request.put(new URL('/products/' + id, url).href)
-                                    .send({
-                                      "name": componentToImport.name,
-                                      "productKey": componentToImport.name,
-                                      "category": category,
-                                      "type": componentToImport.type,
-                                      "status": "approved",
-                                      "description": null,
-                                      "hatchingPattern": null,
-                                      "attributes" : attributes
-                                    })
-                                    .set('Authorization', authToken)
-                                    .set('Content-Type', 'application/json')
-                                    .set('Accept', 'application/, json')
-                                    .set('Accept-Encoding', 'gzip, deflate, br')
-                                    .set('Accept-Language','en-US,en;q=0.5')
-                                    .set('Content-Type', 'application/json')
-
-    // fixme, replace hardcoded guids
-    await request.put(new URL(`/products/${id}/sectionAttributes`, url).href)
-          .send(["644890f2-7c50-475c-91a0-103d44d6583c"])
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')
-
-    await request.put(new URL(`/products/${id}/layerAttributes`, url).href)
-          .send(["15737593-eb2d-4fdd-ab08-79e06a61490e", "2e043d3e-c8ec-4bca-9c9e-9e1bece51ece"])
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')
-  
-    const associationAttributes = (await request.get(new URL(`/associationAttributes`, url).href)
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')).body
-
-    const associationAttributesDict = {}
-    for(const attr of associationAttributes) {
-      const associationAttribute : any = attr
-      associationAttributesDict[associationAttribute.name] = associationAttribute
-    }
-
-    const layerIds = []
-    for(const [layerKey, layerValue] of Object.entries(componentToImport.matrix.layers)) {
-      const layer : any = layerValue
-      const layerAssociationAttributes = []
-      for(const [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
-        const associationAttribute = associationAttributesDict[attrName]
-        if(!associationAttribute) {
-          console.error(`association attribute not found: ${attrName}`)
-          continue
-        }
-        layerAssociationAttributes.push({
-          attribute: associationAttribute.id,
-          displayName: associationAttribute.displayName,
-          name: associationAttribute.name,
-          unit: associationAttribute.unit,
-          value: `${attrValue}`
-        })
-      }
-
-      const newLayer = await request.post(new URL(`/productLayers`, url).href)
-              .send({
-                "parent": `${id}`,
-                "position": parseInt(layerKey)
-              })
-              .set('Authorization', authToken)
-              .set('Content-Type', 'application/json')
-              .set('Accept', 'application/, json')
-              .set('Accept-Encoding', 'gzip, deflate, br')
-              .set('Accept-Language','en-US,en;q=0.5')
-              .set('Content-Type', 'application/json')
-
-      await request.patch(new URL(`/productLayers/${newLayer.body.id}`, url).href)
-              .send({
-                "id": newLayer.body.id,
-                "parent": `${id}`,
-                "position": parseInt(layerKey),
-                "attributes": layerAssociationAttributes
-              })
-              .set('Authorization', authToken)
-              .set('Content-Type', 'application/json')
-              .set('Accept', 'application/, json')
-              .set('Accept-Encoding', 'gzip, deflate, br')
-              .set('Accept-Language','en-US,en;q=0.5')
-              .set('Content-Type', 'application/json')
-   
-      layerIds.push(newLayer.body.id)
-    }
-
-    const sectionIds = []
-    for(const [sectionKey, sectionValue] of Object.entries(componentToImport.matrix.sections)) {
-      const section : any = sectionValue
-
-      const sectionAssociationAttributes = []
-      for(const [attrName, attrValue] of Object.entries(section.associationAttributes)) {
-        const associationAttribute = associationAttributesDict[attrName]
-        if(!associationAttribute) {
-          console.error(`association attribute not found: ${attrName}`)
-          continue
-        }
-        sectionAssociationAttributes.push({
-          attribute: associationAttribute.id,
-          displayName: associationAttribute.displayName,
-          name: associationAttribute.name,
-          unit: associationAttribute.unit,
-          value: `${attrValue}`
-        })
-      }
-
-      const newSection = await request.post(new URL(`/productSections`, url).href)
-              .send({
-                "parent": `${id}`,
-                "position": parseInt(sectionKey)
-              })
-              .set('Authorization', authToken)
-              .set('Content-Type', 'application/json')
-              .set('Accept', 'application/, json')
-              .set('Accept-Encoding', 'gzip, deflate, br')
-              .set('Accept-Language','en-US,en;q=0.5')
-              .set('Content-Type', 'application/json')
-
-      await request.patch(new URL(`/productSections/${newSection.body.id}`, url).href)
-              .send({
-                "id": newSection.body.id,
-                "parent": `${id}`,
-                "position": parseInt(sectionKey),
-                "attributes": sectionAssociationAttributes
-              })
-              .set('Authorization', authToken)
-              .set('Content-Type', 'application/json')
-              .set('Accept', 'application/, json')
-              .set('Accept-Encoding', 'gzip, deflate, br')
-              .set('Accept-Language','en-US,en;q=0.5')
-              .set('Content-Type', 'application/json')        
-
-      sectionIds.push(newSection.body.id)
-    }
-
-    for(const [cellKey, cellValue] of Object.entries(componentToImport.matrix.cells)) {
-      const cell : any = cellValue
-
-      let materialId = null
-      let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${cell.materialKey}&limit=10`, url).href)
-                    .set('Authorization', authToken)
-                    .set('Content-Type', 'application/json')
-                    .set('Accept', 'application/, json')
-                    .set('Accept-Encoding', 'gzip, deflate, br')
-                    .set('Accept-Language','en-US,en;q=0.5')
-                    .set('Content-Type', 'application/json')
-
-      if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == cell.materialKey) {
-        materialId = existingProds.body[0].id
-      }
-
-      if(!materialId) {
-        console.error("Could not find material: ${materialId}")
-        continue
-      }
-
-      await request.post(new URL(`/productCellLink`, url).href)
-              .send({
-                "layer": layerIds[cell.layerPosition],
-                "section": sectionIds[cell.sectionPosition],
-                "child": materialId
-              })
-              .set('Authorization', authToken)
-              .set('Content-Type', 'application/json')
-              .set('Accept', 'application/, json')
-              .set('Accept-Encoding', 'gzip, deflate, br')
-              .set('Accept-Language','en-US,en;q=0.5')
-              .set('Content-Type', 'application/json')
-    }
-
-    break
-  }*/
 }
 
 let anchorFound = false
@@ -720,25 +443,26 @@ async function importProductsOfType(products, type: string, selectedCatalogueId,
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
-    //if (prod.name == "Backstein Murfor RE (Tuileries Fribourg et Lausanne)") anchorFound = true
+    //if (prod.name == "StoSil K (STO AG)") anchorFound = true
     //if (!anchorFound) continue
-
-    await importSingleProduct(prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff)
+    //if (prod.name != "Holzschalung - Fi/Ta, 24mm") continue
+    
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff)
   }
 }
 
-async function importSingleProduct(prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean) {
   const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
   const categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken)
 
   if (!categoryId)
-    console.error(`missing category for product: ${prod.name}`)
+    console.error(`missing category for product: ${prodKey}`)
 
   // Get existing product
   let product = null
   try {
     let existingProdId = null
-    let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prod.name)}&limit=10`, url).href)
+    let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/, json')
@@ -746,7 +470,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
 
-    if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == prod.name) {
+    if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == prodKey) {
       existingProdId = existingProds.body[0].id
     }
 
@@ -760,17 +484,17 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
         .set('Content-Type', 'application/json')
       if (existingProd && existingProd.body) {
         product = existingProd.body
-        console.log(`${prod.name} Updating existing product`)
+        console.log(`${prodKey} Updating existing product`)
       }
     }
   } catch (error) { console.log(error) }
 
   if(product && prod.type == "COMPONENT") {
-    console.log(`${prod.name} Deleting existing product since it is a component`)
+    console.log(`${prodKey} Deleting existing product since it is a component`)
     await request.del(new URL('/products/' + product.id, url).href)
       .send({
         "name": prod.name,
-        "productKey": prod.name,
+        "productKey": prodKey,
         "category": categoryId,
         "type": prod.type
       })
@@ -788,7 +512,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
     const newProd = await request.post(new URL('/products', url).href)
       .send({
         "name": prod.name,
-        "productKey": prod.name,
+        "productKey": prodKey,
         "category": categoryId,
         "type": prod.type
       })
@@ -799,7 +523,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
     product = newProd.body
-    console.log(`${prod.name} Creating new product`)
+    console.log(`${prodKey} Creating new product`)
   }
 
   const id = product.id
@@ -810,20 +534,42 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
 
   const attributes = []
   for (const [attrKey, attrValue] of Object.entries(prod.attributes)) {
+
+    // FIXME: fix attribute mismatch between DEV and PROD
+    let key = attrKey
+    if(key == 'vyzn.catalogue.ThermalConductivity')
+      key = 'vyzn.catalog.ThermalConductivity'
+    else if(key == 'vyzn.catalogue.PriceCHF')
+      key = 'vyzn.catalog.PriceCHF'
+    else if(key == 'vyzn.catalogue.LayerThickness')
+      key = 'vyzn.catalog.LayerThickness'
+    else if(key == 'vyzn.catalogue.SectionPercentage')
+      key = 'vyzn.catalog.SectionPercentage'
+    else if(key == 'vyzn.catalogue.BottomPositionLabel')
+      key = 'vyzn.catalog.BottomPositionLabel'
+    else if(key == 'vyzn.catalogue.uValue')
+      key = 'vyzn.catalog.uValue'
+    else if(key == 'vyzn.catalogue.TopPositionLabel')
+      key = 'vyzn.catalog.TopPositionLabel'
+    else if(key == 'vyzn.catalogue.PositionAgainst')
+      key = 'vyzn.catalog.PositionAgainst'
+    else if(key == 'vyzn.catalogue.AutomateUValueCalculation')
+      key = 'vyzn.catalog.AutomateUValueCalculation'
+
     attributes.push({
-      id: attributeIds[attrKey],
+      id: attributeIds[key],
       value: attrValue
     })
   }
   const updatedProduct = await request.put(new URL('/products/' + id, url).href)
     .send({
       "name": prod.name,
-      "productKey": prod.name,
+      "productKey": prodKey,
       "category": categoryId,
       "type": prod.type,
       "status": "approved",
       "description": null,
-      "hatchingPattern": null,
+      "hatchingPattern": prod.hatchingPattern,
       "attributes": attributes
     })
     .set('Authorization', authToken)
@@ -871,7 +617,14 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
     for (const [layerKey, layerValue] of Object.entries(prod.matrix.layers)) {
       const layer: any = layerValue
       const layerAssociationAttributes = []
-      for (const [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
+      for (let [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
+
+        // FIXME: fix attribute mismatch between DEV and PROD
+        if(attrName == 'vyzn.catalogue.LayerThickness')
+          attrName = 'vyzn.catalog.LayerThickness'
+        else if(attrName == 'vyzn.catalogue.SectionPercentage')
+          attrName = 'vyzn.catalog.SectionPercentage'
+
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {
           console.error(`association attribute not found: ${attrName}`)
@@ -920,7 +673,14 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
       const section: any = sectionValue
 
       const sectionAssociationAttributes = []
-      for (const [attrName, attrValue] of Object.entries(section.associationAttributes)) {
+      for (let [attrName, attrValue] of Object.entries(section.associationAttributes)) {
+
+        // FIXME: fix attribute mismatch between DEV and PROD
+        if(attrName == 'vyzn.catalogue.LayerThickness')
+          attrName = 'vyzn.catalog.LayerThickness'
+        else if(attrName == 'vyzn.catalogue.SectionPercentage')
+          attrName = 'vyzn.catalog.SectionPercentage'
+
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {
           console.error(`association attribute not found: ${attrName}`)
@@ -1005,49 +765,49 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
     }
   }
 
-  /* todo: LCA attribute group linking
+  
   if(prod.type == "MATERIAL") {
     let lcaProductId = null
-    if(!lcaProductsCache[lcaCode]) {
-        const prefixes = ["KBOB2022", "KBOB2016"]
-        for(const prefix of prefixes) {
-            const lcaProductName = `${prefix}-${kbobLookup[lcaCode]}` // fixme
-            const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${lcaProductName}&limit=10`, url).href)
-                                    .set('Authorization', authToken)
-                                    .set('Content-Type', 'application/json')
-                                    .set('Accept', 'application/, json')
-                                    .set('Accept-Encoding', 'gzip, deflate, br')
-                                    .set('Accept-Language','en-US,en;q=0.5')
-                                    .set('Content-Type', 'application/json')
-            
-            if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
-                continue
-            }
-            lcaProductId = lcaProducts.body[0].id
-            break
+    const lcaCode = prod.linkedReferenceMaterialKey
+    if(lcaCode) {
+      if(!lcaProductsCache[lcaCode]) {
+        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+                                .set('Authorization', authToken)
+                                .set('Content-Type', 'application/json')
+                                .set('Accept', 'application/, json')
+                                .set('Accept-Encoding', 'gzip, deflate, br')
+                                .set('Accept-Language','en-US,en;q=0.5')
+                                .set('Content-Type', 'application/json')
+        
+        if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+        } else {
+          lcaProductId = lcaProducts.body[0].id
         }
+          
         if(!lcaProductId) {
             console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
-            continue
         }
         lcaProductsCache[lcaCode] = lcaProductId
-    } else {
+      } else {
         lcaProductId = lcaProductsCache[lcaCode]
+      }
     }
 
-    const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
-    .send({
-        "materialId": id,
-        "referenceMaterialId": lcaProductId,
-        "attributeGroupId": lcaAttributeGroupId
-    })
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language','en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
-  }*/
+    if(lcaProductId) {
+      const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
+      .send({
+          "materialId": id,
+          "referenceMaterialId": lcaProductId,
+          "attributeGroupId": lcaAttributeGroupId
+      })
+      .set('Authorization', authToken)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/, json')
+      .set('Accept-Encoding', 'gzip, deflate, br')
+      .set('Accept-Language','en-US,en;q=0.5')
+      .set('Content-Type', 'application/json')
+    }
+  }
 }
 
 

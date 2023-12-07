@@ -85,7 +85,7 @@ $ npx tsc && node dist/main.js import-products --input data/kbob_2022.csv --url 
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt
 
 # Import complete catalog
-$ npx tsc && node dist/main.js import-catalog --input data/SP_catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ npx tsc && node dist/main.js import-catalog --input data/SP_catalog_v2.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 
 ```

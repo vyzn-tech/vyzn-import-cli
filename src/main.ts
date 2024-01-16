@@ -452,6 +452,7 @@ async function importProductsOfType(products, type: string, selectedCatalogueId,
 }
 
 async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean) {
+  const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
   const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
   const categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken)
 
@@ -534,27 +535,33 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   const attributes = []
   for (const [attrKey, attrValue] of Object.entries(prod.attributes)) {
+    let key = attrKey;
 
-    // FIXME: fix attribute mismatch between DEV and PROD
-    let key = attrKey
-    if(key == 'vyzn.catalogue.ThermalConductivity')
-      key = 'vyzn.catalog.ThermalConductivity'
-    else if(key == 'vyzn.catalogue.PriceCHF')
-      key = 'vyzn.catalog.PriceCHF'
-    else if(key == 'vyzn.catalogue.LayerThickness')
-      key = 'vyzn.catalog.LayerThickness'
-    else if(key == 'vyzn.catalogue.SectionPercentage')
-      key = 'vyzn.catalog.SectionPercentage'
-    else if(key == 'vyzn.catalogue.BottomPositionLabel')
-      key = 'vyzn.catalog.BottomPositionLabel'
-    else if(key == 'vyzn.catalogue.uValue')
-      key = 'vyzn.catalog.uValue'
-    else if(key == 'vyzn.catalogue.TopPositionLabel')
-      key = 'vyzn.catalog.TopPositionLabel'
-    else if(key == 'vyzn.catalogue.PositionAgainst')
-      key = 'vyzn.catalog.PositionAgainst'
-    else if(key == 'vyzn.catalogue.AutomateUValueCalculation')
-      key = 'vyzn.catalog.AutomateUValueCalculation'
+    if(migrateAttributes) {
+        if (key == 'vyzn.catalogue.ThermalConductivity')
+            key = 'vyzn.catalog.ThermalConductivity';
+        else if (key == 'vyzn.catalogue.PriceCHF')
+            key = 'vyzn.catalog.PriceCHF';
+        else if (key == 'vyzn.catalogue.LayerThickness')
+            key = 'vyzn.catalog.LayerThickness';
+        else if (key == 'vyzn.catalogue.SectionPercentage')
+            key = 'vyzn.catalog.SectionPercentage';
+        else if (key == 'vyzn.catalogue.BottomPositionLabel')
+            key = 'vyzn.catalog.BottomPositionLabel';
+        else if (key == 'vyzn.catalogue.uValue')
+            key = 'vyzn.catalog.uValue';
+        else if (key == 'vyzn.catalogue.TopPositionLabel')
+            key = 'vyzn.catalog.TopPositionLabel';
+        else if (key == 'vyzn.catalogue.PositionAgainst')
+            key = 'vyzn.catalog.PositionAgainst';
+        else if (key == 'vyzn.catalogue.AutomateUValueCalculation')
+            key = 'vyzn.catalog.AutomateUValueCalculation';
+    }
+
+    if(!attributeIds[key]) {
+        console.error(`ATTRIBUTE MISMATCH: Attribute with key ${key} was not found, skipping attribute!`)
+        continue
+    }
 
     attributes.push({
       id: attributeIds[key],
@@ -619,11 +626,12 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       const layerAssociationAttributes = []
       for (let [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
 
-        // FIXME: fix attribute mismatch between DEV and PROD
-        if(attrName == 'vyzn.catalogue.LayerThickness')
-          attrName = 'vyzn.catalog.LayerThickness'
-        else if(attrName == 'vyzn.catalogue.SectionPercentage')
-          attrName = 'vyzn.catalog.SectionPercentage'
+        if(migrateAttributes) {
+          if (attrName == 'vyzn.catalogue.LayerThickness')
+              attrName = 'vyzn.catalog.LayerThickness';
+          else if (attrName == 'vyzn.catalogue.SectionPercentage')
+              attrName = 'vyzn.catalog.SectionPercentage';
+        }
 
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {
@@ -675,11 +683,12 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       const sectionAssociationAttributes = []
       for (let [attrName, attrValue] of Object.entries(section.associationAttributes)) {
 
-        // FIXME: fix attribute mismatch between DEV and PROD
-        if(attrName == 'vyzn.catalogue.LayerThickness')
-          attrName = 'vyzn.catalog.LayerThickness'
-        else if(attrName == 'vyzn.catalogue.SectionPercentage')
-          attrName = 'vyzn.catalog.SectionPercentage'
+        if(migrateAttributes) {
+          if (attrName == 'vyzn.catalogue.LayerThickness')
+              attrName = 'vyzn.catalog.LayerThickness';
+          else if (attrName == 'vyzn.catalogue.SectionPercentage')
+              attrName = 'vyzn.catalog.SectionPercentage';
+        }
 
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {

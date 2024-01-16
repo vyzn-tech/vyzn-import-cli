@@ -354,8 +354,9 @@ async function importCatalog(input, url, auth, verbose, diff) {
     }
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
+    await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
     await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
-    return;
 }
 let anchorFound = false;
 async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff) {
@@ -363,25 +364,26 @@ async function importProductsOfType(products, type, selectedCatalogueId, hierarc
         let prod = value;
         if (prod.type != type)
             continue;
-        await importSingleProduct(prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff);
+        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff);
     }
 }
-async function importSingleProduct(prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff) {
+    const migrateAttributes = false;
     const categoryType = productTypeNameToCategoryTypeIdMap[prod.type];
     const categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken);
     if (!categoryId)
-        console.error(`missing category for product: ${prod.name}`);
+        console.error(`missing category for product: ${prodKey}`);
     let product = null;
     try {
         let existingProdId = null;
-        let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prod.name)}&limit=10`, url).href)
+        let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
-        if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == prod.name) {
+        if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == prodKey) {
             existingProdId = existingProds.body[0].id;
         }
         if (existingProdId) {
@@ -394,7 +396,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
                 .set('Content-Type', 'application/json');
             if (existingProd && existingProd.body) {
                 product = existingProd.body;
-                console.log(`${prod.name} Updating existing product`);
+                console.log(`${prodKey} Updating existing product`);
             }
         }
     }
@@ -402,11 +404,11 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
         console.log(error);
     }
     if (product && prod.type == "COMPONENT") {
-        console.log(`${prod.name} Deleting existing product since it is a component`);
+        console.log(`${prodKey} Deleting existing product since it is a component`);
         await request.del(new URL('/products/' + product.id, url).href)
             .send({
             "name": prod.name,
-            "productKey": prod.name,
+            "productKey": prodKey,
             "category": categoryId,
             "type": prod.type
         })
@@ -422,7 +424,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
         const newProd = await request.post(new URL('/products', url).href)
             .send({
             "name": prod.name,
-            "productKey": prod.name,
+            "productKey": prodKey,
             "category": categoryId,
             "type": prod.type
         })
@@ -433,7 +435,7 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
         product = newProd.body;
-        console.log(`${prod.name} Creating new product`);
+        console.log(`${prodKey} Creating new product`);
     }
     const id = product.id;
     const attributeIds = {};
@@ -442,20 +444,45 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
     }
     const attributes = [];
     for (const [attrKey, attrValue] of Object.entries(prod.attributes)) {
+        let key = attrKey;
+        if (migrateAttributes) {
+            if (key == 'vyzn.catalogue.ThermalConductivity')
+                key = 'vyzn.catalog.ThermalConductivity';
+            else if (key == 'vyzn.catalogue.PriceCHF')
+                key = 'vyzn.catalog.PriceCHF';
+            else if (key == 'vyzn.catalogue.LayerThickness')
+                key = 'vyzn.catalog.LayerThickness';
+            else if (key == 'vyzn.catalogue.SectionPercentage')
+                key = 'vyzn.catalog.SectionPercentage';
+            else if (key == 'vyzn.catalogue.BottomPositionLabel')
+                key = 'vyzn.catalog.BottomPositionLabel';
+            else if (key == 'vyzn.catalogue.uValue')
+                key = 'vyzn.catalog.uValue';
+            else if (key == 'vyzn.catalogue.TopPositionLabel')
+                key = 'vyzn.catalog.TopPositionLabel';
+            else if (key == 'vyzn.catalogue.PositionAgainst')
+                key = 'vyzn.catalog.PositionAgainst';
+            else if (key == 'vyzn.catalogue.AutomateUValueCalculation')
+                key = 'vyzn.catalog.AutomateUValueCalculation';
+        }
+        if (!attributeIds[key]) {
+            console.error(`ATTRIBUTE MISMATCH: Attribute with key ${key} was not found, skipping attribute!`);
+            continue;
+        }
         attributes.push({
-            id: attributeIds[attrKey],
+            id: attributeIds[key],
             value: attrValue
         });
     }
     const updatedProduct = await request.put(new URL('/products/' + id, url).href)
         .send({
         "name": prod.name,
-        "productKey": prod.name,
+        "productKey": prodKey,
         "category": categoryId,
         "type": prod.type,
         "status": "approved",
         "description": null,
-        "hatchingPattern": null,
+        "hatchingPattern": prod.hatchingPattern,
         "attributes": attributes
     })
         .set('Authorization', authToken)
@@ -497,7 +524,13 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
         for (const [layerKey, layerValue] of Object.entries(prod.matrix.layers)) {
             const layer = layerValue;
             const layerAssociationAttributes = [];
-            for (const [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
+            for (let [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
+                if (migrateAttributes) {
+                    if (attrName == 'vyzn.catalogue.LayerThickness')
+                        attrName = 'vyzn.catalog.LayerThickness';
+                    else if (attrName == 'vyzn.catalogue.SectionPercentage')
+                        attrName = 'vyzn.catalog.SectionPercentage';
+                }
                 const associationAttribute = associationAttributesDict[attrName];
                 if (!associationAttribute) {
                     console.error(`association attribute not found: ${attrName}`);
@@ -541,7 +574,13 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
         for (const [sectionKey, sectionValue] of Object.entries(prod.matrix.sections)) {
             const section = sectionValue;
             const sectionAssociationAttributes = [];
-            for (const [attrName, attrValue] of Object.entries(section.associationAttributes)) {
+            for (let [attrName, attrValue] of Object.entries(section.associationAttributes)) {
+                if (migrateAttributes) {
+                    if (attrName == 'vyzn.catalogue.LayerThickness')
+                        attrName = 'vyzn.catalog.LayerThickness';
+                    else if (attrName == 'vyzn.catalogue.SectionPercentage')
+                        attrName = 'vyzn.catalog.SectionPercentage';
+                }
                 const associationAttribute = associationAttributesDict[attrName];
                 if (!associationAttribute) {
                     console.error(`association attribute not found: ${attrName}`);
@@ -609,6 +648,47 @@ async function importSingleProduct(prod, selectedCatalogueId, hierarchy, product
                 "layer": layerIds[cell.layerPosition],
                 "section": sectionIds[cell.sectionPosition],
                 "child": materialId
+            })
+                .set('Authorization', authToken)
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/, json')
+                .set('Accept-Encoding', 'gzip, deflate, br')
+                .set('Accept-Language', 'en-US,en;q=0.5')
+                .set('Content-Type', 'application/json');
+        }
+    }
+    if (prod.type == "MATERIAL") {
+        let lcaProductId = null;
+        const lcaCode = prod.linkedReferenceMaterialKey;
+        if (lcaCode) {
+            if (!lcaProductsCache[lcaCode]) {
+                const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/, json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language', 'en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json');
+                if (!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+                }
+                else {
+                    lcaProductId = lcaProducts.body[0].id;
+                }
+                if (!lcaProductId) {
+                    console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`);
+                }
+                lcaProductsCache[lcaCode] = lcaProductId;
+            }
+            else {
+                lcaProductId = lcaProductsCache[lcaCode];
+            }
+        }
+        if (lcaProductId) {
+            const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
+                .send({
+                "materialId": id,
+                "referenceMaterialId": lcaProductId,
+                "attributeGroupId": lcaAttributeGroupId
             })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')

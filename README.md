@@ -79,13 +79,13 @@ $ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service
 
 # Import reference-materials from KBOB
 $ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
-$ npx tsc && node dist/main.js import-products --input data/kbob_2022.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
+$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v4.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
 
 # Import materials from materialsdb.org
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt
 
 # Import complete catalog
-$ npx tsc && node dist/main.js import-catalog --input data/SP_catalog_v2.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ npx tsc && node dist/main.js import-catalog --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 
 ```

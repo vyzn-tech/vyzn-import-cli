@@ -58,7 +58,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
     await assertFile(auth);
     const csv = await readCsv(input);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
+    const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -70,7 +70,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         let product = null;
         try {
             let existingProdId = null;
-            let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}&limit=10`, url).href)
+            let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}&limit=10`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -81,7 +81,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
                 existingProdId = existingProds.body[0].id;
             }
             if (existingProdId) {
-                const existingProd = await request.get(new URL('/products/' + existingProdId, url).href)
+                const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -129,7 +129,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
         if (!product) {
-            const newProd = await request.post(new URL('/products', url).href)
+            const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
                 .send({
                 "name": row.Name,
                 "productKey": row.ProductKey,
@@ -170,7 +170,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         }
         if (verbose)
             console.debug(JSON.stringify(attributes));
-        const updatedProduct = await request.put(new URL('/products/' + id, url).href)
+        const updatedProduct = await request.put(new URL('/dbs-catalogue/v1/products/' + id, url).href)
             .send({
             "name": row.Name,
             "productKey": row.ProductKey,
@@ -193,7 +193,7 @@ async function deleteProducts(url, auth, category, verbose) {
     await assertUrl(url);
     await assertFile(auth);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
+    const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -205,7 +205,7 @@ async function deleteProducts(url, auth, category, verbose) {
     for (const categoryToDelete of childCategoriesRecursive) {
         if (verbose)
             console.log(`Deleting category '${categoryToDelete.name}'`);
-        const productsInCategory = await request.get(new URL(`/categories/${categoryToDelete.id}/products`, url).href)
+        const productsInCategory = await request.get(new URL(`/dbs-catalogue/v1/categories/${categoryToDelete.id}/products`, url).href)
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
@@ -219,7 +219,7 @@ async function deleteProducts(url, auth, category, verbose) {
                 console.debug(`\tDeleting ${idx + 1}/${numProducts}: ${product.id} ${product.name}`);
             }
             try {
-                await request.del(new URL(`/products/${product.id}`, url).href)
+                await request.del(new URL(`/dbs-catalogue/v1/products/${product.id}`, url).href)
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -233,7 +233,7 @@ async function deleteProducts(url, auth, category, verbose) {
             idx++;
         }
         try {
-            await request.del(new URL(`/categories/${categoryToDelete.id}`, url).href)
+            await request.del(new URL(`/dbs-catalogue/v1/categories/${categoryToDelete.id}`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -278,7 +278,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
                 lastCatId = createdPathsCache[currentPathKey].id;
             }
             else {
-                const newCat = (await request.post(new URL('/categories', url).href)
+                const newCat = (await request.post(new URL('/dbs-catalogue/v1/categories', url).href)
                     .send({
                     "catalogue": catalogueId,
                     "name": paths[i],
@@ -308,7 +308,7 @@ async function importCatalog(input, url, auth, verbose, diff) {
     const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
     const componentsObj = JSON.parse(componentsFile);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
+    const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -316,14 +316,14 @@ async function importCatalog(input, url, auth, verbose, diff) {
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json');
     const selectedCatalogueId = selectedCatalogue.body.id;
-    const hierarchy = (await request.get(new URL(`/catalogues/${selectedCatalogueId}`, url).href)
+    const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')).body;
-    const types = (await request.get(new URL('/types', url).href)
+    const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -338,7 +338,7 @@ async function importCatalog(input, url, auth, verbose, diff) {
         "MATERIAL": typesDict["MAT"].id,
         "COMPONENT": typesDict["BT"].id
     };
-    const attributeGroups = await request.get(new URL('/attributeGroups', url).href)
+    const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -376,7 +376,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     let product = null;
     try {
         let existingProdId = null;
-        let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
+        let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
@@ -387,7 +387,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             existingProdId = existingProds.body[0].id;
         }
         if (existingProdId) {
-            const existingProd = await request.get(new URL('/products/' + existingProdId, url).href)
+            const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -405,7 +405,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
     if (product && prod.type == "COMPONENT") {
         console.log(`${prodKey} Deleting existing product since it is a component`);
-        await request.del(new URL('/products/' + product.id, url).href)
+        await request.del(new URL('/dbs-catalogue/v1/products/' + product.id, url).href)
             .send({
             "name": prod.name,
             "productKey": prodKey,
@@ -421,7 +421,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         product = null;
     }
     if (!product) {
-        const newProd = await request.post(new URL('/products', url).href)
+        const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
             .send({
             "name": prod.name,
             "productKey": prodKey,
@@ -474,7 +474,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             value: attrValue
         });
     }
-    const updatedProduct = await request.put(new URL('/products/' + id, url).href)
+    const updatedProduct = await request.put(new URL('/dbs-catalogue/v1/products/' + id, url).href)
         .send({
         "name": prod.name,
         "productKey": prodKey,
@@ -492,7 +492,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json');
     if (prod.type == "COMPONENT") {
-        await request.put(new URL(`/products/${id}/sectionAttributes`, url).href)
+        await request.put(new URL(`/dbs-catalogue/v1/products/${id}/sectionAttributes`, url).href)
             .send(["644890f2-7c50-475c-91a0-103d44d6583c"])
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
@@ -500,7 +500,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
-        await request.put(new URL(`/products/${id}/layerAttributes`, url).href)
+        await request.put(new URL(`/dbs-catalogue/v1/products/${id}/layerAttributes`, url).href)
             .send(["15737593-eb2d-4fdd-ab08-79e06a61490e", "2e043d3e-c8ec-4bca-9c9e-9e1bece51ece"])
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
@@ -508,7 +508,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
             .set('Content-Type', 'application/json');
-        const associationAttributes = (await request.get(new URL(`/associationAttributes`, url).href)
+        const associationAttributes = (await request.get(new URL(`/dbs-catalogue/v1/associationAttributes`, url).href)
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
@@ -544,7 +544,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                     value: `${attrValue}`
                 });
             }
-            const newLayer = await request.post(new URL(`/productLayers`, url).href)
+            const newLayer = await request.post(new URL(`/dbs-catalogue/v1/productLayers`, url).href)
                 .send({
                 "parent": `${id}`,
                 "position": parseInt(layerKey)
@@ -555,7 +555,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json');
-            await request.patch(new URL(`/productLayers/${newLayer.body.id}`, url).href)
+            await request.patch(new URL(`/dbs-catalogue/v1/productLayers/${newLayer.body.id}`, url).href)
                 .send({
                 "id": newLayer.body.id,
                 "parent": `${id}`,
@@ -594,7 +594,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                     value: `${attrValue}`
                 });
             }
-            const newSection = await request.post(new URL(`/productSections`, url).href)
+            const newSection = await request.post(new URL(`/dbs-catalogue/v1/productSections`, url).href)
                 .send({
                 "parent": `${id}`,
                 "position": parseInt(sectionKey)
@@ -605,7 +605,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json');
-            await request.patch(new URL(`/productSections/${newSection.body.id}`, url).href)
+            await request.patch(new URL(`/dbs-catalogue/v1/productSections/${newSection.body.id}`, url).href)
                 .send({
                 "id": newSection.body.id,
                 "parent": `${id}`,
@@ -627,7 +627,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 materialId = materialsCache[cell.materialKey];
             }
             else {
-                let existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${encodeURIComponent(cell.materialKey)}&limit=10`, url).href)
+                let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${encodeURIComponent(cell.materialKey)}&limit=10`, url).href)
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -643,7 +643,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 console.error(`Could not find material: ${materialId}`);
                 continue;
             }
-            await request.post(new URL(`/productCellLink`, url).href)
+            await request.post(new URL(`/dbs-catalogue/v1/productCellLink`, url).href)
                 .send({
                 "layer": layerIds[cell.layerPosition],
                 "section": sectionIds[cell.sectionPosition],
@@ -662,7 +662,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         const lcaCode = prod.linkedReferenceMaterialKey;
         if (lcaCode) {
             if (!lcaProductsCache[lcaCode]) {
-                const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+                const lcaProducts = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -684,18 +684,48 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             }
         }
         if (lcaProductId) {
-            const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
-                .send({
-                "materialId": id,
-                "referenceMaterialId": lcaProductId,
-                "attributeGroupId": lcaAttributeGroupId
-            })
+            const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/v1/reference-material-links/materials/${product.id}`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json');
+            let matchingMaterialListLinkId = null;
+            for (const link of existingMaterialListLinks.body) {
+                if (link.attributeGroup.id == lcaAttributeGroupId) {
+                    matchingMaterialListLinkId = link.id;
+                    break;
+                }
+            }
+            if (matchingMaterialListLinkId) {
+                const materialListLink = await request.put(new URL(`/dbs-catalogue/v1/reference-material-links/${matchingMaterialListLinkId}`, url).href)
+                    .send({
+                    "materialId": id,
+                    "referenceMaterialId": lcaProductId,
+                    "attributeGroupId": lcaAttributeGroupId
+                })
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/, json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language', 'en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json');
+            }
+            else {
+                const materialListLink = await request.post(new URL(`/dbs-catalogue/v1/reference-material-links`, url).href)
+                    .send({
+                    "materialId": id,
+                    "referenceMaterialId": lcaProductId,
+                    "attributeGroupId": lcaAttributeGroupId
+                })
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/, json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language', 'en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json');
+            }
         }
     }
 }

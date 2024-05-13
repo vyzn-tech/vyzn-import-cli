@@ -85,15 +85,26 @@ export async function importMaterialsDb(url, auth, category, verbose) {
 
     let counterCom = 0;
     let resumeComp = false;
-    let resumefromComp = "Soprema AG"
+    let stopComp = true;
+    let resumefromComp = "Pavatex SUISSE AG";
+    let stopatComp = "Soprema AG";
+
     for (const company of producerIndex.MaterialsDBIndex.company) {
         if (company.$.name == resumefromComp) {
             resumeComp = true;
+        }
+
+        if (company.$.name == stopatComp) {
+            stopComp = true;
         }
         
         if (resumeComp == false) {
             continue;
         } 
+        if (stopComp == false) {
+            continue;
+        } 
+
 
         counterCom++;
         console.error("C",counterCom,"/",producerIndex.MaterialsDBIndex.company.length)

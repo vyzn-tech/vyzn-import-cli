@@ -87,6 +87,11 @@ npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-servic
 # Import complete catalog
 $ npx tsc && node dist/main.js import-catalog --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
+# Import only materials and components from catalog.json
+$ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+
+# Import only components from catalog.json
+$ npx tsc && node dist/main.js import-catalog-noref-nomat --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 ```
 

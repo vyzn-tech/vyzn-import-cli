@@ -97,14 +97,14 @@ async function importProducts(input: string, url: string, auth: string, category
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
-  const selectedCatalogueId = selectedCatalogue.body.id
+  const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   // Process CSV line by line
   for (const row of csv) {
@@ -112,7 +112,8 @@ async function importProducts(input: string, url: string, auth: string, category
     let product = null
     try {
       let existingProdId = null
-      let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${row.ProductKey}&limit=10`, url).href)
+      // FIXME type
+      let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${row.ProductKey}&limit=10`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -144,7 +145,7 @@ async function importProducts(input: string, url: string, auth: string, category
         }
       }*/
 
-      if (existingProdId) {
+      if (existingProdId) {  
         const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
@@ -170,7 +171,7 @@ async function importProducts(input: string, url: string, auth: string, category
                 found = true
                 // fixme, read attribute definitions first and then convert to target type
                 let newValue = row[attributeName]
-                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
+                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
                   newValue = parseFloat(newValue)
                 }
 
@@ -192,6 +193,9 @@ async function importProducts(input: string, url: string, auth: string, category
     }
 
     let newType = row.Type
+    let newSubType = row.SubType
+
+    // migrate old data
     if (newType == "MATERIAL_LIST")
       newType = "REFERENCE_MATERIAL"
 
@@ -202,7 +206,8 @@ async function importProducts(input: string, url: string, auth: string, category
           "name": row.Name,
           "productKey": row.ProductKey,
           "category": category,
-          "type": newType
+          "type": newType,
+          "subType": newSubType,
         })
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
@@ -232,7 +237,7 @@ async function importProducts(input: string, url: string, auth: string, category
         let value = row[attributeName]
 
         // fixme, read attribute definitions first and then convert to target type
-        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit")) {
+        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
           value = parseFloat(value)
         }
 
@@ -252,6 +257,7 @@ async function importProducts(input: string, url: string, auth: string, category
         "productKey": row.ProductKey,
         "category": category,
         "type": newType,
+        "subType": newSubType,
         "status": "approved",
         "description": null,
         "hatchingPattern": null,
@@ -407,14 +413,14 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
-  const selectedCatalogueId = selectedCatalogue.body.id
+  const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
     .set('Authorization', authToken)
@@ -458,9 +464,9 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  //await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
   await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
+  //await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
 }
 
 async function importCatalogNoRef(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
@@ -477,14 +483,14 @@ async function importCatalogNoRef(input: string, url: string, auth: string, verb
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
-  const selectedCatalogueId = selectedCatalogue.body.id
+  const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
     .set('Authorization', authToken)
@@ -546,14 +552,14 @@ async function importCatalogNoRefNoMat(input: string, url: string, auth: string,
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
-  const selectedCatalogueId = selectedCatalogue.body.id
+  const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
     .set('Authorization', authToken)
@@ -608,10 +614,12 @@ async function importProductsOfType(products, type: string, selectedCatalogueId,
     let prod: any = value
     if (prod.type != type) continue
 
-    //if(!prod.categoryPath.endsWith('Swiss Property AG')) continue
+    //if(!prod.categoryPath.endsWith('Gebäudetechnik')) continue
     //if (prod.name == "Abdichtung - Bitumentrennlage 1-lagig 3.5mm") anchorFound = true
     //if (!anchorFound) continue
     //if (prod.name != "Holzschalung - Fi/Ta, 24mm") continue
+    //if (key.startsWith("KBOB2016")) continue
+    //console.error(key)
     
     await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff)
   }
@@ -642,6 +650,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
 
     if (existingProdId) {
+      return
       const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
@@ -676,6 +685,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   // Create new product
   if (!product) {
+    console.log(`${prodKey} Creating new product`)
     const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
       .send({
         "name": prod.name,
@@ -690,7 +700,6 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
     product = newProd.body
-    console.log(`${prodKey} Creating new product`)
   }
 
   const id = product.id

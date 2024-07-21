@@ -28,16 +28,16 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                                         
     const producerIndex = await xml2js.parseStringPromise(producerIndexResponse.body)
 
-    const selectedCatalogue = await request.get(new URL('/catalogues/selected', url).href)
+    const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
                                             .set('Authorization', authToken)
                                             .set('Content-Type', 'application/json')
                                             .set('Accept', 'application/, json')
                                             .set('Accept-Encoding', 'gzip, deflate, br')
                                             .set('Accept-Language','en-US,en;q=0.5')
                                             .set('Content-Type', 'application/json')
-    const selectedCatalogueId = selectedCatalogue.body.id
+    const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
-    const types = await request.get(new URL('/types', url).href)
+    const types = await request.get(new URL('/dbs-catalogue/v1/types', url).href)
                                             .set('Authorization', authToken)
                                             .set('Content-Type', 'application/json')
                                             .set('Accept', 'application/, json')
@@ -53,7 +53,7 @@ export async function importMaterialsDb(url: string, auth: string, category: str
     }
     if(!categoryTypeId) throw `Could not find category with name ${categoryType}`
 
-    const attributeGroups = await request.get(new URL('/attributeGroups', url).href)
+    const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
                                         .set('Authorization', authToken)
                                         .set('Content-Type', 'application/json')
                                         .set('Accept', 'application/, json')
@@ -71,11 +71,12 @@ export async function importMaterialsDb(url: string, auth: string, category: str
     if(!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
     const lcaProductsCache = {}
+    const nameCache =  {}
     
     //let continuation = false;
 
     for(const company of producerIndex.MaterialsDBIndex.company) {
-        //if(company.$.name == "Fixit AG") continuation = true
+        //if(company.$.name == "Swisspor AG") continuation = true
         //if(!continuation) continue;
         
         if(company.$.active !== "true") {
@@ -93,7 +94,7 @@ export async function importMaterialsDb(url: string, auth: string, category: str
 
         const producerData = await xml2js.parseStringPromise(producerDataResponse.body)
 
-        const producerCategory = await request.post(new URL('/categories', url).href)
+        const producerCategory = await request.post(new URL('/dbs-catalogue/v1/categories', url).href)
                                     .send({
                                     "name": company.$.name,
                                     "catalogue": selectedCatalogueId,
@@ -108,6 +109,7 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                                     .set('Content-Type', 'application/json')
         const producerCategoryId = producerCategory.body.id
 
+
         for(const material of producerData.materials.material) {
             if(material.$.type != "simple") {
                 if(verbose)
@@ -115,8 +117,12 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                 continue
             }
 
+            const matId = material.$.id
             const name = getTranslatedString(material.information[0].names[0], "name", "de")
             const explanation = material.information[0].explanations ? getTranslatedString(material.information[0].explanations[0], "explanation", "de") : null
+
+            //if(name == 'Bacstein CellitPlus' || name == 'swissporPUR Hartschaum unkaschiert') // entries with dublicate GUIDs
+            //    continue
 
             console.log(`\tProcessing entry '${name}'`)
 
@@ -158,6 +164,7 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                         }
                     }
                 }
+                /* fixme
                 if(!lcaCode) {
                     console.log(`\tSkipping material due to missing LCA code for database '${lcaDatabase}'`)
                     continue
@@ -166,38 +173,50 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                 if(!kbobLookup[lcaCode]) {
                     console.log(`\tSkipping material because LCA key '${lcaCode}' could not be found in lookup table'`)
                     continue
-                }
+                }*/
 
                 let lcaProductId = null
-                if(!lcaProductsCache[lcaCode]) {
-                    const prefixes = ["KBOB2022", "KBOB2016"]
-                    for(const prefix of prefixes) {
-                        const lcaProductName = `${prefix}-${kbobLookup[lcaCode]}` // fixme
-                        const lcaProducts = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${lcaProductName}&limit=10`, url).href)
-                                                .set('Authorization', authToken)
-                                                .set('Content-Type', 'application/json')
-                                                .set('Accept', 'application/, json')
-                                                .set('Accept-Encoding', 'gzip, deflate, br')
-                                                .set('Accept-Language','en-US,en;q=0.5')
-                                                .set('Content-Type', 'application/json')
-                        
-                        if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
-                            continue
+                if(lcaCode && kbobLookup[lcaCode]) {
+                    if(!lcaProductsCache[lcaCode]) {
+                        const prefixes = ["KBOB2022", "KBOB2016"]
+                        for(const prefix of prefixes) {
+                            //const lcaProductName = `${prefix}-${kbobLookup[lcaCode]}` // fixme
+                            const lcaProductName = lcaCode.replace('{', '').replace('}')
+                            const lcaProducts = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&productKey=${lcaProductName}&limit=10`, url).href)
+                                                    .set('Authorization', authToken)
+                                                    .set('Content-Type', 'application/json')
+                                                    .set('Accept', 'application/, json')
+                                                    .set('Accept-Encoding', 'gzip, deflate, br')
+                                                    .set('Accept-Language','en-US,en;q=0.5')
+                                                    .set('Content-Type', 'application/json')
+                            
+                            if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+                                continue
+                            }
+                            lcaProductId = lcaProducts.body[0].id
+                            break
                         }
-                        lcaProductId = lcaProducts.body[0].id
-                        break
+                        if(!lcaProductId) {
+                            // fixme
+                            //console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
+                            //continue
+                        }
+                        lcaProductsCache[lcaCode] = lcaProductId
+                    } else {
+                        lcaProductId = lcaProductsCache[lcaCode]
                     }
-                    if(!lcaProductId) {
-                        console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
-                        continue
-                    }
-                    lcaProductsCache[lcaCode] = lcaProductId
-                } else {
-                    lcaProductId = lcaProductsCache[lcaCode]
                 }
                 
-                const productName = `${name}${nameSuffix} (${company.$.name})`
-                const newProduct = await request.post(new URL('/products', url).href)
+                let productName = `${name}${nameSuffix} (${company.$.name})`
+                const productNameLowerCase = productName.toLowerCase()
+                if(!nameCache[productNameLowerCase]) {
+                    nameCache[productNameLowerCase] = 1
+                } else {
+                    nameCache[productNameLowerCase] = nameCache[productNameLowerCase] + 1
+                    productName = `${productName} (${nameCache[productNameLowerCase]})`
+                } 
+
+                const newProduct = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
                                                     .send({
                                                     "name": productName,
                                                     "productKey": productName,
@@ -234,15 +253,15 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                 if(width) pushAttr("vyzn.catalogue.Width", parseFloat(width))
                 if(density) pushAttr("vyzn.catalogue.Density", parseFloat(density))
                 if(therm_capa) pushAttr("vyzn.catalogue.ThermalCapacity", parseFloat(therm_capa))
-                if(lambda) pushAttr("vyzn.catalog.ThermalConductivity", parseFloat(lambda))
+                if(lambda) pushAttr("vyzn.catalogue.ThermalConductivity", parseFloat(lambda))
 
                 //if(verbose)
                     //console.debug(JSON.stringify(attributes))
-                
-                const updatedProduct = await request.put(new URL('/products/' + id, url).href)
+
+                const updatedProduct = await request.put(new URL('/dbs-catalogue/v1/products/' + id, url).href)
                                                 .send({
                                                 "name": productName,
-                                                "productKey": productName,
+                                                "productKey": matId,
                                                 "category": producerCategoryId,
                                                 "type": productType,
                                                 "status": "approved",
@@ -257,18 +276,20 @@ export async function importMaterialsDb(url: string, auth: string, category: str
                                                 .set('Accept-Language','en-US,en;q=0.5')
                                                 .set('Content-Type', 'application/json')
 
-                const materialListLink = await request.post(new URL(`/reference-material-links`, url).href)
-                                                .send({
-                                                    "materialId": id,
-                                                    "referenceMaterialId": lcaProductId,
-                                                    "attributeGroupId": lcaAttributeGroupId
-                                                })
-                                                .set('Authorization', authToken)
-                                                .set('Content-Type', 'application/json')
-                                                .set('Accept', 'application/, json')
-                                                .set('Accept-Encoding', 'gzip, deflate, br')
-                                                .set('Accept-Language','en-US,en;q=0.5')
-                                                .set('Content-Type', 'application/json')
+                if(lcaProductId) {
+                    const materialListLink = await request.post(new URL(`/dbs-catalogue/v1/reference-material-links`, url).href)
+                        .send({
+                            "materialId": id,
+                            "referenceMaterialId": lcaProductId,
+                            "attributeGroupId": lcaAttributeGroupId
+                        })
+                        .set('Authorization', authToken)
+                        .set('Content-Type', 'application/json')
+                        .set('Accept', 'application/, json')
+                        .set('Accept-Encoding', 'gzip, deflate, br')
+                        .set('Accept-Language','en-US,en;q=0.5')
+                        .set('Content-Type', 'application/json')
+                }
 
                 idx++
 

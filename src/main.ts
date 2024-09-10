@@ -106,6 +106,24 @@ async function importProducts(input: string, url: string, auth: string, category
     .set('Content-Type', 'application/json')
   const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
+  const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
+    .set('Authorization', authToken)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/, json')
+    .set('Accept-Encoding', 'gzip, deflate, br')
+    .set('Accept-Language', 'en-US,en;q=0.5')
+    .set('Content-Type', 'application/json')).body
+
+  const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
+    .set('Authorization', authToken)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/, json')
+    .set('Accept-Encoding', 'gzip, deflate, br')
+    .set('Accept-Language', 'en-US,en;q=0.5')
+    .set('Content-Type', 'application/json')).body
+
+  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
+
   // Process CSV line by line
   for (const row of csv) {
     // Get existing product
@@ -113,7 +131,7 @@ async function importProducts(input: string, url: string, auth: string, category
     try {
       let existingProdId = null
       // FIXME type
-      let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${row.ProductKey}&limit=10`, url).href)
+      let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${encodeURIComponent(row.ProductKey)}&limit=10`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -123,27 +141,7 @@ async function importProducts(input: string, url: string, auth: string, category
 
       if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == row.ProductKey) {
         existingProdId = existingProds.body[0].id
-      } /*else {
-        // Also try legacy key
-        // Remove leading "0" to convert ID's like "KBOB2016-01.001" to "KBOB2016-1.001"
-        const parts = row.ProductKey.split('-');
-        const versionPart = parts[1].split('.');⁄
-        const newVersionPart = parseInt(versionPart[0], 10).toString();
-        let legacyProductKey = `${parts[0]}-${newVersionPart}.${versionPart[1]}`;
-        legacyProductKey = legacyProductKey.replace('KBOB2022', 'KBOB')
-        existingProds = await request.get(new URL(`/catalogues/${selectedCatalogueId}/products?type=MATERIAL_LIST&productKey=${legacyProductKey}&limit=10`, url).href)
-                                        .set('Authorization', authToken)
-                                        .set('Content-Type', 'application/json')
-                                        .set('Accept', 'application/, json')
-                                        .set('Accept-Encoding', 'gzip, deflate, br')
-                                        .set('Accept-Language','en-US,en;q=0.5')
-                                        .set('Content-Type', 'application/json')
-
-        if(existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id) {
-          existingProdId = existingProds.body[0].id
-          console.log(`${legacyProductKey} Found by transforming key from ${row.ProductKey} to ${legacyProductKey}`)
-        }
-      }*/
+      }
 
       if (existingProdId) {  
         const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
@@ -171,7 +169,7 @@ async function importProducts(input: string, url: string, auth: string, category
                 found = true
                 // fixme, read attribute definitions first and then convert to target type
                 let newValue = row[attributeName]
-                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
+                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section")) {
                   newValue = parseFloat(newValue)
                 }
 
@@ -199,13 +197,21 @@ async function importProducts(input: string, url: string, auth: string, category
     if (newType == "MATERIAL_LIST")
       newType = "REFERENCE_MATERIAL"
 
+    let categoryId = category
+
+    // identify individual target categories based on row
+    if(row.categoryPath) {
+      const categoryType = productTypeNameToCategoryTypeIdMap[row.Type]
+      categoryId= await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken)
+    } 
+
     // Create new product
     if (!product) {
       const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
         .send({
           "name": row.Name,
           "productKey": row.ProductKey,
-          "category": category,
+          "category": categoryId,
           "type": newType,
           "subType": newSubType,
         })
@@ -237,7 +243,7 @@ async function importProducts(input: string, url: string, auth: string, category
         let value = row[attributeName]
 
         // fixme, read attribute definitions first and then convert to target type
-        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
+        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section")) {
           value = parseFloat(value)
         }
 
@@ -255,12 +261,12 @@ async function importProducts(input: string, url: string, auth: string, category
       .send({
         "name": row.Name,
         "productKey": row.ProductKey,
-        "category": category,
+        "category": categoryId,
         "type": newType,
         "subType": newSubType,
         "status": "approved",
         "description": null,
-        "hatchingPattern": null,
+        "hatchingPattern": row.hatchingPattern,
         "attributes": attributes
       })
       .set('Authorization', authToken)
@@ -375,6 +381,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
       if (createdPathsCache[currentPathKey]) {
         lastCatId = createdPathsCache[currentPathKey].id
       } else {
+        //console.error("creating path:" + paths[i])
         const newCat = (await request.post(new URL('/dbs-catalogue/v1/categories', url).href)
           .send({
             "catalogue": catalogueId,
@@ -437,15 +444,8 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
-  const typesDict = {}
-  for (const t of types)
-    typesDict[(t as any).name] = t
 
-  const productTypeNameToCategoryTypeIdMap = {
-    "REFERENCE_MATERIAL": typesDict["MAT"].id,
-    "MATERIAL": typesDict["MAT"].id,
-    "COMPONENT": typesDict["BT"].id
-  }
+  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
 
   const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
     .set('Authorization', authToken)
@@ -464,9 +464,9 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  //await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
   await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  //await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
 }
 
 async function importCatalogNoRef(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
@@ -507,15 +507,8 @@ async function importCatalogNoRef(input: string, url: string, auth: string, verb
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
-  const typesDict = {}
-  for (const t of types)
-    typesDict[(t as any).name] = t
 
-  const productTypeNameToCategoryTypeIdMap = {
-    "REFERENCE_MATERIAL": typesDict["MAT"].id,
-    "MATERIAL": typesDict["MAT"].id,
-    "COMPONENT": typesDict["BT"].id
-  }
+  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
 
   const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
     .set('Authorization', authToken)
@@ -537,6 +530,22 @@ async function importCatalogNoRef(input: string, url: string, auth: string, verb
   await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
   await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
 }
+
+function getProductTypeNameToCategoryTypeIdMap(types: any) {
+  const typesDict = {}
+  for (const t of types)
+    typesDict[(t as any).name] = t
+
+  const productTypeNameToCategoryTypeIdMap = {
+    "REFERENCE_MATERIAL": typesDict["MAT"].id,
+    "MATERIAL": typesDict["MAT"].id,
+    "COMPONENT": typesDict["BT"].id,
+    "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
+    "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
+  }
+
+  return productTypeNameToCategoryTypeIdMap
+}  
 
 async function importCatalogNoRefNoMat(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
@@ -576,15 +585,8 @@ async function importCatalogNoRefNoMat(input: string, url: string, auth: string,
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
-  const typesDict = {}
-  for (const t of types)
-    typesDict[(t as any).name] = t
 
-  const productTypeNameToCategoryTypeIdMap = {
-    "REFERENCE_MATERIAL": typesDict["MAT"].id,
-    "MATERIAL": typesDict["MAT"].id,
-    "COMPONENT": typesDict["BT"].id
-  }
+  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
 
   const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
     .set('Authorization', authToken)

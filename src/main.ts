@@ -54,23 +54,23 @@ async function main() {
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, false)
     })
 
   program
     .command('import-catalog-noref')
-    .description('import catalog from a JSON file')
+    .description('import catalog from a JSON file without reference materials')
     .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importCatalogNoRef(o.input, o.url, o.auth, o.verbose, o.diff)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, true)
     })
 
   program
-    .command('import-catalog-noref-nomat')
+    .command('import-catalog-noref-nomat without reference materials and without materials')
     .description('import catalog from a JSON file')
     .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
@@ -78,7 +78,7 @@ async function main() {
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importCatalogNoRefNoMat(o.input, o.url, o.auth, o.verbose, o.diff)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, true, true)
     })
 
 
@@ -169,7 +169,7 @@ async function importProducts(input: string, url: string, auth: string, category
                 found = true
                 // fixme, read attribute definitions first and then convert to target type
                 let newValue = row[attributeName]
-                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section")) {
+                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section") && !attributeName.endsWith(".ComponentClassification") && !attributeName.endsWith(".MepClassification")) {
                   newValue = parseFloat(newValue)
                 }
 
@@ -243,7 +243,7 @@ async function importProducts(input: string, url: string, auth: string, category
         let value = row[attributeName]
 
         // fixme, read attribute definitions first and then convert to target type
-        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section")) {
+        if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section") && !attributeName.endsWith(".ComponentClassification") && !attributeName.endsWith(".MepClassification")) {
           value = parseFloat(value)
         }
 
@@ -406,7 +406,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
+async function importCatalog(input: string, url: string, auth: string, verbose: boolean, diff: boolean, skipMat: boolean, skipRefMat: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -464,70 +464,10 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
-}
-
-async function importCatalogNoRef(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
-  const lcaAttributeGroup = 'Ökobilanz'
-
-  // Validate commandline arguments
-  await assertFile(input)
-  await assertUrl(url)
-  await assertFile(auth)
-
-  // Read files
-  const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
-  const componentsObj = JSON.parse(componentsFile)
-  const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-
-  // Get current catalogue
-  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
-  const selectedCatalogueId = catalogues.body.selectedCatalogueId
-
-  const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
-
-  const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
-
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
-
-  const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
-
-  let lcaAttributeGroupId = null;
-  for (const g of attributeGroups.body) {
-    if (g.name == lcaAttributeGroup) {
-      lcaAttributeGroupId = g.id
-      break
-    }
-  }
-  if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
-
-  await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  if(!skipRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  if(!skipMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
+  await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
   await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
 }
 
@@ -546,68 +486,6 @@ function getProductTypeNameToCategoryTypeIdMap(types: any) {
 
   return productTypeNameToCategoryTypeIdMap
 }  
-
-async function importCatalogNoRefNoMat(input: string, url: string, auth: string, verbose: boolean, diff: boolean) {
-  const lcaAttributeGroup = 'Ökobilanz'
-
-  // Validate commandline arguments
-  await assertFile(input)
-  await assertUrl(url)
-  await assertFile(auth)
-
-  // Read files
-  const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
-  const componentsObj = JSON.parse(componentsFile)
-  const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-
-  // Get current catalogue
-  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
-  const selectedCatalogueId = catalogues.body.selectedCatalogueId
-
-  const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
-
-  const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
-
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
-
-  const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
-    .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
-
-  let lcaAttributeGroupId = null;
-  for (const g of attributeGroups.body) {
-    if (g.name == lcaAttributeGroup) {
-      lcaAttributeGroupId = g.id
-      break
-    }
-  }
-  if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
-
-  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
-}
-
 
 let anchorFound = false
 
@@ -652,7 +530,6 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
 
     if (existingProdId) {
-      return
       const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')

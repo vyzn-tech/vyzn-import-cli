@@ -95,9 +95,7 @@ $ npx tsc && node dist/main.js import-catalog-noref-nomat --input data/catalog.j
 
 # Building the default vyzn catalog from scratch
 $ npx tsc && node dist/main.js import-catalog --input data/SIA_2032_v2020_VorstudienVorprojekt.json --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt
-$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_gebaudetechnik.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category 4f725b8e-fea4-4bee-9b9f-42c9c353df25
-
-
+$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_gebaudetechnik.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category none
 
 
 ```

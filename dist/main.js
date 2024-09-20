@@ -48,21 +48,21 @@ async function main() {
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, false);
     });
     program
         .command('import-catalog-noref')
-        .description('import catalog from a JSON file')
+        .description('import catalog from a JSON file without reference materials')
         .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importCatalogNoRef(o.input, o.url, o.auth, o.verbose, o.diff);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, true);
     });
     program
-        .command('import-catalog-noref-nomat')
+        .command('import-catalog-noref-nomat without reference materials and without materials')
         .description('import catalog from a JSON file')
         .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
@@ -70,7 +70,7 @@ async function main() {
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importCatalogNoRefNoMat(o.input, o.url, o.auth, o.verbose, o.diff);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, true, true);
     });
     program.parse();
 }
@@ -88,11 +88,26 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json');
     const selectedCatalogueId = catalogues.body.selectedCatalogueId;
+    const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')).body;
+    const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')).body;
+    const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types);
     for (const row of csv) {
         let product = null;
         try {
             let existingProdId = null;
-            let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${row.ProductKey}&limit=10`, url).href)
+            let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${encodeURIComponent(row.ProductKey)}&limit=10`, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -128,7 +143,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
                             if (existingAttribute.name == attributeName) {
                                 found = true;
                                 let newValue = row[attributeName];
-                                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
+                                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section") && !attributeName.endsWith(".ComponentClassification") && !attributeName.endsWith(".MepClassification")) {
                                     newValue = parseFloat(newValue);
                                 }
                                 if (existingAttribute.value != newValue) {
@@ -151,12 +166,17 @@ async function importProducts(input, url, auth, category, verbose, diff) {
         let newSubType = row.SubType;
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
+        let categoryId = category;
+        if (row.categoryPath) {
+            const categoryType = productTypeNameToCategoryTypeIdMap[row.Type];
+            categoryId = await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken);
+        }
         if (!product) {
             const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
                 .send({
                 "name": row.Name,
                 "productKey": row.ProductKey,
-                "category": category,
+                "category": categoryId,
                 "type": newType,
                 "subType": newSubType,
             })
@@ -183,7 +203,7 @@ async function importProducts(input, url, auth, category, verbose, diff) {
                     continue;
                 }
                 let value = row[attributeName];
-                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension")) {
+                if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section") && !attributeName.endsWith(".ComponentClassification") && !attributeName.endsWith(".MepClassification")) {
                     value = parseFloat(value);
                 }
                 attributes.push({
@@ -198,12 +218,12 @@ async function importProducts(input, url, auth, category, verbose, diff) {
             .send({
             "name": row.Name,
             "productKey": row.ProductKey,
-            "category": category,
+            "category": categoryId,
             "type": newType,
             "subType": newSubType,
             "status": "approved",
             "description": null,
-            "hatchingPattern": null,
+            "hatchingPattern": row.hatchingPattern,
             "attributes": attributes
         })
             .set('Authorization', authToken)
@@ -325,7 +345,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
     const leafCategoryId = lastCatId ? lastCatId : currentNode.id;
     return leafCategoryId;
 }
-async function importCatalog(input, url, auth, verbose, diff) {
+async function importCatalog(input, url, auth, verbose, diff, skipMat, skipRefMat) {
     const lcaAttributeGroup = 'Ökobilanz';
     await assertFile(input);
     await assertUrl(url);
@@ -355,14 +375,7 @@ async function importCatalog(input, url, auth, verbose, diff) {
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')).body;
-    const typesDict = {};
-    for (const t of types)
-        typesDict[t.name] = t;
-    const productTypeNameToCategoryTypeIdMap = {
-        "REFERENCE_MATERIAL": typesDict["MAT"].id,
-        "MATERIAL": typesDict["MAT"].id,
-        "COMPONENT": typesDict["BT"].id
-    };
+    const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types);
     const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
@@ -379,120 +392,26 @@ async function importCatalog(input, url, auth, verbose, diff) {
     }
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
-    await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
-}
-async function importCatalogNoRef(input, url, auth, verbose, diff) {
-    const lcaAttributeGroup = 'Ökobilanz';
-    await assertFile(input);
-    await assertUrl(url);
-    await assertFile(auth);
-    const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
-    const componentsObj = JSON.parse(componentsFile);
-    const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json');
-    const selectedCatalogueId = catalogues.body.selectedCatalogueId;
-    const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')).body;
-    const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')).body;
-    const typesDict = {};
-    for (const t of types)
-        typesDict[t.name] = t;
-    const productTypeNameToCategoryTypeIdMap = {
-        "REFERENCE_MATERIAL": typesDict["MAT"].id,
-        "MATERIAL": typesDict["MAT"].id,
-        "COMPONENT": typesDict["BT"].id
-    };
-    const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json');
-    let lcaAttributeGroupId = null;
-    for (const g of attributeGroups.body) {
-        if (g.name == lcaAttributeGroup) {
-            lcaAttributeGroupId = g.id;
-            break;
-        }
-    }
-    if (!lcaAttributeGroupId)
-        throw `Could not find attribute group with name ${lcaAttributeGroup}`;
-    await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    if (!skipRefMat)
+        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    if (!skipMat)
+        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
     await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
 }
-async function importCatalogNoRefNoMat(input, url, auth, verbose, diff) {
-    const lcaAttributeGroup = 'Ökobilanz';
-    await assertFile(input);
-    await assertUrl(url);
-    await assertFile(auth);
-    const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
-    const componentsObj = JSON.parse(componentsFile);
-    const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json');
-    const selectedCatalogueId = catalogues.body.selectedCatalogueId;
-    const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')).body;
-    const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')).body;
+function getProductTypeNameToCategoryTypeIdMap(types) {
     const typesDict = {};
     for (const t of types)
         typesDict[t.name] = t;
     const productTypeNameToCategoryTypeIdMap = {
-        "REFERENCE_MATERIAL": typesDict["MAT"].id,
-        "MATERIAL": typesDict["MAT"].id,
-        "COMPONENT": typesDict["BT"].id
+        "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
+        "MATERIAL": typesDict["MATERIALIEN"].id,
+        "COMPONENT": typesDict["BAUTEILE"].id,
+        "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
+        "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
     };
-    const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json');
-    let lcaAttributeGroupId = null;
-    for (const g of attributeGroups.body) {
-        if (g.name == lcaAttributeGroup) {
-            lcaAttributeGroupId = g.id;
-            break;
-        }
-    }
-    if (!lcaAttributeGroupId)
-        throw `Could not find attribute group with name ${lcaAttributeGroup}`;
-    await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+    return productTypeNameToCategoryTypeIdMap;
 }
 let anchorFound = false;
 async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff) {
@@ -523,7 +442,6 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             existingProdId = existingProds.body[0].id;
         }
         if (existingProdId) {
-            return;
             const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')

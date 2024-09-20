@@ -477,9 +477,9 @@ function getProductTypeNameToCategoryTypeIdMap(types: any) {
     typesDict[(t as any).name] = t
 
   const productTypeNameToCategoryTypeIdMap = {
-    "REFERENCE_MATERIAL": typesDict["MAT"].id,
-    "MATERIAL": typesDict["MAT"].id,
-    "COMPONENT": typesDict["BT"].id,
+    "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
+    "MATERIAL": typesDict["MATERIALIEN"].id,
+    "COMPONENT": typesDict["BAUTEILE"].id,
     "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
     "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
   }

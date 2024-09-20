@@ -75,11 +75,13 @@ Options:
 
 ```
 # Wipe all products of a category prior to import
-$ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44 --verbose
+$ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category c2f7e05b-0851-4537-9676-9f25dc4cee73 --verbose
 
 # Import reference-materials from KBOB
 $ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
 $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v4.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
+npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category ad45c642-67bf-4927-b365-ad22efdff3f5
+
 
 # Import materials from materialsdb.org
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt

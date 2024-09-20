@@ -63,12 +63,7 @@ export async function importMaterialsDb(url, auth, category, verbose) {
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
     const lcaProductsCache = {};
     const nameCache = {};
-    let continuation = false;
     for (const company of producerIndex.MaterialsDBIndex.company) {
-        if (company.$.name == "Swisspor AG")
-            continuation = true;
-        if (!continuation)
-            continue;
         if (company.$.active !== "true") {
             console.log(`Skipping '${company.$.name}'`);
             continue;
@@ -104,8 +99,6 @@ export async function importMaterialsDb(url, auth, category, verbose) {
             const matId = material.$.id;
             const name = getTranslatedString(material.information[0].names[0], "name", "de");
             const explanation = material.information[0].explanations ? getTranslatedString(material.information[0].explanations[0], "explanation", "de") : null;
-            if (name == 'Bacstein CellitPlus' || name == 'swissporPUR Hartschaum unkaschiert')
-                continue;
             console.log(`\tProcessing entry '${name}'`);
             let numLayers = material.layers[0].layer.length;
             let idx = 0;

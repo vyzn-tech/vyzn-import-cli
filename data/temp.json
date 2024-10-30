@@ -1,0 +1,316 @@
+{
+    "fileFormatVersion": "1.1.0",
+    "exportTimestamp": "2024-10-28T10:20:21.898Z",
+    "products": {
+        "Träger Beton": {
+            "name": "Träger Beton",
+            "type": "COMPONENT",
+            "status": "draft",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Neue Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerLifeCycle": 60,
+                            "vyzn.catalogue.LayerThickness": 150
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 98
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 2
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.082271",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.071001",
+                            "vyzn.catalogue.ch.KBOB2022.UBPProduction": "664.9300000000001",
+                            "vyzn.catalogue.ch.KBOB2022.UBPTotal": "862.155",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "0.569135",
+                            "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "198.35199999999998",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "0.49982449999999995",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "0.9861249999999999",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01053745",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.2890755",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.072128",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "0.6931049999999999"
+                        },
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5)"
+                    },
+                    "0_1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.13816",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "1.330575",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "1.3502",
+                            "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "7.6537500000000005",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.000773225",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.019821250000000002",
+                            "vyzn.catalogue.ch.KBOB2022.UBPProduction": "616.225",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.137375",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.0047885",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "0.30340249999999996",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "0.3081125",
+                            "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+                            "vyzn.catalogue.ch.KBOB2022.UBPTotal": "624.075"
+                        },
+                        "layerPosition": 0,
+                        "sectionPosition": 1,
+                        "materialKey": "06.003 Armierungsstahl (KBOB.2022v5)"
+                    }
+                }
+            },
+            "attributes": {
+                "vyzn.catalogue.Category": null,
+                "vyzn.catalogue.Thickness": null,
+                "Luftschallanforderungswert (Di tot)": null,
+                "vyzn.catalogue.FireClass": null,
+                "vyzn.catalogue.FireResis": null,
+                " Trittschallanforderungswert (L' tot)": null,
+                "vyzn.catalogue.FrameThickness": null,
+                "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+                "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 206.00574999999998,
+                "vyzn.catalogue.License": null,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.220431,
+                "Schallwiderstand theoretisch (Rw)\t": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 2.0236799999999997,
+                "vyzn.catalogue.BottomPositionLabel": null,
+                "vyzn.catalogue.uValueGlass": null,
+                "vyzn.catalogue.GlassEdgeSeal": null,
+                "vyzn.catalogue.uValueFrame": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 2.336325,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.209503,
+                "vyzn.catalogue.PriceCHF": null,
+                "vyzn.catalogue.COSRefUnit": null,
+                "vyzn.catalogue.ch.KBOB2022.UBPTotal": 1486.23,
+                "vyzn.catalogue.ch.KBOB2022.UBPProduction": 1281.1550000000002,
+                "vyzn.catalogue.uValue": null,
+                "vyzn.catalogue.gValue": null,
+                "vyzn.catalogue.bValue": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.30889675,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.0757895,
+                "vyzn.catalogue.ThermalBridgesBValue": null,
+                "vyzn.catalogue.SdValue": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+                "vyzn.catalogue.ThermalBridgesType": null,
+                "vyzn.catalogue.ch.minergie.eco.ComponentClassification": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefDimension": null,
+                "vyzn.catalogue.TopPositionLabel": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 0.8032269999999999,
+                "vyzn.catalogue.GlassPercentage": null,
+                "vyzn.catalogue.PositionAgainst": null,
+                "vyzn.catalogue.AutomateUValueCalculation": null,
+                "vyzn.catalogue.Owner": null,
+                "Schallwiderstand gemessen (R'w)": null,
+                "vyzn.catalogue.SourceCOS": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 0.8772475,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.011310675000000001,
+                "vyzn.catalogue.ThermalBridgesChiPsiValue": null,
+                "vyzn.catalog.ch.eBKPh.Section": null
+            }
+        },
+        "Träger Holz": {
+            "name": "Träger Holz",
+            "type": "COMPONENT",
+            "status": "draft",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Neue Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerLifeCycle": 60,
+                            "vyzn.catalogue.LayerThickness": 200
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.009683833333333334",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.06305",
+                            "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "0.14614666666666665",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "0.8228833333333334",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "0.20855000000000004",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.14356000000000002",
+                            "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "101.68833333333333",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "8.034833333333333",
+                            "vyzn.catalogue.ch.KBOB2022.UBPTotal": "510.8666666666667",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "8.051",
+                            "vyzn.catalogue.ch.KBOB2022.UBPProduction": "410.6333333333333",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "0.679"
+                        },
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "07.009 Massivholz Fichte / Tanne / Lärche, luftgetrocknet, rau (KBOB.2022v5)"
+                    }
+                }
+            },
+            "attributes": {
+                "vyzn.catalogue.Category": null,
+                "vyzn.catalogue.Thickness": null,
+                "Luftschallanforderungswert (Di tot)": null,
+                "vyzn.catalogue.FireClass": null,
+                "vyzn.catalogue.FireResis": null,
+                " Trittschallanforderungswert (L' tot)": null,
+                "vyzn.catalogue.FrameThickness": null,
+                "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+                "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 101.68833333333333,
+                "vyzn.catalogue.License": null,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 8.051,
+                "Schallwiderstand theoretisch (Rw)\t": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 0.679,
+                "vyzn.catalogue.BottomPositionLabel": null,
+                "vyzn.catalogue.uValueGlass": null,
+                "vyzn.catalogue.GlassEdgeSeal": null,
+                "vyzn.catalogue.uValueFrame": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 0.8228833333333334,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 8.034833333333333,
+                "vyzn.catalogue.PriceCHF": null,
+                "vyzn.catalogue.COSRefUnit": null,
+                "vyzn.catalogue.ch.KBOB2022.UBPTotal": 510.8666666666667,
+                "vyzn.catalogue.ch.KBOB2022.UBPProduction": 410.6333333333333,
+                "vyzn.catalogue.uValue": null,
+                "vyzn.catalogue.gValue": null,
+                "vyzn.catalogue.bValue": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.14356000000000002,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.06305,
+                "vyzn.catalogue.ThermalBridgesBValue": null,
+                "vyzn.catalogue.SdValue": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+                "vyzn.catalogue.ThermalBridgesType": null,
+                "vyzn.catalogue.ch.minergie.eco.ComponentClassification": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefDimension": null,
+                "vyzn.catalogue.TopPositionLabel": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 0.14614666666666665,
+                "vyzn.catalogue.GlassPercentage": null,
+                "vyzn.catalogue.PositionAgainst": null,
+                "vyzn.catalogue.AutomateUValueCalculation": null,
+                "vyzn.catalogue.Owner": null,
+                "Schallwiderstand gemessen (R'w)": null,
+                "vyzn.catalogue.SourceCOS": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 0.20855000000000004,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.009683833333333334,
+                "vyzn.catalogue.ThermalBridgesChiPsiValue": null,
+                "vyzn.catalog.ch.eBKPh.Section": null
+            }
+        },
+        "Träger Stahl": {
+            "name": "Träger Stahl",
+            "type": "COMPONENT",
+            "status": "draft",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Neue Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.03626700000000001",
+                            "vyzn.catalogue.ch.KBOB2022.UBPTotal": "6751",
+                            "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+                            "vyzn.catalogue.ch.KBOB2022.UBPProduction": "6698.666666666667",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "3.8150999999999997",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.14234666666666665",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "17.688666666666666",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "1.2821666666666667",
+                            "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "3.8517333333333332",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.0029673",
+                            "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "58.09",
+                            "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "17.53166666666667",
+                            "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "1.2821666666666667"
+                        },
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "06.012 Stahlprofil, blank (KBOB.2022v5)"
+                    }
+                }
+            },
+            "attributes": {
+                "vyzn.catalogue.Category": null,
+                "vyzn.catalogue.Thickness": null,
+                "Luftschallanforderungswert (Di tot)": null,
+                "vyzn.catalogue.FireClass": null,
+                "vyzn.catalogue.FireResis": null,
+                " Trittschallanforderungswert (L' tot)": null,
+                "vyzn.catalogue.FrameThickness": null,
+                "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+                "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 58.09,
+                "vyzn.catalogue.License": null,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 1.2821666666666667,
+                "Schallwiderstand theoretisch (Rw)\t": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 17.53166666666667,
+                "vyzn.catalogue.BottomPositionLabel": null,
+                "vyzn.catalogue.uValueGlass": null,
+                "vyzn.catalogue.GlassEdgeSeal": null,
+                "vyzn.catalogue.uValueFrame": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 17.688666666666666,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 1.2821666666666667,
+                "vyzn.catalogue.PriceCHF": null,
+                "vyzn.catalogue.COSRefUnit": null,
+                "vyzn.catalogue.ch.KBOB2022.UBPTotal": 6751,
+                "vyzn.catalogue.ch.KBOB2022.UBPProduction": 6698.666666666667,
+                "vyzn.catalogue.uValue": null,
+                "vyzn.catalogue.gValue": null,
+                "vyzn.catalogue.bValue": null,
+                "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.14234666666666665,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.03626700000000001,
+                "vyzn.catalogue.ThermalBridgesBValue": null,
+                "vyzn.catalogue.SdValue": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+                "vyzn.catalogue.ThermalBridgesType": null,
+                "vyzn.catalogue.ch.minergie.eco.ComponentClassification": null,
+                "vyzn.catalogue.ch.KBOB2022.LCARefDimension": null,
+                "vyzn.catalogue.TopPositionLabel": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 3.8150999999999997,
+                "vyzn.catalogue.GlassPercentage": null,
+                "vyzn.catalogue.PositionAgainst": null,
+                "vyzn.catalogue.AutomateUValueCalculation": null,
+                "vyzn.catalogue.Owner": null,
+                "Schallwiderstand gemessen (R'w)": null,
+                "vyzn.catalogue.SourceCOS": null,
+                "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 3.8517333333333332,
+                "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.0029673,
+                "vyzn.catalogue.ThermalBridgesChiPsiValue": null,
+                "vyzn.catalog.ch.eBKPh.Section": null
+            }
+        }
+    }
+}

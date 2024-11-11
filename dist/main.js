@@ -48,7 +48,7 @@ async function main() {
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, false);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, false);
     });
     program
         .command('import-catalog-noref')
@@ -59,18 +59,20 @@ async function main() {
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, true);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, true);
     });
     program
-        .command('import-catalog-noref-nomat without reference materials and without materials')
+        .command('import-components')
         .description('import catalog from a JSON file')
         .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
+        .option('-f, --folder', 'Import to folder')
+        .option('-c, --category <id>', 'The id of the category')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, true, true);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, true, true);
     });
     program.parse();
 }
@@ -345,7 +347,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
     const leafCategoryId = lastCatId ? lastCatId : currentNode.id;
     return leafCategoryId;
 }
-async function importCatalog(input, url, auth, verbose, diff, skipMat, skipRefMat) {
+async function importCatalog(input, url, auth, verbose, diff, folder, category, skipMat, skipRefMat) {
     const lcaAttributeGroup = 'Ökobilanz';
     await assertFile(input);
     await assertUrl(url);
@@ -393,12 +395,12 @@ async function importCatalog(input, url, auth, verbose, diff, skipMat, skipRefMa
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
     if (!skipRefMat)
-        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
     if (!skipMat)
-        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
-    await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
-    await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
-    await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff);
+        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
 }
 function getProductTypeNameToCategoryTypeIdMap(types) {
     const typesDict = {};
@@ -414,18 +416,21 @@ function getProductTypeNameToCategoryTypeIdMap(types) {
     return productTypeNameToCategoryTypeIdMap;
 }
 let anchorFound = false;
-async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff) {
+async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff, folder, category) {
     for (const [key, value] of Object.entries(products)) {
         let prod = value;
         if (prod.type != type)
             continue;
-        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff);
+        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff, folder, category);
     }
 }
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category) {
     const migrateAttributes = false;
     const categoryType = productTypeNameToCategoryTypeIdMap[prod.type];
-    const categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken);
+    var categoryId = category;
+    if (!folder) {
+        categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken);
+    }
     if (!categoryId)
         console.error(`missing category for product: ${prodKey}`);
     let product = null;

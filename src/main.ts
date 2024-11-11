@@ -54,7 +54,7 @@ async function main() {
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, false)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, false)
     })
 
   program
@@ -66,19 +66,21 @@ async function main() {
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, true)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, true)
     })
 
   program
-    .command('import-catalog-noref-nomat')
-    .description('import catalog from a JSON file without reference materials and without materials')
+    .command('import-components')
+    .description('import catalog from a JSON file')
     .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
+    .option('-f, --folder', 'Import to folder')
+    .option('-c, --category <id>', 'The id of the category')
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, true, true)
+      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, true, true)
     })
 
     program
@@ -419,7 +421,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, verbose: boolean, diff: boolean, skipMat: boolean, skipRefMat: boolean) {
+async function importCatalog(input: string, url: string, auth: string, verbose: boolean, diff: boolean, folder: boolean, category: string, skipMat: boolean, skipRefMat: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -477,11 +479,11 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(!skipRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  if(!skipMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
-  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff)
+  if(!skipRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category)
+  if(!skipMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category)
+  await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
+  await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
+  await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
 }
 
 function getProductTypeNameToCategoryTypeIdMap(types: any) {
@@ -504,26 +506,21 @@ function getProductTypeNameToCategoryTypeIdMap(types: any) {
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, verbose: boolean, diff: boolean) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
-
-    //if(!prod.categoryPath.endsWith('Gebäudetechnik')) continue
-    //if (prod.name == "Abdichtung - Bitumentrennlage 1-lagig 3.5mm") anchorFound = true
-    //if (!anchorFound) continue
-    //if (prod.name != "Holzschalung - Fi/Ta, 24mm") continue
-    //if (key.startsWith("KBOB2016")) continue
-    //console.error(key)
     
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff)
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff, folder, category)
   }
 }
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean) {
+
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
   const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
-  const categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken)
+  var categoryId = category
+  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken) }
 
   if (!categoryId)
     console.error(`missing category for product: ${prodKey}`)

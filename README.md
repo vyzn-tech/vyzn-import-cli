@@ -99,6 +99,9 @@ $ npx tsc && node dist/main.js import-catalog-noref-nomat --input data/catalog.j
 $ npx tsc && node dist/main.js import-catalog --input data/SIA_2032_v2020_VorstudienVorprojekt.json --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt
 $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_gebaudetechnik.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category none
 
+# Patch a version
+$ npx tsc && node dist/main.js patch-version --url https://dbs-gateway-service-dev.azurewebsites.net --tenant test --auth data/auth.txt --project 87b9d672-5c82-4d3a-8d7b-5c84c0f14924 --building 4324c98a-1b14-4f5f-b079-cf51f93572f8 --modelversion 7530e3f8-58a0-4fde-9bf8-75b0daefa29d --input data/patchedVersionSample.csv 
+
 
 ```
 

@@ -70,8 +70,8 @@ async function main() {
     })
 
   program
-    .command('import-catalog-noref-nomat without reference materials and without materials')
-    .description('import catalog from a JSON file')
+    .command('import-catalog-noref-nomat')
+    .description('import catalog from a JSON file without reference materials and without materials')
     .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
@@ -81,7 +81,20 @@ async function main() {
       importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, true, true)
     })
 
-
+    program
+    .command('patch-version')
+    .description('patch a version from a CSV file')
+    .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+    .requiredOption('-t, --tenant <name>', 'The name of the tenant')
+    .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+    .requiredOption('-p, --project <id>', 'The id of the project to patch')
+    .requiredOption('-b, --building <id>', 'The id of the building to patch')
+    .requiredOption('-m, --modelversion <id>', 'The id of the version to patch')
+    .requiredOption('-i, --input <file>', 'Path to the file to import (.csv)')
+    .option('-v, --verbose', 'More detailed console output')
+    .action((o) => {
+      patchVersion(o.url, o.tenant, o.auth, o.project, o.building, o.modelversion, o.input, o.verbose)
+    })
 
   program.parse()
 }
@@ -477,11 +490,13 @@ function getProductTypeNameToCategoryTypeIdMap(types: any) {
     typesDict[(t as any).name] = t
 
   const productTypeNameToCategoryTypeIdMap = {
+
     "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
     "MATERIAL": typesDict["MATERIALIEN"].id,
     "COMPONENT": typesDict["BAUTEILE"].id,
     "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
     "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
+
   }
 
   return productTypeNameToCategoryTypeIdMap
@@ -904,6 +919,129 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   }
 }
 
+async function patchVersion(url: string, tenant:string, auth: string, projectId: string, buildingId: string, modelVersionId:string, input: string, verbose: boolean) {
+  const matchByAttributeId = 'vyzn.reference.ElementID';
+
+  // Validate commandline arguments
+  await assertFile(input)
+  await assertUrl(url)
+  await assertFile(auth)
+  
+  // Read files
+  const csv = await readCsv(input)
+  const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+
+  // Fetch existing version including all attributes
+  console.info(`Fetching project ${projectId} building ${buildingId} version ${modelVersionId} ...`)
+  const existingVersion = await request.get(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/all`, url).href)
+    .set('Authorization', authToken)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/, json')
+    .set('Accept-Encoding', 'gzip, deflate, br')
+    .set('Accept-Language','en-US,en;q=0.5')
+    .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
+  console.info(`Done. ${existingVersion.body.length} elements found.`)
+    
+  // Transform version to simplified target structure and build lookups for IDs and Keys
+  console.info(`Transforming to target structure...`)
+  let transformed = {};
+  const idLookup = {};
+  existingVersion.body.forEach(item => {
+      item.elementAttributes.forEach(attr => {
+          const attributeName = attr.elementAttribute.name;
+          const id = item.id;
+          const value = attr.value;
+
+          if (!transformed[attributeName]) {
+              transformed[attributeName] = {};
+          }
+
+          transformed[attributeName][id] = `${value}`;
+
+          if(attributeName == matchByAttributeId)
+            idLookup[value] = id
+      });
+  });
+  console.info(`Done.`)
+
+  // lets trash the existing values and only consider new values
+  transformed = {};
+
+  // Process CSV line by line and update records
+  console.info(`Processing CSV ...`)
+  for (const row of csv) {
+    const key = row[matchByAttributeId]
+    let id = idLookup[key]
+
+    if(!id) {
+      console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`)
+      const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
+        .send(
+          {
+            "name": `New ${key}`,
+            "area": 0,
+            "height": 0,
+            "floor": "",
+            "isHeated": false,
+            "minergieClassification": null,
+            "minergieEcoClassification": null,
+            "sia3802015Classification" : null,
+            "sia4162003Classification" : null,
+            "sia20402017Classification" : null,
+            "sia38012016Classification" : null,
+            "additionalElementAttributeValues": []
+          }
+        )
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language','en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
+      
+        id = createdElement.body.id;
+        idLookup[key] = id;
+        console.warn(`Element created with ID=${id}`)
+    } else  {
+      //console.info(`Record with key '${matchByAttributeId}' = '${key}' found`)
+    }
+ 
+    for (const attributeName of Object.keys(row)) {
+      let newValue = row[attributeName]
+
+      if(!transformed[attributeName]) 
+        transformed[attributeName] = {};
+
+      transformed[attributeName][id] = `${newValue}`;
+    }
+  }
+  console.info(`Done. ${csv.length} rows found.`)
+
+  if(verbose)
+    console.debug(JSON.stringify(transformed))
+
+  // Persist changes
+  console.info(`Patching version ...`)
+  const updatedVersion = await request.post(new URL(`/dbs-core/v1/versions/${modelVersionId}/coresynccommand`, url).href)
+    .send(
+      {
+        "historyPointId": modelVersionId,
+        "startSyncFromCatalog":false,
+        "historyPointConfigChanges": transformed
+      }
+    )
+    .set('Authorization', authToken)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .set('Accept-Encoding', 'gzip, deflate, br')
+    .set('Accept-Language','en-US,en;q=0.5')
+    .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
+
+  console.info(`Done.`)
+}
 
 async function assertUrl(url: string) {
   if (!stringIsAValidUrl(url, ['http', 'https'])) {

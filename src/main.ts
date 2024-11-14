@@ -969,6 +969,11 @@ async function patchVersion(url: string, tenant:string, auth: string, projectId:
   console.info(`Processing CSV ...`)
   for (const row of csv) {
     const key = row[matchByAttributeId]
+    if(!key) {
+      console.error(`There are rows in the CSV with a missing value in mandatory column '${matchByAttributeId}'.`)
+      return
+    }
+
     let id = idLookup[key]
 
     if(!id) {

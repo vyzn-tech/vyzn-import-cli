@@ -1,0 +1,21 @@
+Name,ProductKey,Description,Picture,Product sections,Type,vyzn.catalogue.Density,vyzn.catalogue.ThermalConductivity,vyzn.catalogue.Category,vyzn.catalogue.ch.KBOB2022.UBPTotal,vyzn.catalogue.ch.KBOB2022.UBPProduction,vyzn.catalogue.ch.KBOB2022.UBPDisposal,vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal,vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction,vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal,vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal,vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction,vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal,vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal,vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction,vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal,vyzn.catalogue.ch.KBOB2022.LCARefUnit,vyzn.catalogue.ch.KBOB2022.BiogenicCarbon,vyzn.catalogue.SourceENV,categoryPath
+Beton armiert 1% Stahl (CEN),Beton armiert 1% Stahl (CEN),,,,MATERIAL,2300,2.3,Beton,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+XPS 700,XPS 700,,,,MATERIAL,36,0.035,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Innenputz,Innenputz,,,,MATERIAL,1400,0.7,Mörtel,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporLAMBDA White 030,swissporLAMBDA White 030,,,,MATERIAL,19,0.03,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Zementunterlagsboden,Zementunterlagsboden,,,,MATERIAL,1850,1.2,Mörtel,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+PS 81,PS 81,,,,MATERIAL,80,0.032,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Holzspan-Zement CEN,Holzspan-Zement CEN,,,,MATERIAL,1200,0.23,Holz (Holzwerkstoffe),,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Keramikfliese,Keramikfliese,,,,MATERIAL,1900,1,Deckschichten,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Typische Bauholz CEN,Typische Bauholz CEN,,,,MATERIAL,500,0.13,Holz (Holzwerkstoffe),,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+PB M 030,PB M 030,,,,MATERIAL,38,0.03,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Vario KM Duplex UV,Vario KM Duplex UV,,,,MATERIAL,285,0.2,Dampfsperren,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporLAMBDA Roof,swissporLAMBDA Roof,,,,MATERIAL,25,0.029,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporLAMBDA Roof Gefälleplatten,swissporLAMBDA Roof Gefälleplatten,,,,MATERIAL,25,0.029,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporBIKUTOP EP5 S flam,swissporBIKUTOP EP5 S flam,,,,MATERIAL,1180,0.17,Abdichtungen,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporPIR Premium HD,swissporPIR Premium HD,,,,MATERIAL,30,0.02,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporBIKUPLAN EGV3.5 v flam,swissporBIKUPLAN EGV3.5 v flam,,,,MATERIAL,1200,0.17,Dampfsperren,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+swissporBIKUTOP EP4 WF S flam,swissporBIKUTOP EP4 WF S flam,,,,MATERIAL,1175,0.17,Abdichtungen,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Holzspanplatte 500 kg/m³ CEN,Holzspanplatte 500 kg/m³ CEN,,,,MATERIAL,500,0.14,Holz (Holzwerkstoffe),,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+808 Leichtestrich Trockenschüttung (Hasiplan 410),808 Leichtestrich Trockenschüttung (Hasiplan 410),,,,MATERIAL,1250,0.42,Mörtel,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN
+Flumroc-Dämmplatte PARA,Flumroc-Dämmplatte PARA,,,,MATERIAL,90,0.035,Wärmedämmstoffe,,,,,,,,,,,,,,,,Alle > MATERIALIEN > Meine Materialien > WDCN

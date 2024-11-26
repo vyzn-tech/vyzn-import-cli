@@ -45,34 +45,17 @@ async function main() {
         .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
-        .option('-v, --verbose', 'More detailed console output')
-        .option('-d, --diff', 'Perform diff only')
-        .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, false);
-    });
-    program
-        .command('import-catalog-noref')
-        .description('import catalog from a JSON file without reference materials')
-        .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
-        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
-        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
-        .option('-v, --verbose', 'More detailed console output')
-        .option('-d, --diff', 'Perform diff only')
-        .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, true);
-    });
-    program
-        .command('import-components')
-        .description('import catalog from a JSON file')
-        .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
-        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
-        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .option('-refmat, --refmaterials', 'import ref materials')
+        .option('-mat, --materials', 'import materials')
+        .option('-btech, --buildingtech', 'import building technologies (gebaudetechnik)')
+        .option('-ores, --otherres', 'import other resources')
+        .option('-comp, --components', 'import components')
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .option('-f, --folder', 'Import to folder')
         .option('-c, --category <id>', 'The id of the category')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, true, true);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components);
     });
     program
         .command('patch-version')
@@ -361,7 +344,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
     const leafCategoryId = lastCatId ? lastCatId : currentNode.id;
     return leafCategoryId;
 }
-async function importCatalog(input, url, auth, verbose, diff, folder, category, skipMat, skipRefMat) {
+async function importCatalog(input, url, auth, verbose, diff, folder, category, importMat, importRefMat, importBuildTech, importOtRes, importComp) {
     const lcaAttributeGroup = 'Ökobilanz';
     await assertFile(input);
     await assertUrl(url);
@@ -408,13 +391,16 @@ async function importCatalog(input, url, auth, verbose, diff, folder, category, 
     }
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
-    if (!skipRefMat)
+    if (importRefMat)
         await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    if (!skipMat)
+    if (importMat)
         await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importBuildTech)
+        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importOtRes)
+        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importComp)
+        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
 }
 function getProductTypeNameToCategoryTypeIdMap(types) {
     const typesDict = {};

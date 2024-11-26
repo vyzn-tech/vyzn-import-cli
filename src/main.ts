@@ -208,6 +208,9 @@ async function importProducts(input: string, url: string, auth: string, category
     let newType = row.Type
     let newSubType = row.SubType
 
+    if(newSubType == '') 
+        newSubType = null
+
     // migrate old data
     if (newType == "MATERIAL_LIST")
       newType = "REFERENCE_MATERIAL"

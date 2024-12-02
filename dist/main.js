@@ -45,34 +45,31 @@ async function main() {
         .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
-        .option('-v, --verbose', 'More detailed console output')
-        .option('-d, --diff', 'Perform diff only')
-        .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, false);
-    });
-    program
-        .command('import-catalog-noref')
-        .description('import catalog from a JSON file without reference materials')
-        .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
-        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
-        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
-        .option('-v, --verbose', 'More detailed console output')
-        .option('-d, --diff', 'Perform diff only')
-        .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, false, "", false, true);
-    });
-    program
-        .command('import-components')
-        .description('import catalog from a JSON file')
-        .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
-        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
-        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .option('-refmat, --refmaterials', 'import ref materials')
+        .option('-mat, --materials', 'import materials')
+        .option('-btech, --buildingtech', 'import building technologies (gebaudetechnik)')
+        .option('-ores, --otherres', 'import other resources')
+        .option('-comp, --components', 'import components')
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .option('-f, --folder', 'Import to folder')
         .option('-c, --category <id>', 'The id of the category')
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, true, true);
+        importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components);
+    });
+    program
+        .command('patch-version')
+        .description('patch a version from a CSV file')
+        .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+        .requiredOption('-t, --tenant <name>', 'The name of the tenant')
+        .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .requiredOption('-p, --project <id>', 'The id of the project to patch')
+        .requiredOption('-b, --building <id>', 'The id of the building to patch')
+        .requiredOption('-m, --modelversion <id>', 'The id of the version to patch')
+        .requiredOption('-i, --input <file>', 'Path to the file to import (.csv)')
+        .option('-v, --verbose', 'More detailed console output')
+        .action((o) => {
+        patchVersion(o.url, o.tenant, o.auth, o.project, o.building, o.modelversion, o.input, o.verbose);
     });
     program.parse();
 }
@@ -347,7 +344,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
     const leafCategoryId = lastCatId ? lastCatId : currentNode.id;
     return leafCategoryId;
 }
-async function importCatalog(input, url, auth, verbose, diff, folder, category, skipMat, skipRefMat) {
+async function importCatalog(input, url, auth, verbose, diff, folder, category, importMat, importRefMat, importBuildTech, importOtRes, importComp) {
     const lcaAttributeGroup = 'Ökobilanz';
     await assertFile(input);
     await assertUrl(url);
@@ -394,13 +391,16 @@ async function importCatalog(input, url, auth, verbose, diff, folder, category, 
     }
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
-    if (!skipRefMat)
+    if (importRefMat)
         await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    if (!skipMat)
+    if (importMat)
         await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
-    await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importBuildTech)
+        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importOtRes)
+        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
+    if (importComp)
+        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category);
 }
 function getProductTypeNameToCategoryTypeIdMap(types) {
     const typesDict = {};
@@ -788,6 +788,105 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             }
         }
     }
+}
+async function patchVersion(url, tenant, auth, projectId, buildingId, modelVersionId, input, verbose) {
+    const matchByAttributeId = 'vyzn.reference.ElementID';
+    await assertFile(input);
+    await assertUrl(url);
+    await assertFile(auth);
+    const csv = await readCsv(input);
+    const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+    console.info(`Fetching project ${projectId} building ${buildingId} version ${modelVersionId} ...`);
+    const existingVersion = await request.get(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/all`, url).href)
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant);
+    console.info(`Done. ${existingVersion.body.length} elements found.`);
+    console.info(`Transforming to target structure...`);
+    let transformed = {};
+    const idLookup = {};
+    existingVersion.body.forEach(item => {
+        item.elementAttributes.forEach(attr => {
+            const attributeName = attr.elementAttribute.name;
+            const id = item.id;
+            const value = attr.value;
+            if (!transformed[attributeName]) {
+                transformed[attributeName] = {};
+            }
+            transformed[attributeName][id] = `${value}`;
+            if (attributeName == matchByAttributeId)
+                idLookup[value] = id;
+        });
+    });
+    console.info(`Done.`);
+    transformed = {};
+    console.info(`Processing CSV ...`);
+    for (const row of csv) {
+        const key = row[matchByAttributeId];
+        if (!key) {
+            console.error(`There are rows in the CSV with a missing value in mandatory column '${matchByAttributeId}'.`);
+            return;
+        }
+        let id = idLookup[key];
+        if (!id) {
+            console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`);
+            const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
+                .send({
+                "name": `New ${key}`,
+                "area": 0,
+                "height": 0,
+                "floor": "",
+                "isHeated": false,
+                "minergieClassification": null,
+                "minergieEcoClassification": null,
+                "sia3802015Classification": null,
+                "sia4162003Classification": null,
+                "sia20402017Classification": null,
+                "sia38012016Classification": null,
+                "additionalElementAttributeValues": []
+            })
+                .set('Authorization', authToken)
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('Accept-Encoding', 'gzip, deflate, br')
+                .set('Accept-Language', 'en-US,en;q=0.5')
+                .set('Content-Type', 'application/json')
+                .set('x-vyzn-selected-tenant', tenant);
+            id = createdElement.body.id;
+            idLookup[key] = id;
+            console.warn(`Element created with ID=${id}`);
+        }
+        else {
+        }
+        for (const attributeName of Object.keys(row)) {
+            let newValue = row[attributeName];
+            if (!transformed[attributeName])
+                transformed[attributeName] = {};
+            transformed[attributeName][id] = `${newValue}`;
+        }
+    }
+    console.info(`Done. ${csv.length} rows found.`);
+    if (verbose)
+        console.debug(JSON.stringify(transformed));
+    console.info(`Patching version ...`);
+    const updatedVersion = await request.post(new URL(`/dbs-core/v1/versions/${modelVersionId}/coresynccommand`, url).href)
+        .send({
+        "historyPointId": modelVersionId,
+        "startSyncFromCatalog": false,
+        "historyPointConfigChanges": transformed
+    })
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant);
+    console.info(`Done.`);
 }
 async function assertUrl(url) {
     if (!stringIsAValidUrl(url, ['http', 'https'])) {

@@ -78,30 +78,23 @@ Options:
 $ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category c2f7e05b-0851-4537-9676-9f25dc4cee73 --verbose
 
 # Import reference-materials from KBOB
-$ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
-$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v4.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 115ca9b4-941f-4442-abae-ab626e415e44
-npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category ad45c642-67bf-4927-b365-ad22efdff3f5
+$ npx tsc && node dist/main.js import-products --input data/HRS_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a7ff1589-0e8c-42ff-bf27-5f8f499b8575
+$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a4444265-b369-41e4-b26f-409a8c0bce45
+$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_ref.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 79a3b38a-dfbf-4ed5-9ac9-657973b4ff5d
 
 
 # Import materials from materialsdb.org
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt
 
 # Import complete catalog
-$ npx tsc && node dist/main.js import-catalog --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ npx tsc && node dist/main.js import-catalog --input data/temp.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ npx tsc && node dist/main.js import-catalog --input data/catalog_1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 # Import only materials and components from catalog.json
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
-# Import only components from catalog.json
-$ npx tsc && node dist/main.js import-catalog-noref-nomat --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
-
-# Building the default vyzn catalog from scratch
-$ npx tsc && node dist/main.js import-catalog --input data/SIA_2032_v2020_VorstudienVorprojekt.json --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt
-$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_gebaudetechnik.csv --url https://dbs-gateway-service-dev.azurewebsites.net --auth data/auth.txt --category none
-
-# Patch a version
-$ npx tsc && node dist/main.js patch-version --url https://dbs-gateway-service-dev.azurewebsites.net --tenant test --auth data/auth.txt --project 87b9d672-5c82-4d3a-8d7b-5c84c0f14924 --building 4324c98a-1b14-4f5f-b079-cf51f93572f8 --modelversion 7530e3f8-58a0-4fde-9bf8-75b0daefa29d --input data/patchedVersionSample.csv 
-
+# Import only components from catalog.json to a folder
+$ npx tsc && node dist/main.js import-catalog --input data/catalog-1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -comp -f -c 2cd8635d-a4c6-429e-9357-6cfdd6e42fa5 
 
 ```
 

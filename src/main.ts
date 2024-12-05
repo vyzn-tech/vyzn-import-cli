@@ -671,7 +671,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       associationAttributesDict[associationAttribute.name] = associationAttribute
     }
 
-    const layerIds = []
+    const layerIds = {}
     for (const [layerKey, layerValue] of Object.entries(prod.matrix.layers)) {
       const layer: any = layerValue
       const layerAssociationAttributes = []
@@ -724,10 +724,10 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
 
-      layerIds.push(newLayer.body.id)
+      layerIds[layerKey] = newLayer.body.id
     }
 
-    const sectionIds = []
+    const sectionIds = {}
     for (const [sectionKey, sectionValue] of Object.entries(prod.matrix.sections)) {
       const section: any = sectionValue
 
@@ -781,7 +781,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
 
-      sectionIds.push(newSection.body.id)
+      sectionIds[sectionKey] = newSection.body.id
     }
 
     for (const [cellKey, cellValue] of Object.entries(prod.matrix.cells)) {
@@ -812,8 +812,8 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
       await request.post(new URL(`/dbs-catalogue/v1/productCellLink`, url).href)
         .send({
-          "layer": layerIds[cell.layerPosition],
-          "section": sectionIds[cell.sectionPosition],
+          "layer": layerIds[""+cell.layerPosition],
+          "section": sectionIds[""+cell.sectionPosition],
           "child": materialId
         })
         .set('Authorization', authToken)

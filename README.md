@@ -87,8 +87,8 @@ $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_ref.csv
 npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category 78792721-2ef0-4b33-ab09-547700fcb1cd --verbose true > out.txt
 
 # Import complete catalog
-$ npx tsc && node dist/main.js import-catalog --input data/temp.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
-$ npx tsc && node dist/main.js import-catalog --input data/catalog_1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
+$ npx tsc && node dist/main.js import-catalog --input data/temp.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -ores -comp
+$ npx tsc && node dist/main.js import-catalog --input data/catalog_1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -ores -comp
 
 # Import only materials and components from catalog.json
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt

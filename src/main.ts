@@ -51,6 +51,7 @@ async function main() {
     .description('import catalog from a JSON file')
     .requiredOption('-i, --input <file>', 'path to the file to import (.json)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
+    .requiredOption('-t, --tenant <name>', 'The name of the tenant')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
     .option('-refmat, --refmaterials', 'import ref materials')
     .option('-mat, --materials', 'import materials')
@@ -62,7 +63,7 @@ async function main() {
     .option('-f, --folder', 'Import to folder')
     .option('-c, --category <id>', 'The id of the category')
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components)
+      importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components)
     })
 
     program
@@ -406,7 +407,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, verbose: boolean, diff: boolean, folder: boolean, category: string, importMat: boolean, importRefMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
+async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importMat: boolean, importRefMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -427,6 +428,7 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
   const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
@@ -435,7 +437,8 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
+    .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)).body
 
   const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
     .set('Authorization', authToken)
@@ -443,7 +446,8 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')).body
+    .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)).body
 
   const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
 
@@ -454,6 +458,7 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
 
   let lcaAttributeGroupId = null;
   for (const g of attributeGroups.body) {
@@ -464,11 +469,11 @@ async function importCatalog(input: string, url: string, auth: string, verbose: 
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, verbose, diff, folder, category)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, verbose, diff, folder, category)
+  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
 }
 
 function getProductTypeNameToCategoryTypeIdMap(types: any) {
@@ -491,17 +496,17 @@ function getProductTypeNameToCategoryTypeIdMap(types: any) {
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
     
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, verbose, diff, folder, category)
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
   }
 }
 
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
   const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
   var categoryId = category
@@ -521,6 +526,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
 
     if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == prodKey) {
       existingProdId = existingProds.body[0].id
@@ -534,6 +540,8 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
+
       if (existingProd && existingProd.body) {
         product = existingProd.body
         console.log(`${prodKey} Updating existing product`)
@@ -556,6 +564,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json') 
+      .set('x-vyzn-selected-tenant', tenant)
     product = null     
   }
 
@@ -575,6 +584,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
     product = newProd.body
   }
 
@@ -636,6 +646,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
 
   if (prod.type == "COMPONENT") {
     // fixme, replace hardcoded guids
@@ -647,6 +658,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
 
     await request.put(new URL(`/dbs-catalogue/v1/products/${id}/layerAttributes`, url).href)
       .send(["15737593-eb2d-4fdd-ab08-79e06a61490e", "2e043d3e-c8ec-4bca-9c9e-9e1bece51ece"])
@@ -656,6 +668,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
 
     const associationAttributes = (await request.get(new URL(`/dbs-catalogue/v1/associationAttributes`, url).href)
       .set('Authorization', authToken)
@@ -663,7 +676,8 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Accept', 'application/, json')
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
-      .set('Content-Type', 'application/json')).body
+      .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)).body
 
     const associationAttributesDict = {}
     for (const attr of associationAttributes) {
@@ -709,6 +723,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
 
       await request.patch(new URL(`/dbs-catalogue/v1/productLayers/${newLayer.body.id}`, url).href)
         .send({
@@ -723,6 +738,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
 
       layerIds[layerKey] = newLayer.body.id
     }
@@ -766,6 +782,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
 
       await request.patch(new URL(`/dbs-catalogue/v1/productSections/${newSection.body.id}`, url).href)
         .send({
@@ -780,6 +797,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
 
       sectionIds[sectionKey] = newSection.body.id
     }
@@ -798,6 +816,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
           .set('Accept-Encoding', 'gzip, deflate, br')
           .set('Accept-Language', 'en-US,en;q=0.5')
           .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
 
         if (existingProds && existingProds.body && existingProds.body.length && existingProds.body[0] && existingProds.body[0].id && existingProds.body[0].productKey == cell.materialKey) {
           materialId = existingProds.body[0].id
@@ -806,7 +825,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       }
 
       if (!materialId) {
-        console.error(`Could not find material: ${materialId}`)
+        console.error(`Could not find material: ${cell.materialKey}`)
         continue
       }
 
@@ -822,6 +841,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
     }
   }
 
@@ -838,6 +858,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                                 .set('Accept-Encoding', 'gzip, deflate, br')
                                 .set('Accept-Language','en-US,en;q=0.5')
                                 .set('Content-Type', 'application/json')
+                                .set('x-vyzn-selected-tenant', tenant)
         
         if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
         } else {
@@ -861,6 +882,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language','en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
 
       let matchingMaterialListLinkId = null
       for(const link of existingMaterialListLinks.body) {
@@ -883,6 +905,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language','en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
       } else {
         const materialListLink = await request.post(new URL(`/dbs-catalogue/v1/reference-material-links`, url).href)
         .send({
@@ -896,6 +919,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language','en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
       }
     }
   }

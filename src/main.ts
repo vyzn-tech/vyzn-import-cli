@@ -18,11 +18,12 @@ async function main() {
     .requiredOption('-i, --input <file>', 'path to the file to import (.csv)')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+    .requiredOption('-t, --tenant <name>', 'The name of the tenant')
     .requiredOption('-c, --category <id>', 'The id of the category into which to import')
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importProducts(o.input, o.url, o.auth, o.category, o.verbose, o.diff)
+      importProducts(o.input, o.url, o.auth, o.tenant, o.category, o.verbose, o.diff)
     })
 
   program.command('delete-products')
@@ -84,7 +85,7 @@ async function main() {
   program.parse()
 }
 
-async function importProducts(input: string, url: string, auth: string, category: string, verbose: boolean, diff: boolean) {
+async function importProducts(input: string, url: string, auth: string, tenant: string, category: string, verbose: boolean, diff: boolean) {
   // Validate commandline arguments
   await assertFile(input)
   await assertUrl(url)
@@ -203,7 +204,7 @@ async function importProducts(input: string, url: string, auth: string, category
     // identify individual target categories based on row
     if(row.categoryPath) {
       const categoryType = productTypeNameToCategoryTypeIdMap[row.Type]
-      categoryId= await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken)
+      categoryId= await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant)
     } 
 
     // Create new product
@@ -351,7 +352,7 @@ const createdPathsCache = {}
 const lcaProductsCache = {}
 const materialsCache = {}
 
-async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, typeId: string, url: string, auth: string) {
+async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, typeId: string, url: string, auth: string, tenant: string) {
   const categoryPathDelimiter = " > "
   const paths = categoryPath.split(categoryPathDelimiter)
 
@@ -395,7 +396,8 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
           .set('Accept', 'application/, json')
           .set('Accept-Encoding', 'gzip, deflate, br')
           .set('Accept-Language', 'en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')).body
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)).body
         lastCatId = newCat.id
         createdPathsCache[currentPathKey] = newCat
       }
@@ -510,7 +512,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
   const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
   var categoryId = category
-  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken) }
+  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant) }
 
   if (!categoryId)
     console.error(`missing category for product: ${prodKey}`)
@@ -928,6 +930,8 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 async function patchVersion(url: string, tenant:string, auth: string, projectId: string, buildingId: string, modelVersionId:string, input: string, verbose: boolean) {
   const matchByAttributeId = 'vyzn.reference.ElementID';
 
+  console.info(`test`)
+
   // Validate commandline arguments
   await assertFile(input)
   await assertUrl(url)
@@ -939,10 +943,11 @@ async function patchVersion(url: string, tenant:string, auth: string, projectId:
 
   // Fetch existing version including all attributes
   console.info(`Fetching project ${projectId} building ${buildingId} version ${modelVersionId} ...`)
-  const existingVersion = await request.get(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/all`, url).href)
+  //const existingVersion = await request.get(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/all`, url).href)
+  const existingVersion = await request.get(new URL(`/dbs-core/v1/versions/${modelVersionId}/data`, url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
-    .set('Accept', 'application/, json')
+    .set('Accept', 'application/json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language','en-US,en;q=0.5')
     .set('Content-Type', 'application/json')

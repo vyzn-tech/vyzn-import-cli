@@ -94,7 +94,7 @@ $ npx tsc && node dist/main.js import-catalog --input data/catalog-1.2.json --ur
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 # Import only components from catalog.json to a folder
-$ npx tsc && node dist/main.js import-catalog --input data/catalog-1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -comp -f -c 2cd8635d-a4c6-429e-9357-6cfdd6e42fa5 
+$ npx tsc && node dist/main.js import-catalog --input data/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -mat -refmat -c bcb9e84d-0a42-48bf-b7d5-254b0a4d9133
 
 # Patch a version *EXPERIMENTAL*
 $ npx tsc && node dist/main.js patch-version --input data/doors.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant test --project 81322c0d-ccf2-4f7e-9d42-f99a6b16cdce --building b71dacd1-78ab-4445-9474-8d9289892e1b --modelversion a0cd02e4-2c6e-474e-a34f-9c2f1af69556

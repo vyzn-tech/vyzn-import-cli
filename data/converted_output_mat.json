@@ -1,6 +1,6 @@
 {
   "fileFormatVersion": "1.1.0",
-  "exportTimestamp": "2025-01-20T08:47:39.592705Z",
+  "exportTimestamp": "2025-01-20T18:22:09.158897Z",
   "products": {
     "0201DC6B-C71B-44E9-86F0-32605995FD93": {
       "name": "Fichte-Tanne (Feuchte=15%)",
@@ -21,9 +21,9 @@
     "08E124C4-F37E-4ED1-9666-422F18B8B9F9": {
       "name": "Luftschicht",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "86D6EFE3-3EE3-40DD-A977-8054D9DDBE4A",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -101,9 +101,9 @@
     "4827336A-6259-49A3-9BC1-294D92A2D8D8": {
       "name": "Brettschichtholz, UF-gebunden, Trockenbereich",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "1095B95F-6036-45CA-B450-7A3A8E1897BB",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -133,9 +133,9 @@
     "4F6FCF6A-92D5-4C0D-9CCB-0BBA764B3CFA": {
       "name": "swissporBIKUTOP ECO EP5 S flam",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "91B78C9B-4DA4-44BB-9FF9-2C6EF23BF27A",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -293,9 +293,9 @@
     "89F426B1-21C9-4921-B492-F968E39031C2": {
       "name": "swissporBIKUVAP LL EVA flam",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "B71450AC-DD73-4D65-9886-F7E16035BD77",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -325,9 +325,9 @@
     "99920F8A-1D33-498A-B332-83DEE90A7B45": {
       "name": "swissporBIKUPLAN EGV3.5 v flam",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "0C5A7BA6-B74D-46D7-A2F1-5F7E95808E83",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -421,9 +421,9 @@
     "BD662FF4-EF00-4B38-9E18-7645EA6D1CE9": {
       "name": "Beton armiert mit 2% Stahl (SIA381/1)",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "D8D9FF12-ECE8-4614-BB25-179350ADC60C",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},
@@ -565,9 +565,9 @@
     "FED40AAE-0D2A-436D-9ED5-09D1137684C5": {
       "name": "swissporBIKUPLAN LL VARIO Stria",
       "type": "MATERIAL",
-      "status": "approved",
+      "status": "draft",
       "hatchingPattern": null,
-      "linkedReferenceMaterialKey": "B71450AC-DD73-4D65-9886-F7E16035BD77",
+      "linkedReferenceMaterialKey": null,
       "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
       "matrix": {
         "layers": {},

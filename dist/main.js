@@ -553,7 +553,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         "productKey": prodKey,
         "category": categoryId,
         "type": prod.type,
-        "status": "approved",
+        "status": prod.status,
         "description": null,
         "hatchingPattern": prod.hatchingPattern,
         "attributes": attributes

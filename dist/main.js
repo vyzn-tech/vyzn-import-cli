@@ -817,38 +817,47 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
 }
 async function patchVersion(url, tenant, auth, projectId, buildingId, modelVersionId, input, verbose) {
-    const matchByAttributeId = 'vyzn.reference.ElementID';
-    console.info(`test`);
+    var _a, _b;
+    const matchByAttributeId = 'vyzn.source.GUID';
+    const create_missing = false;
+    console.info(`started`);
     await assertFile(input);
     await assertUrl(url);
     await assertFile(auth);
+    console.info(`assert done`);
     const csv = await readCsv(input);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+    console.info(`reading done`);
     console.info(`Fetching project ${projectId} building ${buildingId} version ${modelVersionId} ...`);
+    console.info(new URL(`/dbs-core/v1/versions/${modelVersionId}/data`, url).href);
     const existingVersion = await request.get(new URL(`/dbs-core/v1/versions/${modelVersionId}/data`, url).href)
         .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
         .set('Accept', 'application/json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant);
-    console.info(`Done. ${existingVersion.body.length} elements found.`);
+        .set('Accept-Encoding', 'gzip, deflate, br, zstd')
+        .set('Accept-Language', 'en-US,en;q=0.9,de;q=0.8')
+        .set('Content-Type', 'application/json');
+    const values = (_b = (_a = existingVersion.body.elementAttributes) === null || _a === void 0 ? void 0 : _a[matchByAttributeId]) === null || _b === void 0 ? void 0 : _b.values;
+    const valueCount = values ? Object.keys(values).length : 0;
+    console.info(`Done. ${valueCount} elements found.`);
     console.info(`Transforming to target structure...`);
     let transformed = {};
     const idLookup = {};
-    existingVersion.body.forEach(item => {
-        item.elementAttributes.forEach(attr => {
-            const attributeName = attr.elementAttribute.name;
-            const id = item.id;
-            const value = attr.value;
-            if (!transformed[attributeName]) {
-                transformed[attributeName] = {};
-            }
-            transformed[attributeName][id] = `${value}`;
-            if (attributeName == matchByAttributeId)
-                idLookup[value] = id;
-        });
+    const elementAttributes = existingVersion.body.elementAttributes;
+    Object.entries(elementAttributes).forEach(([_, attribute]) => {
+        const attributeName = attribute.name;
+        const values = attribute.values;
+        if (values) {
+            Object.entries(values).forEach(([id, value]) => {
+                if (!transformed[attributeName]) {
+                    transformed[attributeName] = {};
+                }
+                transformed[attributeName][id] = `${value}`;
+                if (attributeName === matchByAttributeId) {
+                    idLookup[value] = id;
+                }
+            });
+        }
     });
     console.info(`Done.`);
     transformed = {};
@@ -861,34 +870,40 @@ async function patchVersion(url, tenant, auth, projectId, buildingId, modelVersi
         }
         let id = idLookup[key];
         if (!id) {
-            console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`);
-            const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
-                .send({
-                "name": `New ${key}`,
-                "area": 0,
-                "height": 0,
-                "floor": "",
-                "isHeated": false,
-                "minergieClassification": null,
-                "minergieEcoClassification": null,
-                "sia3802015Classification": null,
-                "sia4162003Classification": null,
-                "sia20402017Classification": null,
-                "sia38012016Classification": null,
-                "additionalElementAttributeValues": []
-            })
-                .set('Authorization', authToken)
-                .set('Content-Type', 'application/json')
-                .set('Accept', 'application/json')
-                .set('Accept-Encoding', 'gzip, deflate, br')
-                .set('Accept-Language', 'en-US,en;q=0.5')
-                .set('Content-Type', 'application/json')
-                .set('x-vyzn-selected-tenant', tenant);
-            id = createdElement.body.id;
-            idLookup[key] = id;
-            console.warn(`Element created with ID=${id}`);
+            if (create_missing) {
+                console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`);
+                const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
+                    .send({
+                    "name": `New ${key}`,
+                    "area": 0,
+                    "height": 0,
+                    "floor": "",
+                    "isHeated": false,
+                    "minergieClassification": null,
+                    "minergieEcoClassification": null,
+                    "sia3802015Classification": null,
+                    "sia4162003Classification": null,
+                    "sia20402017Classification": null,
+                    "sia38012016Classification": null,
+                    "additionalElementAttributeValues": []
+                })
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language', 'en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json')
+                    .set('x-vyzn-selected-tenant', tenant);
+                id = createdElement.body.id;
+                idLookup[key] = id;
+                console.warn(`Element created with ID=${id}`);
+            }
+            else {
+                console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, skipping it`);
+            }
         }
         else {
+            console.info(`Record with key '${matchByAttributeId}' = '${key}' found`);
         }
         for (const attributeName of Object.keys(row)) {
             let newValue = row[attributeName];

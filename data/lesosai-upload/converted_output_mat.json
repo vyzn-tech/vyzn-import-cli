@@ -1,0 +1,774 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-03-18T09:30:06.082301Z",
+  "products": {
+    "0232B859-34B8-495B-B04F-481FFE869073": {
+      "name": "swissporLAMBDA Roof",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.004.01 Polystyrol expandiert, SwissporEPS (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "25"
+      }
+    },
+    "05E13286-CF91-4B47-AF05-69EA9F58459F": {
+      "name": "Beton 1800 kg/m³ (CEN)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1800"
+      }
+    },
+    "0783FD57-F791-406A-8C1B-9F88136221CF": {
+      "name": "Eco Glasbau_2v",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null
+      }
+    },
+    "08E124C4-F37E-4ED1-9666-422F18B8B9F9": {
+      "name": "Luftschicht",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1.23"
+      }
+    },
+    "145AA7FB-AE7F-46B3-89E4-B093A4591891": {
+      "name": "Noppenbahn",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "13.002 Polyethylen (PE) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "71"
+      }
+    },
+    "164209BA-38EA-4349-B7E4-DC67F6A611E8": {
+      "name": "swissporBIKUVAP LL EVA",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.003 Dichtungsbahn bituminös (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1228"
+      }
+    },
+    "18E168FB-4D69-4A37-8826-4B7E281ACAEA": {
+      "name": "Beton 2200 kg/m³ (CEN)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2200"
+      }
+    },
+    "2AC29154-5D92-4F89-A9B9-6BEADA7FBBE0": {
+      "name": "PB F 030, 60 x 125",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.001.01 Glaswolle, Isover, phenolbasiertes Bindemittel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "38"
+      }
+    },
+    "3968FC15-3A7B-4DDB-B591-ED2EC59AC860": {
+      "name": "Terrabloc Traditionell L",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1900"
+      }
+    },
+    "41C519D0-59CE-40F0-823A-FFDE8576E936": {
+      "name": "Innenputz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.001 Gips-/Weissputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1400"
+      }
+    },
+    "4F599753-ECC6-40E2-BD32-8EC7347F129E": {
+      "name": "Dichtungsbahn Polyoleefin",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.005 Dichtungsbahn Polyolefin (FPO) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1000"
+      }
+    },
+    "503FB417-4E0B-4088-8ED3-863A04BB931C": {
+      "name": "Zementunterlagsboden",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.006 Unterlagsboden Zement, 85 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1850"
+      }
+    },
+    "540D84E8-298A-46A3-ADE9-2A3E426B3ECE": {
+      "name": "Klebeparkett",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "11.019 Parkett 3-Schicht werkversiegelt, 15 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "900"
+      }
+    },
+    "54286269-2E0F-4165-BCDD-8A623300DDCD": {
+      "name": "Beton armiert 2% Stahl (CEN)",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2400"
+      }
+    },
+    "54DEDCEA-5EA9-48F5-AF8F-53DCAD382783": {
+      "name": "Sand und Kies für Flachdach",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "03.011 Kies gebrochen 1 (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1900"
+      }
+    },
+    "56874834-BE51-4466-90C2-A6A1D4A5737D": {
+      "name": "swissporBIKUPLAN ECO LL VARIO v",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.003.11 Bituminöse Dichtungsbahn, swissporBIKUPLAN ECO (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1171"
+      }
+    },
+    "6366F54A-BB04-44CB-99A6-3B5222DDEE49": {
+      "name": "swissporBIKUTOP PRO AQUA",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.003 Dichtungsbahn bituminös (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1180"
+      }
+    },
+    "7082E676-9A57-4D02-8760-0E36E38DBD7D": {
+      "name": "Beton 2400 kg/m³ (CEN)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2400"
+      }
+    },
+    "7817C242-F62A-4D36-B04C-F13379F69DD5": {
+      "name": "FOAMGLAS® BOARD T3+",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.007 Schaumglas (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "100"
+      }
+    },
+    "7A1C2867-39E8-4ACC-9387-8068AA887DCB": {
+      "name": "Kunststein",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "11.012 Kunststeinplatte zementgebunden, 10 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1750"
+      }
+    },
+    "7C99C26B-FFBE-4776-A9F8-FDE5688984C2": {
+      "name": "Unitex SW Holzwolle mineralisiert",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "07.005 Holzwolle-Leichtbauplatte, zementgebunden (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "425"
+      }
+    },
+    "87FE445F-C2A9-4E14-841B-D619E183119F": {
+      "name": " FOAMGLAS® T4+",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.007 Schaumglas (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "115"
+      }
+    },
+    "8A802C27-0B25-49A8-861D-C6F421A04348": {
+      "name": "Gipskartonplatte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "03.008 Gipskartonplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "850"
+      }
+    },
+    "8ABE4304-3249-46FC-9E42-3FBEC0BF9AE1": {
+      "name": "PS 81",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.001.01 Glaswolle, Isover, phenolbasiertes Bindemittel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "80"
+      }
+    },
+    "8DCBBE3E-3FD8-408A-B4CD-3EC3651924F4": {
+      "name": "Flach Glas, beschichtet",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "03.005 Flachglas beschichtet (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2500"
+      }
+    },
+    "8E22DB3D-4566-412A-8AAF-461E6C696AFE": {
+      "name": "Glaswolle 22kg/m3",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.001 Glaswolle (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "22"
+      }
+    },
+    "943D2D89-0666-4F2A-BDBF-FFBFB03CC023": {
+      "name": "FOAMGLAS® T3+",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.007 Schaumglas (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "100"
+      }
+    },
+    "97BD2A8E-2C4F-40D7-83E9-6E7C538A7331": {
+      "name": "Mauerwerk Backstein",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1070"
+      }
+    },
+    "9CEE4531-3EDE-4722-8E47-ECC8DD0D7BDD": {
+      "name": "Aluminiumprofil, blank",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "06.002 Aluminiumprofil, blank (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2690"
+      }
+    },
+    "A5114F2E-D07C-4EA6-8A39-479DB707992C": {
+      "name": "Erdreich Sand und Kies",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "03.013 Sand 1 (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2000"
+      }
+    },
+    "A7495AF2-6579-4D6D-A398-37E7CA2A6370": {
+      "name": "THERMO-PLUS",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "50"
+      }
+    },
+    "A9D2D749-AB4D-40A0-959F-EEC5DCC5253A": {
+      "name": "Keramikfliese",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "11.008 Keramik-/Steinzeugplatte, 9 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1900"
+      }
+    },
+    "B06BFE95-FBAB-4BD5-9EEB-FB31C09F016D": {
+      "name": "Tyvek  Solid, Winddichtung Sd 0.03 m",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.007 Polyethylenfolie (PE) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "303.7"
+      }
+    },
+    "B2988C9C-824D-4576-B0D7-C8DD36521071": {
+      "name": "Bitumenanstrich (1 mm)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "09.003 Dichtungsbahn bituminös (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1200"
+      }
+    },
+    "B3A1CD78-94EB-4E1F-9E15-73450F272D72": {
+      "name": "Enkadrain ECO",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "15.004 Polyester (UP) glasfaserverstärkt (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "36.25"
+      }
+    },
+    "B44CD398-D0A2-4A91-85C1-53DD24CFFF77": {
+      "name": "PS 81_2",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.001.01 Glaswolle, Isover, phenolbasiertes Bindemittel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "80"
+      }
+    },
+    "B55C9EB7-BFF7-445B-BE00-60A35428CDFC": {
+      "name": "Holzspan-Zement CEN",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "07.005 Holzwolle-Leichtbauplatte, zementgebunden (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1200"
+      }
+    },
+    "C3F07973-F107-4B5B-A6E2-2CE9DA1839FD": {
+      "name": "Polyester glasfaserverstärkt",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "15.004 Polyester (UP) glasfaserverstärkt (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1800"
+      }
+    },
+    "D8EC92E6-AFC2-4324-9488-B0B1084EA7BA": {
+      "name": "Stahlblech, verzinkt",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "06.011 Stahlblech, verzinkt (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "7850"
+      }
+    },
+    "D950C972-F5EB-488A-AE96-4BB938D161A1": {
+      "name": "Glas CEN",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "03.006 Flachglas unbeschichtet (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2500"
+      }
+    },
+    "DBB07CA1-FE47-4278-8624-76282B35DEF5": {
+      "name": "Gussasphalt",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "11.004 Gussasphalt, 27.5 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2150"
+      }
+    },
+    "E1852187-A95D-432E-9201-C185016B607B": {
+      "name": "Beton armiert 1.5% Stahl (CEN)",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2350"
+      }
+    },
+    "E29190EC-937A-405B-936A-7DE7B8C6256C": {
+      "name": "Beton armiert 2% Stahl (CEN)_2",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2400"
+      }
+    },
+    "E84DCE36-A2BB-4AC3-BA90-78B86D85C6D2": {
+      "name": "Anhydritunterlagsboden",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2000"
+      }
+    },
+    "E95C2CD7-2B8C-4A60-9801-ABC4F9BA3ADE": {
+      "name": "Lehmputz KBOB 2016",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1800"
+      }
+    },
+    "EBE872B7-F769-41C5-9A55-6CDA5868891D": {
+      "name": "Zementestrich (CEN)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "04.006 Unterlagsboden Zement, 85 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2000"
+      }
+    },
+    "EC495D1E-295B-4050-B771-ACEEC2248F10": {
+      "name": "Flumroc-Dämmplatte 1",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "38"
+      }
+    },
+    "F8E4A281-450D-41E0-A20F-FB3FFE8CC07B": {
+      "name": "Unitex SW Mineralwollmatte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": "10.008 Steinwolle (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "90"
+      }
+    }
+  }
+}

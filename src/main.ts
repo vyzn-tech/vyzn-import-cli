@@ -409,7 +409,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importMat: boolean, importRefMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
+async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments

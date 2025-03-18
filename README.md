@@ -96,6 +96,19 @@ $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --
 # Import only components from catalog.json to a folder
 $ npx tsc && node dist/main.js import-catalog --input data/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -mat -refmat -c bcb9e84d-0a42-48bf-b7d5-254b0a4d9133
 
+
+
+
+# Import lesolai materials
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant raumanzug -mat -f -c be3b4074-f721-4b12-b6f7-e6e08e6fcbc4
+
+# Import lesolai components
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant raumanzug -comp -f -c d19b8078-f1f8-471f-bf06-4b92ab1dee26
+
+
+
+
+
 # Patch a version *EXPERIMENTAL*
 $ npx tsc && node dist/main.js patch-version --input data/pmj.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung --project 3e1c3974-e6e2-4716-bc5a-0a2228cc72fd --building e00e98f9-d307-4b6f-b253-b11eed986eef --modelversion 35169502-6a31-452a-80e6-e85f78f3c3c7
 

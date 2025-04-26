@@ -103,7 +103,6 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')).body;
-    const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types);
     for (const row of csv) {
         let product = null;
         try {
@@ -169,17 +168,11 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
             newSubType = null;
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
-        let categoryId = category;
-        if (row.categoryPath) {
-            const categoryType = productTypeNameToCategoryTypeIdMap[row.Type];
-            categoryId = await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant);
-        }
         if (!product) {
             const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
                 .send({
                 "name": row.Name,
                 "productKey": row.ProductKey,
-                "category": categoryId,
                 "type": newType,
                 "subType": newSubType,
             })
@@ -221,7 +214,6 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
             .send({
             "name": row.Name,
             "productKey": row.ProductKey,
-            "category": categoryId,
             "type": newType,
             "subType": newSubType,
             "status": "approved",
@@ -297,7 +289,7 @@ async function deleteProducts(url, auth, category, verbose) {
 const createdPathsCache = {};
 const lcaProductsCache = {};
 const materialsCache = {};
-async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, url, auth, tenant) {
+async function createCategoryPath(categoryPath, catalogueId, hierarchy, url, auth, tenant) {
     const categoryPathDelimiter = " > ";
     const paths = categoryPath.split(categoryPathDelimiter);
     const createdPathsCacheKey = paths.join(';');
@@ -331,7 +323,6 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, typeId, 
                     "catalogue": catalogueId,
                     "name": paths[i],
                     "parent": (currentNode != null ? currentNode.id : lastCatId),
-                    "type": typeId,
                 })
                     .set('Authorization', auth)
                     .set('Content-Type', 'application/json')
@@ -382,7 +373,6 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant)).body;
-    const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types);
     const attributeGroups = await request.get(new URL('/dbs-catalogue/attributeGroups', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
@@ -401,44 +391,30 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
     if (importRefMat)
-        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
     if (importMat)
-        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
     if (importBuildTech)
-        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
     if (importOtRes)
-        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
     if (importComp)
-        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
-}
-function getProductTypeNameToCategoryTypeIdMap(types) {
-    const typesDict = {};
-    for (const t of types)
-        typesDict[t.name] = t;
-    const productTypeNameToCategoryTypeIdMap = {
-        "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
-        "MATERIAL": typesDict["MATERIALIEN"].id,
-        "COMPONENT": typesDict["BAUTEILE"].id,
-        "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
-        "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
-    };
-    return productTypeNameToCategoryTypeIdMap;
+        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
 }
 let anchorFound = false;
-async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category) {
+async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category) {
     for (const [key, value] of Object.entries(products)) {
         let prod = value;
         if (prod.type != type)
             continue;
-        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category);
+        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category);
     }
 }
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category) {
     const migrateAttributes = false;
-    const categoryType = productTypeNameToCategoryTypeIdMap[prod.type];
     var categoryId = category;
     if (!folder) {
-        categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant);
+        categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant);
     }
     if (!categoryId)
         console.error(`missing category for product: ${prodKey}`);

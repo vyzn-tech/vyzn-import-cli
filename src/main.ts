@@ -121,8 +121,6 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
 
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
-
   // Process CSV line by line
   for (const row of csv) {
     // Get existing product
@@ -199,21 +197,12 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     if (newType == "MATERIAL_LIST")
       newType = "REFERENCE_MATERIAL"
 
-    let categoryId = category
-
-    // identify individual target categories based on row
-    if(row.categoryPath) {
-      const categoryType = productTypeNameToCategoryTypeIdMap[row.Type]
-      categoryId= await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant)
-    } 
-
     // Create new product
     if (!product) {
       const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
         .send({
           "name": row.Name,
           "productKey": row.ProductKey,
-          "category": categoryId,
           "type": newType,
           "subType": newSubType,
         })
@@ -263,7 +252,6 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
       .send({
         "name": row.Name,
         "productKey": row.ProductKey,
-        "category": categoryId,
         "type": newType,
         "subType": newSubType,
         "status": "approved",
@@ -352,7 +340,7 @@ const createdPathsCache = {}
 const lcaProductsCache = {}
 const materialsCache = {}
 
-async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, typeId: string, url: string, auth: string, tenant: string) {
+async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, url: string, auth: string, tenant: string) {
   const categoryPathDelimiter = " > "
   const paths = categoryPath.split(categoryPathDelimiter)
 
@@ -389,7 +377,6 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
             "catalogue": catalogueId,
             "name": paths[i],
             "parent": (currentNode != null ? currentNode.id : lastCatId),
-            "type": typeId,
           })
           .set('Authorization', auth)
           .set('Content-Type', 'application/json')
@@ -451,8 +438,6 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)).body
 
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
-
   const attributeGroups = await request.get(new URL('/dbs-catalogue/attributeGroups', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
@@ -471,48 +456,30 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
 }
-
-function getProductTypeNameToCategoryTypeIdMap(types: any) {
-  const typesDict = {}
-  for (const t of types)
-    typesDict[(t as any).name] = t
-
-  const productTypeNameToCategoryTypeIdMap = {
-
-    "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
-    "MATERIAL": typesDict["MATERIALIEN"].id,
-    "COMPONENT": typesDict["BAUTEILE"].id,
-    "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
-    "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
-
-  }
-
-  return productTypeNameToCategoryTypeIdMap
-}  
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
     
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
   }
 }
 
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
-  const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
+
   var categoryId = category
-  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant) }
+  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant) }
 
   if (!categoryId)
     console.error(`missing category for product: ${prodKey}`)

@@ -100,11 +100,11 @@ $ npx tsc && node dist/main.js import-catalog --input data/converted_output_mat.
 
 
 # Import lesolai materials
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant raumanzug -mat -f -c be3b4074-f721-4b12-b6f7-e6e08e6fcbc4
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant demo -mat -f -c 90adbe52-5827-4e3d-8517-7378023dcbc6
+
 
 # Import lesolai components
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant raumanzug -comp -f -c d19b8078-f1f8-471f-bf06-4b92ab1dee26
-
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -comp -f -c 749959d8-bf5b-441c-9913-9b9da67f7090
 
 
 

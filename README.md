@@ -94,10 +94,23 @@ $ npx tsc && node dist/main.js import-catalog --input data/catalog-1.2.json --ur
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 # Import only components from catalog.json to a folder
-$ npx tsc && node dist/main.js import-catalog --input data/catalog-1.1.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -comp -f -c 2cd8635d-a4c6-429e-9357-6cfdd6e42fa5 
+$ npx tsc && node dist/main.js import-catalog --input data/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -mat -refmat -c bcb9e84d-0a42-48bf-b7d5-254b0a4d9133
+
+
+
+
+# Import lesolai materials
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant demo -mat -f -c 90adbe52-5827-4e3d-8517-7378023dcbc6
+
+
+# Import lesolai components
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -comp -f -c 749959d8-bf5b-441c-9913-9b9da67f7090
+
+
+
 
 # Patch a version *EXPERIMENTAL*
-$ npx tsc && node dist/main.js patch-version --input data/doors.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant test --project 81322c0d-ccf2-4f7e-9d42-f99a6b16cdce --building b71dacd1-78ab-4445-9474-8d9289892e1b --modelversion a0cd02e4-2c6e-474e-a34f-9c2f1af69556
+$ npx tsc && node dist/main.js patch-version --input data/pmj.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung --project 3e1c3974-e6e2-4716-bc5a-0a2228cc72fd --building e00e98f9-d307-4b6f-b253-b11eed986eef --modelversion 35169502-6a31-452a-80e6-e85f78f3c3c7
 
 ß
 ```

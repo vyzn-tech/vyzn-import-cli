@@ -96,7 +96,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -105,7 +105,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     .set('Content-Type', 'application/json')
   const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
-  const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
+  const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -113,15 +113,13 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
 
-  const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
+  const types = (await request.get(new URL('/dbs-catalogue/types', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')).body
-
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
 
   // Process CSV line by line
   for (const row of csv) {
@@ -130,7 +128,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     try {
       let existingProdId = null
       // FIXME type
-      let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?query=${encodeURIComponent(row.ProductKey)}&limit=10`, url).href)
+      let existingProds = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?query=${encodeURIComponent(row.ProductKey)}&limit=10`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -143,7 +141,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
       }
 
       if (existingProdId) {  
-        const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
+        const existingProd = await request.get(new URL('/dbs-catalogue/products/' + existingProdId, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
           .set('Accept', 'application/, json')
@@ -199,21 +197,12 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     if (newType == "MATERIAL_LIST")
       newType = "REFERENCE_MATERIAL"
 
-    let categoryId = category
-
-    // identify individual target categories based on row
-    if(row.categoryPath) {
-      const categoryType = productTypeNameToCategoryTypeIdMap[row.Type]
-      categoryId= await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant)
-    } 
-
     // Create new product
     if (!product) {
-      const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
+      const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
         .send({
           "name": row.Name,
           "productKey": row.ProductKey,
-          "category": categoryId,
           "type": newType,
           "subType": newSubType,
         })
@@ -259,11 +248,10 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     if (verbose)
       console.debug(JSON.stringify(attributes))
 
-    const updatedProduct = await request.put(new URL('/dbs-catalogue/v1/products/' + id, url).href)
+    const updatedProduct = await request.put(new URL('/dbs-catalogue/products/' + id, url).href)
       .send({
         "name": row.Name,
         "productKey": row.ProductKey,
-        "category": categoryId,
         "type": newType,
         "subType": newSubType,
         "status": "approved",
@@ -290,7 +278,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
 
 
   // Get current catalogue
-  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/v1/catalogues/selected', url).href)
+  const selectedCatalogue = await request.get(new URL('/dbs-catalogue/catalogues/selected', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -304,7 +292,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
   for (const categoryToDelete of childCategoriesRecursive) {
     if (verbose) console.log(`Deleting category '${categoryToDelete.name}'`)
 
-    const productsInCategory = await request.get(new URL(`/dbs-catalogue/v1/categories/${categoryToDelete.id}/products`, url).href)
+    const productsInCategory = await request.get(new URL(`/dbs-catalogue/categories/${categoryToDelete.id}/products`, url).href)
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/, json')
@@ -320,7 +308,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
       }
 
       try {
-        await request.del(new URL(`/dbs-catalogue/v1/products/${product.id}`, url).href)
+        await request.del(new URL(`/dbs-catalogue/products/${product.id}`, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
           .set('Accept', 'application/, json')
@@ -335,7 +323,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
     }
 
     try {
-      await request.del(new URL(`/dbs-catalogue/v1/categories/${categoryToDelete.id}`, url).href)
+      await request.del(new URL(`/dbs-catalogue/categories/${categoryToDelete.id}`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -352,7 +340,7 @@ const createdPathsCache = {}
 const lcaProductsCache = {}
 const materialsCache = {}
 
-async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, typeId: string, url: string, auth: string, tenant: string) {
+async function createCategoryPath(categoryPath: string, catalogueId: string, hierarchy: any, url: string, auth: string, tenant: string) {
   const categoryPathDelimiter = " > "
   const paths = categoryPath.split(categoryPathDelimiter)
 
@@ -384,12 +372,11 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
         lastCatId = createdPathsCache[currentPathKey].id
       } else {
         //console.error("creating path:" + paths[i])
-        const newCat = (await request.post(new URL('/dbs-catalogue/v1/categories', url).href)
+        const newCat = (await request.post(new URL('/dbs-catalogue/categories', url).href)
           .send({
             "catalogue": catalogueId,
             "name": paths[i],
             "parent": (currentNode != null ? currentNode.id : lastCatId),
-            "type": typeId,
           })
           .set('Authorization', auth)
           .set('Content-Type', 'application/json')
@@ -409,7 +396,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importMat: boolean, importRefMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
+async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -423,7 +410,7 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
 
   // Get current catalogue
-  const catalogues = await request.get(new URL('/dbs-catalogue/v1/catalogues', url).href)
+  const catalogues = await request.get(new URL('/dbs-catalogue/catalogues', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -433,7 +420,7 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('x-vyzn-selected-tenant', tenant)
   const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
-  const hierarchy = (await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}`, url).href)
+  const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -442,7 +429,7 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)).body
 
-  const types = (await request.get(new URL('/dbs-catalogue/v1/types', url).href)
+  const types = (await request.get(new URL('/dbs-catalogue/types', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -451,9 +438,7 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)).body
 
-  const productTypeNameToCategoryTypeIdMap = getProductTypeNameToCategoryTypeIdMap(types)
-
-  const attributeGroups = await request.get(new URL('/dbs-catalogue/v1/attributeGroups', url).href)
+  const attributeGroups = await request.get(new URL('/dbs-catalogue/attributeGroups', url).href)
     .set('Authorization', authToken)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/, json')
@@ -471,48 +456,30 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
+  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
 }
-
-function getProductTypeNameToCategoryTypeIdMap(types: any) {
-  const typesDict = {}
-  for (const t of types)
-    typesDict[(t as any).name] = t
-
-  const productTypeNameToCategoryTypeIdMap = {
-
-    "REFERENCE_MATERIAL": typesDict["MATERIALIEN"].id,
-    "MATERIAL": typesDict["MATERIALIEN"].id,
-    "COMPONENT": typesDict["BAUTEILE"].id,
-    "BUILDING_TECHNOLOGY": typesDict["BUILDING_TECHNOLOGY"].id,
-    "OTHER_RESOURCE": typesDict["OTHER_RESOURCE"].id,
-
-  }
-
-  return productTypeNameToCategoryTypeIdMap
-}  
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
     
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
   }
 }
 
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, productTypeNameToCategoryTypeIdMap, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
-  const categoryType = productTypeNameToCategoryTypeIdMap[prod.type]
+
   var categoryId = category
-  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, categoryType, url, authToken, tenant) }
+  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant) }
 
   if (!categoryId)
     console.error(`missing category for product: ${prodKey}`)
@@ -521,7 +488,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   let product = null
   try {
     let existingProdId = null
-    let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
+    let existingProds = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=${prod.type}&query=${encodeURIComponent(prodKey)}&limit=10`, url).href)
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/, json')
@@ -535,7 +502,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
 
     if (existingProdId) {
-      const existingProd = await request.get(new URL('/dbs-catalogue/v1/products/' + existingProdId, url).href)
+      const existingProd = await request.get(new URL('/dbs-catalogue/products/' + existingProdId, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -553,7 +520,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   if(product && prod.type == "COMPONENT") {
     console.log(`${prodKey} Deleting existing product since it is a component`)
-    await request.del(new URL('/dbs-catalogue/v1/products/' + product.id, url).href)
+    await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
       .send({
         "name": prod.name,
         "productKey": prodKey,
@@ -573,7 +540,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   // Create new product
   if (!product) {
     console.log(`${prodKey} Creating new product`)
-    const newProd = await request.post(new URL('/dbs-catalogue/v1/products', url).href)
+    const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
       .send({
         "name": prod.name,
         "productKey": prodKey,
@@ -592,8 +559,10 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   const id = product.id
   const attributeIds = {};
+  const attributeAttributeIds = {};
   for (const attr of product.attributes) {
     attributeIds[attr.name] = attr.id
+    attributeAttributeIds[attr.name] = attr.attributeId;
   }
 
   const attributes = []
@@ -628,16 +597,18 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
     attributes.push({
       id: attributeIds[key],
+      attributeId: attributeAttributeIds[key],
+      productId: product.id,
       value: attrValue
     })
   }
-  const updatedProduct = await request.put(new URL('/dbs-catalogue/v1/products/' + id, url).href)
+  const updatedProduct = await request.put(new URL('/dbs-catalogue/products/' + id, url).href)
     .send({
       "name": prod.name,
       "productKey": prodKey,
       "category": categoryId,
       "type": prod.type,
-      "status": "approved",
+      "status": prod.status,
       "description": null,
       "hatchingPattern": prod.hatchingPattern,
       "attributes": attributes
@@ -652,7 +623,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   if (prod.type == "COMPONENT") {
     // fixme, replace hardcoded guids
-    await request.put(new URL(`/dbs-catalogue/v1/products/${id}/sectionAttributes`, url).href)
+    await request.put(new URL(`/dbs-catalogue/products/${id}/sectionAttributes`, url).href)
       .send(["644890f2-7c50-475c-91a0-103d44d6583c"])
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
@@ -662,7 +633,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Content-Type', 'application/json')
       .set('x-vyzn-selected-tenant', tenant)
 
-    await request.put(new URL(`/dbs-catalogue/v1/products/${id}/layerAttributes`, url).href)
+    await request.put(new URL(`/dbs-catalogue/products/${id}/layerAttributes`, url).href)
       .send(["15737593-eb2d-4fdd-ab08-79e06a61490e", "2e043d3e-c8ec-4bca-9c9e-9e1bece51ece"])
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
@@ -672,7 +643,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       .set('Content-Type', 'application/json')
       .set('x-vyzn-selected-tenant', tenant)
 
-    const associationAttributes = (await request.get(new URL(`/dbs-catalogue/v1/associationAttributes`, url).href)
+    const associationAttributes = (await request.get(new URL(`/dbs-catalogue/associationAttributes`, url).href)
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/, json')
@@ -714,7 +685,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         })
       }
 
-      const newLayer = await request.post(new URL(`/dbs-catalogue/v1/productLayers`, url).href)
+      const newLayer = await request.post(new URL(`/dbs-catalogue/productLayers`, url).href)
         .send({
           "parent": `${id}`,
           "position": parseInt(layerKey)
@@ -727,7 +698,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant)
 
-      await request.patch(new URL(`/dbs-catalogue/v1/productLayers/${newLayer.body.id}`, url).href)
+      await request.patch(new URL(`/dbs-catalogue/productLayers/${newLayer.body.id}`, url).href)
         .send({
           "id": newLayer.body.id,
           "parent": `${id}`,
@@ -773,7 +744,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         })
       }
 
-      const newSection = await request.post(new URL(`/dbs-catalogue/v1/productSections`, url).href)
+      const newSection = await request.post(new URL(`/dbs-catalogue/productSections`, url).href)
         .send({
           "parent": `${id}`,
           "position": parseInt(sectionKey)
@@ -786,7 +757,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant)
 
-      await request.patch(new URL(`/dbs-catalogue/v1/productSections/${newSection.body.id}`, url).href)
+      await request.patch(new URL(`/dbs-catalogue/productSections/${newSection.body.id}`, url).href)
         .send({
           "id": newSection.body.id,
           "parent": `${id}`,
@@ -811,7 +782,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       if(materialsCache[cell.materialKey]) {
         materialId = materialsCache[cell.materialKey]
       } else {
-        let existingProds = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${encodeURIComponent(cell.materialKey)}&limit=10`, url).href)
+        let existingProds = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${encodeURIComponent(cell.materialKey)}&limit=10`, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
           .set('Accept', 'application/, json')
@@ -831,7 +802,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         continue
       }
 
-      await request.post(new URL(`/dbs-catalogue/v1/productCellLink`, url).href)
+      await request.post(new URL(`/dbs-catalogue/productCellLink`, url).href)
         .send({
           "layer": layerIds[""+cell.layerPosition],
           "section": sectionIds[""+cell.sectionPosition],
@@ -853,7 +824,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     const lcaCode = prod.linkedReferenceMaterialKey
     if(lcaCode) {
       if(!lcaProductsCache[lcaCode]) {
-        const lcaProducts = await request.get(new URL(`/dbs-catalogue/v1/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+        const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
                                 .set('Authorization', authToken)
                                 .set('Content-Type', 'application/json')
                                 .set('Accept', 'application/, json')
@@ -877,7 +848,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
 
     if(lcaProductId) {
-      const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/v1/reference-material-links/materials/${product.id}`, url).href)
+      const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -895,7 +866,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       }
 
       if(matchingMaterialListLinkId) {
-        const materialListLink = await request.put(new URL(`/dbs-catalogue/v1/reference-material-links/${matchingMaterialListLinkId}`, url).href)
+        const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
         .send({
             "materialId": id,
             "referenceMaterialId": lcaProductId,
@@ -909,7 +880,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant)
       } else {
-        const materialListLink = await request.post(new URL(`/dbs-catalogue/v1/reference-material-links`, url).href)
+        const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
         .send({
             "materialId": id,
             "referenceMaterialId": lcaProductId,
@@ -928,51 +899,68 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 }
 
 async function patchVersion(url: string, tenant:string, auth: string, projectId: string, buildingId: string, modelVersionId:string, input: string, verbose: boolean) {
-  const matchByAttributeId = 'vyzn.reference.ElementID';
+  const matchByAttributeId = 'vyzn.source.GUID'; // attribute used for the matching
+  const create_missing = false; // NOT WORKING should missing entries be generated? 
 
-  console.info(`test`)
+  console.info(`started`)
 
   // Validate commandline arguments
   await assertFile(input)
   await assertUrl(url)
   await assertFile(auth)
   
+  console.info(`assert done`)
+
   // Read files
   const csv = await readCsv(input)
   const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
+  console.info(`reading done`)
 
   // Fetch existing version including all attributes
   console.info(`Fetching project ${projectId} building ${buildingId} version ${modelVersionId} ...`)
   //const existingVersion = await request.get(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/all`, url).href)
+  console.info(new URL(`/dbs-core/v1/versions/${modelVersionId}/data`, url).href)
   const existingVersion = await request.get(new URL(`/dbs-core/v1/versions/${modelVersionId}/data`, url).href)
     .set('Authorization', authToken)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language','en-US,en;q=0.5')
-    .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)
-  console.info(`Done. ${existingVersion.body.length} elements found.`)
+    .set('Accept', 'application/json')
+    .set('Accept-Encoding', 'gzip, deflate, br, zstd')
+    .set('Accept-Language','en-US,en;q=0.9,de;q=0.8')
+    .set('Content-Type', 'application/json')
+
     
+
+const values = existingVersion.body.elementAttributes?.[matchByAttributeId]?.values;
+const valueCount = values ? Object.keys(values).length : 0;
+console.info(`Done. ${valueCount} elements found.`)
+
+
   // Transform version to simplified target structure and build lookups for IDs and Keys
   console.info(`Transforming to target structure...`)
   let transformed = {};
   const idLookup = {};
-  existingVersion.body.forEach(item => {
-      item.elementAttributes.forEach(attr => {
-          const attributeName = attr.elementAttribute.name;
-          const id = item.id;
-          const value = attr.value;
+  const elementAttributes = existingVersion.body.elementAttributes as Record<string, { 
+      name: string; 
+      values: Record<string, string>; 
+  }>;
 
-          if (!transformed[attributeName]) {
-              transformed[attributeName] = {};
-          }
+  Object.entries(elementAttributes).forEach(([_, attribute]) => {
+      const attributeName = attribute.name;
+      const values = attribute.values;
 
-          transformed[attributeName][id] = `${value}`;
+      if (values) {
+          Object.entries(values).forEach(([id, value]) => {
+              if (!transformed[attributeName]) {
+                  transformed[attributeName] = {};
+              }
 
-          if(attributeName == matchByAttributeId)
-            idLookup[value] = id
-      });
+              transformed[attributeName][id] = `${value}`;
+
+              if (attributeName === matchByAttributeId) {
+                  idLookup[value] = id;
+              }
+          });
+      }
   });
   console.info(`Done.`)
 
@@ -991,37 +979,41 @@ async function patchVersion(url: string, tenant:string, auth: string, projectId:
     let id = idLookup[key]
 
     if(!id) {
-      console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`)
-      const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
-        .send(
-          {
-            "name": `New ${key}`,
-            "area": 0,
-            "height": 0,
-            "floor": "",
-            "isHeated": false,
-            "minergieClassification": null,
-            "minergieEcoClassification": null,
-            "sia3802015Classification" : null,
-            "sia4162003Classification" : null,
-            "sia20402017Classification" : null,
-            "sia38012016Classification" : null,
-            "additionalElementAttributeValues": []
-          }
-        )
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-      
-        id = createdElement.body.id;
-        idLookup[key] = id;
-        console.warn(`Element created with ID=${id}`)
+
+      if(create_missing) {
+        // TO BE FIXED
+        console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`)
+        const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
+          .send(
+            {
+              "name": `New ${key}`,
+              "area": 0,
+              "height": 0,
+              "floor": "",
+              "isHeated": false,
+              "minergieClassification": null,
+              "minergieEcoClassification": null,
+              "sia3802015Classification" : null,
+              "sia4162003Classification" : null,
+              "sia20402017Classification" : null,
+              "sia38012016Classification" : null,
+              "additionalElementAttributeValues": []
+            }
+          )
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        
+          id = createdElement.body.id;
+          idLookup[key] = id;
+          console.warn(`Element created with ID=${id}`)
+        } else { console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, skipping it`) }
     } else  {
-      //console.info(`Record with key '${matchByAttributeId}' = '${key}' found`)
+      console.info(`Record with key '${matchByAttributeId}' = '${key}' found`)
     }
  
     for (const attributeName of Object.keys(row)) {

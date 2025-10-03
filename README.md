@@ -43,6 +43,7 @@ Options:
 Commands:
   import-products [options]  import products from a CSV file
   delete-products [options]  delete products of a given category
+  convert-oekobaudat [options]  convert oekobaudat CSV to JSON structure
   help [command]             display help for command
 
 
@@ -68,6 +69,18 @@ Options:
   -u, --url <url>      The URL of the vyzn API
   -a, --auth <file>    The file containing the auth token
   -c, --category <id>  The id of the category
+  -v, --verbose        More detailed console output
+  -h, --help           display help for command
+
+
+$ node dist/main.js convert-oekobaudat --help
+Usage: vyzn-import-cli convert-oekobaudat [options]
+
+convert oekobaudat CSV to JSON structure
+
+Options:
+  -i, --input <file>   Path to the oekobaudat CSV file
+  -o, --output <file>  Path to the output JSON file
   -v, --verbose        More detailed console output
   -h, --help           display help for command
 ```
@@ -111,8 +124,9 @@ $ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/conver
 # Import lesolai components
 $ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant fanzun -comp -f -c fa7e5058-72df-4a64-86e3-5c2e2a2a02e9
 
-
-
+# Convert oekobaudat to JSON and run import
+$ npx tsc && node dist/main.js convert-oekobaudat --input data/oekobaudat/OBD_2024_I_2025-09-29T05_28_59.csv --output data/oekobaudat/oekobaudat.json
+npx tsc && node dist/main.js import-catalog --input data/oekobaudat/oekobaudat.json --url https://dbs-gateway-service-test.azurewebsites.net --auth data/auth.txt -refmat --tenant demo_de
 
 # Patch a version *EXPERIMENTAL*
 $ npx tsc && node dist/main.js patch-version --input data/pmj.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung --project 3e1c3974-e6e2-4716-bc5a-0a2228cc72fd --building e00e98f9-d307-4b6f-b253-b11eed986eef --modelversion 35169502-6a31-452a-80e6-e85f78f3c3c7

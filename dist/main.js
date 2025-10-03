@@ -73,6 +73,15 @@ async function main() {
         .action((o) => {
         patchVersion(o.url, o.tenant, o.auth, o.project, o.building, o.modelversion, o.input, o.verbose);
     });
+    program
+        .command('convert-oekobaudat')
+        .description('convert oekobaudat CSV to JSON structure')
+        .requiredOption('-i, --input <file>', 'Path to the oekobaudat CSV file')
+        .requiredOption('-o, --output <file>', 'Path to the output JSON file')
+        .option('-v, --verbose', 'More detailed console output')
+        .action((o) => {
+        convertOekobaudat(o.input, o.output, o.verbose);
+    });
     program.parse();
 }
 async function importProducts(input, url, auth, tenant, category, verbose, diff) {
@@ -355,7 +364,13 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
     const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
     const componentsObj = JSON.parse(componentsFile);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const catalogues = await request.get(new URL('/dbs-catalogue/catalogues', url).href)
+    const cataloguesUrl = new URL('/dbs-catalogue/catalogues', url).href;
+    console.log('=== CATALOGUES API REQUEST DEBUG ===');
+    console.log('Request URL:', cataloguesUrl);
+    console.log('Tenant:', tenant);
+    console.log('Auth token (first 50 chars):', authToken.substring(0, 50) + '...');
+    console.log('=== END REQUEST DEBUG ===');
+    const catalogues = await request.get(cataloguesUrl)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -363,6 +378,13 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant);
+    console.log('=== CATALOGUES API RESPONSE DEBUG ===');
+    console.log('Response status:', catalogues.status);
+    console.log('Response headers:', JSON.stringify(catalogues.headers, null, 2));
+    console.log('Full catalogues.body:', JSON.stringify(catalogues.body, null, 2));
+    console.log('catalogues.body.selectedCatalogueId:', catalogues.body.selectedCatalogueId);
+    console.log('catalogues.body keys:', Object.keys(catalogues.body));
+    console.log('=== END CATALOGUES DEBUG ===');
     const selectedCatalogueId = catalogues.body.selectedCatalogueId;
     const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
         .set('Authorization', authToken)
@@ -976,6 +998,180 @@ function getAllCategoriesRecursive(cat, resultList = []) {
     }
     resultList.push(cat);
     return resultList;
+}
+async function convertOekobaudat(input, output, verbose) {
+    await assertFile(input);
+    console.log(`Converting oekobaudat CSV from ${input} to ${output}`);
+    const raw = await fs.readFile(input, { encoding: 'latin1', flag: 'r' });
+    const lines = raw.split('\n').filter(line => line.trim() !== '');
+    if (lines.length < 2) {
+        console.error('Error: CSV file must have at least a header and one data row');
+        process.exit(1);
+    }
+    const header = lines[0].split(';').map(col => col.trim());
+    if (verbose) {
+        console.log(`Found ${header.length} columns: ${header.slice(0, 10).join(', ')}${header.length > 10 ? '...' : ''}`);
+    }
+    const data = [];
+    for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(';');
+        const row = {};
+        for (let j = 0; j < header.length; j++) {
+            const value = values[j] ? values[j].trim() : '';
+            row[header[j]] = value;
+        }
+        data.push(row);
+    }
+    if (verbose) {
+        console.log(`Parsed ${data.length} data rows`);
+    }
+    const transformedData = {
+        fileFormatVersion: "1.1.0",
+        exportTimestamp: new Date().toISOString(),
+        source: "oekobaudat.de",
+        products: {}
+    };
+    const productGroups = new Map();
+    for (const row of data) {
+        const uuid = row['UUID'];
+        if (!uuid)
+            continue;
+        if (!productGroups.has(uuid)) {
+            productGroups.set(uuid, {
+                uuid: uuid,
+                version: row['Version'],
+                nameDe: row['Name (de)'],
+                nameEn: row['Name (en)'],
+                categoryOriginal: row['Kategorie (original)'],
+                categoryEn: row['Kategorie (en)'],
+                conformity: row['Konformitaet'],
+                backgroundDatabase: row['Hintergrunddatenbank(en)'],
+                countryCode: row['Laenderkennung'],
+                type: row['Typ'],
+                referenceYear: row['Referenzjahr'],
+                validUntil: row['Gueltig bis'],
+                url: row['URL'],
+                declarationOwner: row['Declaration owner'],
+                publishedOn: row['Veroeffentlicht am'],
+                registrationNumber: row['Registrierungsnummer'],
+                registrationOffice: row['Registrierungsstelle'],
+                predecessorUuid: row['UUID des Vorgaengers'],
+                predecessorVersion: row['Version des Vorgaengers'],
+                predecessorUrl: row['URL des Vorgaengers'],
+                referenceSize: row['Bezugsgroesse'],
+                referenceUnit: row['Bezugseinheit'],
+                referenceFlowUuid: row['Referenzfluss-UUID'],
+                referenceFlowName: row['Referenzfluss-Name'],
+                bulkDensity: row['Schuettdichte (kg/m3)'],
+                areaWeight: row['Flaechengewicht (kg/m2)'],
+                rawDensity: row['Rohdichte (kg/m3)'],
+                layerThickness: row['Schichtdicke (m)'],
+                yield: row['Ergiebigkeit (m2)'],
+                lengthWeight: row['Laengengewicht (kg/m)'],
+                pieceWeight: row['Stueckgewicht (kg)'],
+                conversionFactor: row['Umrechungsfaktor auf 1kg'],
+                biogenicCarbonContent: row['biogener Kohlenstoffgehalt in kg'],
+                biogenicCarbonContentPackaging: row['biogener Kohlenstoffgehalt (Verpackung) in kg'],
+                lcaModules: []
+            });
+        }
+        const product = productGroups.get(uuid);
+        const module = {
+            module: row['Modul'],
+            scenario: row['Szenario'],
+            scenarioDescription: row['Szenariobeschreibung'],
+            gwp: row['GWP'],
+            odp: row['ODP'],
+            pocp: row['POCP'],
+            ap: row['AP'],
+            ep: row['EP'],
+            adpe: row['ADPE'],
+            adpf: row['ADPF'],
+            pere: row['PERE'],
+            perm: row['PERM'],
+            pert: row['PERT'],
+            penre: row['PENRE'],
+            penrm: row['PENRM'],
+            penrt: row['PENRT'],
+            sm: row['SM'],
+            rsf: row['RSF'],
+            nrsf: row['NRSF'],
+            fw: row['FW'],
+            hwd: row['HWD'],
+            nhwd: row['NHWD'],
+            rwd: row['RWD'],
+            cru: row['CRU'],
+            mfr: row['MFR'],
+            mer: row['MER'],
+            eee: row['EEE'],
+            eet: row['EET'],
+            apA2: row['AP (A2)'],
+            gwpTotalA2: row['GWPtotal (A2)'],
+            gwpBiogenicA2: row['GWPbiogenic (A2)'],
+            gwpFossilA2: row['GWPfossil (A2)'],
+            gwpLulucA2: row['GWPluluc (A2)'],
+            etpfwA2: row['ETPfw (A2)'],
+            pmA2: row['PM (A2)'],
+            epMarineA2: row['EPmarine (A2)'],
+            epFreshwaterA2: row['EPfreshwater (A2)'],
+            epTerrestrialA2: row['EPterrestrial (A2)'],
+            htpCA2: row['HTPc (A2)'],
+            htpNcA2: row['HTPnc (A2)'],
+            irpA2: row['IRP (A2)'],
+            sopA2: row['SOP (A2)'],
+            odpA2: row['ODP (A2)'],
+            pocpA2: row['POCP (A2)'],
+            adpfA2: row['ADPF (A2)'],
+            adpeA2: row['ADPE (A2)'],
+            wdpA2: row['WDP (A2)']
+        };
+        product.lcaModules.push(module);
+    }
+    for (const [uuid, product] of productGroups) {
+        const productKey = `oekobaudat_${uuid}`;
+        transformedData.products[productKey] = {
+            name: product.nameEn || product.nameDe,
+            type: "REFERENCE_MATERIAL",
+            subType: null,
+            status: "approved",
+            hatchingPattern: null,
+            linkedReferenceMaterialKey: null,
+            categoryPath: `Alle > REFERENZ-MATERIALIEN > oekobaudat.de > ${(product.categoryOriginal || product.categoryEn).replace(/'/g, '').replace(/\//g, ' > ')}`,
+            matrix: {
+                layers: {},
+                sections: {},
+                cells: {}
+            },
+            attributes: {
+                "vyzn.source.ExternalId": uuid,
+                "vyzn.catalogue.de.OEBD.UUID": uuid,
+                "vyzn.catalogue.Owner": product.declarationOwner || null,
+                "vyzn.catalogue.de.OEBD.Version": product.version || null,
+                "vyzn.catalogue.de.OEBD.Density": parseFloat(product.rawDensity) || null,
+                "vyzn.catalogue.de.OEBD.BulkDensity": parseFloat(product.bulkDensity) || null,
+                "vyzn.catalogue.de.OEBD.AreaWeight": parseFloat(product.areaWeight) || null,
+                "vyzn.catalogue.de.OEBD.LayerThickness": parseFloat(product.layerThickness) || null,
+                "vyzn.catalogue.de.OEBD.LengthWeight": parseFloat(product.lengthWeight) || null,
+                "vyzn.catalogue.de.OEBD.PieceWeight": parseFloat(product.pieceWeight) || null,
+                "vyzn.catalogue.de.OEBD.ConversionFactor": parseFloat(product.conversionFactor) || null,
+                "vyzn.catalogue.de.OEBD.BiogenicCarbonContent": parseFloat(product.biogenicCarbonContent) || null,
+                "vyzn.catalogue.de.OEBD.BiogenicCarbonContentPackaging": parseFloat(product.biogenicCarbonContentPackaging) || null,
+                "vyzn.catalogue.de.OEBD.ReferenceYear": parseInt(product.referenceYear) || null,
+                "vyzn.catalogue.de.OEBD.ValidUntil": product.validUntil || null,
+                "vyzn.catalogue.de.OEBD.CountryCode": product.countryCode || null,
+                "vyzn.catalogue.de.OEBD.DeclarationOwner": product.declarationOwner || null,
+                "vyzn.catalogue.de.OEBD.RegistrationNumber": product.registrationNumber || null,
+                "vyzn.catalogue.de.OEBD.RegistrationOffice": product.registrationOffice || null,
+                "vyzn.catalogue.de.OEBD.URL": product.url || null
+            },
+            lcaModules: product.lcaModules
+        };
+    }
+    if (verbose) {
+        console.log(`Transformed ${productGroups.size} unique products`);
+    }
+    await fs.writeFile(output, JSON.stringify(transformedData, null, 2), { encoding: 'utf8' });
+    console.log(`Successfully converted oekobaudat data to ${output}`);
 }
 main();
 //# sourceMappingURL=main.js.map

@@ -183,22 +183,33 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
         if (!product) {
-            const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-                .send({
-                "name": row.Name,
-                "productKey": row.ProductKey,
-                "type": newType,
-                "subType": newSubType,
-            })
-                .set('Authorization', authToken)
-                .set('Content-Type', 'application/json')
-                .set('Accept', 'application/, json')
-                .set('Accept-Encoding', 'gzip, deflate, br')
-                .set('Accept-Language', 'en-US,en;q=0.5')
-                .set('Content-Type', 'application/json')
-                .set('x-vyzn-selected-tenant', tenant);
-            product = newProd.body;
-            console.log(`${row.ProductKey} Creating new product`);
+            try {
+                const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+                    .send({
+                    "name": row.Name,
+                    "productKey": row.ProductKey,
+                    "type": newType,
+                    "subType": newSubType,
+                })
+                    .set('Authorization', authToken)
+                    .set('Content-Type', 'application/json')
+                    .set('Accept', 'application/, json')
+                    .set('Accept-Encoding', 'gzip, deflate, br')
+                    .set('Accept-Language', 'en-US,en;q=0.5')
+                    .set('Content-Type', 'application/json')
+                    .set('x-vyzn-selected-tenant', tenant);
+                product = newProd.body;
+                console.log(`${row.ProductKey} Creating new product`);
+            }
+            catch (error) {
+                if (error.response && error.response.body &&
+                    error.response.body.reason &&
+                    error.response.body.reason.messageKey === 'res.error.aps.product.name.or.key.unique') {
+                    console.log(`${row.ProductKey} Skipping product due to uniqueness conflict: ${row.Name}`);
+                    continue;
+                }
+                throw error;
+            }
         }
         const id = product.id;
         const attributeIds = {};
@@ -364,13 +375,7 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
     const componentsFile = await fs.readFile(input, { encoding: 'utf8', flag: 'r' });
     const componentsObj = JSON.parse(componentsFile);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
-    const cataloguesUrl = new URL('/dbs-catalogue/catalogues', url).href;
-    console.log('=== CATALOGUES API REQUEST DEBUG ===');
-    console.log('Request URL:', cataloguesUrl);
-    console.log('Tenant:', tenant);
-    console.log('Auth token (first 50 chars):', authToken.substring(0, 50) + '...');
-    console.log('=== END REQUEST DEBUG ===');
-    const catalogues = await request.get(cataloguesUrl)
+    const catalogues = await request.get(new URL('/dbs-catalogue/catalogues', url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -378,13 +383,6 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant);
-    console.log('=== CATALOGUES API RESPONSE DEBUG ===');
-    console.log('Response status:', catalogues.status);
-    console.log('Response headers:', JSON.stringify(catalogues.headers, null, 2));
-    console.log('Full catalogues.body:', JSON.stringify(catalogues.body, null, 2));
-    console.log('catalogues.body.selectedCatalogueId:', catalogues.body.selectedCatalogueId);
-    console.log('catalogues.body keys:', Object.keys(catalogues.body));
-    console.log('=== END CATALOGUES DEBUG ===');
     const selectedCatalogueId = catalogues.body.selectedCatalogueId;
     const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
         .set('Authorization', authToken)
@@ -498,23 +496,34 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         product = null;
     }
     if (!product) {
-        console.log(`${prodKey} Creating new product`);
-        const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-            .send({
-            "name": prod.name,
-            "productKey": prodKey,
-            "category": categoryId,
-            "type": prod.type,
-            "subType": prod.subType
-        })
-            .set('Authorization', authToken)
-            .set('Content-Type', 'application/json')
-            .set('Accept', 'application/, json')
-            .set('Accept-Encoding', 'gzip, deflate, br')
-            .set('Accept-Language', 'en-US,en;q=0.5')
-            .set('Content-Type', 'application/json')
-            .set('x-vyzn-selected-tenant', tenant);
-        product = newProd.body;
+        try {
+            console.log(`${prodKey} Creating new product`);
+            const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+                .send({
+                "name": prod.name,
+                "productKey": prodKey,
+                "category": categoryId,
+                "type": prod.type,
+                "subType": prod.subType
+            })
+                .set('Authorization', authToken)
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/, json')
+                .set('Accept-Encoding', 'gzip, deflate, br')
+                .set('Accept-Language', 'en-US,en;q=0.5')
+                .set('Content-Type', 'application/json')
+                .set('x-vyzn-selected-tenant', tenant);
+            product = newProd.body;
+        }
+        catch (error) {
+            if (error.response && error.response.body &&
+                error.response.body.reason &&
+                error.response.body.reason.messageKey === 'res.error.aps.product.name.or.key.unique') {
+                console.log(`${prodKey} Skipping product due to uniqueness conflict: ${prod.name}`);
+                return;
+            }
+            throw error;
+        }
     }
     const id = product.id;
     const attributeIds = {};
@@ -1034,10 +1043,12 @@ async function convertOekobaudat(input, output, verbose) {
     const productGroups = new Map();
     for (const row of data) {
         const uuid = row['UUID'];
-        if (!uuid)
+        const version = row['Version'];
+        if (!uuid || !version)
             continue;
-        if (!productGroups.has(uuid)) {
-            productGroups.set(uuid, {
+        const productKey = `${uuid}_${version}`;
+        if (!productGroups.has(productKey)) {
+            productGroups.set(productKey, {
                 uuid: uuid,
                 version: row['Version'],
                 nameDe: row['Name (de)'],
@@ -1075,7 +1086,7 @@ async function convertOekobaudat(input, output, verbose) {
                 lcaModules: []
             });
         }
-        const product = productGroups.get(uuid);
+        const product = productGroups.get(productKey);
         const module = {
             module: row['Modul'],
             scenario: row['Szenario'],
@@ -1127,10 +1138,10 @@ async function convertOekobaudat(input, output, verbose) {
         };
         product.lcaModules.push(module);
     }
-    for (const [uuid, product] of productGroups) {
-        const productKey = `oekobaudat_${uuid}`;
-        transformedData.products[productKey] = {
-            name: product.nameEn || product.nameDe,
+    for (const [productKey, product] of productGroups) {
+        const outputProductKey = `oekobaudat_${product.uuid}_v${product.version || 'unknown'}`;
+        transformedData.products[outputProductKey] = {
+            name: `${product.nameEn || product.nameDe} (${product.version || 'unknown'})`,
             type: "REFERENCE_MATERIAL",
             subType: null,
             status: "approved",
@@ -1143,8 +1154,8 @@ async function convertOekobaudat(input, output, verbose) {
                 cells: {}
             },
             attributes: {
-                "vyzn.source.ExternalId": uuid,
-                "vyzn.catalogue.de.OEBD.UUID": uuid,
+                "vyzn.source.ExternalId": product.uuid,
+                "vyzn.catalogue.de.OEBD.UUID": product.uuid,
                 "vyzn.catalogue.Owner": product.declarationOwner || null,
                 "vyzn.catalogue.de.OEBD.Version": product.version || null,
                 "vyzn.catalogue.de.OEBD.Density": parseFloat(product.rawDensity) || null,

@@ -215,22 +215,22 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
 
     // Create new product
     if (!product) {
-      const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-        .send({
-          "name": row.Name,
-          "productKey": row.ProductKey,
-          "type": newType,
-          "subType": newSubType,
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-      product = newProd.body
-      console.log(`${row.ProductKey} Creating new product`)
+        const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+          .send({
+            "name": row.Name,
+            "productKey": row.ProductKey,
+            "type": newType,
+            "subType": newSubType,
+          })
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language', 'en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        product = newProd.body
+        console.log(`${row.ProductKey} Creating new product`)
     }
 
     const id = product.id
@@ -557,23 +557,23 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   // Create new product
   if (!product) {
-    console.log(`${prodKey} Creating new product`)
-    const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-      .send({
-        "name": prod.name,
-        "productKey": prodKey,
-        "category": categoryId,
-        "type": prod.type,
-        "subType": prod.subType
-      })
-      .set('Authorization', authToken)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/, json')
-      .set('Accept-Encoding', 'gzip, deflate, br')
-      .set('Accept-Language', 'en-US,en;q=0.5')
-      .set('Content-Type', 'application/json')
-      .set('x-vyzn-selected-tenant', tenant)
-    product = newProd.body
+      console.log(`${prodKey} Creating new product`)
+      const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+        .send({
+          "name": prod.name,
+          "productKey": prodKey,
+          "category": categoryId,
+          "type": prod.type,
+          "subType": prod.subType
+        })
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
+      product = newProd.body
   }
 
   const id = product.id
@@ -1181,15 +1181,19 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
     products: {}
   };
 
-  // Group data by UUID to create products
+  // Group data by UUID and Version to create products
   const productGroups = new Map();
   
   for (const row of data) {
     const uuid = row['UUID'];
-    if (!uuid) continue;
+    const version = row['Version'];
+    if (!uuid || !version) continue;
 
-    if (!productGroups.has(uuid)) {
-      productGroups.set(uuid, {
+    // Create a unique key combining UUID and Version
+    const productKey = `${uuid}_${version}`;
+    
+    if (!productGroups.has(productKey)) {
+      productGroups.set(productKey, {
         uuid: uuid,
         version: row['Version'],
         nameDe: row['Name (de)'],
@@ -1228,7 +1232,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
       });
     }
 
-    const product = productGroups.get(uuid);
+    const product = productGroups.get(productKey);
     
     // Add LCA module data
     const module = {
@@ -1285,11 +1289,12 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
   }
 
   // Convert to the expected JSON structure
-  for (const [uuid, product] of productGroups) {
-    const productKey = `oekobaudat_${uuid}`;
+  for (const [productKey, product] of productGroups) {
+    // Create a unique product key by combining UUID and version
+    const outputProductKey = `oekobaudat_${product.uuid}_v${product.version || 'unknown'}`;
     
-    transformedData.products[productKey] = {
-      name: product.nameEn || product.nameDe,
+    transformedData.products[outputProductKey] = {
+      name: `${product.nameEn || product.nameDe} (${product.version || 'unknown'})`,
       type: "REFERENCE_MATERIAL",
       subType: null,
       status: "approved",
@@ -1302,8 +1307,8 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
         cells: {}
       },
       attributes: {
-        "vyzn.source.ExternalId": uuid,
-        "vyzn.catalogue.de.OEBD.UUID": uuid,
+        "vyzn.source.ExternalId": product.uuid,
+        "vyzn.catalogue.de.OEBD.UUID": product.uuid,
         "vyzn.catalogue.Owner": product.declarationOwner || null,
         "vyzn.catalogue.de.OEBD.Version": product.version || null,
         "vyzn.catalogue.de.OEBD.Density": parseFloat(product.rawDensity) || null,

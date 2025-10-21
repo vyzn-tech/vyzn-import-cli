@@ -73,8 +73,8 @@ def enrich_json_with_hatching_patterns(input_json_path, output_json_path):
 
 if __name__ == "__main__":
     # Define input and output paths
-    input_json_path = '/Users/mtschudi/Documents/GitHub/vyzn/vyzn-import-cli/data/kbob/kbob_2022_v5_mat.json'
-    output_json_path = '/Users/mtschudi/Documents/GitHub/vyzn/vyzn-import-cli/data/kbob/kbob_2022_v5_mat.json'
+    input_json_path = '/Users/mtschudi/Documents/GitHub/vyzn/vyzn-import-cli/data/kbob/kbob_2022_v7_mat.json'
+    output_json_path = '/Users/mtschudi/Documents/GitHub/vyzn/vyzn-import-cli/data/kbob/kbob_2022_v7_mat.json'
     
     # Run the enrichment
     enrich_json_with_hatching_patterns(input_json_path, output_json_path) 

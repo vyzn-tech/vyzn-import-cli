@@ -75,16 +75,17 @@ Options:
 
 ```
 # Wipe all products of a category prior to import
-$ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a14207c6-8620-4214-9101-d350372aea74
+$ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog --category beb5c76d-8b83-440d-b299-bd221580b56f
 
 # (old) Import reference-materials from KBOB 
 $ npx tsc && node dist/main.js import-products --input data/HRS_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a7ff1589-0e8c-42ff-bf27-5f8f499b8575
 $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a4444265-b369-41e4-b26f-409a8c0bce45
-$ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_ref.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog --category a14207c6-8620-4214-9101-d350372aea74
+$ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner --category 6f425cb0-7b82-4af6-a3e3-11835be93859
 
 # Import reference-materials from KBOB
-$ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v5_ref.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -f -c b6453d6d-9b56-4173-bb34-8a5e5c1601ad
-$ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v5_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -mat -f -c a40767b1-2a1f-4091-915d-ced561feba5e
+$ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v7_ref.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant suco -refmat -f -c d3912af7-3398-4c38-b47b-40ead986d07a
+
+$ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v7_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant suco -mat -f -c 4a71a1fd-70f0-4dc8-a4af-e17c2df7823d
 
 
 
@@ -93,25 +94,24 @@ npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-servic
 
 # Import complete catalog
 $ npx tsc && node dist/main.js import-catalog --input data/temp.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -ores -comp
-$ npx tsc && node dist/main.js import-catalog --input data/catalog-1.2.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant test -refmat -mat -btech -ores -comp --tenant minergie
+
+$ npx tsc && node dist/main.js import-catalog --input data/kbob.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -mat -btech -ores -comp 
 
 # Import only materials and components from catalog.json
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 # Import only components from catalog.json to a folder
-$ npx tsc && node dist/main.js import-catalog --input data/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung -mat -refmat -c bcb9e84d-0a42-48bf-b7d5-254b0a4d9133
-
+npx tsc && node dist/main.js import-catalog --input data/kbob.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -f -c ea70b456-558c-4efb-928d-b616c0d2d062
 
 
 
 # Import lesolai materials
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant demo -mat -f -c 1fc08275-20bc-426c-a827-edf88e54512d
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -mat -f -c 09d99e54-2dfa-458f-93a4-3b45337e66e8
 
 
 # Import lesolai components
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant fanzun -comp -f -c fa7e5058-72df-4a64-86e3-5c2e2a2a02e9
-
-
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -comp -f -c f2ac4153-fcf4-4b7f-99d6-f8c43dee533c
+ 
 
 
 # Patch a version *EXPERIMENTAL*
@@ -125,3 +125,18 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+
+
+
+
+
+Imports
+
+npx tsc && node dist/main.js import-catalog --input data/erne.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant erne -mat -f -c f1fe2427-b21a-42c4-aad7-8281fb598563
+
+
+npx tsc && node dist/main.js import-catalog --input data/fix_resources.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant impactliving -ores -f -c 9b3465a2-ece5-45d0-8885-a2dd3ac68177
+
+npx tsc && node dist/main.js import-catalog --input data/impactlivingfull.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -mat -btech -ores -comp --tenant impactliving 

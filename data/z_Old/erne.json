@@ -1,0 +1,312 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-07-17T10:53:53.343092Z",
+  "products": {
+    "Gipsfaserplatte": {
+      "name": "Gipsfaserplatte",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "03.007 Gipsfaserplatte (KBOB.2022v7_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "45BEA46B-47E9-425F-926C-AEB31CB4A09D",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Dampfbremse PE": {
+      "name": "Dampfbremse PE",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "vapor-barrier",
+      "linkedReferenceMaterialKey": "09.002 Dampfbremse Polyethylen (PE) (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "5155BF82-EBE7-4FE9-A0C3-3B52FF372827",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Mineralwolle λ = 0.032, Sp > 1000°C": {
+      "name": "Mineralwolle λ = 0.032, Sp > 1000°C",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008 Steinwolle (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "A3BBA042-97AF-4B5C-AF00-E049CEF1A557",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Ständer C24": {
+      "name": "Ständer C24",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "solid-wood-part",
+      "linkedReferenceMaterialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "dff243df-ce92-429c-b6f4-a1e3ca114b16",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Winddichtung": {
+      "name": "Winddichtung",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.008 Polyethylenvlies (PE) (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "FD71B629-B98E-47C8-ADA4-513631C0896B",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Lattung": {
+      "name": "Lattung",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "solid-wood-part",
+      "linkedReferenceMaterialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "dff243df-ce92-429c-b6f4-a1e3ca114b16",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Horizontalschalung": {
+      "name": "Horizontalschalung",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "solid-wood",
+      "linkedReferenceMaterialKey": "07.010 Massivholz Fichte / Tanne / Lärche, luftgetr., gehobelt (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "C6FE17BA-12BD-4454-B0F0-74CA8C665D6B",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Linoleum": {
+      "name": "Linoleum",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "plastics",
+      "linkedReferenceMaterialKey": "11.014 Linoleum, 2.5 mm (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "219ECD16-D974-452B-9D34-CB93A1C2087D",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Estrichelement": {
+      "name": "Estrichelement",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "3B956811-9D40-452C-BAC2-FBA122630C43",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Trittschalldämmung GF": {
+      "name": "Trittschalldämmung GF",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.001 Glaswolle (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "43B03F61-91A1-438E-B958-6E274F13B241",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "3-S Platte": {
+      "name": "3-S Platte",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "solid-wood",
+      "linkedReferenceMaterialKey": "07.001 3- und 5-Schicht Massivholzplatte (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "BBA9796B-B084-473D-B362-E703FAD37CAA",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Mineralwolle λ = 0.035": {
+      "name": "Mineralwolle λ = 0.035",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008 Steinwolle (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "A3BBA042-97AF-4B5C-AF00-E049CEF1A557",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Kerto": {
+      "name": "Kerto",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.022 Furniersperrholz (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "b914b5f8-ce92-4da0-8c94-055ee668b154",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Dachbegrünung": {
+      "name": "Dachbegrünung",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "",
+      "linkedReferenceMaterialKey": "",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Bekiesung": {
+      "name": "Bekiesung",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "natural-stone",
+      "linkedReferenceMaterialKey": "03.012 Rundkies 1 (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "1A0D933D-B136-4441-B98F-6E6FFD1DFDD8",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "Dachfolie": {
+      "name": "Dachfolie",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.003 Dichtungsbahn bituminös (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "7BA5DD3A-06EF-4108-853B-3687B698FF22",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    },
+    "OSB": {
+      "name": "OSB",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.013 OSB Platte, PF-gebunden, Feuchtbereich (KBOB.2022v5_r)",
+      "categoryPath": "KBOB / ecobau / IPB 2009/1:2022v7",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "KBOB REF": "BD66B05D-27E3-4ADF-85A2-E0ABBBA686A5",
+        "vyzn.catalogue.Owner": "Erne"
+      }
+    }
+  }
+}

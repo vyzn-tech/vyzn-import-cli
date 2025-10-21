@@ -1,0 +1,465 @@
+Name,ProductKey,vyzn.catalogue.SourceENV,Type,vyzn.catalogue.Density,vyzn.catalogue.ch.KBOB2022.LCARefUnit,vyzn.catalogue.ch.KBOB2022.UBPTotal,vyzn.catalogue.ch.KBOB2022.UBPProduction,vyzn.catalogue.ch.KBOB2022.UBPDisposal,vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal,vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction,vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal,vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal,vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction,vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal,vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal,vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction,vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal,categoryPath
+01.001 Magerbeton (ohne Bewehrung) (KBOB.2016v1),01.001 Magerbeton (ohne Bewehrung) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2150.000,kg,65.100,40.200,24.900,0.009,0.007,0.002,0.139,0.092,0.047,0.059,0.050,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2016v1),01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2300.000,kg,94.300,67.300,27.000,0.013,0.012,0.002,0.201,0.148,0.054,0.099,0.089,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+01.003 Tiefbaubeton (ohne Bewehrung) (KBOB.2016v1),01.003 Tiefbaubeton (ohne Bewehrung) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2350.000,kg,100.000,72.900,27.000,0.014,0.013,0.002,0.217,0.164,0.053,0.107,0.096,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+01.004 Bohrpfahlbeton (ohne Bewehrung) (KBOB.2016v1),01.004 Bohrpfahlbeton (ohne Bewehrung) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2325.000,kg,106.000,79.000,26.900,0.016,0.014,0.002,0.228,0.175,0.053,0.117,0.107,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"01.041 Betonfertigteil, hochfester Beton, ab Werk (KBOB.2016v1)","01.041 Betonfertigteil, hochfester Beton, ab Werk (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2770.000,kg,477.000,454.000,23.800,0.057,0.056,0.002,0.768,0.721,0.047,0.265,0.255,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"01.042 Betonfertigteil, Normalbeton, ab Werk (KBOB.2016v1)","01.042 Betonfertigteil, Normalbeton, ab Werk (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2500.000,kg,245.000,218.000,26.100,0.096,0.094,0.002,0.484,0.432,0.052,0.172,0.162,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+01.043 Hanfbeton (KBOB.2016v1),01.043 Hanfbeton (KBOB.2016v1),KBOB 2016 v1,MATERIAL,600.000,kg,371.000,370.000,0.700,0.882,0.882,0.000,0.984,0.982,0.003,0.288,0.288,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"01.043.01 Hanfbeton, ARBIO (KBOB.2016v1)","01.043.01 Hanfbeton, ARBIO (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,600.000,kg,357.000,356.000,1.000,0.800,0.800,0.000,0.900,0.900,0.003,0.280,0.277,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+02.001 Backstein (KBOB.2016v1),02.001 Backstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,900.000,kg,217.000,191.000,25.800,0.080,0.080,0.002,0.790,0.740,0.051,0.258,0.249,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+02.002 Kalksandstein (KBOB.2016v1),02.002 Kalksandstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1400.000,kg,157.000,132.000,25.100,0.040,0.040,0.002,0.400,0.350,0.048,0.138,0.129,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"02.002.01 Kalksandstein, FBB (KBOB.2016v1)","02.002.01 Kalksandstein, FBB (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1400.000,kg,122.000,97.000,25.000,0.000,0.000,0.002,0.300,0.300,0.048,0.110,0.100,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+02.003 Leichtlehmstein (KBOB.2016v1),02.003 Leichtlehmstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,700.000,kg,237.000,212.000,25.800,0.790,0.790,0.002,0.760,0.710,0.051,0.170,0.161,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"02.004 Leichtzementstein, Blähton (KBOB.2016v1)","02.004 Leichtzementstein, Blähton (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,471.000,445.000,26.600,0.050,0.050,0.002,1.510,1.460,0.053,0.417,0.407,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"02.005 Leichtzementstein, Naturbims (KBOB.2016v1)","02.005 Leichtzementstein, Naturbims (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,222.000,195.000,26.600,0.030,0.030,0.002,0.420,0.370,0.053,0.223,0.214,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+02.006 Porenbetonstein (KBOB.2016v1),02.006 Porenbetonstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,500.000,kg,348.000,323.000,25.800,0.070,0.060,0.002,0.930,0.880,0.051,0.417,0.408,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+02.007 Zementstein (KBOB.2016v1),02.007 Zementstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1700.000,kg,133.000,108.000,25.100,0.020,0.022,0.002,0.254,0.207,0.047,0.129,0.121,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.001 Betonziegel (KBOB.2016v1),03.001 Betonziegel (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2300.000,kg,212.000,187.000,25.800,0.030,0.030,0.002,0.520,0.470,0.051,0.217,0.208,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.002 Faserzement-Dachschindel (KBOB.2016v1),03.002 Faserzement-Dachschindel (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1800.000,kg,751.000,724.000,26.600,0.500,0.500,0.002,2.450,2.400,0.053,0.727,0.717,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.003 Faserzementplatte gross (KBOB.2016v1),03.003 Faserzementplatte gross (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1800.000,kg,1030.000,1000.000,26.600,0.600,0.600,0.002,3.300,3.200,0.053,1.090,1.080,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.004 Faserzement-Wellplatte (KBOB.2016v1),03.004 Faserzement-Wellplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1800.000,kg,726.000,700.000,26.600,0.540,0.540,0.002,2.060,2.010,0.053,0.678,0.669,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.005 Flachglas beschichtet (KBOB.2016v1),03.005 Flachglas beschichtet (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2500.000,kg,1350.000,1340.000,18.600,0.200,0.200,0.001,4.700,4.700,0.068,1.160,1.150,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.006 Flachglas unbeschichtet (KBOB.2016v1),03.006 Flachglas unbeschichtet (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2500.000,kg,1140.000,1120.000,18.600,0.100,0.100,0.001,4.100,4.000,0.068,1.100,1.090,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.007 Gipsfaserplatte (KBOB.2016v1),03.007 Gipsfaserplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1200.000,kg,488.000,470.000,17.500,0.090,0.090,0.001,2.460,2.400,0.065,0.537,0.527,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.008 Gipskartonplatte (KBOB.2016v1),03.008 Gipskartonplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,850.000,kg,314.000,296.000,17.300,0.080,0.080,0.001,1.350,1.280,0.065,0.293,0.284,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.009 Hartsandsteinplatte (KBOB.2016v1),03.009 Hartsandsteinplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2500.000,kg,75.000,49.900,25.100,0.040,0.040,0.002,0.300,0.254,0.048,0.034,0.025,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.010 Keramik-/Steinzeugplatte (KBOB.2016v1),03.010 Keramik-/Steinzeugplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2600.000,kg,2460.000,2430.000,25.800,0.200,0.200,0.002,3.800,3.800,0.051,0.777,0.768,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.011 Kies gebrochen (KBOB.2016v1),03.011 Kies gebrochen (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2000.000,kg,64.900,39.800,25.100,0.007,0.005,0.002,0.084,0.036,0.048,0.013,0.005,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.012 Rundkies (KBOB.2016v1),03.012 Rundkies (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2000.000,kg,61.000,35.900,25.100,0.003,0.002,0.002,0.064,0.017,0.048,0.012,0.003,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.013 Sand (KBOB.2016v1),03.013 Sand (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2000.000,kg,65.700,35.900,29.700,0.003,0.002,0.001,0.081,0.017,0.064,0.014,0.003,0.011,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.014 Sanitärkeramik (KBOB.2016v1),03.014 Sanitärkeramik (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2000.000,kg,3030.000,3000.000,25.800,0.400,0.400,0.002,11.200,11.100,0.051,2.320,2.310,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.015 Tonziegel (KBOB.2016v1),03.015 Tonziegel (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1700.000,kg,300.000,274.000,25.800,0.030,0.030,0.002,1.120,1.070,0.051,0.375,0.366,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.016 Gips-Wandbauplatte / Vollgipsplatte (KBOB.2016v1),03.016 Gips-Wandbauplatte / Vollgipsplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1000.000,kg,343.000,326.000,17.200,0.030,0.030,0.001,1.440,1.370,0.064,0.307,0.298,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.017 Kalksteinplatte (KBOB.2016v1),03.017 Kalksteinplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2600.000,kg,79.000,53.900,25.100,0.020,0.020,0.002,0.330,0.280,0.048,0.066,0.057,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+03.020 Stampflehm (KBOB.2016v1),03.020 Stampflehm (KBOB.2016v1),KBOB 2016 v1,MATERIAL,2000.000,kg,39.000,25.000,14.200,0.000,0.000,0.000,0.100,0.100,0.054,0.020,0.020,0.007,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.002 Baukleber/Einbettmörtel organisch (KBOB.2016v1),04.002 Baukleber/Einbettmörtel organisch (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1670.000,kg,1000.000,982.000,17.200,0.100,0.100,0.001,4.200,4.100,0.064,0.760,0.750,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.004 Lehmputz (KBOB.2016v1),04.004 Lehmputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1800.000,kg,62.300,43.000,19.300,0.016,0.014,0.002,0.164,0.134,0.031,0.023,0.018,0.005,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2016v1)","04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2000.000,kg,146.000,128.000,18.500,0.030,0.020,0.001,0.460,0.390,0.069,0.087,0.077,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"04.006 Unterlagsboden Zement, 85 mm (KBOB.2016v1)","04.006 Unterlagsboden Zement, 85 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1850.000,kg,140.000,122.000,17.200,0.030,0.030,0.001,0.280,0.217,0.064,0.125,0.116,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.007 Wärmedämmputz EPS (KBOB.2016v1),04.007 Wärmedämmputz EPS (KBOB.2016v1),KBOB 2016 v1,MATERIAL,250.000,kg,613.000,596.000,17.200,0.140,0.140,0.001,1.960,1.890,0.064,0.767,0.758,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.008 Baukleber/Einbettmörtel mineralisch (KBOB.2016v1),04.008 Baukleber/Einbettmörtel mineralisch (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1400.000,kg,427.000,410.000,17.200,0.170,0.170,0.001,1.600,1.540,0.064,0.406,0.397,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.010 Baukleber/Einbettmörtel mineralisch Leichtzuschlag (KBOB.2016v1),04.010 Baukleber/Einbettmörtel mineralisch Leichtzuschlag (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1100.000,kg,424.000,407.000,17.200,0.150,0.150,0.001,1.690,1.620,0.064,0.427,0.418,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.011 Silikatputz (Dispersionssilikatputz) (KBOB.2016v1),04.011 Silikatputz (Dispersionssilikatputz) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1880.000,kg,1220.000,1200.000,17.200,0.250,0.250,0.001,5.110,5.040,0.064,0.975,0.966,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.012 Silikonharzputz (KBOB.2016v1),04.012 Silikonharzputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1670.000,kg,1410.000,1390.000,17.200,0.370,0.370,0.001,6.170,6.100,0.064,1.120,1.110,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.013 Kalk-Zement/Zement-Kalk-Putz (KBOB.2016v1),04.013 Kalk-Zement/Zement-Kalk-Putz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1550.000,kg,237.000,220.000,17.200,0.130,0.130,0.001,0.770,0.700,0.064,0.247,0.238,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.014 Weisszementputz (KBOB.2016v1),04.014 Weisszementputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1550.000,kg,301.000,284.000,17.200,0.140,0.140,0.001,1.000,0.940,0.064,0.328,0.319,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.015 Leichtputz mineralisch (KBOB.2016v1),04.015 Leichtputz mineralisch (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1000.000,kg,366.000,348.000,17.200,0.150,0.150,0.001,1.300,1.230,0.064,0.366,0.357,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.016 Sumpfkalkputz (KBOB.2016v1),04.016 Sumpfkalkputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1350.000,kg,442.000,425.000,17.200,0.110,0.110,0.001,1.800,1.740,0.064,0.469,0.460,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+04.017 Gips-Kalk-Putz (KBOB.2016v1),04.017 Gips-Kalk-Putz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,925.000,kg,151.000,134.000,17.200,0.060,0.060,0.001,0.690,0.620,0.064,0.155,0.145,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.001 Aluminiumblech, blank (KBOB.2016v1)","06.001 Aluminiumblech, blank (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2690.000,kg,7300.000,7300.000,0.000,5.000,5.000,0.000,27.000,27.000,0.000,5.620,5.620,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.002 Aluminiumprofil, blank (KBOB.2016v1)","06.002 Aluminiumprofil, blank (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2690.000,kg,6980.000,6980.000,0.000,5.000,5.000,0.000,27.000,27.000,0.000,5.710,5.710,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.003 Armierungsstahl (KBOB.2016v1),06.003 Armierungsstahl (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7850.000,kg,2860.000,2860.000,0.000,0.200,0.200,0.000,3.600,3.600,0.000,0.682,0.682,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.004 Chromnickelstahlblech 18/8 blank (KBOB.2016v1),06.004 Chromnickelstahlblech 18/8 blank (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7900.000,kg,6890.000,6890.000,0.000,2.400,2.400,0.000,15.300,15.300,0.000,3.760,3.760,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.005 Chromnickelstahlblech 18/8 verzinnt (KBOB.2016v1),06.005 Chromnickelstahlblech 18/8 verzinnt (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7900.000,kg,10700.000,10700.000,0.000,2.700,2.700,0.000,23.000,23.000,0.000,5.450,5.450,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.002.01 Aluminiumprofil, blank, 80% Recyclinganteil, WICONA (KBOB.2016v1)","06.002.01 Aluminiumprofil, blank, 80% Recyclinganteil, WICONA (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,2690.000,kg,4120.000,4120.000,0.000,3.400,3.400,0.000,13.600,13.600,0.000,2.940,2.940,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.006 Chromstahlblech blank (KBOB.2016v1),06.006 Chromstahlblech blank (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7700.000,kg,5250.000,5250.000,0.000,0.900,0.900,0.000,9.500,9.500,0.000,2.240,2.240,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.007 Chromstahlblech verzinnt (KBOB.2016v1),06.007 Chromstahlblech verzinnt (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7700.000,kg,8990.000,8990.000,0.000,1.200,1.200,0.000,17.200,17.200,0.000,3.930,3.930,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.008 Kupferblech, blank (KBOB.2016v1)","06.008 Kupferblech, blank (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,8900.000,kg,51500.000,51500.000,0.000,1.700,1.700,0.000,9.300,9.300,0.000,2.190,2.190,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.009 Messing-/Baubronzeblech (KBOB.2016v1),06.009 Messing-/Baubronzeblech (KBOB.2016v1),KBOB 2016 v1,MATERIAL,8300.000,kg,47000.000,47000.000,0.000,1.900,1.900,0.000,11.500,11.500,0.000,2.710,2.710,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.010 Stahlblech, blank (KBOB.2016v1)","06.010 Stahlblech, blank (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,7850.000,kg,3570.000,3570.000,0.000,0.300,0.300,0.000,7.800,7.800,0.000,1.830,1.830,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.011 Stahlblech, verzinkt (KBOB.2016v1)","06.011 Stahlblech, verzinkt (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,7850.000,kg,16100.000,16100.000,0.000,1.100,1.100,0.000,15.700,15.700,0.000,3.510,3.510,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"06.012 Stahlprofil, blank (KBOB.2016v1)","06.012 Stahlprofil, blank (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,7850.000,kg,1000.000,1000.000,0.000,0.300,0.300,0.000,3.500,3.500,0.000,0.734,0.734,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.013 Titanzinkblech (KBOB.2016v1),06.013 Titanzinkblech (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7200.000,kg,35800.000,35800.000,0.000,2.600,2.600,0.000,17.400,17.400,0.000,4.040,4.040,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+06.014 Blei (KBOB.2016v1),06.014 Blei (KBOB.2016v1),KBOB 2016 v1,MATERIAL,11340.000,kg,6530.000,6530.000,0.000,0.200,0.200,0.000,4.000,4.000,0.000,1.040,1.040,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.001 3-Schicht Massivholzplatte, PVAc-gebunden (KBOB.2016v1)","07.001 3-Schicht Massivholzplatte, PVAc-gebunden (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,470.000,kg,1360.000,1280.000,79.700,9.600,9.600,0.001,3.000,2.940,0.053,0.523,0.412,0.111,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.002 Brettschichtholz, UF-gebunden, Trockenbereich (KBOB.2016v1)","07.002 Brettschichtholz, UF-gebunden, Trockenbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,470.000,kg,995.000,908.000,86.900,8.700,8.700,0.001,2.240,2.180,0.058,0.446,0.326,0.121,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.003 Brettschichtholz, MF-gebunden, Feuchtbereich (KBOB.2016v1)","07.003 Brettschichtholz, MF-gebunden, Feuchtbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,470.000,kg,1040.000,953.000,86.900,8.700,8.700,0.001,2.450,2.390,0.058,0.485,0.365,0.121,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+07.004 Hartfaserplatte (KBOB.2016v1),07.004 Hartfaserplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,955.000,kg,1310.000,1220.000,91.100,7.000,7.000,0.001,4.200,4.100,0.061,1.160,1.040,0.126,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.005 Holzwolle-Leichtbauplatte, zementgebunden (KBOB.2016v1)","07.005 Holzwolle-Leichtbauplatte, zementgebunden (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,400.000,kg,561.000,508.000,52.800,2.000,2.000,0.001,1.340,1.260,0.077,0.554,0.537,0.017,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.003.01 Brettschichtholz, MF-gebunden, Feuchtbereich, Produktion Schweiz (KBOB.2016v1)","07.003.01 Brettschichtholz, MF-gebunden, Feuchtbereich, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,470.000,kg,1010.000,921.000,87.000,8.600,8.600,0.001,2.400,2.300,0.058,0.440,0.315,0.120,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.006 Massivholz Buche / Eiche, luftgetrocknet, rau (KBOB.2016v1)","07.006 Massivholz Buche / Eiche, luftgetrocknet, rau (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,705.000,kg,311.000,286.000,24.700,5.400,5.400,0.001,0.480,0.440,0.031,0.093,0.084,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.002.01 Brettschichtholz, UF-gebunden, Trockenbereich, Produktion Schweiz (KBOB.2016v1)","07.002.01 Brettschichtholz, UF-gebunden, Trockenbereich, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,470.000,kg,963.000,876.000,87.000,8.600,8.600,0.001,2.200,2.100,0.058,0.400,0.276,0.120,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.006.01 Massivholz Buche / Eiche, luftgetrocknet, rau, Produktion Schweiz (KBOB.2016v1)","07.006.01 Massivholz Buche / Eiche, luftgetrocknet, rau, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,705.000,kg,292.000,267.000,25.000,5.500,5.500,0.001,0.400,0.400,0.031,0.070,0.058,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.007 Massivholz Buche / Eiche, kammergetrocknet, rau (KBOB.2016v1)","07.007 Massivholz Buche / Eiche, kammergetrocknet, rau (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,675.000,kg,379.000,352.000,27.000,6.200,6.200,0.001,0.580,0.540,0.034,0.109,0.099,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.008 Massivholz Buche / Eiche, kammergetrocknet, gehobelt (KBOB.2016v1)","07.008 Massivholz Buche / Eiche, kammergetrocknet, gehobelt (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,675.000,kg,420.000,393.000,27.000,6.300,6.300,0.001,0.690,0.650,0.034,0.126,0.116,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.008.01 Massivholz Buche / Eiche, kammergetrocknet, gehobelt, Produktion Schweiz (KBOB.2016v1)","07.008.01 Massivholz Buche / Eiche, kammergetrocknet, gehobelt, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,675.000,kg,399.000,372.000,27.000,6.500,6.500,0.001,0.600,0.600,0.034,0.090,0.081,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.009 Massivholz Fichte / Tanne / Lärche, luftgetrocknet, rau (KBOB.2016v1)","07.009 Massivholz Fichte / Tanne / Lärche, luftgetrocknet, rau (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,485.000,kg,347.000,322.000,24.700,5.500,5.500,0.001,0.500,0.470,0.031,0.101,0.091,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.007.01 Massivholz Buche / Eiche, kammergetrocknet, rau, Produktion Schweiz (KBOB.2016v1)","07.007.01 Massivholz Buche / Eiche, kammergetrocknet, rau, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,675.000,kg,360.000,333.000,27.000,6.300,6.300,0.001,0.500,0.500,0.034,0.080,0.069,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.009.01 Massivholz Fichte / Tanne / Lärche, luftgetrocknet, rau, Produktion Schweiz (KBOB.2016v1)","07.009.01 Massivholz Fichte / Tanne / Lärche, luftgetrocknet, rau, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,485.000,kg,333.000,308.000,25.000,5.400,5.400,0.001,0.500,0.400,0.031,0.090,0.078,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.010 Massivholz Fichte / Tanne / Lärche, luftgetr., gehobelt (KBOB.2016v1)","07.010 Massivholz Fichte / Tanne / Lärche, luftgetr., gehobelt (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,485.000,kg,424.000,399.000,24.700,5.800,5.800,0.001,0.690,0.660,0.031,0.125,0.116,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.010.01 Massivholz Fichte / Tanne / Lärche, luftgetr., gehobelt, Produktion Schweiz (KBOB.2016v1)","07.010.01 Massivholz Fichte / Tanne / Lärche, luftgetr., gehobelt, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,485.000,kg,407.000,383.000,25.000,5.700,5.700,0.001,0.600,0.600,0.031,0.110,0.097,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.011 Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt (KBOB.2016v1)","07.011 Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,465.000,kg,502.000,475.000,27.000,6.700,6.700,0.001,0.810,0.780,0.034,0.143,0.133,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.011.01 Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt, Produktion Schweiz (KBOB.2016v1)","07.011.01 Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt, Produktion Schweiz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,465.000,kg,484.000,457.000,27.000,6.500,6.500,0.001,0.800,0.700,0.034,0.120,0.111,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.011.02 Massivholz Fichte / Tanne, kammergetr., Vollholzhaus holzpur (KBOB.2016v1)","07.011.02 Massivholz Fichte / Tanne, kammergetr., Vollholzhaus holzpur (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,420.000,kg,531.000,504.000,27.000,10.000,10.000,0.001,0.500,0.400,0.034,0.110,0.096,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.012 Mitteldichte Faserplatte (MDF), UF-gebunden (KBOB.2016v1)","07.012 Mitteldichte Faserplatte (MDF), UF-gebunden (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,685.000,kg,1170.000,1080.000,91.100,5.900,5.900,0.001,4.900,4.800,0.061,1.040,0.910,0.126,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.013 OSB Platte, PF-gebunden, Feuchtbereich (KBOB.2016v1)","07.013 OSB Platte, PF-gebunden, Feuchtbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,605.000,kg,883.000,792.000,91.400,8.200,8.200,0.001,2.800,2.700,0.061,0.614,0.487,0.127,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.014 Spanplatte, UF-gebunden, Trockenbereich (KBOB.2016v1)","07.014 Spanplatte, UF-gebunden, Trockenbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,640.000,kg,746.000,654.000,91.400,4.400,4.400,0.001,3.000,2.900,0.061,0.646,0.519,0.127,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.015 Spanplatte, PF-gebunden, Feuchtbereich (KBOB.2016v1)","07.015 Spanplatte, PF-gebunden, Feuchtbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,640.000,kg,746.000,654.000,91.400,4.400,4.400,0.001,2.970,2.910,0.061,0.646,0.519,0.127,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.016 Spanplatte, UF-gebunden, beschichtet, Trockenbereich (KBOB.2016v1)","07.016 Spanplatte, UF-gebunden, beschichtet, Trockenbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,640.000,kg,967.000,876.000,91.400,4.700,4.700,0.001,4.200,4.100,0.061,0.845,0.718,0.127,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.017 Sperrholz/Multiplex, UF-gebunden, Trockenbereich (KBOB.2016v1)","07.017 Sperrholz/Multiplex, UF-gebunden, Trockenbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,500.000,kg,1860.000,1780.000,79.700,10.200,10.200,0.001,5.900,5.900,0.053,1.170,1.060,0.111,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"07.018 Sperrholz/Multiplex, PF-gebunden, Feuchtbereich (KBOB.2016v1)","07.018 Sperrholz/Multiplex, PF-gebunden, Feuchtbereich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,500.000,kg,2180.000,2100.000,79.700,10.300,10.200,0.001,7.300,7.200,0.053,1.460,1.350,0.111,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+08.001 2-Komponenten Klebstoff (KBOB.2016v1),08.001 2-Komponenten Klebstoff (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1500.000,kg,6450.000,5700.000,754.000,0.400,0.400,0.005,24.600,24.300,0.348,5.950,4.610,1.340,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+08.002 Heissbitumen (KBOB.2016v1),08.002 Heissbitumen (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1000.000,kg,2640.000,1460.000,1180.000,0.100,0.000,0.008,15.500,15.300,0.217,3.060,0.692,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+08.003 Kautschukdichtungsmasse (KBOB.2016v1),08.003 Kautschukdichtungsmasse (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1500.000,kg,7470.000,5880.000,1590.000,0.300,0.300,0.006,24.100,24.000,0.163,5.210,2.050,3.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+08.004 Polysulfiddichtungsmasse (KBOB.2016v1),08.004 Polysulfiddichtungsmasse (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1600.000,kg,3520.000,1930.000,1590.000,0.400,0.400,0.006,7.800,7.600,0.163,4.670,1.510,3.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+08.005 Silicon-Fugenmasse (KBOB.2016v1),08.005 Silicon-Fugenmasse (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1000.000,kg,4550.000,2960.000,1590.000,2.200,2.200,0.006,15.000,14.800,0.163,5.870,2.710,3.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.001 Dampfbremse bituminös (KBOB.2016v1),09.001 Dampfbremse bituminös (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1100.000,kg,3100.000,1920.000,1180.000,0.700,0.700,0.008,13.900,13.600,0.217,3.540,1.170,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.002 Dampfbremse Polyethylen (PE) (KBOB.2016v1),09.002 Dampfbremse Polyethylen (PE) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,920.000,kg,3600.000,2240.000,1360.000,0.900,0.900,0.002,24.800,24.700,0.133,5.330,2.760,2.580,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.003 Dichtungsbahn bituminös (KBOB.2016v1),09.003 Dichtungsbahn bituminös (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1100.000,kg,2610.000,1430.000,1180.000,0.300,0.200,0.008,12.500,12.300,0.217,3.250,0.880,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.004 Dichtungsbahn Gummi (EPDM) (KBOB.2016v1),09.004 Dichtungsbahn Gummi (EPDM) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1100.000,kg,4930.000,3340.000,1590.000,0.700,0.700,0.006,24.800,24.600,0.163,5.860,2.700,3.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.005 Dichtungsbahn Polyolefin (FPO) (KBOB.2016v1),09.005 Dichtungsbahn Polyolefin (FPO) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1000.000,kg,4430.000,2940.000,1480.000,0.400,0.400,0.002,23.100,22.900,0.132,5.550,2.520,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.006 Kraftpapier (KBOB.2016v1),09.006 Kraftpapier (KBOB.2016v1),KBOB 2016 v1,MATERIAL,650.000,kg,3040.000,2950.000,86.200,14.500,14.500,0.002,8.100,8.000,0.102,1.690,1.650,0.041,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.01 Bituminöse Dichtungsbahn, swissporBIKUTOP EP4 (KBOB.2016v1)","09.003.01 Bituminöse Dichtungsbahn, swissporBIKUTOP EP4 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1175.000,kg,2290.000,1110.000,1180.000,0.200,0.200,0.008,10.800,10.500,0.217,3.070,0.701,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.02 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EP4 (KBOB.2016v1)","09.003.02 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EP4 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1175.000,kg,1850.000,672.000,1180.000,0.200,0.200,0.008,6.100,5.900,0.217,2.840,0.466,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.03 Bituminöse Dichtungsbahn, swissporBIKUTOP EGV3 (KBOB.2016v1)","09.003.03 Bituminöse Dichtungsbahn, swissporBIKUTOP EGV3 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,2280.000,1100.000,1180.000,0.200,0.200,0.008,9.700,9.500,0.217,2.980,0.607,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.04 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EGV3 (KBOB.2016v1)","09.003.04 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EGV3 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,1860.000,681.000,1180.000,0.200,0.200,0.008,5.200,5.000,0.217,2.760,0.391,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.05 Bituminöse Dichtungsbahn, swissporBIKUTOP EGV3.5 (KBOB.2016v1)","09.003.05 Bituminöse Dichtungsbahn, swissporBIKUTOP EGV3.5 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,2350.000,1170.000,1180.000,0.200,0.200,0.008,10.500,10.300,0.217,3.030,0.655,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.06 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EGV3.5 (KBOB.2016v1)","09.003.06 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EGV3.5 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1200.000,kg,1890.000,714.000,1180.000,0.200,0.200,0.008,5.700,5.400,0.217,2.800,0.424,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.07 Bituminöse Dichtungsbahn, swissporBIKUTOP EP5 (KBOB.2016v1)","09.003.07 Bituminöse Dichtungsbahn, swissporBIKUTOP EP5 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1180.000,kg,2300.000,1120.000,1180.000,0.200,0.200,0.008,10.700,10.500,0.217,3.060,0.685,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.08 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EP5 (KBOB.2016v1)","09.003.08 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO EP5 (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1180.000,kg,1860.000,676.000,1180.000,0.200,0.200,0.008,6.000,5.700,0.217,2.820,0.447,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.09 Bituminöse Dichtungsbahn, swissporBIKUTOP LL Vario (KBOB.2016v1)","09.003.09 Bituminöse Dichtungsbahn, swissporBIKUTOP LL Vario (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1171.000,kg,2470.000,1290.000,1180.000,0.200,0.200,0.008,11.800,11.600,0.217,3.100,0.730,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"09.003.10 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO LL Vario (KBOB.2016v1)","09.003.10 Bituminöse Dichtungsbahn, 50% Recyclinganteil, swissporBIKUTOP ECO LL Vario (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1171.000,kg,2120.000,939.000,1180.000,0.200,0.200,0.008,8.000,7.800,0.217,2.920,0.550,2.370,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.007 Polyethylenfolie (PE) (KBOB.2016v1),09.007 Polyethylenfolie (PE) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,920.000,kg,3600.000,2240.000,1360.000,0.900,0.900,0.002,24.800,24.700,0.133,5.330,2.760,2.580,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+09.008 Polyethylenvlies (PE) (KBOB.2016v1),09.008 Polyethylenvlies (PE) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,920.000,kg,3650.000,2290.000,1360.000,0.600,0.600,0.002,25.900,25.800,0.133,5.530,2.950,2.580,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.001 Glaswolle (KBOB.2016v1),10.001 Glaswolle (KBOB.2016v1),KBOB 2016 v1,MATERIAL,60.000,kg,1690.000,1660.000,29.800,2.200,2.200,0.001,7.800,7.700,0.068,1.130,1.120,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.001.01 Glaswolle, Isover (KBOB.2016v1)","10.001.01 Glaswolle, Isover (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,60.000,kg,1290.000,1260.000,29.800,2.600,2.600,0.001,4.500,4.500,0.068,0.800,0.790,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.002 Korkplatte (KBOB.2016v1),10.002 Korkplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,120.000,kg,1690.000,1530.000,159.000,7.700,7.700,0.002,6.700,6.500,0.106,1.340,1.120,0.221,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.003 Phenolharz (PF) (KBOB.2016v1),10.003 Phenolharz (PF) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,40.000,kg,6490.000,5310.000,1180.000,1.000,1.000,0.086,35.000,34.000,1.030,6.230,4.190,2.040,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.004 Polystyrol expandiert (EPS) (KBOB.2016v1),10.004 Polystyrol expandiert (EPS) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,27.500,kg,5180.000,3610.000,1570.000,0.000,0.000,0.002,30.000,30.000,0.133,7.640,4.460,3.190,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.005 Polystyrol extrudiert (XPS) (KBOB.2016v1),10.005 Polystyrol extrudiert (XPS) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,37.500,kg,10800.000,9240.000,1570.000,1.000,1.000,0.002,29.100,28.900,0.133,14.500,11.300,3.190,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.006 Polyurethan (PUR/PIR) (KBOB.2016v1),10.006 Polyurethan (PUR/PIR) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,30.000,kg,6630.000,5110.000,1510.000,1.000,1.000,0.010,30.000,30.000,0.640,7.520,4.800,2.720,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.016.01 Flachsfasern, MAGRIPOL, Premium (KBOB.2016v1)","10.016.01 Flachsfasern, MAGRIPOL, Premium (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,30.000,kg,1580.000,1440.000,144.000,6.000,6.000,0.001,5.100,5.000,0.060,0.960,0.740,0.222,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.007 Schaumglas (KBOB.2016v1),10.007 Schaumglas (KBOB.2016v1),KBOB 2016 v1,MATERIAL,132.500,kg,1040.000,1020.000,18.600,1.900,1.900,0.001,5.300,5.300,0.068,1.170,1.160,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.017.01 Flachsfasern, feuerfest, MAGRIPOL, Premium+ (KBOB.2016v1)","10.017.01 Flachsfasern, feuerfest, MAGRIPOL, Premium+ (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,30.000,kg,1970.000,1820.000,144.000,5.500,5.500,0.001,7.200,7.200,0.060,1.390,1.170,0.222,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.008 Steinwolle (KBOB.2016v1),10.008 Steinwolle (KBOB.2016v1),KBOB 2016 v1,MATERIAL,96.000,kg,1140.000,1110.000,29.800,0.300,0.300,0.001,4.300,4.300,0.068,1.130,1.120,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.009 Weichfaserplatte (KBOB.2016v1),10.009 Weichfaserplatte (KBOB.2016v1),KBOB 2016 v1,MATERIAL,147.500,kg,860.000,816.000,43.600,7.000,7.000,0.001,3.500,3.500,0.041,0.665,0.624,0.041,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.010 Zellulosefasern (KBOB.2016v1),10.010 Zellulosefasern (KBOB.2016v1),KBOB 2016 v1,MATERIAL,47.500,kg,418.000,332.000,86.200,0.240,0.240,0.002,1.030,0.930,0.102,0.257,0.216,0.041,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.011 Blähvermiculit (KBOB.2016v1),10.011 Blähvermiculit (KBOB.2016v1),KBOB 2016 v1,MATERIAL,102.500,kg,589.000,563.000,25.800,0.100,0.050,0.002,1.850,1.800,0.051,0.437,0.428,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.012 Blähperlit (KBOB.2016v1),10.012 Blähperlit (KBOB.2016v1),KBOB 2016 v1,MATERIAL,102.500,kg,950.000,920.000,29.800,0.200,0.170,0.001,4.500,4.500,0.068,1.010,1.000,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.013 Schaumglasschotter (KBOB.2016v1),10.013 Schaumglasschotter (KBOB.2016v1),KBOB 2016 v1,MATERIAL,137.500,kg,323.000,309.000,14.200,0.300,0.300,0.000,1.700,1.700,0.054,0.160,0.150,0.007,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.014 Aerogel-Vlies (KBOB.2016v1),10.014 Aerogel-Vlies (KBOB.2016v1),KBOB 2016 v1,MATERIAL,150.000,kg,45400.000,45200.000,181.000,13.700,13.700,0.002,231.000,231.000,0.127,48.700,48.400,0.303,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.015 Strohballenwand (KBOB.2016v1),10.015 Strohballenwand (KBOB.2016v1),KBOB 2016 v1,MATERIAL,215.000,kg,562.000,562.000,0.000,4.800,4.800,0.000,0.200,0.200,0.000,0.090,0.090,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+10.016 Flachsfasern (KBOB.2016v1),10.016 Flachsfasern (KBOB.2016v1),KBOB 2016 v1,MATERIAL,30.000,kg,1630.000,1480.000,144.000,6.100,6.100,0.001,5.200,5.100,0.060,0.990,0.770,0.222,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.013.01 Schaumglasschotter, Misapor (KBOB.2016v1)","10.013.01 Schaumglasschotter, Misapor (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,137.500,kg,276.000,262.000,14.200,0.200,0.200,0.000,1.600,1.500,0.054,0.130,0.120,0.007,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.017 Flachsfasern, feuerfest (KBOB.2016v1)","10.017 Flachsfasern, feuerfest (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,30.000,kg,2020.000,1870.000,144.000,5.600,5.600,0.001,7.400,7.300,0.060,1.420,1.200,0.222,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.008.01 Steinwolle, Flumroc (KBOB.2016v1)","10.008.01 Steinwolle, Flumroc (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,96.000,kg,1040.000,1010.000,29.800,0.300,0.300,0.001,4.000,3.900,0.068,1.060,1.050,0.010,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.009.01 Weichfaserplatte, Pavatex (KBOB.2016v1)","10.009.01 Weichfaserplatte, Pavatex (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,140.000,kg,691.000,648.000,43.600,6.900,6.900,0.001,3.100,3.100,0.041,0.450,0.400,0.041,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"10.010.01 Zellulosefasern, Isofloc (KBOB.2016v1)","10.010.01 Zellulosefasern, Isofloc (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,47.500,kg,339.000,253.000,86.200,0.230,0.230,0.002,0.790,0.680,0.102,0.203,0.163,0.041,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+13.001 Acrylnitril-Butadien-Styrol (ABS) (KBOB.2016v1),13.001 Acrylnitril-Butadien-Styrol (ABS) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1050.000,kg,5380.000,3890.000,1480.000,0.000,0.000,0.002,29.000,29.000,0.132,7.940,4.910,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+13.002 Polyethylen (PE) (KBOB.2016v1),13.002 Polyethylen (PE) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,960.000,kg,3410.000,1920.000,1480.000,0.500,0.500,0.002,23.200,23.100,0.132,5.410,2.380,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+13.003 Polypropylen (PP) (KBOB.2016v1),13.003 Polypropylen (PP) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,910.000,kg,3430.000,1940.000,1480.000,0.400,0.400,0.002,22.700,22.600,0.132,5.430,2.400,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"13.003.01 Polypropylen (PP), rezykliert, Rehau (KBOB.2016v1)","13.003.01 Polypropylen (PP), rezykliert, Rehau (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,910.000,kg,2840.000,1360.000,1480.000,0.800,0.800,0.002,9.000,8.900,0.132,4.600,1.570,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+13.004 Polyvinylchlorid (PVC) (KBOB.2016v1),13.004 Polyvinylchlorid (PVC) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1390.000,kg,4400.000,3220.000,1180.000,0.600,0.600,0.090,19.500,18.500,1.030,4.420,2.380,2.040,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+13.005 Gusseisen (KBOB.2016v1),13.005 Gusseisen (KBOB.2016v1),KBOB 2016 v1,MATERIAL,7850.000,kg,4200.000,4200.000,0.000,0.200,0.200,0.000,6.600,6.600,0.000,1.510,1.510,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"15.001 Plexiglas (PMMA, Acrylglas) (KBOB.2016v1)","15.001 Plexiglas (PMMA, Acrylglas) (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,1180.000,kg,9050.000,7570.000,1480.000,0.000,0.000,0.002,40.000,40.000,0.132,11.700,8.680,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+15.002 Polyamid (PA) glasfaserverstärkt (KBOB.2016v1),15.002 Polyamid (PA) glasfaserverstärkt (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1360.000,kg,7730.000,7350.000,377.000,1.000,1.000,0.002,40.000,40.000,0.129,9.600,8.890,0.714,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+15.003 Polycarbonat (PC) (KBOB.2016v1),15.003 Polycarbonat (PC) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1200.000,kg,8240.000,6760.000,1480.000,0.000,0.000,0.002,32.000,32.000,0.132,11.500,8.490,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+15.004 Polyester (UP) glasfaserverstärkt (KBOB.2016v1),15.004 Polyester (UP) glasfaserverstärkt (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1500.000,kg,9200.000,8180.000,1030.000,1.500,1.500,0.005,31.600,31.400,0.193,8.850,6.870,1.980,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+15.005 Polystyrol (PS) (KBOB.2016v1),15.005 Polystyrol (PS) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1050.000,kg,4070.000,2580.000,1480.000,0.000,0.000,0.000,24.500,24.400,0.132,6.680,3.640,3.030,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+4.001 Gips-/Weissputz (KBOB.2016v1),4.001 Gips-/Weissputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1100.000,kg,146.000,129.000,17.200,0.100,0.100,0.001,0.700,0.600,0.064,0.150,0.140,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+4.003 Kunststoffputz (Dispersionsputz) (KBOB.2016v1),4.003 Kunststoffputz (Dispersionsputz) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1540.000,kg,1230.000,1210.000,17.200,0.230,0.230,0.001,5.250,5.190,0.064,0.951,0.942,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+4.009 Zementputz (KBOB.2016v1),4.009 Zementputz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,1550.000,kg,255.000,238.000,17.200,0.120,0.120,0.001,0.730,0.660,0.064,0.269,0.260,0.009,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.001 Isolierverglasung 2-fach, Ug-Wert 1.1 W/m2K, Dicke 24 mm (KBOB.2016v1)","05.001 Isolierverglasung 2-fach, Ug-Wert 1.1 W/m2K, Dicke 24 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,46800.000,44600.000,2180.000,10.000,10.000,0.020,171.000,170.000,1.350,43.700,39.800,3.880,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.002 Isolierverglasung 2-fach, VSG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)","05.002 Isolierverglasung 2-fach, VSG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,84000.000,80100.000,3900.000,19.000,19.000,0.020,335.000,333.000,2.050,78.200,71.100,7.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.003 Isolierverglasung 3-fach, Ug-Wert 0.5 W/m2K, Dicke 36 mm (KBOB.2016v1)","05.003 Isolierverglasung 3-fach, Ug-Wert 0.5 W/m2K, Dicke 36 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,83100.000,80100.000,2980.000,22.000,22.000,0.030,327.000,325.000,1.990,77.300,72.100,5.250,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.004 Fensterrahmen Aluminium (KBOB.2016v1),05.004 Fensterrahmen Aluminium (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,406000.000,387000.000,18600.000,216.000,216.000,0.000,1600.000,1600.000,3.000,362.000,326.000,36.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.004.01 Fensterrahmen Aluminium, WICLINE 75evo (KBOB.2016v1)","05.004.01 Fensterrahmen Aluminium, WICLINE 75evo (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,259000.000,248000.000,10900.000,161.000,161.000,0.047,862.000,860.000,1.590,203.000,182.000,21.400,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.005 Fensterrahmen Holz (KBOB.2016v1),05.005 Fensterrahmen Holz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,217000.000,201000.000,15900.000,711.000,711.000,0.100,573.000,565.000,8.100,128.000,109.000,19.600,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.006 Fensterrahmen Holz-Aluminium (KBOB.2016v1),05.006 Fensterrahmen Holz-Aluminium (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,319000.000,301000.000,18400.000,720.000,720.000,0.100,951.000,943.000,7.800,217.000,191.000,25.700,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.007 Fensterrahmen Kunststoff/PVC (KBOB.2016v1),05.007 Fensterrahmen Kunststoff/PVC (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,450000.000,416000.000,33200.000,69.000,67.000,2.000,1520.000,1490.000,29.000,285.000,228.000,57.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.008 Fassade, Pfosten-Riegel, Alu/Glas (KBOB.2016v1)","05.008 Fassade, Pfosten-Riegel, Alu/Glas (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,250000.000,242000.000,7250.000,66.000,66.000,0.000,760.000,757.000,3.000,177.000,163.000,14.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.009 Isolierverglasung 2-fach, Ug-Wert 1.1 W/m2K, Dicke 18 mm (KBOB.2016v1)","05.009 Isolierverglasung 2-fach, Ug-Wert 1.1 W/m2K, Dicke 18 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,51300.000,49600.000,1730.000,12.000,12.000,0.020,199.000,198.000,1.300,47.900,44.900,2.980,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.010 Isolierverglasung 2-fach, ESG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)","05.010 Isolierverglasung 2-fach, ESG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,57500.000,55300.000,2180.000,17.000,17.000,0.020,226.000,225.000,1.350,51.100,47.200,3.880,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.011 Isolierverglasung 2-fach, ESG/VSG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)","05.011 Isolierverglasung 2-fach, ESG/VSG, Ug-Wert 1.1 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,94700.000,90800.000,3900.000,27.000,27.000,0.020,390.000,388.000,2.050,85.600,78.400,7.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.012 Isolierverglasung 3-fach, Ug-Wert 0.6 W/m2K, Dicke 40 mm (KBOB.2016v1)","05.012 Isolierverglasung 3-fach, Ug-Wert 0.6 W/m2K, Dicke 40 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,74300.000,70900.000,3450.000,15.000,15.000,0.030,261.000,259.000,2.040,66.800,60.700,6.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.013 Isolierverglasung 3-fach, ESG/ESG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)","05.013 Isolierverglasung 3-fach, ESG/ESG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,95800.000,92300.000,3450.000,30.000,30.000,0.030,371.000,369.000,2.040,81.600,75.400,6.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.014 Isolierverglasung 3-fach, ESG/ESG/ESG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)","05.014 Isolierverglasung 3-fach, ESG/ESG/ESG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,106000.000,103000.000,3450.000,37.000,37.000,0.030,426.000,424.000,2.040,88.900,82.700,6.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.015 Isolierverglasung 3-fach, VSG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)","05.015 Isolierverglasung 3-fach, VSG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,112000.000,106000.000,5170.000,25.000,25.000,0.030,424.000,422.000,2.740,101.000,92.000,9.450,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.016 Isolierverglasung 3-fach, ESG/VSG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)","05.016 Isolierverglasung 3-fach, ESG/VSG, Ug-Wert 0.6 W/m2K (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,124000.000,118000.000,5170.000,32.000,32.000,0.030,484.000,481.000,2.740,110.000,100.000,9.450,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.017 Sonnenschutz, Lamellenstoren motorisiert (KBOB.2016v1)","05.017 Sonnenschutz, Lamellenstoren motorisiert (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,111000.000,110000.000,633.000,32.000,32.000,0.000,263.000,262.000,0.000,57.000,56.000,1.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.018 Sonnenschutz, Ausstellstoren motorisiert (KBOB.2016v1)","05.018 Sonnenschutz, Ausstellstoren motorisiert (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,141000.000,140000.000,831.000,36.000,36.000,0.000,297.000,297.000,0.000,65.000,64.000,1.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.019 Sonnenschutz, Rollladen motorisiert (KBOB.2016v1)","05.019 Sonnenschutz, Rollladen motorisiert (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,138000.000,137000.000,284.000,45.000,45.000,0.000,331.000,331.000,0.000,72.000,72.000,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.020 Putzträgerplatte kunstharzgebunden 13 mm (KBOB.2016v1),05.020 Putzträgerplatte kunstharzgebunden 13 mm (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,11200.000,11000.000,108.000,3.640,3.640,0.004,44.500,44.100,0.403,8.010,7.950,0.057,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+05.021 Putzträgerplatte mineralisch gebunden 12.5 mm (KBOB.2016v1),05.021 Putzträgerplatte mineralisch gebunden 12.5 mm (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,7210.000,6970.000,248.000,2.370,2.360,0.009,19.300,18.400,0.923,6.180,6.050,0.131,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.022 Fassadenplatte, Aluverbund, 4 mm (KBOB.2016v1)","05.022 Fassadenplatte, Aluverbund, 4 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,45400.000,41100.000,4240.000,25.000,25.000,0.000,200.000,199.000,1.000,44.000,36.000,9.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.023 Fassadenplatte, Hochdrucklaminatplatte (HPL), 8.1 mm (KBOB.2016v1)","05.023 Fassadenplatte, Hochdrucklaminatplatte (HPL), 8.1 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,49800.000,43500.000,6310.000,90.000,90.000,0.000,198.000,196.000,2.000,45.000,33.000,11.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.024 Fassadenplatte, Kunststoff glasfaserverstärkt (GFK), 1.6 mm (KBOB.2016v1)","05.024 Fassadenplatte, Kunststoff glasfaserverstärkt (GFK), 1.6 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,22100.000,19600.000,2460.000,4.000,4.000,0.000,76.000,75.000,0.000,21.000,17.000,5.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"05.025 Fassadenplatte, Kalkstein, 30 mm (KBOB.2016v1)","05.025 Fassadenplatte, Kalkstein, 30 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,6160.000,4210.000,1960.000,1.920,1.770,0.145,25.600,21.800,3.750,5.130,4.450,0.677,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.001 2K-Fliessbelag Industrie (Epoxidharz), 2.25 mm (KBOB.2016v1)","11.001 2K-Fliessbelag Industrie (Epoxidharz), 2.25 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,28900.000,25500.000,3430.000,1.000,1.000,0.020,65.000,64.000,1.580,17.200,11.100,6.090,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.002 2K-Fliessbelag Wohnen/Verwaltung (Epoxidharz, PU), 2 mm (KBOB.2016v1)","11.002 2K-Fliessbelag Wohnen/Verwaltung (Epoxidharz, PU), 2 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,21100.000,18200.000,2980.000,2.000,2.000,0.020,62.000,61.000,1.540,15.200,10.000,5.190,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.003 Gummigranulat versiegelt, 7.5 mm (KBOB.2016v1)","11.003 Gummigranulat versiegelt, 7.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,23500.000,16700.000,6780.000,2.000,2.000,0.040,112.000,110.000,2.150,27.500,14.900,12.600,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.004 Gussasphalt, 27.5 mm (KBOB.2016v1)","11.004 Gussasphalt, 27.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,24500.000,16800.000,7680.000,3.000,3.000,0.100,126.000,120.000,5.600,14.100,12.900,1.170,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.005 Hartbeton einschichtig, 27.5 mm (KBOB.2016v1)","11.005 Hartbeton einschichtig, 27.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,18800.000,18600.000,214.000,2.000,2.000,0.000,50.000,49.000,0.510,16.900,16.800,0.085,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.006 Hartbeton zweischichtig, 35 mm (KBOB.2016v1)","11.006 Hartbeton zweischichtig, 35 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,19400.000,19100.000,270.000,2.000,2.000,0.010,45.000,44.000,0.640,16.800,16.700,0.107,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.007 Kautschuk, 2 mm (KBOB.2016v1)","11.007 Kautschuk, 2 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,14900.000,12300.000,2600.000,10.000,10.000,0.020,60.000,60.000,0.540,15.700,10.900,4.780,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.008 Keramik-/Steinzeugplatte, 9 mm (KBOB.2016v1)","11.008 Keramik-/Steinzeugplatte, 9 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,44200.000,43700.000,464.000,4.000,4.000,0.030,69.000,68.000,0.910,14.000,13.800,0.163,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.009 Kork Fertigparkett, 10.5 mm (KBOB.2016v1)","11.009 Kork Fertigparkett, 10.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,11000.000,9740.000,1210.000,39.000,39.000,0.010,47.000,46.000,0.630,9.680,8.020,1.660,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.010 Kork PVC-beschichtet, 3.2 mm (KBOB.2016v1)","11.010 Kork PVC-beschichtet, 3.2 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,7200.000,5650.000,1550.000,8.000,8.000,0.010,34.000,34.000,0.360,7.580,4.760,2.820,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.011 Korkparkett geölt/versiegelt, 5.3 mm (KBOB.2016v1)","11.011 Korkparkett geölt/versiegelt, 5.3 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,3020.000,2620.000,401.000,11.800,11.700,0.004,11.100,10.900,0.186,2.560,1.970,0.585,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.012 Kunststeinplatte zementgebunden, 10 mm (KBOB.2016v1)","11.012 Kunststeinplatte zementgebunden, 10 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,4940.000,4390.000,554.000,0.700,0.700,0.040,8.500,7.400,1.090,5.040,4.850,0.194,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.013 Laminat, 8.5 mm (KBOB.2016v1)","11.013 Laminat, 8.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,10300.000,10000.000,248.000,38.000,38.000,0.000,45.000,44.000,0.290,8.470,8.380,0.088,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.014 Linoleum, 2.5 mm (KBOB.2016v1)","11.014 Linoleum, 2.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,10800.000,10400.000,378.000,19.000,19.000,0.004,26.900,26.700,0.270,6.360,5.900,0.462,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.015 Natursteinplatte geschliffen, 15 mm (KBOB.2016v1)","11.015 Natursteinplatte geschliffen, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,32000.000,31000.000,1040.000,16.000,16.000,0.070,137.000,135.000,2.050,16.200,15.800,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.015.01 Natursteinplatte geschliffen, Europa, 15 mm (KBOB.2016v1)","11.015.01 Natursteinplatte geschliffen, Europa, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,30300.000,29200.000,1040.000,16.300,16.200,0.072,134.000,132.000,2.050,15.300,14.900,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.015.02 Natursteinplatte geschliffen, Schweiz, 15 mm (KBOB.2016v1)","11.015.02 Natursteinplatte geschliffen, Schweiz, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,25300.000,24300.000,1040.000,16.000,16.000,0.072,118.000,116.000,2.050,11.900,11.600,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.015.03 Natursteinplatte geschliffen, Übersee, 15 mm (KBOB.2016v1)","11.015.03 Natursteinplatte geschliffen, Übersee, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,34900.000,33900.000,1040.000,16.600,16.500,0.072,144.000,142.000,2.050,17.900,17.500,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.016 Natursteinplatte geschnitten, 15 mm (KBOB.2016v1)","11.016 Natursteinplatte geschnitten, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,24800.000,23800.000,1040.000,11.000,11.000,0.070,102.000,100.000,2.050,13.200,12.900,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.017 Natursteinplatte poliert, 15 mm (KBOB.2016v1)","11.017 Natursteinplatte poliert, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,55100.000,54000.000,1040.000,21.000,21.000,0.070,167.000,165.000,2.050,18.600,18.200,0.366,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.018 Parkett 2-Schicht werkversiegelt, 11 mm (KBOB.2016v1)","11.018 Parkett 2-Schicht werkversiegelt, 11 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,12700.000,12600.000,159.000,86.000,86.000,0.000,45.000,44.000,0.180,7.500,7.450,0.060,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.019 Parkett 3-Schicht werkversiegelt, 15 mm (KBOB.2016v1)","11.019 Parkett 3-Schicht werkversiegelt, 15 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,17100.000,16800.000,216.000,148.000,148.000,0.000,46.000,45.000,0.250,8.200,8.160,0.080,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.020 Parkett Mosaik werkversiegelt, 8 mm (KBOB.2016v1)","11.020 Parkett Mosaik werkversiegelt, 8 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,7920.000,7790.000,134.000,78.000,78.000,0.000,26.000,26.000,0.160,3.400,3.380,0.050,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.021 PVC homogen, 2 mm (KBOB.2016v1)","11.021 PVC homogen, 2 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,12400.000,9350.000,3050.000,2.000,2.000,0.180,58.000,55.000,2.320,13.400,8.120,5.240,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.022 Steinholz versiegelt, 16.5 mm (KBOB.2016v1)","11.022 Steinholz versiegelt, 16.5 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,8790.000,8460.000,330.000,0.900,0.900,0.010,26.000,24.800,1.260,12.800,12.700,0.164,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.023 Synthetische thermoplastische Beläge (TPO), 2 mm (KBOB.2016v1)","11.023 Synthetische thermoplastische Beläge (TPO), 2 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,8420.000,5630.000,2790.000,3.000,3.000,0.020,44.000,43.000,0.680,11.000,5.860,5.100,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+11.024 Teppich Kunstfaser getuftet (KBOB.2016v1),11.024 Teppich Kunstfaser getuftet (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,10900.000,8640.000,2270.000,1.000,1.000,0.010,50.000,50.000,0.400,14.900,10.500,4.410,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+11.025 Teppich Nadelfilz (KBOB.2016v1),11.025 Teppich Nadelfilz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,6960.000,5080.000,1880.000,1.000,1.000,0.010,34.000,34.000,0.274,9.650,5.970,3.680,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+11.026 Teppich Naturfaser (KBOB.2016v1),11.026 Teppich Naturfaser (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,9640.000,8930.000,710.000,10.800,10.800,0.006,15.700,15.500,0.241,4.410,3.260,1.160,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"11.027 Terrazzo versiegelt, 40 mm (KBOB.2016v1)","11.027 Terrazzo versiegelt, 40 mm (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,18800.000,18500.000,339.000,4.000,4.000,0.010,45.000,44.000,0.810,17.800,17.600,0.135,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"12.001 Aussentüre, Holz, aluminiumbeplankt (KBOB.2016v1)","12.001 Aussentüre, Holz, aluminiumbeplankt (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,166000.000,161000.000,4680.000,175.000,175.000,0.100,330.000,321.000,8.700,77.600,74.300,3.270,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"12.002 Aussentüre, Holz, Glaseinsatz (KBOB.2016v1)","12.002 Aussentüre, Holz, Glaseinsatz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,183000.000,178000.000,5500.000,122.000,121.000,0.100,411.000,403.000,8.400,97.700,92.100,5.620,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"12.003 Innentüre, Holz (KBOB.2016v1)","12.003 Innentüre, Holz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,58700.000,53300.000,5370.000,290.000,290.000,0.100,193.000,189.000,4.100,43.000,35.300,7.730,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"12.004 Innentüre, Holz, Glaseinsatz (KBOB.2016v1)","12.004 Innentüre, Holz, Glaseinsatz (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,87800.000,77200.000,10600.000,245.000,245.000,0.300,308.000,287.000,20.500,69.000,57.400,11.600,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.001 Anstrich, wasserverdünnbar, 2 Anstriche (KBOB.2016v1)","14.001 Anstrich, wasserverdünnbar, 2 Anstriche (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,1230.000,759.000,471.000,0.100,0.100,0.001,4.200,4.200,0.000,1.360,0.644,0.719,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.002 Anstrich, lösemittelverdünnbar, 2 Anstriche (KBOB.2016v1)","14.002 Anstrich, lösemittelverdünnbar, 2 Anstriche (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,1960.000,1480.000,471.000,0.400,0.400,0.001,6.500,6.500,0.000,1.600,0.877,0.719,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.003 Bitumenemulsion, 1 Anstrich (KBOB.2016v1)","14.003 Bitumenemulsion, 1 Anstrich (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,626.000,331.000,295.000,0.020,0.020,0.002,1.900,1.900,0.100,0.706,0.113,0.593,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.004 Emaillieren, Metall (KBOB.2016v1)","14.004 Emaillieren, Metall (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,10500.000,10500.000,0.000,4.000,4.000,0.000,44.000,44.000,0.000,8.110,8.110,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.005 Pulverbeschichten, Aluminium (KBOB.2016v1)","14.005 Pulverbeschichten, Aluminium (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,4470.000,4470.000,0.000,0.600,0.600,0.000,17.300,17.300,0.000,3.720,3.720,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.006 Pulverbeschichten, Stahl (KBOB.2016v1)","14.006 Pulverbeschichten, Stahl (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,4740.000,4740.000,0.000,0.800,0.800,0.000,22.100,22.100,0.000,4.500,4.500,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.007 Verchromen, Stahl (KBOB.2016v1)","14.007 Verchromen, Stahl (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,7120.000,7120.000,0.000,0.800,0.800,0.000,5.000,5.000,0.000,0.582,0.582,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"14.008 Verzinken, Stahl (KBOB.2016v1)","14.008 Verzinken, Stahl (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,41100.000,41100.000,0.000,3.000,3.000,0.000,25.900,25.900,0.000,6.010,6.010,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"21.002 Arbeitsplatte Chromstahl, high-end (KBOB.2016v1)","21.002 Arbeitsplatte Chromstahl, high-end (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,742000.000,742000.000,0.000,469.000,469.000,0.000,1330.000,1330.000,0.000,323.000,323.000,0.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"21.003 Arbeitsplatte Chromstahl, Standard (KBOB.2016v1)","21.003 Arbeitsplatte Chromstahl, Standard (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,m2,112000.000,111000.000,1130.000,36.000,36.000,0.012,204.000,203.000,0.752,50.200,48.600,1.570,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.004 Arbeitsplatte Kompositwerkstoff (auf Aluminiumhydroxidbasis) (KBOB.2016v1),21.004 Arbeitsplatte Kompositwerkstoff (auf Aluminiumhydroxidbasis) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,86600.000,76400.000,10200.000,6.000,6.000,0.027,360.000,359.000,1.540,94.000,77.100,16.900,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.005 Arbeitsplatte kunstharzbeschichtet (KBOB.2016v1),21.005 Arbeitsplatte kunstharzbeschichtet (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,28200.000,26400.000,1750.000,148.000,148.000,0.013,118.000,117.000,0.786,23.900,21.400,2.510,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.006 Arbeitsplatte Massivholz (KBOB.2016v1),21.006 Arbeitsplatte Massivholz (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,35900.000,35300.000,634.000,252.000,252.000,0.013,84.000,83.000,0.804,11.900,11.700,0.240,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.007 Arbeitsplatte Naturstein (KBOB.2016v1),21.007 Arbeitsplatte Naturstein (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,m2,121000.000,119000.000,2130.000,62.000,62.000,0.146,410.000,406.000,4.170,36.300,35.600,0.750,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.001 Abfalltrennsystem (KBOB.2016v1),21.001 Abfalltrennsystem (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,Stk.,19600.000,15800.000,3770.000,18.000,18.000,0.006,114.000,113.000,0.343,23.700,16.000,7.680,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.008 Dampfabzug (KBOB.2016v1),21.008 Dampfabzug (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,Stk.,295000.000,287000.000,8630.000,71.000,71.000,0.031,616.000,615.000,1.390,149.000,132.000,17.100,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"21.009 Küche, Massivholz, 16-teilig (KBOB.2016v1)","21.009 Küche, Massivholz, 16-teilig (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,Stk.,1030000.000,982000.000,45200.000,3820.000,3820.000,0.361,2370.000,2350.000,22.300,481.000,409.000,71.800,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"21.010 Küche, Metall, 16-teilig (KBOB.2016v1)","21.010 Küche, Metall, 16-teilig (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,Stk.,5610000.000,5600000.000,15200.000,540.000,540.000,0.062,10500.000,10500.000,2.650,2250.000,2220.000,29.600,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+"21.011 Küche, Spanplatte, 16-teilig (KBOB.2016v1)","21.011 Küche, Spanplatte, 16-teilig (KBOB.2016v1)",KBOB 2016 v1,MATERIAL,,Stk.,981000.000,903000.000,77700.000,2530.000,2530.000,0.581,3170.000,3130.000,36.000,697.000,578.000,119.000,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.012 Spüle Chromstahl (KBOB.2016v1),21.012 Spüle Chromstahl (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,Stk.,89000.000,86800.000,2240.000,41.000,41.000,0.004,226.000,225.000,0.211,46.500,41.900,4.570,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"
+21.013 Spüle Kompositwerkstoff (auf Gesteinsmehlbasis) (KBOB.2016v1),21.013 Spüle Kompositwerkstoff (auf Gesteinsmehlbasis) (KBOB.2016v1),KBOB 2016 v1,MATERIAL,,Stk.,32700.000,28200.000,4490.000,18.000,18.000,0.018,148.000,147.000,1.110,37.100,30.700,6.390,"Alle > MATERIALIEN > kbob.admin.ch > KBOB / ecobau / IPB 2009/1:2016v1
+"

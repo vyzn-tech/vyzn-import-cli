@@ -1,0 +1,304 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-08-28T10:40:13.216Z",
+  "products": {
+    "Beton armiert 1.0% Stahl (ECOBAU.v202408)": {
+      "name": "Beton armiert 1.0% Stahl (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 81681.15,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 62.3443,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 546.186,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 668.515,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 57.861,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 473196,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 391931,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 120.77435,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 29.6479,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 262.6504,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 291.5995,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 4.50764
+      }
+    },
+    "Beton armiert 1.5% Stahl (ECOBAU.v202408)": {
+      "name": "Beton armiert 1.5% Stahl (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 82041.725,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 76.38145,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 677.829,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 801.5225,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 71.8415,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 533844,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 452196.5,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 122.166525,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 29.98185,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 291.9706,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 321.24925,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 4.56496
+      }
+    },
+    "Beton armiert 2.0% Stahl (ECOBAU.v202408)": {
+      "name": "Beton armiert 2.0% Stahl (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 82402.3,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 90.4186,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 809.472,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 934.53,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 85.822,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 594492,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 512462,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 123.5587,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 30.3158,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 321.2908,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 350.899,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 4.62228
+      }
+    },
+    "Beton armiert 3.0% Stahl (ECOBAU.v202408)": {
+      "name": "Beton armiert 3.0% Stahl (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 83123.45,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 118.4929,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 1072.758,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 1200.545,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 113.783,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 715788,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 632993,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 126.34305,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 30.9837,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 379.9312,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 410.1985,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 4.73692
+      }
+    },
+    "Mauerwerk Kalksandstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Kalksandstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "sand-lime-brick",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 59500,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 73.64,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 630.42,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 704.34,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 70.588,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 413700,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 354760,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 73.612,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 17.78,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 242.76,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 260.96,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 3.0758
+      }
+    },
+    "Mauerwerk Leichtbackstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Leichtbackstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "brick",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 26860,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 56.2256,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 505.104,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 538.992,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 54.7888,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 249144,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 221968,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 33.232,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 8.0264,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 168.312,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 175.952,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 1.38944
+      }
+    },
+    "Mauerwerk Modulbackstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Modulbackstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "brick",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 40375,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 89.786,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 800.34,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 851.67,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 87.643,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 389130,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 348280,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 49.942,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 12.065,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 260.76,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 272.3,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 2.0813
+      }
+    },
+    "Mauerwerk Porenbestonstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Porenbestonstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "cast-stone",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 21441.25,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 36.49775,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 411.7725,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 438.56,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 35.38925,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 289498.5,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 268302.5,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 26.5353,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 6.40715,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 208.2185,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 214.777,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 1.114035
+      }
+    },
+    "Mauerwerk Sichtbackstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Sichtbackstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "brick",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 59500,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 131.3424,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 1171.856,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 1247.428,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 128.1812,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 570752,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 510552,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 73.6008,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 17.78,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 382.844,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 399.84,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 3.06852
+      }
+    },
+    "Mauerwerk Zementstein (ECOBAU.v202408)": {
+      "name": "Mauerwerk Zementstein (ECOBAU.v202408)",
+      "type": "MATERIAL",
+      "subType": null,
+      "status": "approved",
+      "hatchingPattern": "cement-stone",
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "ecobau.ch > v2024.08",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 70975,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 64.739,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 470.49,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 558.45,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 61.093,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 416040,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 345760,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 87.814,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 21.209,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m3",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 229.44,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 249.62,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 3.6725
+      }
+    }
+  },
+  "categories": {
+    "ecobau.ch": {
+      "name": "ecobau.ch"
+    },
+    "ecobau.ch > v2024.08": {
+      "name": "v2024.08"
+    }
+  }
+}

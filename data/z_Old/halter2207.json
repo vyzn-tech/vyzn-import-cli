@@ -1,0 +1,918 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-07-22T15:56:53.790Z",
+  "products": {
+    "AW_oi_Backstein_Holzfassade": {
+      "name": "AW_oi_Backstein_Holzfassade",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 40,
+              "vyzn.catalogue.LayerThickness": 20
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 40,
+              "vyzn.catalogue.LayerThickness": 1
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 40,
+              "vyzn.catalogue.LayerThickness": 1
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 175,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 8
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 92
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "0_1": {
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "09.006 Kraftpapier (KBOB.2022v5)"
+          },
+          "1_1": {
+            "layerPosition": 1,
+            "sectionPosition": 1,
+            "materialKey": "09.006 Kraftpapier (KBOB.2022v5)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "2_1": {
+            "layerPosition": 2,
+            "sectionPosition": 1,
+            "materialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5)"
+          },
+          "3_0": {
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "04.002 Baukleber/Einbettm\u00f6rtel organisch (KBOB.2022v5)"
+          },
+          "3_1": {
+            "layerPosition": 3,
+            "sectionPosition": 1,
+            "materialKey": "04.002 Baukleber/Einbettm\u00f6rtel organisch (KBOB.2022v5)"
+          },
+          "4_0": {
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "02.001 Backstein (KBOB.2022v5)"
+          },
+          "4_1": {
+            "layerPosition": 4,
+            "sectionPosition": 1,
+            "materialKey": "02.001 Backstein (KBOB.2022v5)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.18314500000000006,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 168.980375,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 4.1225102499999995,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 3.204163,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 3.4143660000000002,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 4.114181250000001,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 1601.2136,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 1430.2886000000003,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.20774009999999998,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.065147185,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 0.9437615,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.00707205,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.010813050000000001
+      }
+    },
+    "AW_oi_Backstein_Holzfassade_test": {
+      "name": "AW_oi_Backstein_Holzfassade_test",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.18314500000000006,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 168.980375,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 4.12251025,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 3.204163,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 3.414366,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 4.114181250000001,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 1601.2136,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 1430.2886,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.20774009999999998,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.065147185,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 0.9437615,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.00707205,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.010813050000000001
+      }
+    },
+    "AW_oi_Beton_Holzfassade": {
+      "name": "AW_oi_Beton_Holzfassade",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 40,
+              "vyzn.catalogue.LayerThickness": 20
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 1,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 40,
+              "vyzn.catalogue.LayerThickness": 1
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 200
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 8
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 92
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "0_1": {
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "09.006 Kraftpapier (KBOB.2022v5)"
+          },
+          "1_1": {
+            "layerPosition": 1,
+            "sectionPosition": 1,
+            "materialKey": "09.006 Kraftpapier (KBOB.2022v5)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5)"
+          },
+          "2_1": {
+            "layerPosition": 2,
+            "sectionPosition": 1,
+            "materialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5)"
+          },
+          "3_0": {
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "04.002 Baukleber/Einbettm\u00f6rtel organisch (KBOB.2022v5)"
+          },
+          "3_1": {
+            "layerPosition": 3,
+            "sectionPosition": 1,
+            "materialKey": "04.002 Baukleber/Einbettm\u00f6rtel organisch (KBOB.2022v5)"
+          },
+          "4_0": {
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          },
+          "4_1": {
+            "layerPosition": 4,
+            "sectionPosition": 1,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 330.8902916666668,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 4.165540083333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 3.536843,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 4.020232666666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 4.148115416666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 2406.8186000000005,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2076.6102666666666,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.4768868500000001,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.13174918500000002,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.2502468333333332,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.3796528833333337,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.020228333333333334
+      }
+    },
+    "AW_ui_200": {
+      "name": "AW_ui_200",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 200
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "09.003 Dichtungsbahn bitumin\u00f6s (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 718.9724166666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.30575483333333336,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 4.45943,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 4.9267416666666675,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.2878716666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 2576.98,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 1859.3216666666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.4559884166666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.5271061666666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.1565686666666666,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.6813308333333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.01792986666666667
+      }
+    },
+    "AW_ui_250": {
+      "name": "AW_ui_250",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 250
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "09.003 Dichtungsbahn bitumin\u00f6s (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 787.3405208333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.3694060416666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 5.0242875,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 5.594677083333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.3477395833333333,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 3021.85,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2236.1520833333334,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.5577938541666666,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.5520910416666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.3998774999999999,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.9490385416666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.021734000000000003
+      }
+    },
+    "Bodenplatte_HGL": {
+      "name": "Bodenplatte_HGL",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_SLAB",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 27.5
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 300,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 80,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "11.005 Hartbeton einschichtig, 27.5 mm (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "01.001 Magerbeton (ohne Bewehrung) (KBOB.2022v5)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 552.688625,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.45010058333333336,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 4.334018333333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 5.151212499999999,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.4197301666666666,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 3410.6866666666665,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2859.8758333333326,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.8094192916666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.19824591666666666,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.8654263333333332,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 2.05960625,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.030445466666666664
+      }
+    },
+    "Bohrpfahlwand": {
+      "name": "Bohrpfahlwand",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_OTHER",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": null
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "Dach_ui": {
+      "name": "Dach_ui",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_ROOF",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 50
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 10
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 350,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "03.012 Rundkies 1 (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "09.003 Dichtungsbahn bitumin\u00f6s (KBOB.2022v5)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 2.0% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 981.4550833333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.5841605833333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 6.943369999999999,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 7.800199999999999,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.5514895833333333,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 4347.045,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 3367.7616666666663,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.84185075,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.6213338333333334,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 2.0617234166666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 2.678998333333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.03278413333333333
+      }
+    },
+    "DE_oi": {
+      "name": "DE_oi",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_SLAB",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 1
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 220,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "09.007 Polyethylenfolie (PE) (KBOB.2022v5)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5)"
+          },
+          "3_0": {
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 1.5% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 434.474325,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.4543933166666666,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 3.7302530000000003,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 4.2995825,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.43269816666666666,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 2546.4880000000003,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2112.3631666666665,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.5627325916666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.17911505000000003,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.2963095333333332,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.4728365833333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.021841986666666664
+      }
+    },
+    "Decke \u00fc. UG_1": {
+      "name": "Decke \u00fc. UG_1",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_SLAB",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 60
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 1
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 350,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "09.007 Polyethylenfolie (PE) (KBOB.2022v5)"
+          },
+          "2_0": {
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5)"
+          },
+          "3_0": {
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 2.0% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 614.3347500000001,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.7017698333333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 5.966799999999999,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 6.8120916666666655,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.6699076666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 4056.9300000000003,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 3443.6709999999994,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.8355477499999999,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.24602376666666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 2.099947,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 2.3418334999999995,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.0320671
+      }
+    },
+    "Erdbebenwand": {
+      "name": "Erdbebenwand",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 250
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "Beton armiert 2.0% Stahl (ECOBAU.v202408)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 343.34291666666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.37674416666666666,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 3.3728,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 3.893875,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.3575916666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 2477.05,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2135.258333333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.5148279166666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.12631583333333332,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.3387116666666665,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.4620791666666666,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.0192595
+      }
+    },
+    "FE_Wohnen": {
+      "name": "FE_Wohnen",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "05.012 Isolierverglasung 3-fach, Ug-Wert 0.6 W/m2K, Dicke 40 mm 3 (KBOB.2022v5)"
+          },
+          "1_0": {
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "05.006 Fensterrahmen Holz-Metall 2,6 (KBOB.2022v5)"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "St\u00fctze_ui": {
+      "name": "St\u00fctze_ui",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_COLUMN",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 20
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "01.041 Betonfertigteil, hochfester Beton, ab Werk (KBOB.2022v5)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 57.24666666666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 0.13997733333333334,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 1.2040266666666668,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 1.2871266666666665,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 0.13683800000000002,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 812.5333333333333,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 755.2866666666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.08365399999999999,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.020498000000000002,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 0.48936666666666684,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 0.5096800000000001,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.0031024
+      }
+    },
+    "Unterzug": {
+      "name": "Unterzug",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_BEAM",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "HGL",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerLifeCycle": 60,
+              "vyzn.catalogue.LayerThickness": 800
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 50
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "01.041 Betonfertigteil, hochfester Beton, ab Werk (KBOB.2022v5)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 572.4666666666667,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 1.3997733333333333,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 12.040266666666668,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 12.871266666666665,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 1.36838,
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8125.333333333333,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7552.866666666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.83654,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.20498,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.893666666666667,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 5.096800000000001,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.031024
+      }
+    }
+  },
+  "categories": {
+    "HGL": {
+      "name": "HGL"
+    }
+  }
+}

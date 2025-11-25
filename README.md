@@ -80,7 +80,7 @@ $ npx tsc && node dist/main.js delete-products --url https://dbs-gateway-service
 # (old) Import reference-materials from KBOB 
 $ npx tsc && node dist/main.js import-products --input data/HRS_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a7ff1589-0e8c-42ff-bf27-5f8f499b8575
 $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --category a4444265-b369-41e4-b26f-409a8c0bce45
-$ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner --category 6f425cb0-7b82-4af6-a3e3-11835be93859
+$ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant --category 6f425cb0-7b82-4af6-a3e3-11835be93859
 
 # Import reference-materials from KBOB
 $ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v7_ref.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant suco -refmat -f -c d3912af7-3398-4c38-b47b-40ead986d07a
@@ -104,20 +104,32 @@ $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --
 npx tsc && node dist/main.js import-catalog --input data/kbob.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -f -c ea70b456-558c-4efb-928d-b616c0d2d062
 
 
-
 # Import lesolai materials
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -mat -f -c 09d99e54-2dfa-458f-93a4-3b45337e66e8
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant -mat -f -c 09d99e54-2dfa-458f-93a4-3b45337e66e8
 
 
 # Import lesolai components
-$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -comp -f -c f2ac4153-fcf4-4b7f-99d6-f8c43dee533c
+$ npx tsc && node dist/main.js import-catalog --input data/lesosai-upload/G/H1_converted_output.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant -comp -f -c f2ac4153-fcf4-4b7f-99d6-f8c43dee533c
  
 
+# Import KBOB 2016 
+## Material & Ref Materials
+...
+
+# MEP & Other Resources
+npx tsc && node dist/main.js import-products --input data/kbob/2016/kbob_2016_mep.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant
+
+npx tsc && node dist/main.js import-products --input data/kbob/2016/kbob_2016_mat_ONLY_other_res.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant
+
+npx tsc && node dist/main.js import-products --input data/kbob/2016/kbob_2016_disposal.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant
+
+npx tsc && node dist/main.js import-products --input data/kbob/2016/kbob_2016_energy.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant
+
+npx tsc && node dist/main.js import-products --input data/kbob/2016/kbob_2016_transport.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant mytenant
 
 # Patch a version *EXPERIMENTAL*
 $ npx tsc && node dist/main.js patch-version --input data/pmj.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant pirminjung --project 3e1c3974-e6e2-4716-bc5a-0a2228cc72fd --building e00e98f9-d307-4b6f-b253-b11eed986eef --modelversion 35169502-6a31-452a-80e6-e85f78f3c3c7
 
-ß
 ```
 
 ## Contributing
@@ -125,11 +137,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
-
-
-
 
 
 Imports

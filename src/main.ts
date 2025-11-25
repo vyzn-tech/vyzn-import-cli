@@ -19,11 +19,10 @@ async function main() {
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
     .requiredOption('-t, --tenant <name>', 'The name of the tenant')
-    .requiredOption('-c, --category <id>', 'The id of the category into which to import')
     .option('-v, --verbose', 'More detailed console output')
     .option('-d, --diff', 'Perform diff only')
     .action((o) => {
-      importProducts(o.input, o.url, o.auth, o.tenant, o.category, o.verbose, o.diff)
+      importProducts(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff)
     })
 
   program.command('delete-products')
@@ -95,7 +94,7 @@ async function main() {
   program.parse()
 }
 
-async function importProducts(input: string, url: string, auth: string, tenant: string, category: string, verbose: boolean, diff: boolean) {
+async function importProducts(input: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean) {
   // Validate commandline arguments
   await assertFile(input)
   await assertUrl(url)
@@ -137,6 +136,18 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     
   // Process CSV line by line
   for (const row of csv) {
+    // Get category from categoryPath
+    let categoryId = null
+    if (row.categoryPath) {
+      categoryId = await createCategoryPath(row.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant)
+      if (!categoryId) {
+        console.error(`${row.ProductKey} Could not create/find category for path: ${row.categoryPath}`)
+        continue
+      }
+    } else {
+      console.error(`${row.ProductKey} Missing categoryPath in CSV`)
+      continue
+    }
     // Get existing product
     let product = null
     try {
@@ -219,6 +230,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
           .send({
             "name": row.Name,
             "productKey": row.ProductKey,
+            "category": categoryId,
             "type": newType,
             "subType": newSubType,
           })
@@ -235,28 +247,41 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
 
     const id = product.id
     const attributeIds = {};
+    const attributeAttributeIds = {};
     for (const attr of product.attributes) {
       attributeIds[attr.name] = attr.id
+      attributeAttributeIds[attr.name] = attr.attributeId;
     }
 
     const attributes = []
     for (const attributeName of Object.keys(row)) {
       if (attributeName.startsWith("vyzn.") || attributeName.startsWith("KBOB")) {
-        const id = attributeIds[attributeName]
-        if (!id) {
+        const attrId = attributeIds[attributeName]
+        if (!attrId) {
           console.log(`${row.ProductKey} Could not find attribute ${attributeName}`)
           continue
         }
 
         let value = row[attributeName]
+        
+        // Skip empty values
+        if (value === '' || value === null || value === undefined) {
+          continue
+        }
 
         // fixme, read attribute definitions first and then convert to target type
         if (attributeName.startsWith("vyzn.") && !attributeName.endsWith("LCARefUnit") && !attributeName.endsWith("LCARefDimension") && !attributeName.endsWith("eBKPh.Section") && !attributeName.endsWith(".ComponentClassification") && !attributeName.endsWith(".MepClassification")) {
           value = parseFloat(value)
+          // Skip NaN values
+          if (isNaN(value)) {
+            continue
+          }
         }
 
         attributes.push({
-          id: id,
+          id: attrId,
+          attributeId: attributeAttributeIds[attributeName],
+          productId: id,
           value: value
         })
       }
@@ -269,6 +294,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
       .send({
         "name": row.Name,
         "productKey": row.ProductKey,
+        "category": categoryId,
         "type": newType,
         "subType": newSubType,
         "status": "approved",

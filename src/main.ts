@@ -1,5 +1,5 @@
 import path from 'path'
-import { program } from 'commander'
+import { program, Option } from 'commander'
 import { parseCSV } from 'csv-load-sync'
 import { promises as fs, default as fssync } from 'fs'
 import request from 'superagent'
@@ -63,8 +63,9 @@ async function main() {
     .option('-d, --diff', 'Perform diff only')
     .option('-f, --folder', 'Import to folder')
     .option('-c, --category <id>', 'The id of the category')
+    .addOption(new Option('--overriding <mode>', 'How to handle existing products: true (override), false (append _1), skip (skip entry). Default: false').default('false').choices(['true', 'false', 'skip']))
     .action((o) => {
-      importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components)
+      importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components, o.overriding)
     })
 
     program
@@ -414,7 +415,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean) {
+async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean, overriding: string) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -474,26 +475,26 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category)
+  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
 }
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
     
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category)
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category, overriding)
   }
 }
 
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
 
   var categoryId = category
@@ -537,22 +538,48 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   } catch (error) { console.log(error) }
 
   if(product && prod.type == "COMPONENT") {
-    console.log(`${prodKey} Deleting existing product since it is a component`)
-    await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
-      .send({
-        "name": prod.name,
-        "productKey": prodKey,
-        "category": categoryId,
-        "type": prod.type
-      })
-      .set('Authorization', authToken)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/, json')
-      .set('Accept-Encoding', 'gzip, deflate, br')
-      .set('Accept-Language', 'en-US,en;q=0.5')
-      .set('Content-Type', 'application/json') 
-      .set('x-vyzn-selected-tenant', tenant)
-    product = null     
+    if (overriding === 'true') {
+      console.log(`${prodKey} Deleting existing product since it is a component`)
+      await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
+        .send({
+          "name": prod.name,
+          "productKey": prodKey,
+          "category": categoryId,
+          "type": prod.type
+        })
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json') 
+        .set('x-vyzn-selected-tenant', tenant)
+      product = null
+    } else if (overriding === 'skip') {
+      console.log(`${prodKey} Product already exists, skipping (overriding=skip)`)
+      return
+    } else {
+      // overriding === 'false' (default)
+      console.log(`${prodKey} Product already exists, appending _1 to name and productKey`)
+      prod.name = prod.name + '_1'
+      prodKey = prodKey + '_1'
+      product = null
+    }
+  }
+
+  // Check overriding flag for non-COMPONENT types (MATERIAL, REFERENCE_MATERIAL, etc.)
+  if(product && prod.type != "COMPONENT") {
+    if (overriding === 'skip') {
+      console.log(`${prodKey} Product already exists, skipping (overriding=skip)`)
+      return
+    } else if (overriding === 'false') {
+      // Always append suffix to create new product when overriding is false
+      console.log(`${prodKey} Product already exists, appending _1 to name and productKey (overriding=false)`)
+      prod.name = prod.name + '_1'
+      prodKey = prodKey + '_1'
+      product = null
+    }
+    // If overriding === 'true', continue to update the existing product
   }
 
   // Create new product

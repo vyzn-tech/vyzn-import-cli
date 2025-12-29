@@ -1,9 +1,9 @@
 {
     "fileFormatVersion": "1.1.0",
-    "exportTimestamp": "2025-12-05T14:51:27.160724Z",
+    "exportTimestamp": "2025-12-19T09:26:11.549416Z",
     "products": {
-        "DA01 - Flachdach .OG4": {
-            "name": "DA01 - Flachdach .OG4",
+        "AW01a - Aussenwand StB": {
+            "name": "AW01a - Aussenwand StB",
             "type": "COMPONENT",
             "status": "approved",
             "hatchingPattern": null,
@@ -13,49 +13,25 @@
                 "layers": {
                     "0": {
                         "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerThickness": 220.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     },
                     "1": {
                         "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
+                            "vyzn.catalogue.LayerThickness": 0.1,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     },
                     "2": {
                         "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 280.0,
+                            "vyzn.catalogue.LayerThickness": 70.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     },
                     "3": {
                         "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.8,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 10.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
+                            "vyzn.catalogue.LayerThickness": 20.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     }
@@ -71,580 +47,14 @@
                     "0_0": {
                         "associationAttributes": {},
                         "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "805D3B57-D38F-4E6E-A6D8-13734263575A"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "CDE5F16A-B744-414D-B4BE-A0420FD9F824"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "0232B859-34B8-495B-B04F-481FFE869073"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "0BB57159-AD79-41C4-AF2C-438AAC02848C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "C8D7D28C-1044-4598-ACD7-6CC1BA155F86"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "CDC0BE2B-3F63-49F3-A177-453B72FDF13E"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "587819FB-6634-4B2A-B8CA-BFDF6527993A"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "DA02 - Flachdach Dachausstieg": {
-            "name": "DA02 - Flachdach Dachausstieg",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 280.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 4.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 2.6,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 80.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "805D3B57-D38F-4E6E-A6D8-13734263575A"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "89F426B1-21C9-4921-B492-F968E39031C2"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "0232B859-34B8-495B-B04F-481FFE869073"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "7B8CC465-52FD-4826-9BDA-7D2EDCAF38B4"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "BB952548-268B-4AC1-910B-23E6847992E3"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "44DF7305-4849-4A2E-881B-DC8AC18B0B27"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "D7ECDD51-E35F-4B15-BC8D-A5F23BCDAE8E"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "7D7DFD97-2190-430F-88F4-75B4E10EE6B1"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "DA03 - Dach Innenhof": {
-            "name": "DA03 - Dach Innenhof",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 280.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.8,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 10.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "805D3B57-D38F-4E6E-A6D8-13734263575A"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "CDE5F16A-B744-414D-B4BE-A0420FD9F824"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "0232B859-34B8-495B-B04F-481FFE869073"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "0BB57159-AD79-41C4-AF2C-438AAC02848C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "C8D7D28C-1044-4598-ACD7-6CC1BA155F86"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "CDC0BE2B-3F63-49F3-A177-453B72FDF13E"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "587819FB-6634-4B2A-B8CA-BFDF6527993A"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "DA04 - Dach Terrasse Rcksprung": {
-            "name": "DA04 - Dach Terrasse Rcksprung",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 280.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.8,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 10.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "805D3B57-D38F-4E6E-A6D8-13734263575A"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "CDE5F16A-B744-414D-B4BE-A0420FD9F824"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "0232B859-34B8-495B-B04F-481FFE869073"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "0BB57159-AD79-41C4-AF2C-438AAC02848C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "C8D7D28C-1044-4598-ACD7-6CC1BA155F86"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "CDC0BE2B-3F63-49F3-A177-453B72FDF13E"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "587819FB-6634-4B2A-B8CA-BFDF6527993A"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "DA05 - Dach Lichthof": {
-            "name": "DA05 - Dach Lichthof",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.5,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 200.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 3.8,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 10.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "805D3B57-D38F-4E6E-A6D8-13734263575A"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "CDE5F16A-B744-414D-B4BE-A0420FD9F824"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "0232B859-34B8-495B-B04F-481FFE869073"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "0BB57159-AD79-41C4-AF2C-438AAC02848C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "C8D7D28C-1044-4598-ACD7-6CC1BA155F86"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "CDC0BE2B-3F63-49F3-A177-453B72FDF13E"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "587819FB-6634-4B2A-B8CA-BFDF6527993A"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "AW01 - Fassade": {
-            "name": "AW01 - Fassade",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 170.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 240.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 40.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "1007FAD9-33C5-40EB-B406-91C2098A3967"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
                         "sectionPosition": 0,
                         "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "F76D3D3D-2295-4A1F-A73D-D527055C47F8"
                     },
                     "2_0": {
                         "associationAttributes": {},
@@ -662,8 +72,8 @@
             },
             "attributes": {}
         },
-        "AW02 - gg. Aussen UG2": {
-            "name": "AW02 - gg. Aussen UG2",
+        "AW04 - Aussenwand ber Nachbarhaus": {
+            "name": "AW04 - Aussenwand ber Nachbarhaus",
             "type": "COMPONENT",
             "status": "approved",
             "hatchingPattern": null,
@@ -672,704 +82,8 @@
             "matrix": {
                 "layers": {
                     "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 200.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
                         "associationAttributes": {
                             "vyzn.catalogue.LayerThickness": 3.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 240.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 10.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "1007FAD9-33C5-40EB-B406-91C2098A3967"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "A6C5ED0E-A736-486F-8F4F-69555E18544A"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "BFB27539-599A-4E75-B9E6-48E16B77C086"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "AW03 - gedmmt, gg. Erdreich": {
-            "name": "AW03 - gedmmt, gg. Erdreich",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 200.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 120.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 30.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "1007FAD9-33C5-40EB-B406-91C2098A3967"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "5AA54EAE-5C14-467E-9934-4E93AEF723D8"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "44DF7305-4849-4A2E-881B-DC8AC18B0B27"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "AW04 - ungedmmt, gg. Erdreich": {
-            "name": "AW04 - ungedmmt, gg. Erdreich",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 200.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "1007FAD9-33C5-40EB-B406-91C2098A3967"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "AW05 - Innenwand NEA": {
-            "name": "AW05 - Innenwand NEA",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 190.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "59A75F49-68AF-466D-A3DF-DF487D14FF80"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "AW06 - Wand Lichthof": {
-            "name": "AW06 - Wand Lichthof",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {},
-                "sections": {},
-                "cells": {}
-            },
-            "attributes": {}
-        },
-        "FB01 - gg. Erdreich UG3 ungedmmt": {
-            "name": "FB01 - gg. Erdreich UG3 ungedmmt",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 80.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 260.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.1,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 20.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 50.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "C76C1DA8-7A50-4447-A398-90DE5D894B6F"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "13D40BDE-6CCB-4C7C-867E-5FD854C1D7DB"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "8B4A9A91-FE17-402F-BC50-8417DC3A378E"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "FB01a - gg. Erdreich UG2 ungedmmt": {
-            "name": "FB01a - gg. Erdreich UG2 ungedmmt",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 80.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 260.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.1,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 20.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 50.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "C76C1DA8-7A50-4447-A398-90DE5D894B6F"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "13D40BDE-6CCB-4C7C-867E-5FD854C1D7DB"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "8B4A9A91-FE17-402F-BC50-8417DC3A378E"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "FB02 - gg. Erdreich UG3 gedmmt": {
-            "name": "FB02 - gg. Erdreich UG3 gedmmt",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 80.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 260.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.1,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 120.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 20.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 50.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "C76C1DA8-7A50-4447-A398-90DE5D894B6F"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "D7178C25-7810-45F2-9D7E-96402055085A"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "13D40BDE-6CCB-4C7C-867E-5FD854C1D7DB"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "8B4A9A91-FE17-402F-BC50-8417DC3A378E"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "FB02a gg. Erdreich UG2 gedmmt": {
-            "name": "FB02a gg. Erdreich UG2 gedmmt",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 80.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "1": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.2,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "2": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 260.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "3": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 0.1,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "4": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 5.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "5": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 120.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "6": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 20.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    },
-                    "7": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 50.0,
-                            "vyzn.catalogue.LayerLifeCycle": 60
-                        }
-                    }
-                },
-                "sections": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.SectionPercentage": 100.0
-                        }
-                    }
-                },
-                "cells": {
-                    "0_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 0,
-                        "sectionPosition": 0,
-                        "materialKey": "C76C1DA8-7A50-4447-A398-90DE5D894B6F"
-                    },
-                    "1_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 1,
-                        "sectionPosition": 0,
-                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
-                    },
-                    "2_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 2,
-                        "sectionPosition": 0,
-                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
-                    },
-                    "4_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 4,
-                        "sectionPosition": 0,
-                        "materialKey": "3B595A53-E6DB-4D58-B596-0124617068A7"
-                    },
-                    "5_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 5,
-                        "sectionPosition": 0,
-                        "materialKey": "D7178C25-7810-45F2-9D7E-96402055085A"
-                    },
-                    "6_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 6,
-                        "sectionPosition": 0,
-                        "materialKey": "13D40BDE-6CCB-4C7C-867E-5FD854C1D7DB"
-                    },
-                    "7_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 7,
-                        "sectionPosition": 0,
-                        "materialKey": "8B4A9A91-FE17-402F-BC50-8417DC3A378E"
-                    }
-                }
-            },
-            "attributes": {}
-        },
-        "T2 - Aussentren": {
-            "name": "T2 - Aussentren",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {},
-                "sections": {},
-                "cells": {}
-            },
-            "attributes": {}
-        },
-        "AW07 - Wand TH, red. Dmmung": {
-            "name": "AW07 - Wand TH, red. Dmmung",
-            "type": "COMPONENT",
-            "status": "approved",
-            "hatchingPattern": null,
-            "linkedReferenceMaterialKey": null,
-            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
-            "matrix": {
-                "layers": {
-                    "0": {
-                        "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 170.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     },
@@ -1381,11 +95,1340 @@
                     },
                     "2": {
                         "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "A6C5ED0E-A736-486F-8F4F-69555E18544A"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "42CB704D-4C6C-431B-9943-C618ABC0C9D9"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "FB04 - Boden geg Aussenluft Durchfahrt": {
+            "name": "FB04 - Boden geg Aussenluft Durchfahrt",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 80.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 240.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 560.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "7": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 30.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 99.2
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 0.8
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B995A386-2FB2-4CBB-9DB7-6B0901280A36"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "7_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 7,
+                        "sectionPosition": 0,
+                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
+                    },
+                    "0_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 1,
+                        "materialKey": "B995A386-2FB2-4CBB-9DB7-6B0901280A36"
+                    },
+                    "1_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 1,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "2_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 1,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "3_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 1,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "4_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 1,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "5_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 1,
+                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
+                    },
+                    "6_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 1,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "7_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 7,
+                        "sectionPosition": 1,
+                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "FB01 - Boden geg Einstellhalle": {
+            "name": "FB01 - Boden geg Einstellhalle",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 200.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 320.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 50.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "2C87786C-2917-4696-BB21-94A34163E699"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "12F8A0C5-0C77-4285-8587-DA4646A95CE6"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "A955C04A-6366-4838-B4B4-E5ED2848AB93"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "DCF7CEC1-7888-4DD1-B188-F63C9F09EAE8"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "3CC30C6C-6262-4B2A-823F-6852FF20A8FD"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "0576A8DE-6415-4BDC-AC81-60C59B6CB98F"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "TU01 - Aussentren": {
+            "name": "TU01 - Aussentren",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {},
+                "sections": {},
+                "cells": {}
+            },
+            "attributes": {}
+        },
+        "DA01 - Flachdach": {
+            "name": "DA01 - Flachdach",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 200.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 70.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 8.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 30.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 300.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "12F8A0C5-0C77-4285-8587-DA4646A95CE6"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "FB422D64-C664-4343-8E30-FC41B29F6057"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "33018F10-9C38-4593-9125-E518E4673FA5"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "56A7F763-7A07-4849-B170-4CFAE1CA73F7"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "44DF7305-4849-4A2E-881B-DC8AC18B0B27"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "7D7DFD97-2190-430F-88F4-75B4E10EE6B1"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "FB03 - Boden geg. kaltes Treppenhaus EG": {
+            "name": "FB03 - Boden geg. kaltes Treppenhaus EG",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
                             "vyzn.catalogue.LayerThickness": 40.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     },
                     "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 260.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 90.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "3CC30C6C-6262-4B2A-823F-6852FF20A8FD"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "0576A8DE-6415-4BDC-AC81-60C59B6CB98F"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "DA02a - Loggia 1. OG": {
+            "name": "DA02a - Loggia 1. OG",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 120.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 8.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 22.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 60.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "12F8A0C5-0C77-4285-8587-DA4646A95CE6"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "FB422D64-C664-4343-8E30-FC41B29F6057"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "33018F10-9C38-4593-9125-E518E4673FA5"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "56A7F763-7A07-4849-B170-4CFAE1CA73F7"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "2365459F-1CA4-48EB-AF84-8B1EFC72D295"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "7D7DFD97-2190-430F-88F4-75B4E10EE6B1"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "DA02b - Terrasse 1. OG": {
+            "name": "DA02b - Terrasse 1. OG",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 80.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 8.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 60.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "12F8A0C5-0C77-4285-8587-DA4646A95CE6"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "FB422D64-C664-4343-8E30-FC41B29F6057"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "56A7F763-7A07-4849-B170-4CFAE1CA73F7"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "1E86A951-26A8-4905-BDC8-DF50530DCEE7"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "A6CD6BC6-9045-47DA-9CA2-E922A9917E90"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW02a - Aussenwand EG Glasfassade": {
+            "name": "AW02a - Aussenwand EG Glasfassade",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 100.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 2.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 80.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 30.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "C38D99CB-D0DA-44E2-B382-E22ECE21BECB"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "AB63E816-A4CE-467A-B45A-E11801FA7CF3"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "F76D3D3D-2295-4A1F-A73D-D527055C47F8"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "DC715345-3199-47B0-A263-577B17B4EA8E"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "E2F41941-6D04-40B0-A89B-4B6B44D012A3"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "DA03 - Decke geg- Aussen (Innendmmung)": {
+            "name": "DA03 - Decke geg- Aussen (Innendmmung)",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 300.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 60.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "D9828C3A-629C-49E2-BDCD-839B0FCB7E25"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "DBF5C31F-6CA3-4578-91A9-BE939B016B64"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "1DEE393A-D8D2-40E9-B47E-6BF45C568787"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "9F69D44F-73DB-4E9D-8DF8-B7BD69B26527"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "1E86A951-26A8-4905-BDC8-DF50530DCEE7"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "A6CD6BC6-9045-47DA-9CA2-E922A9917E90"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "FB02 - Boden geg unbeheizte Kellerrume": {
+            "name": "FB02 - Boden geg unbeheizte Kellerrume",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 200.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 320.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "2C87786C-2917-4696-BB21-94A34163E699"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "12F8A0C5-0C77-4285-8587-DA4646A95CE6"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "A955C04A-6366-4838-B4B4-E5ED2848AB93"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "D9828C3A-629C-49E2-BDCD-839B0FCB7E25"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "DBF5C31F-6CA3-4578-91A9-BE939B016B64"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "DCF7CEC1-7888-4DD1-B188-F63C9F09EAE8"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW03a - Wand EG geg. Warenlift": {
+            "name": "AW03a - Wand EG geg. Warenlift",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 150.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "D9828C3A-629C-49E2-BDCD-839B0FCB7E25"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "A4CCF61B-F49C-4364-ABEE-B1A140E54133"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "DE01 - Geschossdecke": {
+            "name": "DE01 - Geschossdecke",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 260.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "722729A8-2E98-42E0-9973-C3132F9B804F"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW01b - Aussenwand BN": {
+            "name": "AW01b - Aussenwand BN",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 220.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 50.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "F76D3D3D-2295-4A1F-A73D-D527055C47F8"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "DC715345-3199-47B0-A263-577B17B4EA8E"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "E2F41941-6D04-40B0-A89B-4B6B44D012A3"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "FB05 - Boden geg. Anlieferung": {
+            "name": "FB05 - Boden geg. Anlieferung",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 40.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 240.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 165.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "DCF7CEC1-7888-4DD1-B188-F63C9F09EAE8"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "3CC30C6C-6262-4B2A-823F-6852FF20A8FD"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "0576A8DE-6415-4BDC-AC81-60C59B6CB98F"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW02b - Aussenwand EG Hofseite": {
+            "name": "AW02b - Aussenwand EG Hofseite",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 300.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
                         "associationAttributes": {
                             "vyzn.catalogue.LayerThickness": 30.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
@@ -1404,32 +1447,26 @@
                         "associationAttributes": {},
                         "layerPosition": 0,
                         "sectionPosition": 0,
-                        "materialKey": "1007FAD9-33C5-40EB-B406-91C2098A3967"
+                        "materialKey": "A6C5ED0E-A736-486F-8F4F-69555E18544A"
                     },
                     "1_0": {
                         "associationAttributes": {},
                         "layerPosition": 1,
                         "sectionPosition": 0,
-                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                        "materialKey": "18688003-9BE4-432D-98D9-E247B93502C4"
                     },
                     "2_0": {
                         "associationAttributes": {},
                         "layerPosition": 2,
                         "sectionPosition": 0,
-                        "materialKey": "DC715345-3199-47B0-A263-577B17B4EA8E"
-                    },
-                    "3_0": {
-                        "associationAttributes": {},
-                        "layerPosition": 3,
-                        "sectionPosition": 0,
-                        "materialKey": "E2F41941-6D04-40B0-A89B-4B6B44D012A3"
+                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
                     }
                 }
             },
             "attributes": {}
         },
-        "FB03 - Boden UG1 zu NEA": {
-            "name": "FB03 - Boden UG1 zu NEA",
+        "AW02c - Aussenwand EG Durchfahrt": {
+            "name": "AW02c - Aussenwand EG Durchfahrt",
             "type": "COMPONENT",
             "status": "approved",
             "hatchingPattern": null,
@@ -1439,7 +1476,19 @@
                 "layers": {
                     "0": {
                         "associationAttributes": {
-                            "vyzn.catalogue.LayerThickness": 190.0,
+                            "vyzn.catalogue.LayerThickness": 3.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 200.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 30.0,
                             "vyzn.catalogue.LayerLifeCycle": 60
                         }
                     }
@@ -1456,7 +1505,330 @@
                         "associationAttributes": {},
                         "layerPosition": 0,
                         "sectionPosition": 0,
-                        "materialKey": "59A75F49-68AF-466D-A3DF-DF487D14FF80"
+                        "materialKey": "A6C5ED0E-A736-486F-8F4F-69555E18544A"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "18688003-9BE4-432D-98D9-E247B93502C4"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "04CCC59E-2446-4BCC-B19A-B099B8CBA5B2"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW03b - Wand EG geg. Anlieferung": {
+            "name": "AW03b - Wand EG geg. Anlieferung",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 215.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "3CC30C6C-6262-4B2A-823F-6852FF20A8FD"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "0576A8DE-6415-4BDC-AC81-60C59B6CB98F"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW03c - Wand EG geg. kaltes Treppenhaus": {
+            "name": "AW03c - Wand EG geg. kaltes Treppenhaus",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 220.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 30.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "F76D3D3D-2295-4A1F-A73D-D527055C47F8"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "DC715345-3199-47B0-A263-577B17B4EA8E"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "E2F41941-6D04-40B0-A89B-4B6B44D012A3"
+                    },
+                    "0_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 1,
+                        "materialKey": "DB1BED9C-3209-47C0-A86D-B6DB755B1D52"
+                    },
+                    "1_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 1,
+                        "materialKey": "F76D3D3D-2295-4A1F-A73D-D527055C47F8"
+                    },
+                    "2_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 1,
+                        "materialKey": "DC715345-3199-47B0-A263-577B17B4EA8E"
+                    },
+                    "3_1": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 1,
+                        "materialKey": "E2F41941-6D04-40B0-A89B-4B6B44D012A3"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "AW03d - Wand EG zu Lift": {
+            "name": "AW03d - Wand EG zu Lift",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 150.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 200.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "EC41313E-FEAE-4D0A-9876-61532E785CB9"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "B5DB5743-550F-4F26-A653-083E6732FC6A"
+                    }
+                }
+            },
+            "attributes": {}
+        },
+        "TU02 - Tre geg. Unbeheizt": {
+            "name": "TU02 - Tre geg. Unbeheizt",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {},
+                "sections": {},
+                "cells": {}
+            },
+            "attributes": {}
+        },
+        "Innenwand/boden": {
+            "name": "Innenwand/boden",
+            "type": "COMPONENT",
+            "status": "approved",
+            "hatchingPattern": null,
+            "linkedReferenceMaterialKey": null,
+            "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+            "matrix": {
+                "layers": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.1,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "1": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "2": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 20.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "3": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 0.2,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "4": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 240.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "5": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 165.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    },
+                    "6": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.LayerThickness": 10.0,
+                            "vyzn.catalogue.LayerLifeCycle": 60
+                        }
+                    }
+                },
+                "sections": {
+                    "0": {
+                        "associationAttributes": {
+                            "vyzn.catalogue.SectionPercentage": 100.0
+                        }
+                    }
+                },
+                "cells": {
+                    "0_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 0,
+                        "sectionPosition": 0,
+                        "materialKey": "B968F12F-55DB-46B6-87F5-32570216554C"
+                    },
+                    "1_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 1,
+                        "sectionPosition": 0,
+                        "materialKey": "82E5060F-3580-4362-822C-B0A0E2B4DD6D"
+                    },
+                    "2_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 2,
+                        "sectionPosition": 0,
+                        "materialKey": "121B1D12-5C83-4978-960B-B165BF93F3DB"
+                    },
+                    "3_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 3,
+                        "sectionPosition": 0,
+                        "materialKey": "765358F7-5AB3-406F-8C17-40B82C9DA20D"
+                    },
+                    "4_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 4,
+                        "sectionPosition": 0,
+                        "materialKey": "DCF7CEC1-7888-4DD1-B188-F63C9F09EAE8"
+                    },
+                    "5_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 5,
+                        "sectionPosition": 0,
+                        "materialKey": "3CC30C6C-6262-4B2A-823F-6852FF20A8FD"
+                    },
+                    "6_0": {
+                        "associationAttributes": {},
+                        "layerPosition": 6,
+                        "sectionPosition": 0,
+                        "materialKey": "0576A8DE-6415-4BDC-AC81-60C59B6CB98F"
                     }
                 }
             },

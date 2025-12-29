@@ -83,7 +83,7 @@ $ npx tsc && node dist/main.js import-products --input data/kbob_2022_v5_mat.csv
 $ npx tsc && node dist/main.js import-products --input data/kbob_2016.csv --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner --category 6f425cb0-7b82-4af6-a3e3-11835be93859
 
 # Import reference-materials from KBOB
-$ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v7_ref.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant suco -refmat -f -c d3912af7-3398-4c38-b47b-40ead986d07a
+$ npx tsc && node dist/main.js import-catalog --input data/kbob_2016_r.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -refmat -f -c 1177f89f-b3a3-4ff5-9961-3d90fc1870dc
 
 $ npx tsc && node dist/main.js import-catalog --input data/KBOB/kbob_2022_v7_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant suco -mat -f -c 4a71a1fd-70f0-4dc8-a4af-e17c2df7823d
 
@@ -95,13 +95,13 @@ npx tsc && node dist/main.js import-materialsdb --url https://dbs-gateway-servic
 # Import complete catalog
 $ npx tsc && node dist/main.js import-catalog --input data/temp.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -refmat -mat -btech -ores -comp
 
-$ npx tsc && node dist/main.js import-catalog --input data/kbob.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -mat -btech -ores -comp 
+$ npx tsc && node dist/main.js import-catalog --input data/grolimund_kbob16.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -comp 
 
 # Import only materials and components from catalog.json
 $ npx tsc && node dist/main.js import-catalog-noref --input data/catalog.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt
 
 # Import only components from catalog.json to a folder
-npx tsc && node dist/main.js import-catalog --input data/kbob.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat -f -c ea70b456-558c-4efb-928d-b616c0d2d062
+npx tsc && node dist/main.js import-catalog --input data/import_groli_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -mat -f -c 1177f89f-b3a3-4ff5-9961-3d90fc1870dc
 
 
 
@@ -140,3 +140,21 @@ npx tsc && node dist/main.js import-catalog --input data/erne.json --url https:/
 npx tsc && node dist/main.js import-catalog --input data/fix_resources.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant impactliving -ores -f -c 9b3465a2-ece5-45d0-8885-a2dd3ac68177
 
 npx tsc && node dist/main.js import-catalog --input data/impactlivingfull.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt -mat -btech -ores -comp --tenant impactliving 
+
+
+__ Grolimund + Partner __
+npx tsc && node dist/main.js import-catalog --input data/import_groli_mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -mat -f -c 09d99e54-2dfa-458f-93a4-3b45337e66e8
+
+npx tsc && node dist/main.js import-catalog --input data/grolimund_kbob16.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant grolimund+partner -comp 
+
+
+__ Boltshauser __
+npx tsc && node dist/main.js import-catalog --input data/boltshauser/532_VYZN_Materials_final_confirmed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant boltshauser -mat -f -c acf56f0c-b824-4ba9-9590-f8cc0733ca38
+
+npx tsc && node dist/main.js import-catalog --input data/boltshauser/532_VYZN_Bodenaufbauten_converted_fixed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant boltshauser -comp -f -c 70af9d8d-cd62-4412-8012-941900605d54
+npx tsc && node dist/main.js import-catalog --input data/boltshauser/532_VYZN_Components_1_converted_fixed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant boltshauser -comp -f -c 70af9d8d-cd62-4412-8012-941900605d54
+
+__ AW __
+npx tsc && node dist/main.js import-catalog --input data/532_VYZN_Materials_final_confirmed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant amsteinwalthert -mat -f -c 962dddb8-fb8f-468d-8113-354e4b479911
+
+npx tsc && node dist/main.js import-catalog --input data/532_VYZN_Bodenaufbauten_converted_fixed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant amsteinwalthert -comp -f -c 1a913f50-2571-4f9b-bfe9-5b669c7285ae

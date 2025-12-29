@@ -1,4 +1,4 @@
-import { program } from 'commander';
+import { program, Option } from 'commander';
 import { parseCSV } from 'csv-load-sync';
 import { promises as fs, default as fssync } from 'fs';
 import request from 'superagent';
@@ -56,8 +56,9 @@ async function main() {
         .option('-d, --diff', 'Perform diff only')
         .option('-f, --folder', 'Import to folder')
         .option('-c, --category <id>', 'The id of the category')
+        .addOption(new Option('--overriding <mode>', 'How to handle existing products: true (override), false (append _1), skip (skip entry). Default: false').default('false').choices(['true', 'false', 'skip']))
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components);
+        importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components, o.overriding);
     });
     program
         .command('patch-version')
@@ -183,33 +184,22 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
         if (newType == "MATERIAL_LIST")
             newType = "REFERENCE_MATERIAL";
         if (!product) {
-            try {
-                const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-                    .send({
-                    "name": row.Name,
-                    "productKey": row.ProductKey,
-                    "type": newType,
-                    "subType": newSubType,
-                })
-                    .set('Authorization', authToken)
-                    .set('Content-Type', 'application/json')
-                    .set('Accept', 'application/, json')
-                    .set('Accept-Encoding', 'gzip, deflate, br')
-                    .set('Accept-Language', 'en-US,en;q=0.5')
-                    .set('Content-Type', 'application/json')
-                    .set('x-vyzn-selected-tenant', tenant);
-                product = newProd.body;
-                console.log(`${row.ProductKey} Creating new product`);
-            }
-            catch (error) {
-                if (error.response && error.response.body &&
-                    error.response.body.reason &&
-                    error.response.body.reason.messageKey === 'res.error.aps.product.name.or.key.unique') {
-                    console.log(`${row.ProductKey} Skipping product due to uniqueness conflict: ${row.Name}`);
-                    continue;
-                }
-                throw error;
-            }
+            const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+                .send({
+                "name": row.Name,
+                "productKey": row.ProductKey,
+                "type": newType,
+                "subType": newSubType,
+            })
+                .set('Authorization', authToken)
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/, json')
+                .set('Accept-Encoding', 'gzip, deflate, br')
+                .set('Accept-Language', 'en-US,en;q=0.5')
+                .set('Content-Type', 'application/json')
+                .set('x-vyzn-selected-tenant', tenant);
+            product = newProd.body;
+            console.log(`${row.ProductKey} Creating new product`);
         }
         const id = product.id;
         const attributeIds = {};
@@ -367,7 +357,7 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, url, aut
     const leafCategoryId = lastCatId ? lastCatId : currentNode.id;
     return leafCategoryId;
 }
-async function importCatalog(input, url, auth, tenant, verbose, diff, folder, category, importRefMat, importMat, importBuildTech, importOtRes, importComp) {
+async function importCatalog(input, url, auth, tenant, verbose, diff, folder, category, importRefMat, importMat, importBuildTech, importOtRes, importComp, overriding) {
     const lcaAttributeGroup = 'Ökobilanz';
     await assertFile(input);
     await assertUrl(url);
@@ -418,26 +408,26 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
     if (!lcaAttributeGroupId)
         throw `Could not find attribute group with name ${lcaAttributeGroup}`;
     if (importRefMat)
-        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding);
     if (importMat)
-        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding);
     if (importBuildTech)
-        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding);
     if (importOtRes)
-        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding);
     if (importComp)
-        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category);
+        await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding);
 }
 let anchorFound = false;
-async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category) {
+async function importProductsOfType(products, type, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category, overriding) {
     for (const [key, value] of Object.entries(products)) {
         let prod = value;
         if (prod.type != type)
             continue;
-        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category);
+        await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category, overriding);
     }
 }
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding) {
     const migrateAttributes = false;
     var categoryId = category;
     if (!folder) {
@@ -478,33 +468,14 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         console.log(error);
     }
     if (product && prod.type == "COMPONENT") {
-        console.log(`${prodKey} Deleting existing product since it is a component`);
-        await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
-            .send({
-            "name": prod.name,
-            "productKey": prodKey,
-            "category": categoryId,
-            "type": prod.type
-        })
-            .set('Authorization', authToken)
-            .set('Content-Type', 'application/json')
-            .set('Accept', 'application/, json')
-            .set('Accept-Encoding', 'gzip, deflate, br')
-            .set('Accept-Language', 'en-US,en;q=0.5')
-            .set('Content-Type', 'application/json')
-            .set('x-vyzn-selected-tenant', tenant);
-        product = null;
-    }
-    if (!product) {
-        try {
-            console.log(`${prodKey} Creating new product`);
-            const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+        if (overriding === 'true') {
+            console.log(`${prodKey} Deleting existing product since it is a component`);
+            await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
                 .send({
                 "name": prod.name,
                 "productKey": prodKey,
                 "category": categoryId,
-                "type": prod.type,
-                "subType": prod.subType
+                "type": prod.type
             })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
@@ -513,17 +484,49 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 .set('Accept-Language', 'en-US,en;q=0.5')
                 .set('Content-Type', 'application/json')
                 .set('x-vyzn-selected-tenant', tenant);
-            product = newProd.body;
+            product = null;
         }
-        catch (error) {
-            if (error.response && error.response.body &&
-                error.response.body.reason &&
-                error.response.body.reason.messageKey === 'res.error.aps.product.name.or.key.unique') {
-                console.log(`${prodKey} Skipping product due to uniqueness conflict: ${prod.name}`);
-                return;
-            }
-            throw error;
+        else if (overriding === 'skip') {
+            console.log(`${prodKey} Product already exists, skipping (overriding=skip)`);
+            return;
         }
+        else {
+            console.log(`${prodKey} Product already exists, appending _1 to name and productKey`);
+            prod.name = prod.name + '_1';
+            prodKey = prodKey + '_1';
+            product = null;
+        }
+    }
+    if (product && prod.type != "COMPONENT") {
+        if (overriding === 'skip') {
+            console.log(`${prodKey} Product already exists, skipping (overriding=skip)`);
+            return;
+        }
+        else if (overriding === 'false') {
+            console.log(`${prodKey} Product already exists, appending _1 to name and productKey (overriding=false)`);
+            prod.name = prod.name + '_1';
+            prodKey = prodKey + '_1';
+            product = null;
+        }
+    }
+    if (!product) {
+        console.log(`${prodKey} Creating new product`);
+        const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+            .send({
+            "name": prod.name,
+            "productKey": prodKey,
+            "category": categoryId,
+            "type": prod.type,
+            "subType": prod.subType
+        })
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant);
+        product = newProd.body;
     }
     const id = product.id;
     const attributeIds = {};

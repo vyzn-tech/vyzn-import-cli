@@ -1,0 +1,665 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-12-02T14:10:18.940164Z",
+  "products": {
+    "532_Belag Schüttung, Kies": {
+      "name": "532_Belag Schüttung, Kies",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "natural-stone",
+      "linkedReferenceMaterialKey": "11.016 Natursteinplatte geschnitten, 15 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Belag Schüttung, Sand": {
+      "name": "532_Belag Schüttung, Sand",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "metal",
+      "linkedReferenceMaterialKey": "21.003 Arbeitsplatte Chromstahl, Standard (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Beton, Stahlbeton": {
+      "name": "532_Beton, Stahlbeton",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Boden - Kleber": {
+      "name": "532_Boden - Kleber",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "natural-stone",
+      "linkedReferenceMaterialKey": "03.011 Kies gebrochen 1 (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Boden - Unterlagsboden, Anhydrit": {
+      "name": "532_Boden - Unterlagsboden, Anhydrit",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.005 Unterlagsboden Anhydrit, 60 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Bodenbelag Hartbelag": {
+      "name": "532_Bodenbelag Hartbelag",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.004 Hartfaserplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Bodenbelag aus Keramikplatten": {
+      "name": "532_Bodenbelag aus Keramikplatten",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "refractory-brick",
+      "linkedReferenceMaterialKey": "03.010 Keramik-/Steinzeugplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Brettsperrholzplatte": {
+      "name": "532_Brettsperrholzplatte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.020 Brettsperrholz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dachsubstrat, Erde": {
+      "name": "532_Dachsubstrat, Erde",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dampfbremse": {
+      "name": "532_Dampfbremse",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "vapor-barrier",
+      "linkedReferenceMaterialKey": "09.001 Dampfbremse bituminös (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung ineralisch": {
+      "name": "532_Dämmung ineralisch",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.015 Leichtputz mineralisch (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung mineralisch": {
+      "name": "532_Dämmung mineralisch",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.015 Leichtputz mineralisch (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung, Aussen, Perimeter XPS": {
+      "name": "532_Dämmung, Aussen, Perimeter XPS",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.005 Polystyrol extrudiert (XPS) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung, Innen, PUR/PIR (vertikal)": {
+      "name": "532_Dämmung, Innen, PUR/PIR (vertikal)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.006 Polyurethan (PUR/PIR) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung, Innen, Trittschall Steinwolle": {
+      "name": "532_Dämmung, Innen, Trittschall Steinwolle",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "metal",
+      "linkedReferenceMaterialKey": "12.007 Innentüre, Aluminium, Glaseinsatz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Dämmung, mineralisch": {
+      "name": "532_Dämmung, mineralisch",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.015 Leichtputz mineralisch (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Faserzementplatte (Brandschutz)": {
+      "name": "532_Faserzementplatte (Brandschutz)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "cement-stone",
+      "linkedReferenceMaterialKey": "03.004 Faserzement-Wellplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Gipskartonplatte 2-fach": {
+      "name": "532_Gipskartonplatte 2-fach",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "03.008 Gipskartonplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Holz": {
+      "name": "532_Holz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.020 Brettsperrholz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Holz, Konstruktion, Brettschichtholz": {
+      "name": "532_Holz, Konstruktion, Brettschichtholz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "glued-laminated-wood",
+      "linkedReferenceMaterialKey": "07.002 Brettschichtholz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Holz, OSB Platte": {
+      "name": "532_Holz, OSB Platte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "03.007 Gipsfaserplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Lehmputz": {
+      "name": "532_Lehmputz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Luft": {
+      "name": "532_Luft",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_MW, Backstein": {
+      "name": "532_MW, Backstein",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "brick",
+      "linkedReferenceMaterialKey": "02.001 Backstein (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_MW, Backstein monolithisch": {
+      "name": "532_MW, Backstein monolithisch",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "brick",
+      "linkedReferenceMaterialKey": "02.001 Backstein (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_MW, Kalksandstein": {
+      "name": "532_MW, Kalksandstein",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "sand-lime-brick",
+      "linkedReferenceMaterialKey": "02.002 Kalksandstein (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt": {
+      "name": "532_Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "solid-wood",
+      "linkedReferenceMaterialKey": "07.011 Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Metallfassade": {
+      "name": "532_Metallfassade",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.010 Zellulosefasern (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_OSB-Platte": {
+      "name": "532_OSB-Platte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.002 Korkplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Stampflehm vorfabriziert": {
+      "name": "532_Stampflehm vorfabriziert",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Trasskalk": {
+      "name": "532_Trasskalk",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.016 Sumpfkalkputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Unterkonstruktion, Stelzen": {
+      "name": "532_Unterkonstruktion, Stelzen",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "solid-wood-part",
+      "linkedReferenceMaterialKey": "07.023 Konstruktionsvollholz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Wandbekleidung, Keramikplatten": {
+      "name": "532_Wandbekleidung, Keramikplatten",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "05.027 Rahmenverbreiterung, Spanplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Wandbelag, Lehmputz": {
+      "name": "532_Wandbelag, Lehmputz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "532_Weichfaserplatte": {
+      "name": "532_Weichfaserplatte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.009 Weichfaserplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    },
+    "Luft": {
+      "name": "Luft",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.004 Lehmputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": null,
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": null
+      }
+    }
+  },
+  "categories": {
+    "Alle": {
+      "name": "Alle"
+    },
+    "Alle > MATERIALIEN": {
+      "name": "MATERIALIEN"
+    },
+    "Alle > MATERIALIEN > Meine Materialien": {
+      "name": "Meine Materialien"
+    }
+  }
+}

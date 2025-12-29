@@ -1,0 +1,887 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-12-02T11:35:34.003157Z",
+  "products": {
+    "WAO_C02.01-A01": {
+      "name": "WAO_C02.01-A01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 450.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Trasskalk"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WAO_C02.01-B01": {
+      "name": "WAO_C02.01-B01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 350.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_MW, Backstein monolithisch"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WAO_C02.01-B02": {
+      "name": "WAO_C02.01-B02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 150.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 1.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_MW, Backstein"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_OSB-Platte"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, mineralisch"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Dampfbremse"
+          },
+          "6_0": {
+            "associationAttributes": {},
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "532_OSB-Platte"
+          },
+          "7_0": {
+            "associationAttributes": {},
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WAU_C02.01-E01": {
+      "name": "WAU_C02.01-E01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 300.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 80.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Beton, Stahlbeton"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Aussen, Perimeter XPS"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WAU_C02.01-F01": {
+      "name": "WAU_C02.01-F01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 1.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "8": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Metallfassade"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Weichfaserplatte"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_OSB-Platte"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, mineralisch"
+          },
+          "6_0": {
+            "associationAttributes": {},
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "532_Dampfbremse"
+          },
+          "7_0": {
+            "associationAttributes": {},
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "532_OSB-Platte"
+          },
+          "8_0": {
+            "associationAttributes": {},
+            "layerPosition": 8,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.01-C01": {
+      "name": "WIN_G01.01-C01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 75.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 75.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung mineralisch"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung ineralisch"
+          },
+          "6_0": {
+            "associationAttributes": {},
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "7_0": {
+            "associationAttributes": {},
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.01-D01": {
+      "name": "WIN_G01.01-D01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 50.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung mineralisch"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.01-F01": {
+      "name": "WIN_G01.01-F01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_MW, Kalksandstein"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.01-G01": {
+      "name": "WIN_G01.01-G01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Massivholz Fichte / Tanne / Lärche, kammergetr., gehobelt"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.03-C01": {
+      "name": "WIN_G01.03-C01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 50.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, mineralisch"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Wandbelag, Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.03-C02": {
+      "name": "WIN_G01.03-C02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 200.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, mineralisch"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_OSB-Platte"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Wandbelag, Lehmputz"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIN_G01.03-D01": {
+      "name": "WIN_G01.03-D01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 50.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 25.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, mineralisch"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Gipskartonplatte 2-fach"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Wandbekleidung, Keramikplatten"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIT_C02.01-A02": {
+      "name": "WIT_C02.01-A02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 450.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Stampflehm vorfabriziert"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIT_C02.01-A03": {
+      "name": "WIT_C02.01-A03",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 450.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Trasskalk"
+          }
+        }
+      },
+      "attributes": {}
+    },
+    "WIT_D12.01-E01": {
+      "name": "WIT_D12.01-E01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 12.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Brettsperrholzplatte"
+          }
+        }
+      },
+      "attributes": {}
+    }
+  },
+  "categories": {
+    "Alle": {
+      "name": "Alle"
+    },
+    "Alle > BAUTEILE": {
+      "name": "BAUTEILE"
+    },
+    "Alle > BAUTEILE > Meine Bauteile": {
+      "name": "Meine Bauteile"
+    }
+  }
+}

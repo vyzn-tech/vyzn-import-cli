@@ -1,0 +1,618 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-11-17T10:29:51.921183Z",
+  "products": {
+    "0096C45E-8E1C-4F63-8C3D-15CA370A57EF": {
+      "name": "OSB Platte, PF-gebunden, Feuchtbereich",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.013 OSB Platte, PF-gebunden, Feuchtbereich (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "600",
+        "vyzn.catalogue.ThermalCapacity": "0.6",
+        "vyzn.catalogue.ThermalConductivity": "0.13"
+      }
+    },
+    "023E8242-09C2-4D8E-BCB3-65426A17031B": {
+      "name": "Betonplatten [OLD]",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2400",
+        "vyzn.catalogue.ThermalCapacity": "0.306",
+        "vyzn.catalogue.ThermalConductivity": "1.48"
+      }
+    },
+    "08E124C4-F37E-4ED1-9666-422F18B8B9F9": {
+      "name": "Luftschicht",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1.23",
+        "vyzn.catalogue.ThermalCapacity": "0.278",
+        "vyzn.catalogue.ThermalConductivity": "0.025"
+      }
+    },
+    "14797FCD-4FEF-42F9-8553-C1996D8281AF": {
+      "name": "3-Schicht Massivholzplatte",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "solid-wood",
+      "linkedReferenceMaterialKey": "07.001 3- und 5-Schicht Massivholzplatte (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "470",
+        "vyzn.catalogue.ThermalCapacity": "0.4",
+        "vyzn.catalogue.ThermalConductivity": "0.23"
+      }
+    },
+    "2097C9F9-2A7A-47D1-B4CE-E8AA708323AA": {
+      "name": "Flumroc-Dämmplatte SOPRA",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "145",
+        "vyzn.catalogue.ThermalCapacity": "0.23",
+        "vyzn.catalogue.ThermalConductivity": "0.035"
+      }
+    },
+    "28FF3EF8-4469-4152-8054-CB47EF20857A": {
+      "name": "swissporXPS 300 SF",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.005.01 Polystyrol extrudiert, SwissporXPS (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "30",
+        "vyzn.catalogue.ThermalCapacity": "0.39",
+        "vyzn.catalogue.ThermalConductivity": "0.033"
+      }
+    },
+    "3CD4701A-AC46-4185-85A8-6EC8D4ECCBD9": {
+      "name": "LURO 814",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.001.01 Glaswolle, Isover, phenolbasiertes Bindemittel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "80",
+        "vyzn.catalogue.ThermalCapacity": "0.286",
+        "vyzn.catalogue.ThermalConductivity": "0.033"
+      }
+    },
+    "41C519D0-59CE-40F0-823A-FFDE8576E936": {
+      "name": "Innenputz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.001 Gips-/Weissputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1400",
+        "vyzn.catalogue.ThermalCapacity": "0.25",
+        "vyzn.catalogue.ThermalConductivity": "0.7"
+      }
+    },
+    "4970FCFD-F4F8-4DD1-BF31-98B4664EA8AD": {
+      "name": "Unitex SW KG light - Holzwolledeckschicht",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "wood-material",
+      "linkedReferenceMaterialKey": "07.005 Holzwolle-Leichtbauplatte, zementgebunden (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "425",
+        "vyzn.catalogue.ThermalCapacity": "0.444",
+        "vyzn.catalogue.ThermalConductivity": "0.075"
+      }
+    },
+    "503FB417-4E0B-4088-8ED3-863A04BB931C": {
+      "name": "Zementunterlagsboden",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.006 Unterlagsboden Zement, 85 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1850",
+        "vyzn.catalogue.ThermalCapacity": "0.236",
+        "vyzn.catalogue.ThermalConductivity": "1.2"
+      }
+    },
+    "54DEDCEA-5EA9-48F5-AF8F-53DCAD382783": {
+      "name": "Sand und Kies für Flachdach",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "natural-stone",
+      "linkedReferenceMaterialKey": "03.011 Kies gebrochen 1 (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1900",
+        "vyzn.catalogue.ThermalCapacity": "0.222",
+        "vyzn.catalogue.ThermalConductivity": "0.7"
+      }
+    },
+    "5AAE0C60-5DDD-4659-B83A-666516FFA25C": {
+      "name": "INTELLO PLUS",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.008 Polyethylenvlies (PE) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "275",
+        "vyzn.catalogue.ThermalCapacity": "0.4",
+        "vyzn.catalogue.ThermalConductivity": "2.3"
+      }
+    },
+    "6AA70183-15F8-42C3-88B3-BAF9A5DBFD96": {
+      "name": "Aussenputz",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.001 Gips-/Weissputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1800",
+        "vyzn.catalogue.ThermalCapacity": "0.306",
+        "vyzn.catalogue.ThermalConductivity": "0.87"
+      }
+    },
+    "7DE05D06-1C28-488C-A7CC-361B7B5A7A95": {
+      "name": "PS 81",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.001.01 Glaswolle, Isover, phenolbasiertes Bindemittel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "80",
+        "vyzn.catalogue.ThermalCapacity": "0.286",
+        "vyzn.catalogue.ThermalConductivity": "0.032"
+      }
+    },
+    "893221DC-3E6D-4CE1-BB80-F4951E54105D": {
+      "name": "450 Zement-Trockenbaukleber",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "plaster",
+      "linkedReferenceMaterialKey": "04.009 Zementputz (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1450",
+        "vyzn.catalogue.ThermalCapacity": "0.28",
+        "vyzn.catalogue.ThermalConductivity": "0.9"
+      }
+    },
+    "9632B91A-8C92-4CBC-830E-E3F5433E0781": {
+      "name": "Dachziegel",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "refractory-brick",
+      "linkedReferenceMaterialKey": "03.015 Tonziegel (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2000",
+        "vyzn.catalogue.ThermalCapacity": "0.222",
+        "vyzn.catalogue.ThermalConductivity": "1"
+      }
+    },
+    "98DE79A2-1396-409B-A783-6623DE39D41D": {
+      "name": "Unitex SW KD light",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008 Steinwolle (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "80",
+        "vyzn.catalogue.ThermalCapacity": "0.29",
+        "vyzn.catalogue.ThermalConductivity": "0.034"
+      }
+    },
+    "9C285F36-558B-42F0-A686-6880CBB1C5A6": {
+      "name": "Isover PBF 030",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "isolation-md",
+      "linkedReferenceMaterialKey": "10.001 Glaswolle (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "38",
+        "vyzn.catalogue.ThermalCapacity": "0.286",
+        "vyzn.catalogue.ThermalConductivity": "0.03"
+      }
+    },
+    "A3457A0D-5513-4493-AA3E-F0A482212148": {
+      "name": "Ampatop B-Black, Winddichtung mit offenen Fugen Sd 0.09 m",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.008 Polyethylenvlies (PE) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "525",
+        "vyzn.catalogue.ThermalCapacity": "0.548",
+        "vyzn.catalogue.ThermalConductivity": "0.23"
+      }
+    },
+    "A8B6F5BF-5CAB-44D3-B8B9-710D47D622AB": {
+      "name": "Magerbeton",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "concrete",
+      "linkedReferenceMaterialKey": "01.002 Hochbaubeton (ohne Bewehrung) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2190",
+        "vyzn.catalogue.ThermalCapacity": "0.236",
+        "vyzn.catalogue.ThermalConductivity": "0.9"
+      }
+    },
+    "A972AAB4-6405-402A-A8AA-A8F14B502841": {
+      "name": "swisspor Unterdachbahn Difuplan Top",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "442",
+        "vyzn.catalogue.ThermalCapacity": "0.39",
+        "vyzn.catalogue.ThermalConductivity": "0.2"
+      }
+    },
+    "A9D2D749-AB4D-40A0-959F-EEC5DCC5253A": {
+      "name": "Keramikfliese",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "refractory-brick",
+      "linkedReferenceMaterialKey": "11.008 Keramik-/Steinzeugplatte, 9 mm (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1900",
+        "vyzn.catalogue.ThermalCapacity": "0.277777777777778",
+        "vyzn.catalogue.ThermalConductivity": "1"
+      }
+    },
+    "AA27100C-CA53-425F-B99C-715E6C23B5B8": {
+      "name": "Beton armiert 2% Stahl (CEN)",
+      "type": "MATERIAL",
+      "status": "draft",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "2400",
+        "vyzn.catalogue.ThermalCapacity": "0.278",
+        "vyzn.catalogue.ThermalConductivity": "2.5"
+      }
+    },
+    "B2988C9C-824D-4576-B0D7-C8DD36521071": {
+      "name": "Bitumenanstrich (1 mm)",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.003 Dichtungsbahn bituminös (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1200",
+        "vyzn.catalogue.ThermalCapacity": "0.444",
+        "vyzn.catalogue.ThermalConductivity": "0.2"
+      }
+    },
+    "BC45B1E0-7D99-4046-98DB-7E95114875BA": {
+      "name": "Flumroc-Dämmplatte 1 ",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "38",
+        "vyzn.catalogue.ThermalCapacity": "0.24",
+        "vyzn.catalogue.ThermalConductivity": "0.035"
+      }
+    },
+    "C2C533FE-E847-4B8A-908D-B6D087627DD6": {
+      "name": "PE-Abdeckfolie",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "09.007 Polyethylenfolie (PE) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "920",
+        "vyzn.catalogue.ThermalCapacity": null,
+        "vyzn.catalogue.ThermalConductivity": "0.22"
+      }
+    },
+    "CC4BD6F3-7A06-42E0-98AA-18FEE0FC5858": {
+      "name": "swissporPIR Alu",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.006.01 Polyurethan, SwissporPIR (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "30",
+        "vyzn.catalogue.ThermalCapacity": "0.39",
+        "vyzn.catalogue.ThermalConductivity": "0.022"
+      }
+    },
+    "CC62BA50-10EC-4DF6-A7E2-306F5F508E23": {
+      "name": "Flumroc-Dämmplatte COMPACT PRO",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "rockwool",
+      "linkedReferenceMaterialKey": "10.008.01 Steinwolle, Flumroc (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "85",
+        "vyzn.catalogue.ThermalCapacity": "0.24",
+        "vyzn.catalogue.ThermalConductivity": "0.034"
+      }
+    },
+    "D73594D1-3FCD-426B-80F7-B422222378EE": {
+      "name": "BauderPIR FA-TE",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.006 Polyurethan (PUR/PIR) (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "28",
+        "vyzn.catalogue.ThermalCapacity": "0.4028",
+        "vyzn.catalogue.ThermalConductivity": "0.022"
+      }
+    },
+    "D7868971-2215-4AFF-BE62-B087F865F19A": {
+      "name": "Enkadrain TP",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "metal",
+      "linkedReferenceMaterialKey": "06.013 Titanzinkblech (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "95",
+        "vyzn.catalogue.ThermalCapacity": "0.105",
+        "vyzn.catalogue.ThermalConductivity": "2.5"
+      }
+    },
+    "D8EC92E6-AFC2-4324-9488-B0B1084EA7BA": {
+      "name": "Stahlblech, verzinkt",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "metal",
+      "linkedReferenceMaterialKey": "06.011 Stahlblech, verzinkt (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "7850",
+        "vyzn.catalogue.ThermalCapacity": "0.125",
+        "vyzn.catalogue.ThermalConductivity": "50"
+      }
+    },
+    "DFF8A186-7302-499F-8ACE-A9E94B1ABE59": {
+      "name": "Holz, hart",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "solid-wood",
+      "linkedReferenceMaterialKey": "07.006 Massivholz Buche / Eiche, luftgetrocknet, rau (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "700",
+        "vyzn.catalogue.ThermalCapacity": "0.444",
+        "vyzn.catalogue.ThermalConductivity": "0.18"
+      }
+    },
+    "ECEE1971-2183-4536-9809-8D5D89334733": {
+      "name": "swissporXPS 500 SF",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "xps-pir-pur",
+      "linkedReferenceMaterialKey": "10.005.01 Polystyrol extrudiert, SwissporXPS (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "30",
+        "vyzn.catalogue.ThermalCapacity": "0.39",
+        "vyzn.catalogue.ThermalConductivity": "0.033"
+      }
+    },
+    "FBB08D27-1C03-4B22-9DBC-96CCB3C0AA77": {
+      "name": "Bitumen",
+      "type": "MATERIAL",
+      "status": "approved",
+      "hatchingPattern": "barrier-layer",
+      "linkedReferenceMaterialKey": "08.002 Heissbitumen (KBOB.2022v5_r)",
+      "categoryPath": "Alle > MATERIALIEN > Meine Materialien",
+      "matrix": {
+        "layers": {},
+        "sections": {},
+        "cells": {}
+      },
+      "attributes": {
+        "vyzn.catalogue.Density": "1000",
+        "vyzn.catalogue.ThermalCapacity": "0.278",
+        "vyzn.catalogue.ThermalConductivity": "0.13"
+      }
+    }
+  }
+}

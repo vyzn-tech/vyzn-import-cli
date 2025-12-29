@@ -1,0 +1,1139 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2025-12-02T14:45:31.476992Z",
+  "products": {
+    "C01.01-A01": {
+      "name": "C01.01-A01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 500.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Beton, Stahlbeton"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C01.01",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Gebäudehülle unter Terrain"
+      }
+    },
+    "C01.01-B03": {
+      "name": "C01.01-B03",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 400.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Beton, Stahlbeton"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C01.01",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Gebäudehülle unter Terrain"
+      }
+    },
+    "C04.01-B01": {
+      "name": "C04.01-B01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 300.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Beton, Stahlbeton"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C04.01",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "C04.01-B02": {
+      "name": "C04.01-B02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 160.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C04.01",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "C04.01-B04": {
+      "name": "C04.01-B04",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 160.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Faserzementplatte (Brandschutz)"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Faserzementplatte (Brandschutz)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C04.01",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "C04.04-D01": {
+      "name": "C04.04-D01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 160.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C04.04",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Gebäudehülle über Terrain"
+      }
+    },
+    "C04.08-E01": {
+      "name": "C04.08-E01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 40.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 180.0,
+              "vyzn.catalogue.LayerLifeCycle": 40
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "Luft (vyzn.v202312)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "C04.08",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "F01.02-D01": {
+      "name": "F01.02-D01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 120.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 250.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 15.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Dachsubstrat, Erde"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz, OSB Platte"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "F01.02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Gebäudehülle über Terrain"
+      }
+    },
+    "G02-A01": {
+      "name": "G02-A01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Bodenbelag Hartbelag"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B01": {
+      "name": "G02-B01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 140.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B02": {
+      "name": "G02-B02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 15.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Belag Schüttung, Sand"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz, OSB Platte"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B03": {
+      "name": "G02-B03",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 140.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B04": {
+      "name": "G02-B04",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B05": {
+      "name": "G02-B05",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 150.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 15.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Belag Schüttung, Kies"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz, OSB Platte"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-B06": {
+      "name": "G02-B06",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 140.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-C01": {
+      "name": "G02-C01",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 20.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 140.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Bodenbelag aus Keramikplatten"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Kleber"
+          },
+          "3_0": {
+            "associationAttributes": {},
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-C02": {
+      "name": "G02-C02",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 45.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 15.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Bodenbelag aus Keramikplatten"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Kleber"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "6_0": {
+            "associationAttributes": {},
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "532_Belag Schüttung, Sand"
+          },
+          "7_0": {
+            "associationAttributes": {},
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz, OSB Platte"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    },
+    "G02-C03": {
+      "name": "G02-C03",
+      "type": "COMPONENT",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": null,
+      "categoryPath": "Alle > BAUTEILE > Meine Bauteile",
+      "matrix": {
+        "layers": {
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 5.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 45.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 30.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 150.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "8": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 15.0,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100.0
+            }
+          }
+        },
+        "cells": {
+          "1_0": {
+            "associationAttributes": {},
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "532_Bodenbelag aus Keramikplatten"
+          },
+          "2_0": {
+            "associationAttributes": {},
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Kleber"
+          },
+          "4_0": {
+            "associationAttributes": {},
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "532_Boden - Unterlagsboden, Anhydrit"
+          },
+          "5_0": {
+            "associationAttributes": {},
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, Trittschall Steinwolle"
+          },
+          "6_0": {
+            "associationAttributes": {},
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "532_Belag Schüttung, Sand"
+          },
+          "7_0": {
+            "associationAttributes": {},
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "532_Dämmung, Innen, PUR/PIR (vertikal)"
+          },
+          "8_0": {
+            "associationAttributes": {},
+            "layerPosition": 8,
+            "sectionPosition": 0,
+            "materialKey": "532_Holz, OSB Platte"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalog.ch.eBKPh.Section": "G02",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "Innen- und Aussenbauteile"
+      }
+    }
+  },
+  "categories": {
+    "Alle": {
+      "name": "Alle"
+    },
+    "Alle > BAUTEILE": {
+      "name": "BAUTEILE"
+    },
+    "Alle > BAUTEILE > Meine Bauteile": {
+      "name": "Meine Bauteile"
+    }
+  }
+}

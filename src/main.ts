@@ -867,79 +867,82 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   
   if(prod.type == "MATERIAL") {
-    let lcaProductId = null
-    const lcaCode = prod.linkedReferenceMaterialKey
-    if(lcaCode) {
-      if(!lcaProductsCache[lcaCode]) {
-        const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
-                                .set('Authorization', authToken)
-                                .set('Content-Type', 'application/json')
-                                .set('Accept', 'application/, json')
-                                .set('Accept-Encoding', 'gzip, deflate, br')
-                                .set('Accept-Language','en-US,en;q=0.5')
-                                .set('Content-Type', 'application/json')
-                                .set('x-vyzn-selected-tenant', tenant)
-        
-        if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+    const linkedRefs = Array.isArray(prod.linkedReferenceMaterialKey) ? prod.linkedReferenceMaterialKey : (prod.linkedReferenceMaterialKey ? [{ referenceMaterialKey: prod.linkedReferenceMaterialKey }] : [])
+    for (const linkedRef of linkedRefs) {
+      const lcaCode = linkedRef.referenceMaterialKey
+      let lcaProductId = null
+      if(lcaCode) {
+        if(!lcaProductsCache[lcaCode]) {
+          const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+                                  .set('Authorization', authToken)
+                                  .set('Content-Type', 'application/json')
+                                  .set('Accept', 'application/, json')
+                                  .set('Accept-Encoding', 'gzip, deflate, br')
+                                  .set('Accept-Language','en-US,en;q=0.5')
+                                  .set('Content-Type', 'application/json')
+                                  .set('x-vyzn-selected-tenant', tenant)
+
+          if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+          } else {
+            lcaProductId = lcaProducts.body[0].id
+          }
+
+          if(!lcaProductId) {
+              console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
+          }
+          lcaProductsCache[lcaCode] = lcaProductId
         } else {
-          lcaProductId = lcaProducts.body[0].id
-        }
-          
-        if(!lcaProductId) {
-            console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
-        }
-        lcaProductsCache[lcaCode] = lcaProductId
-      } else {
-        lcaProductId = lcaProductsCache[lcaCode]
-      }
-    }
-
-    if(lcaProductId) {
-      const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-
-      let matchingMaterialListLinkId = null
-      for(const link of existingMaterialListLinks.body) {
-        if(link.attributeGroup.id == lcaAttributeGroupId) {
-          matchingMaterialListLinkId = link.id
-          break
+          lcaProductId = lcaProductsCache[lcaCode]
         }
       }
 
-      if(matchingMaterialListLinkId) {
-        const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
-        .send({
-            "materialId": id,
-            "referenceMaterialId": lcaProductId,
-            "attributeGroupId": lcaAttributeGroupId
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-      } else {
-        const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
-        .send({
-            "materialId": id,
-            "referenceMaterialId": lcaProductId,
-            "attributeGroupId": lcaAttributeGroupId
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
+      if(lcaProductId) {
+        const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+
+        let matchingMaterialListLinkId = null
+        for(const link of existingMaterialListLinks.body) {
+          if(link.attributeGroup.id == lcaAttributeGroupId) {
+            matchingMaterialListLinkId = link.id
+            break
+          }
+        }
+
+        if(matchingMaterialListLinkId) {
+          const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
+          .send({
+              "materialId": id,
+              "referenceMaterialId": lcaProductId,
+              "attributeGroupId": lcaAttributeGroupId
+          })
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        } else {
+          const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
+          .send({
+              "materialId": id,
+              "referenceMaterialId": lcaProductId,
+              "attributeGroupId": lcaAttributeGroupId
+          })
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        }
       }
     }
   }

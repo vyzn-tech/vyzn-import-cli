@@ -157,4 +157,30 @@ npx tsc && node dist/main.js import-catalog --input data/boltshauser/532_VYZN_Co
 __ AW __
 npx tsc && node dist/main.js import-catalog --input data/532_VYZN_Materials_final_confirmed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant amsteinwalthert -mat -f -c 962dddb8-fb8f-468d-8113-354e4b479911
 
-npx tsc && node dist/main.js import-catalog --input data/532_VYZN_Bodenaufbauten_converted_fixed.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant amsteinwalthert -comp -f -c 1a913f50-2571-4f9b-bfe9-5b669c7285ae
+npx tsc && node dist/main.js import-catalog --input data/generic_comp_wv.json --url https://dbs-gateway-service-test.azurewebsites.net --auth data/auth.txt --tenant demo -comp --overriding true -f -c a832e74c-cd30-46ca-b120-3ddc9be467e0 
+
+npx tsc && node dist/main.js import-catalog --input data/generic_mat_wv.json --url https://dbs-gateway-service-test.azurewebsites.net --auth data/auth.txt --tenant demo -mat --overriding true -f -c 845dd939-da58-4255-b795-b19aee0fcb0b
+
+npx tsc && node dist/main.js import-catalog --input data/kbobv8mat.json --url https://dbs-gateway-service-test.azurewebsites.net --auth data/auth.txt --tenant demo -mat --overriding true -f -c e7de858e-2c52-4ecd-88d2-52f465e5f15a
+
+npx tsc && node dist/main.js import-catalog --input data/minergie_comp_wv.json --url https://dbs-gateway-service-test.azurewebsites.net --auth data/auth.txt --tenant demo -comp --overriding true -f -c d899fab5-b5b8-40a5-ad3b-8042da4123cd
+
+npx tsc && node dist/main.js import-catalog --input data/kbobv8ref.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -refmat --overriding true -f -c 1df537a9-cd1c-49f6-8bc0-b723d91ab1ec
+npx tsc && node dist/main.js import-catalog --input data/kbobv8mat.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -mat --overriding true -f -c f1dc6252-d17c-419c-ae5b-a72702ef5930
+
+npx tsc && node dist/main.js import-catalog --input data/minergie_comp_wv.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 45128fb7-b233-416f-802f-d292f9c43971
+npx tsc && node dist/main.js import-catalog --input data/generic_comp_wv.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 9de4ce63-c976-417f-9c9b-be5909b02669
+npx tsc && node dist/main.js import-catalog --input data/generic_mat_wv.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -mat --overriding true -f -c dd964b5a-65dd-4381-8c89-eec5f494289b
+
+
+
+npx tsc && node dist/main.js import-catalog --input data/upload/Aufbauten_Untergeschoss.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c fa37b88d-0440-485c-91fe-e7923784beca
+npx tsc && node dist/main.js import-catalog --input data/upload/Dachaufbauten.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding skip -f -c dec8ee73-84e2-40f5-90be-1a092cd9a440
+npx tsc && node dist/main.js import-catalog --input data/upload/Deckenaufbauten.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c c49e2d9f-c32d-4d66-8531-89d26f67f02d
+npx tsc && node dist/main.js import-catalog --input data/upload/Fassadenaufbauten.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 6b03624f-d762-408d-adf4-fdb55ced4f81
+npx tsc && node dist/main.js import-catalog --input data/upload/Fenster.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 3f1c3674-e727-4264-a90f-f6b0cb749446
+npx tsc && node dist/main.js import-catalog --input data/upload/Innenwandaufbauten.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 642e9546-cb34-4163-8ac5-0a963e0d6f1f
+
+npx tsc && node dist/main.js import-catalog --input data/upload/Stützen.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c a84ef5ea-41aa-4c4b-bd66-c3a8a05d345c
+npx tsc && node dist/main.js import-catalog --input data/upload/Träger.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c e223aaa6-d543-4de6-96ed-8ff1e43f0380
+npx tsc && node dist/main.js import-catalog --input data/upload/Türen.json --url https://dbs-gateway-service-prod.azurewebsites.net --auth data/auth.txt --tenant master_catalog -comp --overriding true -f -c 150b5d64-16ef-4212-912f-6a5449a7a717

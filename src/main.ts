@@ -467,34 +467,37 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('x-vyzn-selected-tenant', tenant)
 
   let lcaAttributeGroupId = null;
+  const attributeGroupsByPosition: Record<number, string> = {};
   for (const g of attributeGroups.body) {
     if (g.name == lcaAttributeGroup) {
       lcaAttributeGroupId = g.id
-      break
+    }
+    if (g.position != null) {
+      attributeGroupsByPosition[g.position] = g.id
     }
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, authToken, tenant, verbose, diff, folder, category, overriding)
 }
 
 let anchorFound = false
 
-async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
+async function importProductsOfType(products, type: string, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, attributeGroupsByPosition: Record<number, string>, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
-    
-    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category, overriding)
+
+    await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, attributeGroupsByPosition, url, auth, tenant, verbose, diff, folder, category, overriding)
   }
 }
 
 
-async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
+async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId: string, attributeGroupsByPosition: Record<number, string>, url: string, authToken: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, overriding: string) {
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
 
   var categoryId = category
@@ -867,79 +870,99 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   
   if(prod.type == "MATERIAL") {
-    let lcaProductId = null
-    const lcaCode = prod.linkedReferenceMaterialKey
-    if(lcaCode) {
-      if(!lcaProductsCache[lcaCode]) {
-        const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
-                                .set('Authorization', authToken)
-                                .set('Content-Type', 'application/json')
-                                .set('Accept', 'application/, json')
-                                .set('Accept-Encoding', 'gzip, deflate, br')
-                                .set('Accept-Language','en-US,en;q=0.5')
-                                .set('Content-Type', 'application/json')
-                                .set('x-vyzn-selected-tenant', tenant)
-        
-        if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+    const rawLinked = prod.linkedReferenceMaterialKey
+    const linkedRefs: { referenceMaterialKey: string, attributeGroupPosition: number | null }[] = Array.isArray(rawLinked)
+      ? rawLinked
+      : (rawLinked ? [{ referenceMaterialKey: rawLinked, attributeGroupPosition: null }] : [])
+
+    let existingMaterialListLinks = null
+
+    for (const linkedRef of linkedRefs) {
+      const lcaCode = linkedRef.referenceMaterialKey
+      const attrGroupId = linkedRef.attributeGroupPosition != null
+        ? attributeGroupsByPosition[linkedRef.attributeGroupPosition]
+        : lcaAttributeGroupId
+
+      if (!attrGroupId) {
+        console.log(`\tSkipping linked reference: could not find attribute group for position ${linkedRef.attributeGroupPosition}`)
+        continue
+      }
+
+      let lcaProductId = null
+      if(lcaCode) {
+        if(!lcaProductsCache[lcaCode]) {
+          const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
+                                  .set('Authorization', authToken)
+                                  .set('Content-Type', 'application/json')
+                                  .set('Accept', 'application/, json')
+                                  .set('Accept-Encoding', 'gzip, deflate, br')
+                                  .set('Accept-Language','en-US,en;q=0.5')
+                                  .set('Content-Type', 'application/json')
+                                  .set('x-vyzn-selected-tenant', tenant)
+
+          if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+          } else {
+            lcaProductId = lcaProducts.body[0].id
+          }
+
+          if(!lcaProductId) {
+              console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
+          }
+          lcaProductsCache[lcaCode] = lcaProductId
         } else {
-          lcaProductId = lcaProducts.body[0].id
-        }
-          
-        if(!lcaProductId) {
-            console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
-        }
-        lcaProductsCache[lcaCode] = lcaProductId
-      } else {
-        lcaProductId = lcaProductsCache[lcaCode]
-      }
-    }
-
-    if(lcaProductId) {
-      const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-
-      let matchingMaterialListLinkId = null
-      for(const link of existingMaterialListLinks.body) {
-        if(link.attributeGroup.id == lcaAttributeGroupId) {
-          matchingMaterialListLinkId = link.id
-          break
+          lcaProductId = lcaProductsCache[lcaCode]
         }
       }
 
-      if(matchingMaterialListLinkId) {
-        const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
-        .send({
-            "materialId": id,
-            "referenceMaterialId": lcaProductId,
-            "attributeGroupId": lcaAttributeGroupId
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-      } else {
-        const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
-        .send({
-            "materialId": id,
-            "referenceMaterialId": lcaProductId,
-            "attributeGroupId": lcaAttributeGroupId
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language','en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
+      if(lcaProductId) {
+        if (!existingMaterialListLinks) {
+          existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language','en-US,en;q=0.5')
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant)
+        }
+
+        let matchingMaterialListLinkId = null
+        for(const link of existingMaterialListLinks.body) {
+          if(link.attributeGroup.id == attrGroupId) {
+            matchingMaterialListLinkId = link.id
+            break
+          }
+        }
+
+        if(matchingMaterialListLinkId) {
+          await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
+          .send({
+              "materialId": id,
+              "referenceMaterialId": lcaProductId,
+              "attributeGroupId": attrGroupId
+          })
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        } else {
+          await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
+          .send({
+              "materialId": id,
+              "referenceMaterialId": lcaProductId,
+              "attributeGroupId": attrGroupId
+          })
+          .set('Authorization', authToken)
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/, json')
+          .set('Accept-Encoding', 'gzip, deflate, br')
+          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
+        }
       }
     }
   }

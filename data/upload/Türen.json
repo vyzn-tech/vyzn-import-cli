@@ -1,0 +1,260 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2026-03-27T16:29:37.000Z",
+  "products": {
+    "Aussentüre (Aluminium) - vyzn.v1.0": {
+      "name": "Aussentüre (Aluminium) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_DOOR",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Türen",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.004666666666666667",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0.5166666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "8.833333333333334",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.13899999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "8.7",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3866.6666666666665",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "309",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "9.433333333333334",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.0733333333333333",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "1.82",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "9.433333333333334",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "4166.666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.25466666666666665"
+            },
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "kbob.2022v8.mat_2c4d1c2a-496b-4d2f-8e9f-ce621e4a1afb"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Türen",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.5166666666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 309,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 9.433333333333334,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 8.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 8.833333333333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 9.433333333333334,
+        "vyzn.catalogue.PriceCHF": 2500,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 4166.666666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 3866.6666666666665,
+        "vyzn.catalogue.uValue": 1,
+        "vyzn.catalogue.gValue": 0.52,
+        "vyzn.catalogue.bValue": 1,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.13899999999999998,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.25466666666666665,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.82,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 2.0733333333333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.004666666666666667,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.2",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Aussentüre (Holz) - vyzn.v1.0": {
+      "name": "Aussentüre (Holz) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_DOOR",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Türen",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.004666666666666667",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0.5166666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "8.833333333333334",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.13899999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "8.7",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3866.6666666666665",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "309",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "9.433333333333334",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.0733333333333333",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "1.82",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "9.433333333333334",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "4166.666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.25466666666666665"
+            },
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "kbob.2022v8.mat_ff27a77b-badc-4527-9373-29f79906804c"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Türen",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.5166666666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 309,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 9.433333333333334,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 8.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 8.833333333333334,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 9.433333333333334,
+        "vyzn.catalogue.PriceCHF": 2000,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 4166.666666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 3866.6666666666665,
+        "vyzn.catalogue.uValue": 1,
+        "vyzn.catalogue.gValue": 0.52,
+        "vyzn.catalogue.bValue": 1,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.13899999999999998,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.25466666666666665,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.82,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 2.0733333333333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.004666666666666667,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.2",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Innentür (Holz) - vyzn.v1.0": {
+      "name": "Innentür (Holz) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_DOOR",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Türen",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 100
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "2643.3333333333335",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "284.3333333333333",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "6.166666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "1.2466666666666666",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0.5766666666666667",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.22866666666666668",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.006033333333333333",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.16233333333333333",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "2926.6666666666665",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "9.333333333333334",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "9.333333333333334",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "6.333333333333333",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "1.4766666666666666"
+            },
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "kbob.2022v8.mat_767D89CB-9927-4BDD-ACD3-FCC79C32B97E"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Türen",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.5766666666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 284.3333333333333,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 9.333333333333334,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 6.166666666666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 6.333333333333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 9.333333333333334,
+        "vyzn.catalogue.PriceCHF": 400,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 2926.6666666666665,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 2643.3333333333335,
+        "vyzn.catalogue.uValue": 1,
+        "vyzn.catalogue.gValue": 0.52,
+        "vyzn.catalogue.bValue": 1,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.16233333333333333,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.22866666666666668,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "interiorComponent",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 1.2466666666666666,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "inside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 1.4766666666666666,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.006033333333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "G 1.5",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "innen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    }
+  },
+  "categories": {
+    "vyzn.v1.0": {
+      "name": "vyzn.v1.0"
+    },
+    "vyzn.v1.0 > Türen": {
+      "name": "Türen"
+    }
+  }
+}

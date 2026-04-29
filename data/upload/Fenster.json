@@ -1,0 +1,560 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2026-03-27T16:29:37.000Z",
+  "products": {
+    "Fenster (2-fach) - vyzn.v1.0": {
+      "name": "Fenster (2-fach) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_F9C5864D-7143-472A-A4CB-7ED4DC0B447F",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 650,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 1.2,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Fenster (3-fach) - vyzn.v1.0": {
+      "name": "Fenster (3-fach) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_8C429A3C-65E9-423C-BB08-626C4639C97B",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 800,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 0.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Fenster (3-fach, ESG/ESG) - vyzn.v1.0": {
+      "name": "Fenster (3-fach, ESG/ESG) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_D6D60F63-0AC6-4F65-A665-23893EFE55EE",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 900,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 0.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Fenster (3-fach, ESG/VSG) - vyzn.v1.0": {
+      "name": "Fenster (3-fach, ESG/VSG) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_C17242EF-5C5D-430E-A900-4449A1BC8082",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 950,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 0.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Fenster (3-fach, VSG) - vyzn.v1.0": {
+      "name": "Fenster (3-fach, VSG) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_14DFC8C9-C915-43A2-AE52-7B78F5948269",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 900,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 0.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    },
+    "Oblicht (3-fach, ESG/VSG) - vyzn.v1.0": {
+      "name": "Oblicht (3-fach, ESG/VSG) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WINDOW",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "vyzn.v1.0 > Fenster",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 10
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 90
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "materialKey": "kbob.2022v8.mat_5D3F1239-2A50-4539-8DEF-341218D0F70A",
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "associationAttributes": {}
+          },
+          "0_1": {
+            "materialKey": "kbob.2022v8.mat_C17242EF-5C5D-430E-A900-4449A1BC8082",
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "3840",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "0.6990000000000001",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "2.202",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "9.6",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "0.11790000000000002",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "204.9",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": "0.01236",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "0.1476",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "2.3489999999999998",
+              "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": "0",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "9.48",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "3630",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "0.6869999999999999"
+            }
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fenster",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": 0.20833333366666668,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": 479.2333333336667,
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": 6.665666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": 19.413333333666667,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": 19.60000000033333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": 6.653666667,
+        "vyzn.catalogue.PriceCHF": 1100,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": 8306.666666667,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": 7830.000000000333,
+        "vyzn.catalogue.uValue": 0.7,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": 0.18090000033333337,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": 0.3846000003333333,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.ch.minergie.eco.ComponentClassification": "windowOrExteriorDoor",
+        "vyzn.catalogue.ch.KBOB2022.LCARefDimension": "area",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": 4.1553333336666665,
+        "vyzn.catalogue.GlassPercentage": 90,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": 4.539000000333333,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": 0.013590000333333333,
+        "vyzn.catalog.ch.eBKPh.Section": "E 3.1",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.BottomPositionLabel": "innen"
+      }
+    }
+  },
+  "categories": {
+    "vyzn.v1.0": {
+      "name": "vyzn.v1.0"
+    },
+    "vyzn.v1.0 > Fenster": {
+      "name": "Fenster"
+    }
+  }
+}

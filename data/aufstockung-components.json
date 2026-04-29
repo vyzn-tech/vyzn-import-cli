@@ -1,0 +1,975 @@
+{
+  "fileFormatVersion": "1.1.0",
+  "exportTimestamp": "2026-04-16T19:00:00.000Z",
+  "catalogueId": "extension-aufstockung-2026-04-16",
+  "catalogueName": "Aufstockung Components",
+  "products": {
+    "Aussenwand Aufstockung (Stahl, Hanfkalk, Travertin) - vyzn.v1.0": {
+      "name": "Aussenwand Aufstockung (Stahl, Hanfkalk, Travertin) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_WALL",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "Alle > BAUTEILE > Generische Bauteile > Fassadenaufbauten",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 50,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 80,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 300,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 12,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 60,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 10,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 6.4
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 93.6
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_CEA2CA30-8030-4D33-942A-945A99E6D8F9"
+          },
+          "0_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_CEA2CA30-8030-4D33-942A-945A99E6D8F9"
+          },
+          "1_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_E8EAD9E6-C07D-4D46-94C7-EC7B57B34391"
+          },
+          "1_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 1,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_BEB8840F-FD68-4E4F-B6EA-D11CE45DA8F4"
+          },
+          "2_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_DD4ED36D-28CF-45D6-A52E-F0C592F2D572"
+          },
+          "2_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 2,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_DD4ED36D-28CF-45D6-A52E-F0C592F2D572"
+          },
+          "3_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_94E3CBC2-0A57-4ADA-AEFE-B0E89B673C74"
+          },
+          "3_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 3,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_94E3CBC2-0A57-4ADA-AEFE-B0E89B673C74"
+          },
+          "4_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_E8EAD9E6-C07D-4D46-94C7-EC7B57B34391"
+          },
+          "4_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 4,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_BEB8840F-FD68-4E4F-B6EA-D11CE45DA8F4"
+          },
+          "5_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_2FA5EEF9-E6D7-422B-BF4A-9FAF5298550F"
+          },
+          "5_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 5,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_2FA5EEF9-E6D7-422B-BF4A-9FAF5298550F"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Fassadenaufbauten",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": null,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": null,
+        "vyzn.catalogue.SourceENV": "vyzn",
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": null,
+        "vyzn.catalogue.BottomPositionLabel": "innen",
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": null,
+        "vyzn.catalogue.PriceCHF": null,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": null,
+        "vyzn.catalogue.uValue": null,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": null,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": null,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": null,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": null,
+        "vyzn.catalog.ch.eBKPh.Section": "E 2.2"
+      }
+    },
+    "Sheddach Aufstockung (Stahl, Steinwolle, Stehfalz) - vyzn.v1.0": {
+      "name": "Sheddach Aufstockung (Stahl, Steinwolle, Stehfalz) - vyzn.v1.0",
+      "type": "COMPONENT",
+      "subType": "COMPONENT_ROOF",
+      "status": "approved",
+      "hatchingPattern": null,
+      "linkedReferenceMaterialKey": [],
+      "templateId": "901eacf7-d771-480e-b399-668df3a1837f",
+      "categoryPath": "Alle > BAUTEILE > Generische Bauteile > Dachaufbauten",
+      "matrix": {
+        "layers": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 0.7,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 120,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 0.5,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "3": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 18,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "4": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 240,
+              "vyzn.catalogue.LayerLifeCycle": 60
+            }
+          },
+          "5": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 18,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "6": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 0.2,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "7": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 100,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          },
+          "8": {
+            "associationAttributes": {
+              "vyzn.catalogue.LayerThickness": 18,
+              "vyzn.catalogue.LayerLifeCycle": 30
+            }
+          }
+        },
+        "sections": {
+          "0": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 5.0
+            }
+          },
+          "1": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 6.4
+            }
+          },
+          "2": {
+            "associationAttributes": {
+              "vyzn.catalogue.SectionPercentage": 88.6
+            }
+          }
+        },
+        "cells": {
+          "0_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 0,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_D5943AFE-6820-4251-B4DC-FC1E42BE84F7"
+          },
+          "0_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 0,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_D5943AFE-6820-4251-B4DC-FC1E42BE84F7"
+          },
+          "0_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 0,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_D5943AFE-6820-4251-B4DC-FC1E42BE84F7"
+          },
+          "1_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 1,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_A2232C33-FD19-47A3-83D7-6445D5956898"
+          },
+          "1_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 1,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_E8EAD9E6-C07D-4D46-94C7-EC7B57B34391"
+          },
+          "1_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 1,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_A2232C33-FD19-47A3-83D7-6445D5956898"
+          },
+          "2_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 2,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_74A0C898-64F2-44E7-B1AF-5013B03D3778"
+          },
+          "2_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 2,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_74A0C898-64F2-44E7-B1AF-5013B03D3778"
+          },
+          "2_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 2,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_74A0C898-64F2-44E7-B1AF-5013B03D3778"
+          },
+          "3_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 3,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "3_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 3,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "3_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 3,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "4_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 4,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_94E3CBC2-0A57-4ADA-AEFE-B0E89B673C74"
+          },
+          "4_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 4,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_010D7DDA-10C1-4C67-8B0F-1365A3E226C1"
+          },
+          "4_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 4,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_010D7DDA-10C1-4C67-8B0F-1365A3E226C1"
+          },
+          "5_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 5,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "5_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 5,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "5_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 5,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_34498EB6-EF62-4803-8959-6C90AB5E1A58"
+          },
+          "6_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 6,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_7DB8C2EB-379F-41BB-B647-CD1271438378"
+          },
+          "6_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 6,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_7DB8C2EB-379F-41BB-B647-CD1271438378"
+          },
+          "6_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 6,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_7DB8C2EB-379F-41BB-B647-CD1271438378"
+          },
+          "7_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 7,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_BEB8840F-FD68-4E4F-B6EA-D11CE45DA8F4"
+          },
+          "7_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 7,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_E8EAD9E6-C07D-4D46-94C7-EC7B57B34391"
+          },
+          "7_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 7,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_BEB8840F-FD68-4E4F-B6EA-D11CE45DA8F4"
+          },
+          "8_0": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 8,
+            "sectionPosition": 0,
+            "materialKey": "vyzn.v1.mat_7C280766-B1BF-4DF4-A32C-CAC8B2D2E5C5"
+          },
+          "8_1": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 8,
+            "sectionPosition": 1,
+            "materialKey": "vyzn.v1.mat_7C280766-B1BF-4DF4-A32C-CAC8B2D2E5C5"
+          },
+          "8_2": {
+            "associationAttributes": {
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.UBPDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": "",
+              "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": ""
+            },
+            "layerPosition": 8,
+            "sectionPosition": 2,
+            "materialKey": "vyzn.v1.mat_7C280766-B1BF-4DF4-A32C-CAC8B2D2E5C5"
+          }
+        }
+      },
+      "attributes": {
+        "vyzn.catalogue.Category": "Dachaufbauten",
+        "vyzn.catalogue.ch.KBOB2022.BiogenicCarbon": null,
+        "vyzn.catalogue.ch.KBOB2022.UBPDisposal": null,
+        "vyzn.catalogue.SourceENV": "vyzn",
+        "vyzn.catalogue.License": "Keine",
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyProduction": null,
+        "vyzn.catalogue.BottomPositionLabel": "innen",
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyProduction": null,
+        "vyzn.catalogue.PriceCHF": null,
+        "vyzn.catalogue.COSRefUnit": "m2",
+        "vyzn.catalogue.ch.KBOB2022.UBPTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.UBPProduction": null,
+        "vyzn.catalogue.uValue": null,
+        "vyzn.catalogue.ch.KBOB2022.GreyEnergyDisposal": null,
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsDisposal": null,
+        "vyzn.catalogue.ch.KBOB2022.LCARefUnit": "m2/Jahr",
+        "vyzn.catalogue.TopPositionLabel": "aussen",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsProduction": null,
+        "vyzn.catalogue.PositionAgainst": "outside",
+        "vyzn.catalogue.AutomateUValueCalculation": true,
+        "vyzn.catalogue.Owner": "vyzn AG",
+        "vyzn.catalogue.SourceEPE": "vyzn",
+        "vyzn.catalogue.ch.KBOB2022.GHGEmissionsTotal": null,
+        "vyzn.catalogue.ch.KBOB2022.RenewableEnergyDisposal": null,
+        "vyzn.catalog.ch.eBKPh.Section": "C 4.4"
+      }
+    }
+  },
+  "categories": {
+    "Alle": {
+      "name": "Alle"
+    },
+    "Alle > BAUTEILE": {
+      "name": "BAUTEILE"
+    },
+    "Alle > BAUTEILE > Generische Bauteile": {
+      "name": "Generische Bauteile"
+    },
+    "Alle > BAUTEILE > Generische Bauteile > Fassadenaufbauten": {
+      "name": "Fassadenaufbauten"
+    },
+    "Alle > BAUTEILE > Generische Bauteile > Dachaufbauten": {
+      "name": "Dachaufbauten"
+    }
+  }
+}

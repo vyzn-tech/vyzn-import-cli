@@ -20,17 +20,18 @@ async function main() {
         .option('-v, --verbose', 'More detailed console output')
         .option('-d, --diff', 'Perform diff only')
         .action((o) => {
-        importProducts(o.input, o.url, o.auth, o.tenant, o.category, o.verbose, o.diff);
-    });
+            importProducts(o.input, o.url, o.auth, o.tenant, o.category, o.verbose, o.diff);
+        });
     program.command('delete-products')
         .description('delete products of a given category')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
         .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+        .requiredOption('-t, --tenant <name>', 'The name of the tenant')
         .requiredOption('-c, --category <id>', 'The id of the category')
         .option('-v, --verbose', 'More detailed console output')
         .action((o) => {
-        deleteProducts(o.url, o.auth, o.category, o.verbose);
-    });
+            deleteProducts(o.url, o.auth, o.tenant, o.category, o.verbose);
+        });
     program.command('import-materialsdb')
         .description('imports data from materialsdb.org source')
         .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
@@ -38,8 +39,8 @@ async function main() {
         .requiredOption('-c, --category <id>', 'The id of the category')
         .option('-v, --verbose', 'More detailed console output')
         .action((o) => {
-        importMaterialsDb(o.url, o.auth, o.category, o.verbose);
-    });
+            importMaterialsDb(o.url, o.auth, o.category, o.verbose);
+        });
     program
         .command('import-catalog')
         .description('import catalog from a JSON file')
@@ -58,8 +59,8 @@ async function main() {
         .option('-c, --category <id>', 'The id of the category')
         .addOption(new Option('--overriding <mode>', 'How to handle existing products: true (override), false (append _1), skip (skip entry). Default: false').default('false').choices(['true', 'false', 'skip']))
         .action((o) => {
-        importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components, o.overriding);
-    });
+            importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components, o.overriding);
+        });
     program
         .command('patch-version')
         .description('patch a version from a CSV file')
@@ -72,8 +73,8 @@ async function main() {
         .requiredOption('-i, --input <file>', 'Path to the file to import (.csv)')
         .option('-v, --verbose', 'More detailed console output')
         .action((o) => {
-        patchVersion(o.url, o.tenant, o.auth, o.project, o.building, o.modelversion, o.input, o.verbose);
-    });
+            patchVersion(o.url, o.tenant, o.auth, o.project, o.building, o.modelversion, o.input, o.verbose);
+        });
     program
         .command('convert-oekobaudat')
         .description('convert oekobaudat CSV to JSON structure')
@@ -81,8 +82,8 @@ async function main() {
         .requiredOption('-o, --output <file>', 'Path to the output JSON file')
         .option('-v, --verbose', 'More detailed console output')
         .action((o) => {
-        convertOekobaudat(o.input, o.output, o.verbose);
-    });
+            convertOekobaudat(o.input, o.output, o.verbose);
+        });
     program.parse();
 }
 async function importProducts(input, url, auth, tenant, category, verbose, diff) {
@@ -186,11 +187,11 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
         if (!product) {
             const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
                 .send({
-                "name": row.Name,
-                "productKey": row.ProductKey,
-                "type": newType,
-                "subType": newSubType,
-            })
+                    "name": row.Name,
+                    "productKey": row.ProductKey,
+                    "type": newType,
+                    "subType": newSubType,
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -228,15 +229,15 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
             console.debug(JSON.stringify(attributes));
         const updatedProduct = await request.put(new URL('/dbs-catalogue/products/' + id, url).href)
             .send({
-            "name": row.Name,
-            "productKey": row.ProductKey,
-            "type": newType,
-            "subType": newSubType,
-            "status": "approved",
-            "description": null,
-            "hatchingPattern": row.hatchingPattern,
-            "attributes": attributes
-        })
+                "name": row.Name,
+                "productKey": row.ProductKey,
+                "type": newType,
+                "subType": newSubType,
+                "status": "approved",
+                "description": null,
+                "hatchingPattern": row.hatchingPattern,
+                "attributes": attributes
+            })
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
@@ -246,7 +247,7 @@ async function importProducts(input, url, auth, tenant, category, verbose, diff)
             .set('x-vyzn-selected-tenant', tenant);
     }
 }
-async function deleteProducts(url, auth, category, verbose) {
+async function deleteProducts(url, auth, tenant, category, verbose) {
     await assertUrl(url);
     await assertFile(auth);
     const authToken = await fs.readFile(auth, { encoding: 'utf8', flag: 'r' });
@@ -256,7 +257,8 @@ async function deleteProducts(url, auth, category, verbose) {
         .set('Accept', 'application/, json')
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json');
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant);
     const cat = findSubcategoryById(selectedCatalogue.body.content, category);
     const childCategoriesRecursive = getAllCategoriesRecursive(cat);
     for (const categoryToDelete of childCategoriesRecursive) {
@@ -268,7 +270,8 @@ async function deleteProducts(url, auth, category, verbose) {
             .set('Accept', 'application/, json')
             .set('Accept-Encoding', 'gzip, deflate, br')
             .set('Accept-Language', 'en-US,en;q=0.5')
-            .set('Content-Type', 'application/json');
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant);
         const numProducts = productsInCategory.body.length;
         let idx = 0;
         for (const product of productsInCategory.body) {
@@ -282,7 +285,8 @@ async function deleteProducts(url, auth, category, verbose) {
                     .set('Accept', 'application/, json')
                     .set('Accept-Encoding', 'gzip, deflate, br')
                     .set('Accept-Language', 'en-US,en;q=0.5')
-                    .set('Content-Type', 'application/json');
+                    .set('Content-Type', 'application/json')
+                    .set('x-vyzn-selected-tenant', tenant);
             }
             catch (e) {
                 console.error(console.error(e, e.stack));
@@ -296,7 +300,8 @@ async function deleteProducts(url, auth, category, verbose) {
                 .set('Accept', 'application/, json')
                 .set('Accept-Encoding', 'gzip, deflate, br')
                 .set('Accept-Language', 'en-US,en;q=0.5')
-                .set('Content-Type', 'application/json');
+                .set('Content-Type', 'application/json')
+                .set('x-vyzn-selected-tenant', 'demo');
         }
         catch (e) {
             console.error(console.error(e, e.stack));
@@ -337,10 +342,10 @@ async function createCategoryPath(categoryPath, catalogueId, hierarchy, url, aut
             else {
                 const newCat = (await request.post(new URL('/dbs-catalogue/categories', url).href)
                     .send({
-                    "catalogue": catalogueId,
-                    "name": paths[i],
-                    "parent": (currentNode != null ? currentNode.id : lastCatId),
-                })
+                        "catalogue": catalogueId,
+                        "name": paths[i],
+                        "parent": (currentNode != null ? currentNode.id : lastCatId),
+                    })
                     .set('Authorization', auth)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -374,6 +379,8 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant);
     const selectedCatalogueId = catalogues.body.selectedCatalogueId;
+    console.log(`selected catalogue id: ${selectedCatalogueId}`);
+    return;
     const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
@@ -398,6 +405,7 @@ async function importCatalog(input, url, auth, tenant, verbose, diff, folder, ca
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant);
+
     let lcaAttributeGroupId = null;
     for (const g of attributeGroups.body) {
         if (g.name == lcaAttributeGroup) {
@@ -472,11 +480,11 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             console.log(`${prodKey} Deleting existing product since it is a component`);
             await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
                 .send({
-                "name": prod.name,
-                "productKey": prodKey,
-                "category": categoryId,
-                "type": prod.type
-            })
+                    "name": prod.name,
+                    "productKey": prodKey,
+                    "category": categoryId,
+                    "type": prod.type
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -513,12 +521,12 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         console.log(`${prodKey} Creating new product`);
         const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
             .send({
-            "name": prod.name,
-            "productKey": prodKey,
-            "category": categoryId,
-            "type": prod.type,
-            "subType": prod.subType
-        })
+                "name": prod.name,
+                "productKey": prodKey,
+                "category": categoryId,
+                "type": prod.type,
+                "subType": prod.subType
+            })
             .set('Authorization', authToken)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/, json')
@@ -571,16 +579,16 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
     const updatedProduct = await request.put(new URL('/dbs-catalogue/products/' + id, url).href)
         .send({
-        "name": prod.name,
-        "productKey": prodKey,
-        "category": categoryId,
-        "type": prod.type,
-        "subType": prod.subType,
-        "status": prod.status,
-        "description": null,
-        "hatchingPattern": prod.hatchingPattern,
-        "attributes": attributes
-    })
+            "name": prod.name,
+            "productKey": prodKey,
+            "category": categoryId,
+            "type": prod.type,
+            "subType": prod.subType,
+            "status": prod.status,
+            "description": null,
+            "hatchingPattern": prod.hatchingPattern,
+            "attributes": attributes
+        })
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/, json')
@@ -646,9 +654,9 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             }
             const newLayer = await request.post(new URL(`/dbs-catalogue/productLayers`, url).href)
                 .send({
-                "parent": `${id}`,
-                "position": parseInt(layerKey)
-            })
+                    "parent": `${id}`,
+                    "position": parseInt(layerKey)
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -658,11 +666,11 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 .set('x-vyzn-selected-tenant', tenant);
             await request.patch(new URL(`/dbs-catalogue/productLayers/${newLayer.body.id}`, url).href)
                 .send({
-                "id": newLayer.body.id,
-                "parent": `${id}`,
-                "position": parseInt(layerKey),
-                "attributes": layerAssociationAttributes
-            })
+                    "id": newLayer.body.id,
+                    "parent": `${id}`,
+                    "position": parseInt(layerKey),
+                    "attributes": layerAssociationAttributes
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -698,9 +706,9 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             }
             const newSection = await request.post(new URL(`/dbs-catalogue/productSections`, url).href)
                 .send({
-                "parent": `${id}`,
-                "position": parseInt(sectionKey)
-            })
+                    "parent": `${id}`,
+                    "position": parseInt(sectionKey)
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -710,11 +718,11 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
                 .set('x-vyzn-selected-tenant', tenant);
             await request.patch(new URL(`/dbs-catalogue/productSections/${newSection.body.id}`, url).href)
                 .send({
-                "id": newSection.body.id,
-                "parent": `${id}`,
-                "position": parseInt(sectionKey),
-                "attributes": sectionAssociationAttributes
-            })
+                    "id": newSection.body.id,
+                    "parent": `${id}`,
+                    "position": parseInt(sectionKey),
+                    "attributes": sectionAssociationAttributes
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -750,10 +758,10 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             }
             await request.post(new URL(`/dbs-catalogue/productCellLink`, url).href)
                 .send({
-                "layer": layerIds["" + cell.layerPosition],
-                "section": sectionIds["" + cell.sectionPosition],
-                "child": materialId
-            })
+                    "layer": layerIds["" + cell.layerPosition],
+                    "section": sectionIds["" + cell.sectionPosition],
+                    "child": materialId
+                })
                 .set('Authorization', authToken)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/, json')
@@ -809,10 +817,10 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             if (matchingMaterialListLinkId) {
                 const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
                     .send({
-                    "materialId": id,
-                    "referenceMaterialId": lcaProductId,
-                    "attributeGroupId": lcaAttributeGroupId
-                })
+                        "materialId": id,
+                        "referenceMaterialId": lcaProductId,
+                        "attributeGroupId": lcaAttributeGroupId
+                    })
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -824,10 +832,10 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
             else {
                 const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
                     .send({
-                    "materialId": id,
-                    "referenceMaterialId": lcaProductId,
-                    "attributeGroupId": lcaAttributeGroupId
-                })
+                        "materialId": id,
+                        "referenceMaterialId": lcaProductId,
+                        "attributeGroupId": lcaAttributeGroupId
+                    })
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/, json')
@@ -897,19 +905,19 @@ async function patchVersion(url, tenant, auth, projectId, buildingId, modelVersi
                 console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`);
                 const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
                     .send({
-                    "name": `New ${key}`,
-                    "area": 0,
-                    "height": 0,
-                    "floor": "",
-                    "isHeated": false,
-                    "minergieClassification": null,
-                    "minergieEcoClassification": null,
-                    "sia3802015Classification": null,
-                    "sia4162003Classification": null,
-                    "sia20402017Classification": null,
-                    "sia38012016Classification": null,
-                    "additionalElementAttributeValues": []
-                })
+                        "name": `New ${key}`,
+                        "area": 0,
+                        "height": 0,
+                        "floor": "",
+                        "isHeated": false,
+                        "minergieClassification": null,
+                        "minergieEcoClassification": null,
+                        "sia3802015Classification": null,
+                        "sia4162003Classification": null,
+                        "sia20402017Classification": null,
+                        "sia38012016Classification": null,
+                        "additionalElementAttributeValues": []
+                    })
                     .set('Authorization', authToken)
                     .set('Content-Type', 'application/json')
                     .set('Accept', 'application/json')
@@ -941,10 +949,10 @@ async function patchVersion(url, tenant, auth, projectId, buildingId, modelVersi
     console.info(`Patching version ...`);
     const updatedVersion = await request.post(new URL(`/dbs-core/v1/versions/${modelVersionId}/coresynccommand`, url).href)
         .send({
-        "historyPointId": modelVersionId,
-        "startSyncFromCatalog": false,
-        "historyPointConfigChanges": transformed
-    })
+            "historyPointId": modelVersionId,
+            "startSyncFromCatalog": false,
+            "historyPointConfigChanges": transformed
+        })
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json')
         .set('Accept', 'application/json')

@@ -30,10 +30,11 @@ async function main() {
     .description('delete products of a given category')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
     .requiredOption('-a, --auth <file>', 'The file containing the auth token')
+    .requiredOption('-t, --tenant <name>', 'The name of the tenant')
     .requiredOption('-c, --category <id>', 'The id of the category')
     .option('-v, --verbose', 'More detailed console output')
     .action((o) => {
-      deleteProducts(o.url, o.auth, o.category, o.verbose)
+      deleteProducts(o.url, o.auth, o.tenant, o.category, o.verbose)
     })
 
   program.command('import-materialsdb')
@@ -68,7 +69,7 @@ async function main() {
       importCatalog(o.input, o.url, o.auth, o.tenant, o.verbose, o.diff, o.folder, o.category, o.refmaterials, o.materials, o.buildingtech, o.otherres, o.components, o.overriding)
     })
 
-    program
+  program
     .command('patch-version')
     .description('patch a version from a CSV file')
     .requiredOption('-u, --url <url>', 'The URL of the vyzn API')
@@ -135,7 +136,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)).body
 
-    
+
   // Process CSV line by line
   for (const row of csv) {
     // Get existing product
@@ -156,7 +157,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
         existingProdId = existingProds.body[0].id
       }
 
-      if (existingProdId) {  
+      if (existingProdId) {
         const existingProd = await request.get(new URL('/dbs-catalogue/products/' + existingProdId, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
@@ -207,8 +208,8 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
     let newType = row.Type
     let newSubType = row.SubType
 
-    if(newSubType == '') 
-        newSubType = null
+    if (newSubType == '')
+      newSubType = null
 
     // migrate old data
     if (newType == "MATERIAL_LIST")
@@ -216,22 +217,22 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
 
     // Create new product
     if (!product) {
-        const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-          .send({
-            "name": row.Name,
-            "productKey": row.ProductKey,
-            "type": newType,
-            "subType": newSubType,
-          })
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language', 'en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')
-          .set('x-vyzn-selected-tenant', tenant)
-        product = newProd.body
-        console.log(`${row.ProductKey} Creating new product`)
+      const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+        .send({
+          "name": row.Name,
+          "productKey": row.ProductKey,
+          "type": newType,
+          "subType": newSubType,
+        })
+        .set('Authorization', authToken)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/, json')
+        .set('Accept-Encoding', 'gzip, deflate, br')
+        .set('Accept-Language', 'en-US,en;q=0.5')
+        .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
+      product = newProd.body
+      console.log(`${row.ProductKey} Creating new product`)
     }
 
     const id = product.id
@@ -287,7 +288,7 @@ async function importProducts(input: string, url: string, auth: string, tenant: 
   }
 }
 
-async function deleteProducts(url: string, auth: string, category: string, verbose: string) {
+async function deleteProducts(url: string, auth: string, tenant: string, category: string, verbose: string) {
   // Validate commandline arguments
   await assertUrl(url)
   await assertFile(auth)
@@ -304,6 +305,8 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
     .set('Accept-Encoding', 'gzip, deflate, br')
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
+    .set('x-vyzn-selected-tenant', tenant)
+
 
   const cat = findSubcategoryById(selectedCatalogue.body.content, category)
   const childCategoriesRecursive = getAllCategoriesRecursive(cat)
@@ -318,6 +321,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
       .set('Accept-Encoding', 'gzip, deflate, br')
       .set('Accept-Language', 'en-US,en;q=0.5')
       .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
 
     const numProducts = productsInCategory.body.length
     let idx = 0
@@ -334,6 +338,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
           .set('Accept-Encoding', 'gzip, deflate, br')
           .set('Accept-Language', 'en-US,en;q=0.5')
           .set('Content-Type', 'application/json')
+          .set('x-vyzn-selected-tenant', tenant)
       } catch (e) {
         console.error(console.error(e, e.stack))
       }
@@ -349,6 +354,7 @@ async function deleteProducts(url: string, auth: string, category: string, verbo
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
         .set('Content-Type', 'application/json')
+        .set('x-vyzn-selected-tenant', tenant)
     } catch (e) {
       console.error(console.error(e, e.stack))
     }
@@ -415,7 +421,7 @@ async function createCategoryPath(categoryPath: string, catalogueId: string, hie
   return leafCategoryId
 }
 
-async function importCatalog(input: string, url: string, auth: string, tenant:string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean, overriding: string) {
+async function importCatalog(input: string, url: string, auth: string, tenant: string, verbose: boolean, diff: boolean, folder: boolean, category: string, importRefMat: boolean, importMat: boolean, importBuildTech: boolean, importOtRes: boolean, importComp: boolean, overriding: string) {
   const lcaAttributeGroup = 'Ökobilanz'
 
   // Validate commandline arguments
@@ -437,6 +443,7 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
     .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)
+  //const selectedCatalogueId = "05924a3c-a2ba-5e62-a3b5-afc8db997a2e"
   const selectedCatalogueId = catalogues.body.selectedCatalogueId
 
   const hierarchy = (await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}`, url).href)
@@ -475,11 +482,11 @@ async function importCatalog(input: string, url: string, auth: string, tenant:st
   }
   if (!lcaAttributeGroupId) throw `Could not find attribute group with name ${lcaAttributeGroup}`
 
-  if(importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
-  if(importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId,url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if (importRefMat) await importProductsOfType(componentsObj.products, "REFERENCE_MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if (importMat) await importProductsOfType(componentsObj.products, "MATERIAL", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if (importBuildTech) await importProductsOfType(componentsObj.products, "BUILDING_TECHNOLOGY", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if (importOtRes) await importProductsOfType(componentsObj.products, "OTHER_RESOURCE", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
+  if (importComp) await importProductsOfType(componentsObj.products, "COMPONENT", selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, authToken, tenant, verbose, diff, folder, category, overriding)
 }
 
 let anchorFound = false
@@ -488,7 +495,7 @@ async function importProductsOfType(products, type: string, selectedCatalogueId,
   for (const [key, value] of Object.entries(products)) {
     let prod: any = value
     if (prod.type != type) continue
-    
+
     await importSingleProduct(key, prod, selectedCatalogueId, hierarchy, lcaAttributeGroupId, url, auth, tenant, verbose, diff, folder, category, overriding)
   }
 }
@@ -498,7 +505,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   const migrateAttributes = false; // set to true if the attributes stored in the source file do not match to the target environment and need migration
 
   var categoryId = category
-  if(!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant) }
+  if (!folder) { categoryId = await createCategoryPath(prod.categoryPath, selectedCatalogueId, hierarchy, url, authToken, tenant) }
 
   if (!categoryId)
     console.error(`missing category for product: ${prodKey}`)
@@ -537,7 +544,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
   } catch (error) { console.log(error) }
 
-  if(product && prod.type == "COMPONENT") {
+  if (product && prod.type == "COMPONENT") {
     if (overriding === 'true') {
       console.log(`${prodKey} Deleting existing product since it is a component`)
       await request.del(new URL('/dbs-catalogue/products/' + product.id, url).href)
@@ -552,7 +559,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         .set('Accept', 'application/, json')
         .set('Accept-Encoding', 'gzip, deflate, br')
         .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json') 
+        .set('Content-Type', 'application/json')
         .set('x-vyzn-selected-tenant', tenant)
       product = null
     } else if (overriding === 'skip') {
@@ -568,7 +575,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   }
 
   // Check overriding flag for non-COMPONENT types (MATERIAL, REFERENCE_MATERIAL, etc.)
-  if(product && prod.type != "COMPONENT") {
+  if (product && prod.type != "COMPONENT") {
     if (overriding === 'skip') {
       console.log(`${prodKey} Product already exists, skipping (overriding=skip)`)
       return
@@ -584,23 +591,23 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
   // Create new product
   if (!product) {
-      console.log(`${prodKey} Creating new product`)
-      const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
-        .send({
-          "name": prod.name,
-          "productKey": prodKey,
-          "category": categoryId,
-          "type": prod.type,
-          "subType": prod.subType
-        })
-        .set('Authorization', authToken)
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/, json')
-        .set('Accept-Encoding', 'gzip, deflate, br')
-        .set('Accept-Language', 'en-US,en;q=0.5')
-        .set('Content-Type', 'application/json')
-        .set('x-vyzn-selected-tenant', tenant)
-      product = newProd.body
+    console.log(`${prodKey} Creating new product`)
+    const newProd = await request.post(new URL('/dbs-catalogue/products', url).href)
+      .send({
+        "name": prod.name,
+        "productKey": prodKey,
+        "category": categoryId,
+        "type": prod.type,
+        "subType": prod.subType
+      })
+      .set('Authorization', authToken)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/, json')
+      .set('Accept-Encoding', 'gzip, deflate, br')
+      .set('Accept-Language', 'en-US,en;q=0.5')
+      .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
+    product = newProd.body
   }
 
   const id = product.id
@@ -615,30 +622,30 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
   for (const [attrKey, attrValue] of Object.entries(prod.attributes)) {
     let key = attrKey;
 
-    if(migrateAttributes) {
-        if (key == 'vyzn.catalogue.ThermalConductivity')
-            key = 'vyzn.catalog.ThermalConductivity';
-        else if (key == 'vyzn.catalogue.PriceCHF')
-            key = 'vyzn.catalog.PriceCHF';
-        else if (key == 'vyzn.catalogue.LayerThickness')
-            key = 'vyzn.catalog.LayerThickness';
-        else if (key == 'vyzn.catalogue.SectionPercentage')
-            key = 'vyzn.catalog.SectionPercentage';
-        else if (key == 'vyzn.catalogue.BottomPositionLabel')
-            key = 'vyzn.catalog.BottomPositionLabel';
-        else if (key == 'vyzn.catalogue.uValue')
-            key = 'vyzn.catalog.uValue';
-        else if (key == 'vyzn.catalogue.TopPositionLabel')
-            key = 'vyzn.catalog.TopPositionLabel';
-        else if (key == 'vyzn.catalogue.PositionAgainst')
-            key = 'vyzn.catalog.PositionAgainst';
-        else if (key == 'vyzn.catalogue.AutomateUValueCalculation')
-            key = 'vyzn.catalog.AutomateUValueCalculation';
+    if (migrateAttributes) {
+      if (key == 'vyzn.catalogue.ThermalConductivity')
+        key = 'vyzn.catalog.ThermalConductivity';
+      else if (key == 'vyzn.catalogue.PriceCHF')
+        key = 'vyzn.catalog.PriceCHF';
+      else if (key == 'vyzn.catalogue.LayerThickness')
+        key = 'vyzn.catalog.LayerThickness';
+      else if (key == 'vyzn.catalogue.SectionPercentage')
+        key = 'vyzn.catalog.SectionPercentage';
+      else if (key == 'vyzn.catalogue.BottomPositionLabel')
+        key = 'vyzn.catalog.BottomPositionLabel';
+      else if (key == 'vyzn.catalogue.uValue')
+        key = 'vyzn.catalog.uValue';
+      else if (key == 'vyzn.catalogue.TopPositionLabel')
+        key = 'vyzn.catalog.TopPositionLabel';
+      else if (key == 'vyzn.catalogue.PositionAgainst')
+        key = 'vyzn.catalog.PositionAgainst';
+      else if (key == 'vyzn.catalogue.AutomateUValueCalculation')
+        key = 'vyzn.catalog.AutomateUValueCalculation';
     }
 
-    if(!attributeIds[key]) {
-        console.error(`ATTRIBUTE MISMATCH: Attribute with key ${key} was not found, skipping attribute!`)
-        continue
+    if (!attributeIds[key]) {
+      console.error(`ATTRIBUTE MISMATCH: Attribute with key ${key} was not found, skipping attribute!`)
+      continue
     }
 
     attributes.push({
@@ -669,27 +676,6 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     .set('x-vyzn-selected-tenant', tenant)
 
   if (prod.type == "COMPONENT") {
-    // fixme, replace hardcoded guids
-    await request.put(new URL(`/dbs-catalogue/products/${id}/sectionAttributes`, url).href)
-      .send(["644890f2-7c50-475c-91a0-103d44d6583c"])
-      .set('Authorization', authToken)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/, json')
-      .set('Accept-Encoding', 'gzip, deflate, br')
-      .set('Accept-Language', 'en-US,en;q=0.5')
-      .set('Content-Type', 'application/json')
-      .set('x-vyzn-selected-tenant', tenant)
-
-    await request.put(new URL(`/dbs-catalogue/products/${id}/layerAttributes`, url).href)
-      .send(["15737593-eb2d-4fdd-ab08-79e06a61490e", "2e043d3e-c8ec-4bca-9c9e-9e1bece51ece"])
-      .set('Authorization', authToken)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/, json')
-      .set('Accept-Encoding', 'gzip, deflate, br')
-      .set('Accept-Language', 'en-US,en;q=0.5')
-      .set('Content-Type', 'application/json')
-      .set('x-vyzn-selected-tenant', tenant)
-
     const associationAttributes = (await request.get(new URL(`/dbs-catalogue/associationAttributes`, url).href)
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json')
@@ -705,18 +691,69 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       associationAttributesDict[associationAttribute.name] = associationAttribute
     }
 
+    const normalizeAssociationAttributeName = (attrName: string) => {
+      if (!migrateAttributes)
+        return attrName
+
+      if (attrName == 'vyzn.catalogue.LayerThickness')
+        return 'vyzn.catalog.LayerThickness'
+      if (attrName == 'vyzn.catalogue.SectionPercentage')
+        return 'vyzn.catalog.SectionPercentage'
+
+      return attrName
+    }
+
+    const getAssociationAttributeIds = (matrixEntries: any) => {
+      const associationAttributeIds = []
+      const knownAssociationAttributeIds = new Set()
+
+      for (const matrixEntryValue of Object.values(matrixEntries || {})) {
+        const matrixEntry: any = matrixEntryValue
+        for (const rawAttrName of Object.keys(matrixEntry.associationAttributes || {})) {
+          const attrName = normalizeAssociationAttributeName(rawAttrName)
+          const associationAttribute = associationAttributesDict[attrName]
+          if (!associationAttribute) {
+            console.error(`association attribute not found: ${attrName}`)
+            continue
+          }
+
+          if (!knownAssociationAttributeIds.has(associationAttribute.id)) {
+            knownAssociationAttributeIds.add(associationAttribute.id)
+            associationAttributeIds.push(associationAttribute.id)
+          }
+        }
+      }
+
+      return associationAttributeIds
+    }
+
+    await request.put(new URL(`/dbs-catalogue/products/${id}/sectionAttributes`, url).href)
+      .send(getAssociationAttributeIds(prod.matrix.sections))
+      .set('Authorization', authToken)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/, json')
+      .set('Accept-Encoding', 'gzip, deflate, br')
+      .set('Accept-Language', 'en-US,en;q=0.5')
+      .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
+
+    await request.put(new URL(`/dbs-catalogue/products/${id}/layerAttributes`, url).href)
+      .send(getAssociationAttributeIds(prod.matrix.layers))
+      .set('Authorization', authToken)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/, json')
+      .set('Accept-Encoding', 'gzip, deflate, br')
+      .set('Accept-Language', 'en-US,en;q=0.5')
+      .set('Content-Type', 'application/json')
+      .set('x-vyzn-selected-tenant', tenant)
+
     const layerIds = {}
     for (const [layerKey, layerValue] of Object.entries(prod.matrix.layers)) {
       const layer: any = layerValue
       const layerAssociationAttributes = []
       for (let [attrName, attrValue] of Object.entries(layer.associationAttributes)) {
 
-        if(migrateAttributes) {
-          if (attrName == 'vyzn.catalogue.LayerThickness')
-              attrName = 'vyzn.catalog.LayerThickness';
-          else if (attrName == 'vyzn.catalogue.SectionPercentage')
-              attrName = 'vyzn.catalog.SectionPercentage';
-        }
+        attrName = normalizeAssociationAttributeName(attrName)
 
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {
@@ -770,12 +807,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       const sectionAssociationAttributes = []
       for (let [attrName, attrValue] of Object.entries(section.associationAttributes)) {
 
-        if(migrateAttributes) {
-          if (attrName == 'vyzn.catalogue.LayerThickness')
-              attrName = 'vyzn.catalog.LayerThickness';
-          else if (attrName == 'vyzn.catalogue.SectionPercentage')
-              attrName = 'vyzn.catalog.SectionPercentage';
-        }
+        attrName = normalizeAssociationAttributeName(attrName)
 
         const associationAttribute = associationAttributesDict[attrName]
         if (!associationAttribute) {
@@ -826,7 +858,7 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
       const cell: any = cellValue
 
       let materialId = null
-      if(materialsCache[cell.materialKey]) {
+      if (materialsCache[cell.materialKey]) {
         materialId = materialsCache[cell.materialKey]
       } else {
         let existingProds = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=MATERIAL&query=${encodeURIComponent(cell.materialKey)}&limit=10`, url).href)
@@ -851,8 +883,8 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
 
       await request.post(new URL(`/dbs-catalogue/productCellLink`, url).href)
         .send({
-          "layer": layerIds[""+cell.layerPosition],
-          "section": sectionIds[""+cell.sectionPosition],
+          "layer": layerIds["" + cell.layerPosition],
+          "section": sectionIds["" + cell.sectionPosition],
           "child": materialId
         })
         .set('Authorization', authToken)
@@ -865,30 +897,30 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
     }
   }
 
-  
-  if(prod.type == "MATERIAL") {
+
+  if (prod.type == "MATERIAL") {
     const linkedRefs = Array.isArray(prod.linkedReferenceMaterialKey) ? prod.linkedReferenceMaterialKey : (prod.linkedReferenceMaterialKey ? [{ referenceMaterialKey: prod.linkedReferenceMaterialKey }] : [])
     for (const linkedRef of linkedRefs) {
       const lcaCode = linkedRef.referenceMaterialKey
       let lcaProductId = null
-      if(lcaCode) {
-        if(!lcaProductsCache[lcaCode]) {
+      if (lcaCode) {
+        if (!lcaProductsCache[lcaCode]) {
           const lcaProducts = await request.get(new URL(`/dbs-catalogue/catalogues/${selectedCatalogueId}/products?type=REFERENCE_MATERIAL&query=${lcaCode}&limit=10`, url).href)
-                                  .set('Authorization', authToken)
-                                  .set('Content-Type', 'application/json')
-                                  .set('Accept', 'application/, json')
-                                  .set('Accept-Encoding', 'gzip, deflate, br')
-                                  .set('Accept-Language','en-US,en;q=0.5')
-                                  .set('Content-Type', 'application/json')
-                                  .set('x-vyzn-selected-tenant', tenant)
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant)
 
-          if(!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
+          if (!lcaProducts || !lcaProducts.body || !lcaProducts.body.length || !lcaProducts.body[0] || !lcaProducts.body[0].id) {
           } else {
             lcaProductId = lcaProducts.body[0].id
           }
 
-          if(!lcaProductId) {
-              console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
+          if (!lcaProductId) {
+            console.log(`\tSkipping material because linked LCA product with key '${lcaCode}' could not be found'`)
           }
           lcaProductsCache[lcaCode] = lcaProductId
         } else {
@@ -896,59 +928,59 @@ async function importSingleProduct(prodKey, prod, selectedCatalogueId, hierarchy
         }
       }
 
-      if(lcaProductId) {
+      if (lcaProductId) {
         const existingMaterialListLinks = await request.get(new URL(`/dbs-catalogue/reference-material-links/materials/${product.id}`, url).href)
           .set('Authorization', authToken)
           .set('Content-Type', 'application/json')
           .set('Accept', 'application/, json')
           .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Accept-Language', 'en-US,en;q=0.5')
           .set('Content-Type', 'application/json')
           .set('x-vyzn-selected-tenant', tenant)
 
         let matchingMaterialListLinkId = null
-        for(const link of existingMaterialListLinks.body) {
-          if(link.attributeGroup.id == lcaAttributeGroupId) {
+        for (const link of existingMaterialListLinks.body) {
+          if (link.attributeGroup.id == lcaAttributeGroupId) {
             matchingMaterialListLinkId = link.id
             break
           }
         }
 
-        if(matchingMaterialListLinkId) {
+        if (matchingMaterialListLinkId) {
           const materialListLink = await request.put(new URL(`/dbs-catalogue/reference-material-links/${matchingMaterialListLinkId}`, url).href)
-          .send({
+            .send({
               "materialId": id,
               "referenceMaterialId": lcaProductId,
               "attributeGroupId": lcaAttributeGroupId
-          })
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')
-          .set('x-vyzn-selected-tenant', tenant)
+            })
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant)
         } else {
           const materialListLink = await request.post(new URL(`/dbs-catalogue/reference-material-links`, url).href)
-          .send({
+            .send({
               "materialId": id,
               "referenceMaterialId": lcaProductId,
               "attributeGroupId": lcaAttributeGroupId
-          })
-          .set('Authorization', authToken)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/, json')
-          .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
-          .set('Content-Type', 'application/json')
-          .set('x-vyzn-selected-tenant', tenant)
+            })
+            .set('Authorization', authToken)
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/, json')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Content-Type', 'application/json')
+            .set('x-vyzn-selected-tenant', tenant)
         }
       }
     }
   }
 }
 
-async function patchVersion(url: string, tenant:string, auth: string, projectId: string, buildingId: string, modelVersionId:string, input: string, verbose: boolean) {
+async function patchVersion(url: string, tenant: string, auth: string, projectId: string, buildingId: string, modelVersionId: string, input: string, verbose: boolean) {
   const matchByAttributeId = 'vyzn.source.GUID'; // attribute used for the matching
   const create_missing = false; // NOT WORKING should missing entries be generated? 
 
@@ -958,7 +990,7 @@ async function patchVersion(url: string, tenant:string, auth: string, projectId:
   await assertFile(input)
   await assertUrl(url)
   await assertFile(auth)
-  
+
   console.info(`assert done`)
 
   // Read files
@@ -975,42 +1007,42 @@ async function patchVersion(url: string, tenant:string, auth: string, projectId:
     .set('x-vyzn-selected-tenant', tenant)
     .set('Accept', 'application/json')
     .set('Accept-Encoding', 'gzip, deflate, br, zstd')
-    .set('Accept-Language','en-US,en;q=0.9,de;q=0.8')
+    .set('Accept-Language', 'en-US,en;q=0.9,de;q=0.8')
     .set('Content-Type', 'application/json')
 
-    
 
-const values = existingVersion.body.elementAttributes?.[matchByAttributeId]?.values;
-const valueCount = values ? Object.keys(values).length : 0;
-console.info(`Done. ${valueCount} elements found.`)
+
+  const values = existingVersion.body.elementAttributes?.[matchByAttributeId]?.values;
+  const valueCount = values ? Object.keys(values).length : 0;
+  console.info(`Done. ${valueCount} elements found.`)
 
 
   // Transform version to simplified target structure and build lookups for IDs and Keys
   console.info(`Transforming to target structure...`)
   let transformed = {};
   const idLookup = {};
-  const elementAttributes = existingVersion.body.elementAttributes as Record<string, { 
-      name: string; 
-      values: Record<string, string>; 
+  const elementAttributes = existingVersion.body.elementAttributes as Record<string, {
+    name: string;
+    values: Record<string, string>;
   }>;
 
   Object.entries(elementAttributes).forEach(([_, attribute]) => {
-      const attributeName = attribute.name;
-      const values = attribute.values;
+    const attributeName = attribute.name;
+    const values = attribute.values;
 
-      if (values) {
-          Object.entries(values).forEach(([id, value]) => {
-              if (!transformed[attributeName]) {
-                  transformed[attributeName] = {};
-              }
+    if (values) {
+      Object.entries(values).forEach(([id, value]) => {
+        if (!transformed[attributeName]) {
+          transformed[attributeName] = {};
+        }
 
-              transformed[attributeName][id] = `${value}`;
+        transformed[attributeName][id] = `${value}`;
 
-              if (attributeName === matchByAttributeId) {
-                  idLookup[value] = id;
-              }
-          });
-      }
+        if (attributeName === matchByAttributeId) {
+          idLookup[value] = id;
+        }
+      });
+    }
   });
   console.info(`Done.`)
 
@@ -1021,16 +1053,16 @@ console.info(`Done. ${valueCount} elements found.`)
   console.info(`Processing CSV ...`)
   for (const row of csv) {
     const key = row[matchByAttributeId]
-    if(!key) {
+    if (!key) {
       console.error(`There are rows in the CSV with a missing value in mandatory column '${matchByAttributeId}'.`)
       return
     }
 
     let id = idLookup[key]
 
-    if(!id) {
+    if (!id) {
 
-      if(create_missing) {
+      if (create_missing) {
         // TO BE FIXED
         console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, creating it`)
         const createdElement = await request.post(new URL(`/dbs-core-v2/projects/${projectId}/buildings/${buildingId}/versions/${modelVersionId}/elements/space`, url).href)
@@ -1043,10 +1075,10 @@ console.info(`Done. ${valueCount} elements found.`)
               "isHeated": false,
               "minergieClassification": null,
               "minergieEcoClassification": null,
-              "sia3802015Classification" : null,
-              "sia4162003Classification" : null,
-              "sia20402017Classification" : null,
-              "sia38012016Classification" : null,
+              "sia3802015Classification": null,
+              "sia4162003Classification": null,
+              "sia20402017Classification": null,
+              "sia38012016Classification": null,
               "additionalElementAttributeValues": []
             }
           )
@@ -1054,22 +1086,22 @@ console.info(`Done. ${valueCount} elements found.`)
           .set('Content-Type', 'application/json')
           .set('Accept', 'application/json')
           .set('Accept-Encoding', 'gzip, deflate, br')
-          .set('Accept-Language','en-US,en;q=0.5')
+          .set('Accept-Language', 'en-US,en;q=0.5')
           .set('Content-Type', 'application/json')
           .set('x-vyzn-selected-tenant', tenant)
-        
-          id = createdElement.body.id;
-          idLookup[key] = id;
-          console.warn(`Element created with ID=${id}`)
-        } else { console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, skipping it`) }
-    } else  {
+
+        id = createdElement.body.id;
+        idLookup[key] = id;
+        console.warn(`Element created with ID=${id}`)
+      } else { console.warn(`Record with key '${matchByAttributeId}' = '${key}' not found, skipping it`) }
+    } else {
       console.info(`Record with key '${matchByAttributeId}' = '${key}' found`)
     }
- 
+
     for (const attributeName of Object.keys(row)) {
       let newValue = row[attributeName]
 
-      if(!transformed[attributeName]) 
+      if (!transformed[attributeName])
         transformed[attributeName] = {};
 
       transformed[attributeName][id] = `${newValue}`;
@@ -1077,7 +1109,7 @@ console.info(`Done. ${valueCount} elements found.`)
   }
   console.info(`Done. ${csv.length} rows found.`)
 
-  if(verbose)
+  if (verbose)
     console.debug(JSON.stringify(transformed))
 
   // Persist changes
@@ -1086,7 +1118,7 @@ console.info(`Done. ${valueCount} elements found.`)
     .send(
       {
         "historyPointId": modelVersionId,
-        "startSyncFromCatalog":false,
+        "startSyncFromCatalog": false,
         "historyPointConfigChanges": transformed
       }
     )
@@ -1094,7 +1126,7 @@ console.info(`Done. ${valueCount} elements found.`)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Accept-Encoding', 'gzip, deflate, br')
-    .set('Accept-Language','en-US,en;q=0.5')
+    .set('Accept-Language', 'en-US,en;q=0.5')
     .set('Content-Type', 'application/json')
     .set('x-vyzn-selected-tenant', tenant)
 
@@ -1173,7 +1205,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
   // Read CSV file with semicolon delimiter and proper encoding (ISO-8859-1)
   const raw = await fs.readFile(input, { encoding: 'latin1', flag: 'r' });
   const lines = raw.split('\n').filter(line => line.trim() !== '');
-  
+
   if (lines.length < 2) {
     console.error('Error: CSV file must have at least a header and one data row');
     process.exit(1);
@@ -1190,12 +1222,12 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
   for (let i = 1; i < lines.length; i++) {
     const values = lines[i].split(';');
     const row: any = {};
-    
+
     for (let j = 0; j < header.length; j++) {
       const value = values[j] ? values[j].trim() : '';
       row[header[j]] = value;
     }
-    
+
     data.push(row);
   }
 
@@ -1213,7 +1245,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
 
   // Group data by UUID and Version to create products
   const productGroups = new Map();
-  
+
   for (const row of data) {
     const uuid = row['UUID'];
     const version = row['Version'];
@@ -1221,7 +1253,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
 
     // Create a unique key combining UUID and Version
     const productKey = `${uuid}_${version}`;
-    
+
     if (!productGroups.has(productKey)) {
       productGroups.set(productKey, {
         uuid: uuid,
@@ -1263,7 +1295,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
     }
 
     const product = productGroups.get(productKey);
-    
+
     // Add LCA module data
     const module = {
       module: row['Modul'],
@@ -1322,7 +1354,7 @@ async function convertOekobaudat(input: string, output: string, verbose: boolean
   for (const [productKey, product] of productGroups) {
     // Create a unique product key by combining UUID and version
     const outputProductKey = `oekobaudat_${product.uuid}_v${product.version || 'unknown'}`;
-    
+
     transformedData.products[outputProductKey] = {
       name: `${product.nameEn || product.nameDe} (${product.version || 'unknown'})`,
       type: "REFERENCE_MATERIAL",
